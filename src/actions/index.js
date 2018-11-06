@@ -1,0 +1,4 @@
+// TODO: ACTION FOR DEMO, Tobe removed soon
+export const DEMO_REQUESTED = "DEMO_REQUESTED";
+export const DEMO_FULFILLED = "DEMO_FULFILLED";
+export const DEMO_REJECTED = "DEMO_REJECTED";
