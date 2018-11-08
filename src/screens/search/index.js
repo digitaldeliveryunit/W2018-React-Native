@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { View, Text } from "react-native";
-import styles from "./Search.style";
-import WrapperComponent from "../Wrapper.component";
-class SearchComponent extends Component {
+import { Text } from "react-native";
+import styles from "./styles";
+import WrapperComponent from "../../components/Wrapper.component";
+
+class Search extends Component {
   render() {
     return (
       <WrapperComponent>
@@ -16,4 +17,4 @@ class SearchComponent extends Component {
 export default connect(
   null,
   null
-)(SearchComponent);
+)(Search);

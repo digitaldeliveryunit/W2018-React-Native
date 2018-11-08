@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { View, Text } from "react-native";
-import styles from "./Profile.style";
-import WrapperComponent from "../Wrapper.component";
+import { Text } from "react-native";
+import styles from "./styles";
+import WrapperComponent from "../../components/Wrapper.component";
 
 class ProfileComponent extends Component {
   render() {

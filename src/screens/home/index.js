@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { View, Text } from "react-native";
-import styles from "./Home.style";
-import WrapperComponent from "../Wrapper.component";
+import { Text } from "react-native";
+import styles from "./styles";
+import WrapperComponent from "../../components/Wrapper.component";
 
-class HomeComponent extends Component {
+class Home extends Component {
   render() {
     return (
       <WrapperComponent>
@@ -17,4 +17,4 @@ class HomeComponent extends Component {
 export default connect(
   null,
   null
-)(HomeComponent);
+)(Home);
