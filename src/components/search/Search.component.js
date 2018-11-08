@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { View, Text } from "react-native";
-import styles from "./Home.style";
+import styles from "./Search.style";
 import WrapperComponent from "../Wrapper.component";
-
-class HomeComponent extends Component {
+class SearchComponent extends Component {
   render() {
     return (
       <WrapperComponent>
-        <Text>Home</Text>
+        <Text>Search</Text>
       </WrapperComponent>
     );
   }
@@ -17,4 +16,4 @@ class HomeComponent extends Component {
 export default connect(
   null,
   null
-)(HomeComponent);
+)(SearchComponent);
