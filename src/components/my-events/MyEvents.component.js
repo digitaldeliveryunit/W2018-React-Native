@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { View, Text } from "react-native";
-import styles from "./Home.style";
+import styles from "./MyEvents.style";
 import WrapperComponent from "../Wrapper.component";
 
-class HomeComponent extends Component {
+class MyEventsComponent extends Component {
   render() {
     return (
       <WrapperComponent>
-        <Text>Home</Text>
+        <Text>MyEvents</Text>
       </WrapperComponent>
     );
   }
@@ -17,4 +17,4 @@ class HomeComponent extends Component {
 export default connect(
   null,
   null
-)(HomeComponent);
+)(MyEventsComponent);

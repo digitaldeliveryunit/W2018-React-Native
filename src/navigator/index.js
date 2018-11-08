@@ -3,13 +3,13 @@ import { connect } from "react-redux";
 import { addNavigationHelpers, StackNavigator } from "react-navigation";
 import HomeComponent from "../components/home/Home.component";
 import { createReduxBoundAddListener } from "react-navigation-redux-helpers";
+import MainNavigator from "../navigator/main.navigator";
 
 export const AppNavigator = StackNavigator(
   {
-    HomeScreen: { screen: HomeComponent }
+    MainScreen: { screen: MainNavigator }
   },
   {
-    initialRouteName: "HomeScreen",
     headerMode: "none"
   }
 );
