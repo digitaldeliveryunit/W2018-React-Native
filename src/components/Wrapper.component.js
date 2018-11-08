@@ -1,6 +1,10 @@
 import React, { Component } from "react";
-import { ImageBackground } from "react-native";
-import styles from "./Wrapper.style";
+import { StyleSheet, ImageBackground } from "react-native";
+import CommonStyles from "../helpers/common-styles";
+
+const styles = StyleSheet.create({
+  container: CommonStyles.container
+});
 
 export default class WrapperComponent extends Component {
   render() {
