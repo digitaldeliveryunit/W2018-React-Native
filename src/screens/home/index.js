@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import styles from "./styles";
-import { CommonStyles } from "../../helpers/common-styles";
+import { CommonStyles, COLORS } from "../../helpers/common-styles";
 import WrapperComponent from "../../components/Wrapper.component";
 import Avatar from "../../components/Avatar";
 import EventsCarousel from "../../components/home/EventsCarousel";
@@ -50,7 +50,7 @@ class Home extends Component {
       <WrapperComponent>
         <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
           {this._renderHeader()}
-          <EventsCarousel events={featuredEvents} />
+          <EventsCarousel events={featuredEvents} navigation={this.props.navigation} />
           {this._renderUpcomingEvents(upcomingEvents)}
         </ScrollView>
       </WrapperComponent>
@@ -74,7 +74,7 @@ class Home extends Component {
       marginTop: 20, 
       paddingTop: 20,
       paddingBottom: 20 }}>
-      <Text style={[CommonStyles.title, { color: "#3C5063" }]}>Upcoming Events</Text>
+      <Text style={[CommonStyles.title, { color: COLORS.GRAYISH_BLUE }]}>Upcoming Events</Text>
       <View style={{
         paddingLeft: 15,
         paddingRight: 15,
@@ -82,9 +82,10 @@ class Home extends Component {
       }}>
       {
         events.map((item, index) => (
-          <TouchableOpacity key={index} style={{
-            marginBottom: 20
-          }}>
+          <TouchableOpacity 
+            key={index} 
+            style={{ marginBottom: 20 }}
+            onPress={() => this.onGoDetail()}>
             <EventCard event={item} />
           </TouchableOpacity>
         ))
@@ -92,6 +93,10 @@ class Home extends Component {
       </View>
     </View>
   );
+
+  onGoDetail () {
+    this.props.navigation.navigate("EventDetail");
+  }
 }
 
 export default connect(

@@ -5,6 +5,7 @@ import HomeScreen from "../screens/home";
 import MyEventsNavigator from "./my-events.navigator";
 import SearchScreen from "../screens/search";
 import ProfileScreen from "../screens/profile";
+import { COLORS } from "../helpers/common-styles";
 
 const styles = StyleSheet.create({
   iconStyle: {
@@ -103,8 +104,8 @@ const MainNavigator = createBottomTabNavigator(
       labelStyle: {
         fontSize: 11
       },
-      activeTintColor: "#00A19C",
-      inactiveTintColor: "#3C5063"
+      activeTintColor: COLORS.GREEN_PET_ICT,
+      inactiveTintColor: COLORS.GRAYISH_BLUE
     }
   }
 );
