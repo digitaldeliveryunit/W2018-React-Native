@@ -21,6 +21,7 @@ export const CommonStyles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "flex-end",
     width: sizeWidth(100),
+    height: 70,
     paddingRight: 20,
     paddingTop: 30,
     marginBottom: 20
