@@ -2,7 +2,7 @@ import React from "react";
 import { Image, StyleSheet } from "react-native";
 import { createBottomTabNavigator } from "react-navigation";
 import HomeScreen from "../screens/home";
-import MyEventsScreen from "../screens/my-events";
+import MyEventsNavigator from "./my-events.navigator";
 import SearchScreen from "../screens/search";
 import ProfileScreen from "../screens/profile";
 
@@ -37,7 +37,7 @@ const MainNavigator = createBottomTabNavigator(
       }
     },
     MyEvents: {
-      screen: MyEventsScreen,
+      screen: MyEventsNavigator,
       navigationOptions: {
         title: "myEvents",
         tabBarIcon: ({ focused }) => {
