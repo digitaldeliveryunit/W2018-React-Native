@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import PropTypes from "prop-types";
 import FastImage from "react-native-fast-image";
 import {sizeWidth, sizeHeight} from "../helpers/size.helper";
+import { COLORS } from "../helpers/common-styles";
 
 const styles = StyleSheet.create({
   image: {
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
     paddingBottom: 10
   },
   dateCountDown: {
-    borderColor: "#3C5063",
+    borderColor: COLORS.GRAYISH_BLUE,
     borderRadius: 5,
     borderWidth: 1,
     alignItems: "center"
@@ -46,7 +47,7 @@ const DateCountDown = () => (
     <View style={{
       width: "100%",
       alignItems: "center",
-      backgroundColor: "#3C5063",
+      backgroundColor: COLORS.GRAYISH_BLUE,
       paddingLeft: 5,
       paddingRight: 5,
       paddingBottom: 2
@@ -67,12 +68,12 @@ const EventCard = props => {
         <View style={styles.content}>
           <DateCountDown />
           <View style={{ marginLeft: 10, width: sizeWidth(60) }}>
-            <Text style={{ color: "#00A19C", fontSize: 15 }}>Formula 1 PETRONAS Malaysia Grand Prix 2018</Text>
-            <Text style={{ color: "#3C5063", fontSize: 12 }}>Sepang 28th - 30th October 2018</Text>
+            <Text style={{ color: COLORS.GREEN_PET_ICT, fontSize: 15 }}>Formula 1 PETRONAS Malaysia Grand Prix 2018</Text>
+            <Text style={{ color: COLORS.GRAYISH_BLUE, fontSize: 12 }}>Sepang 28th - 30th October 2018</Text>
           </View>
         </View>
         <View style={styles.bottom}>
-          <Text style={{ fontSize: 12, color: "#3C5063" }}>
+          <Text style={{ fontSize: 12, color: COLORS.GRAYISH_BLUE }}>
             <Text style={{ color: "#CBD34C" }}>• </Text>
             {
               event.isPrivate ? " Private Event" : " Public Event"

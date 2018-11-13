@@ -38,9 +38,12 @@ export default class EventsCarousel extends Component {
   }
   _renderItem({ item, index }) {
     return (
-      <TouchableOpacity key={index}>
+      <TouchableOpacity key={index} onPress={() => this.onGoDetail()}>
         <EventCard event={item} />
       </TouchableOpacity>
     );
+  }
+  onGoDetail () {
+    this.props.navigation.navigate("EventDetail");
   }
 }
