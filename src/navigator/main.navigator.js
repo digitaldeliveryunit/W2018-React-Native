@@ -96,7 +96,7 @@ const MainNavigator = createBottomTabNavigator(
     }
   },
   {
-    initialRouteName: "Home",
+    initialRouteName: "Search",
     tabBarOptions: {
       style: {
         height: 60
