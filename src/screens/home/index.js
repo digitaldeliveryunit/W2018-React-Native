@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import styles from "./styles";
-import CommonStyles from "../../helpers/common-styles";
+import { CommonStyles } from "../../helpers/common-styles";
 import WrapperComponent from "../../components/Wrapper.component";
 import Avatar from "../../components/Avatar";
 import EventsCarousel from "../../components/home/EventsCarousel";

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet, ImageBackground } from "react-native";
-import CommonStyles from "../helpers/common-styles";
+import { CommonStyles } from "../helpers/common-styles";
 
 const styles = StyleSheet.create({
   container: CommonStyles.container
