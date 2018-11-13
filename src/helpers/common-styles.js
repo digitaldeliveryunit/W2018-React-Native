@@ -14,8 +14,7 @@ export const CommonStyles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    backgroundColor: "#FFF",
-    paddingTop: 30
+    backgroundColor: "#FFF"
   },
   header: {
     flexDirection: "row",
@@ -23,6 +22,7 @@ export const CommonStyles = StyleSheet.create({
     alignItems: "flex-end",
     width: sizeWidth(100),
     paddingRight: 20,
+    paddingTop: 30,
     marginBottom: 20
   },
   title: {
