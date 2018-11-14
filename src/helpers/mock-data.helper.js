@@ -461,7 +461,7 @@ export const spotlightList = [
   {
     "spotlightId": "d9505911-f68c-4d0d-8707-cfbe047fd226",
     "spotlightName": "Pn Hjh Nur Zahirah M Sukran",
-    "role": "Founder, CEO of ILuvQuran Institute",
+    "role": "Founder, CEO",
     "description": "<p>Puan Hjh Nur Zahirah is currently a Chief Executive Officer at ILuvQuran Institute and Khadijah Learning Centre. She was born in 1981, graduated from Rensselaer Polytechnic Institute and obtained Masters of Business Administration (MBA) from University College Dublin. Currently completing her second masters at International Islamic University Malaysia (IIUM) in Education (Curriculum Instruction. Her passion in Quranic Education especially to children drives her and husband to form ILuvQuran institute to assist Muslims to appreciate and embrace the meaning of Al-Quran by loving, memorizing, understanding, applying and conveying the Quran. They have set up in house modules for Juz 30 from Al-Quran.&nbsp;</p><p><br></p><p>She has been invited to be speakers for PETRONAS (BAKIP) for parenting talk series, Kementerian Kerja Raya for teambuilding session, Persatuan Jaringan Bisnes Muslim Malaysia (MUBIN) on Human Resource training program.&nbsp;</p><p><br></p><p>Recently she was invited on air to radio IKIM.fm for \"Inspirasiku\" Program.&nbsp;</p>",
     "spotlightType": "People",
     "sequence": 1,
@@ -470,6 +470,65 @@ export const spotlightList = [
   },
   {
     "spotlightId": "96fa882b-00a9-43c0-875e-289f133c94f7",
+    "spotlightName": "Dr. Fong",
+    "role": "Consultant Ear, Nose & Throat Surgeon (Special Interest in Head & Neck Cancer Surgery)",
+    "description": "<p>Dr. Fong Voon Hoong is an Honorary Lecturer and Consultant ENT Surgeon from University Putra Malaysia. He is an award winning recipient in ENT areas and a regular speaker in Symposiums and Seminar. Currently, he operates his clinic at Twin Tower Medical Center in KLCC.</p>",
+    "spotlightType": "People",
+    "sequence": 1,
+    "imageUrl": "https://fileservice.petronas.com/api/v1/view/image/031805f1-422f-4825-9934-519e2e8b931a-20170814112004blobid4-thumbnail.jpg",
+    "bannerImageUrl": "https://fileservice.petronas.com/api/v1/view/image/031805f1-422f-4825-9934-519e2e8b931a-20170814112004blobid4.jpg"
+  },
+  {
+    "spotlightId": "d9505911-f68c-4d0d-8707-cfbe047fd000",
+    "spotlightName": "Sukran",
+    "role": "Founder, CEO of ILuvQuran Institute",
+    "description": "<p>Puan Hjh Nur Zahirah is currently a Chief Executive Officer at ILuvQuran Institute and Khadijah Learning Centre. She was born in 1981, graduated from Rensselaer Polytechnic Institute and obtained Masters of Business Administration (MBA) from University College Dublin. Currently completing her second masters at International Islamic University Malaysia (IIUM) in Education (Curriculum Instruction. Her passion in Quranic Education especially to children drives her and husband to form ILuvQuran institute to assist Muslims to appreciate and embrace the meaning of Al-Quran by loving, memorizing, understanding, applying and conveying the Quran. They have set up in house modules for Juz 30 from Al-Quran.&nbsp;</p><p><br></p><p>She has been invited to be speakers for PETRONAS (BAKIP) for parenting talk series, Kementerian Kerja Raya for teambuilding session, Persatuan Jaringan Bisnes Muslim Malaysia (MUBIN) on Human Resource training program.&nbsp;</p><p><br></p><p>Recently she was invited on air to radio IKIM.fm for \"Inspirasiku\" Program.&nbsp;</p>",
+    "spotlightType": "People",
+    "sequence": 1,
+    "imageUrl": "https://fileservice.petronas.com/api/v1/view/image/48d38a06-ce10-41c4-9316-0f2bbf22bc57-zahirah-thumbnail.png",
+    "bannerImageUrl": "https://fileservice.petronas.com/api/v1/view/image/48d38a06-ce10-41c4-9316-0f2bbf22bc57-zahirah.png"
+  },
+  {
+    "spotlightId": "96fa882b-00a9-43c0-875e-289f133c9000",
+    "spotlightName": "Dr. Fong Voon Hoong",
+    "role": "Consultant",
+    "description": "<p>Dr. Fong Voon Hoong is an Honorary Lecturer and Consultant ENT Surgeon from University Putra Malaysia. He is an award winning recipient in ENT areas and a regular speaker in Symposiums and Seminar. Currently, he operates his clinic at Twin Tower Medical Center in KLCC.</p>",
+    "spotlightType": "People",
+    "sequence": 1,
+    "imageUrl": "https://fileservice.petronas.com/api/v1/view/image/031805f1-422f-4825-9934-519e2e8b931a-20170814112004blobid4-thumbnail.jpg",
+    "bannerImageUrl": "https://fileservice.petronas.com/api/v1/view/image/031805f1-422f-4825-9934-519e2e8b931a-20170814112004blobid4.jpg"
+  },{
+    "spotlightId": "96fa882b-00a9-43c0-875e-289f133c94f7",
+    "spotlightName": "Dr. Fong",
+    "role": "Consultant Ear, Nose & Throat Surgeon (Special Interest in Head & Neck Cancer Surgery)",
+    "description": "<p>Dr. Fong Voon Hoong is an Honorary Lecturer and Consultant ENT Surgeon from University Putra Malaysia. He is an award winning recipient in ENT areas and a regular speaker in Symposiums and Seminar. Currently, he operates his clinic at Twin Tower Medical Center in KLCC.</p>",
+    "spotlightType": "People",
+    "sequence": 1,
+    "imageUrl": "https://fileservice.petronas.com/api/v1/view/image/031805f1-422f-4825-9934-519e2e8b931a-20170814112004blobid4-thumbnail.jpg",
+    "bannerImageUrl": "https://fileservice.petronas.com/api/v1/view/image/031805f1-422f-4825-9934-519e2e8b931a-20170814112004blobid4.jpg"
+  },
+  {
+    "spotlightId": "d9505911-f68c-4d0d-8707-cfbe047fd000",
+    "spotlightName": "Sukran",
+    "role": "Founder, CEO of ILuvQuran Institute",
+    "description": "<p>Puan Hjh Nur Zahirah is currently a Chief Executive Officer at ILuvQuran Institute and Khadijah Learning Centre. She was born in 1981, graduated from Rensselaer Polytechnic Institute and obtained Masters of Business Administration (MBA) from University College Dublin. Currently completing her second masters at International Islamic University Malaysia (IIUM) in Education (Curriculum Instruction. Her passion in Quranic Education especially to children drives her and husband to form ILuvQuran institute to assist Muslims to appreciate and embrace the meaning of Al-Quran by loving, memorizing, understanding, applying and conveying the Quran. They have set up in house modules for Juz 30 from Al-Quran.&nbsp;</p><p><br></p><p>She has been invited to be speakers for PETRONAS (BAKIP) for parenting talk series, Kementerian Kerja Raya for teambuilding session, Persatuan Jaringan Bisnes Muslim Malaysia (MUBIN) on Human Resource training program.&nbsp;</p><p><br></p><p>Recently she was invited on air to radio IKIM.fm for \"Inspirasiku\" Program.&nbsp;</p>",
+    "spotlightType": "People",
+    "sequence": 1,
+    "imageUrl": "https://fileservice.petronas.com/api/v1/view/image/48d38a06-ce10-41c4-9316-0f2bbf22bc57-zahirah-thumbnail.png",
+    "bannerImageUrl": "https://fileservice.petronas.com/api/v1/view/image/48d38a06-ce10-41c4-9316-0f2bbf22bc57-zahirah.png"
+  },
+  {
+    "spotlightId": "d9505911-f68c-4d0d-8707-cfbe047fd111",
+    "spotlightName": "Pn Hjh Nur Zahirah M Sukran",
+    "role": "Founder, CEO of ILuvQuran Institute",
+    "description": "<p>Puan Hjh Nur Zahirah is currently a Chief Executive Officer at ILuvQuran Institute and Khadijah Learning Centre. She was born in 1981, graduated from Rensselaer Polytechnic Institute and obtained Masters of Business Administration (MBA) from University College Dublin. Currently completing her second masters at International Islamic University Malaysia (IIUM) in Education (Curriculum Instruction. Her passion in Quranic Education especially to children drives her and husband to form ILuvQuran institute to assist Muslims to appreciate and embrace the meaning of Al-Quran by loving, memorizing, understanding, applying and conveying the Quran. They have set up in house modules for Juz 30 from Al-Quran.&nbsp;</p><p><br></p><p>She has been invited to be speakers for PETRONAS (BAKIP) for parenting talk series, Kementerian Kerja Raya for teambuilding session, Persatuan Jaringan Bisnes Muslim Malaysia (MUBIN) on Human Resource training program.&nbsp;</p><p><br></p><p>Recently she was invited on air to radio IKIM.fm for \"Inspirasiku\" Program.&nbsp;</p>",
+    "spotlightType": "People",
+    "sequence": 1,
+    "imageUrl": "https://fileservice.petronas.com/api/v1/view/image/48d38a06-ce10-41c4-9316-0f2bbf22bc57-zahirah-thumbnail.png",
+    "bannerImageUrl": "https://fileservice.petronas.com/api/v1/view/image/48d38a06-ce10-41c4-9316-0f2bbf22bc57-zahirah.png"
+  },
+  {
+    "spotlightId": "96fa882b-00a9-43c0-875e-289f133c9111",
     "spotlightName": "Dr. Fong Voon Hoong",
     "role": "Consultant Ear, Nose & Throat Surgeon (Special Interest in Head & Neck Cancer Surgery)",
     "description": "<p>Dr. Fong Voon Hoong is an Honorary Lecturer and Consultant ENT Surgeon from University Putra Malaysia. He is an award winning recipient in ENT areas and a regular speaker in Symposiums and Seminar. Currently, he operates his clinic at Twin Tower Medical Center in KLCC.</p>",
