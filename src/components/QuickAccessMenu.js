@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import {COLORS} from "../helpers/common-styles";
 import NavigationService from "../helpers/navigation-service";
+import { connect } from "react-redux";
+import {
+    TOGGLE_MENU,
+    SELECT_MENU
+} from "../actions/quick-access-menu.action";
 
 const styles = StyleSheet.create({
     menu: {
@@ -61,59 +66,16 @@ const styles = StyleSheet.create({
     }
 });
 
-const menus = [
-    {
-        id: "Gallery",
-        actived: false,
-        icon: require("../../assets/images/gallery.png"),
-        activedIcon: require("../../assets/images/gallery_white.png"),
-        screen: "Gallery"
-    },
-    {
-        id: "Spotlight",
-        actived: false,
-        icon: require("../../assets/images/spotlight.png"),
-        activedIcon: require("../../assets/images/spotlight_white.png"),
-        screen: "Spotlight"
-    },
-    {
-        id: "Feedback",
-        actived: false,
-        icon: require("../../assets/images/feedback.png"),
-        activedIcon: require("../../assets/images/feedback_white.png")
-    },
-    {
-        id: "Agenda",
-        actived: false,
-        icon: require("../../assets/images/agenda.png"),
-        activedIcon: require("../../assets/images/agenda_white.png")
-    },
-    {
-        id: "About",
-        actived: true,
-        screen: "EventDetail",
-        icon: require("../../assets/images/about.png"),
-        activedIcon: require("../../assets/images/about_white.png")
-    }
-];
-
-export default class QuickAccessMenu extends Component {
-    constructor () {
-        super();
-        this.state = {
-            showDetail: false,
-            menus: menus
-        };
-    }
+class QuickAccessMenu extends Component {
     render() {
-        if (this.state.showDetail) {
+        if (this.props.isOpen) {
             return this._renderDetailMenu();
         }
         return this._renderQuickAccess();
     }
 
     _renderQuickAccess = () => (
-        <TouchableOpacity onPress={() => this.setState({ showDetail: true })}>
+        <TouchableOpacity onPress={() => this.props.toggleMenu()}>
             <View style={[styles.menu, styles.item, styles.activedItem]}>
                 <Image 
                     source={require("../../assets/images/menu.png")} 
@@ -131,7 +93,7 @@ export default class QuickAccessMenu extends Component {
             <View style={[styles.container, styles.whiteCurtain]} />
             <View style={styles.quickLists}>
                 {
-                    this.state.menus.map((item, index) => this._renderMenuItem(item, index))
+                    this.props.menus.map((item, index) => this._renderMenuItem(item, index))
                 }
             </View>
         </View>
@@ -159,14 +121,23 @@ export default class QuickAccessMenu extends Component {
     );
 
     onSelect (menu) {
-        this.setState({
-            showDetail: false,
-            menus: this.state.menus.map(item => {
-                item.actived = menu.id === item.id;
-                return item;
-            })
-        });
-
+        this.props.selectMenu(menu.id);
         NavigationService.navigate(menu.screen);
     }
 }
+
+const mapStateToProps = state => {
+    return state.quickAccessMenu;
+  };
+  
+  const mapDispatchToProps = dispatch => {
+    return {
+      toggleMenu: () => dispatch({ type: TOGGLE_MENU }),
+      selectMenu: (selectedMenuId) => dispatch({ type: SELECT_MENU, selectedMenuId })
+    };
+  };
+
+export default connect(
+    mapStateToProps, 
+    mapDispatchToProps
+)(QuickAccessMenu);

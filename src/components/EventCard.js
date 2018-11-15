@@ -4,6 +4,11 @@ import PropTypes from "prop-types";
 import FastImage from "react-native-fast-image";
 import {sizeWidth, sizeHeight} from "../helpers/size.helper";
 import { COLORS } from "../helpers/common-styles";
+import NavigationService from "../helpers/navigation-service";
+import { connect } from "react-redux";
+import {
+    OPEN_QRCODE_POPUP
+} from "../actions/qrcode.action";
 
 const styles = StyleSheet.create({
   image: {
@@ -59,57 +64,59 @@ const DateCountDown = () => (
   </View>
 );
 
-const EventCard = props => {
-  const {containerStyles, event} = props;
-  return (
-    <View style={[containerStyles, {width: props.width}]}>
-      <Image source={require("../../assets/event_image.png")} style={styles.image} resizeMode={"cover"} />
-      <View style={{ padding: 10 }}>
-        <View style={styles.content}>
-          <DateCountDown />
-          <View style={{ marginLeft: 10, width: sizeWidth(60) }}>
-            <Text style={{ color: COLORS.GREEN_PET_ICT, fontSize: 15 }}>Formula 1 PETRONAS Malaysia Grand Prix 2018</Text>
-            <Text style={{ color: COLORS.GRAYISH_BLUE, fontSize: 12 }}>Sepang 28th - 30th October 2018</Text>
+class EventCard extends React.Component {
+  render () {
+    const {containerStyles, event, width} = this.props;
+    return (
+      <View style={[containerStyles, {width: width}]}>
+        <Image source={require("../../assets/event_image.png")} style={styles.image} resizeMode={"cover"} />
+        <View style={{ padding: 10 }}>
+          <View style={styles.content}>
+            <DateCountDown />
+            <View style={{ marginLeft: 10, width: sizeWidth(60) }}>
+              <Text style={{ color: COLORS.GREEN_PET_ICT, fontSize: 15 }}>Formula 1 PETRONAS Malaysia Grand Prix 2018</Text>
+              <Text style={{ color: COLORS.GRAYISH_BLUE, fontSize: 12 }}>Sepang 28th - 30th October 2018</Text>
+            </View>
+          </View>
+          <View style={styles.bottom}>
+            <Text style={{ fontSize: 12, color: COLORS.GRAYISH_BLUE }}>
+              <Text style={{ color: "#CBD34C" }}>• </Text>
+              {
+                event.isPrivate ? " Private Event" : " Public Event"
+              }
+            </Text>
+            {
+              event.isUpcoming ? (
+                <View style={{ flexDirection: "row" }}>
+                  <TouchableOpacity style={styles.actionButton}>
+                    <Image source={require("../../assets/images/plus_filled.png")} style={{ width: 20, height: 20 }} />
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.actionButton}>
+                    <Image source={require("../../assets/images/bookmark.png")} style={{ width: 15, height: 20 }} />
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.actionButton}>
+                    <Image source={require("../../assets/images/qrcodelighter.png")} style={{ width: 20, height: 20 }} />
+                  </TouchableOpacity>
+                </View>
+              ) : (
+                <View style={{ flexDirection: "row" }}>
+                  <TouchableOpacity style={styles.actionButton}>
+                    <Image source={require("../../assets/images/close.png")} style={{ width: 20, height: 20 }} />
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.actionButton}>
+                    <Image source={require("../../assets/images/bookmarked.png")} style={{ width: 15, height: 20 }} />
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.actionButton} onPress={() => this.props.openPopup()}>
+                    <Image source={require("../../assets/images/qrcode.png")} style={{ width: 20, height: 20 }} />
+                  </TouchableOpacity>
+                </View>
+              )
+            }
           </View>
         </View>
-        <View style={styles.bottom}>
-          <Text style={{ fontSize: 12, color: COLORS.GRAYISH_BLUE }}>
-            <Text style={{ color: "#CBD34C" }}>• </Text>
-            {
-              event.isPrivate ? " Private Event" : " Public Event"
-            }
-          </Text>
-          {
-            event.isUpcoming ? (
-              <View style={{ flexDirection: "row" }}>
-                <TouchableOpacity style={styles.actionButton}>
-                  <Image source={require("../../assets/images/plus_filled.png")} style={{ width: 20, height: 20 }} />
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.actionButton}>
-                  <Image source={require("../../assets/images/bookmark.png")} style={{ width: 15, height: 20 }} />
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.actionButton}>
-                  <Image source={require("../../assets/images/qrcodelighter.png")} style={{ width: 20, height: 20 }} />
-                </TouchableOpacity>
-              </View>
-            ) : (
-              <View style={{ flexDirection: "row" }}>
-                <TouchableOpacity style={styles.actionButton}>
-                  <Image source={require("../../assets/images/close.png")} style={{ width: 20, height: 20 }} />
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.actionButton}>
-                  <Image source={require("../../assets/images/bookmarked.png")} style={{ width: 15, height: 20 }} />
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.actionButton}>
-                  <Image source={require("../../assets/images/qrcode.png")} style={{ width: 20, height: 20 }} />
-                </TouchableOpacity>
-              </View>
-            )
-          }
-        </View>
       </View>
-    </View>
-  );
+    );
+  }
 };
 
 EventCard.propTypes = {
@@ -129,4 +136,15 @@ EventCard.defaultProps = {
   width: "100%"
 };
 
-export default EventCard;
+const mapDispatchToProps = dispatch => {
+  return {
+    openPopup: () => {
+      dispatch({ type: OPEN_QRCODE_POPUP });
+    }
+  };
+};
+
+export default connect(
+  null, 
+  mapDispatchToProps
+)(EventCard);

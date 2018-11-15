@@ -7,6 +7,7 @@ import WrapperComponent from "../../components/Wrapper.component";
 import DetailHeader from "../../components/DetailHeader";
 import GalleryCard from "../../components/GalleryCard";
 import GalleryShelf from "../../components/gallery/GalleryShelf";
+import QuickAccessMenu from "../../components/QuickAccessMenu";
 
 const files = [
   { id: 1, type: "file", extension: "PDF", name: "File PDF 1.pdf" },
@@ -31,12 +32,18 @@ class Gallery extends Component {
   render() {
     return (
       <WrapperComponent>
-        <DetailHeader title={"Gallery"} />
-        <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
-        <GalleryShelf title="Files" items={files} />
-        <GalleryShelf title="Images" items={images} reversedColor={true} />
-        <GalleryShelf title="Videos" items={videos} reversedColor={true} />
-        </ScrollView>
+        <View style={{
+          flex: 1,
+          alignItems: "center"
+        }}>
+          <DetailHeader title={"Gallery"} />
+          <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
+            <GalleryShelf title="Files" items={files} />
+            <GalleryShelf title="Images" items={images} reversedColor={true} />
+            <GalleryShelf title="Videos" items={videos} reversedColor={true} />
+          </ScrollView>
+        </View>
+        <QuickAccessMenu />
       </WrapperComponent>
     );
   }
