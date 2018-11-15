@@ -1,28 +1,23 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { View, Image, Text, FlatList } from "react-native";
+import { View, Image, Text, FlatList, TouchableOpacity } from "react-native";
 import _ from "lodash";
 import styles from "./styles";
 import WrapperComponent from "../../components/Wrapper.component";
 import SpotlightCard from "../../components/SpotlightCard";
 import { CommonStyles } from "../../helpers/common-styles";
 import { spotlightList } from "../../helpers/mock-data.helper";
+import DetailHeader from "../../components/DetailHeader";
 
 class Spotlight extends Component {
-  _renderHeader = () => (
-    <View style={{ ...CommonStyles.header, paddingHorizontal: 15 }}>
-      <Image
-        source={require("../../../assets/images/left_white.png")}
-        style={styles.backIcon}
-        resizeMode={"contain"}
-      />
-      <Text style={CommonStyles.title}>Spotlight</Text>
+  _renderRightHeader = () => (
+    <TouchableOpacity>
       <Image
         source={require("../../../assets/images/group.png")}
         style={styles.backIcon}
         resizeMode={"contain"}
       />
-    </View>
+    </TouchableOpacity>
   );
 
   _onPressSpotlightItem = spotlightId => {
@@ -44,7 +39,8 @@ class Spotlight extends Component {
     const spotlightCouples = _.chunk(spotlightList, 2);
     return (
       <WrapperComponent>
-        {this._renderHeader()}
+        <DetailHeader title={"Spotlight"}
+          RightComponent={() => this._renderRightHeader()} />
         <FlatList
           data={spotlightCouples}
           renderItem={({ item, index }) => this._renderItem(item, index)}

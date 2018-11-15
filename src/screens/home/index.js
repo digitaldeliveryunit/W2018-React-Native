@@ -60,10 +60,12 @@ class Home extends Component {
   _renderHeader = () => (
     <View style={CommonStyles.header}>
       <Text style={CommonStyles.title}>Featured Events</Text>
-      <Avatar user={{
-        firstName: "Khoa",
-        lastName: "Tran"
-      }} />
+      <TouchableOpacity>
+        <Avatar user={{
+          firstName: "Khoa",
+          lastName: "Tran"
+        }} />
+      </TouchableOpacity>
     </View>
   );
 

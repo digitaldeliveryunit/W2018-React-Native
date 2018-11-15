@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import {COLORS} from "../helpers/common-styles";
-import { sizeWidth, sizeHeight } from "../helpers/size.helper";
+import NavigationService from "../helpers/navigation-service";
 
 const styles = StyleSheet.create({
     menu: {
@@ -66,13 +66,15 @@ const menus = [
         id: "Gallery",
         actived: false,
         icon: require("../../assets/images/gallery.png"),
-        activedIcon: require("../../assets/images/gallery_white.png")
+        activedIcon: require("../../assets/images/gallery_white.png"),
+        screen: "Gallery"
     },
     {
         id: "Spotlight",
         actived: false,
         icon: require("../../assets/images/spotlight.png"),
-        activedIcon: require("../../assets/images/spotlight_white.png")
+        activedIcon: require("../../assets/images/spotlight_white.png"),
+        screen: "Spotlight"
     },
     {
         id: "Feedback",
@@ -164,5 +166,7 @@ export default class QuickAccessMenu extends Component {
                 return item;
             })
         });
+
+        NavigationService.navigate(menu.screen);
     }
 }

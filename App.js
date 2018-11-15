@@ -2,14 +2,16 @@ import React, { Component } from "react";
 import { YellowBox } from "react-native";
 import { store } from "./src/store";
 import { Provider } from "react-redux";
-
+import NavigationService from "./src/helpers/navigation-service";
 import AppWithNavigationState from "./src/navigator";
 
 export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <AppWithNavigationState />
+        <AppWithNavigationState ref={navigatorRef => {
+          NavigationService.setTopLevelNavigator(navigatorRef);
+        }} />
       </Provider>
     );
   }
