@@ -11,6 +11,7 @@ import DetailHeader from "../../components/DetailHeader";
 import Carousel from "react-native-snap-carousel";
 import { sizeWidth, sizeHeight } from "../../helpers/size.helper";
 import {SpotlightItem} from "../../components/SpotlightCard";
+import QuickAccessMenu from "../../components/QuickAccessMenu";
 
 const { height } = Dimensions.get("window");
 
@@ -59,8 +60,17 @@ class Spotlight extends Component {
     const spotlightCouples = _.chunk(spotlightList, 2);
     return (
       <WrapperComponent>
-        <DetailHeader title={"Spotlight"}
-          RightComponent={() => this._renderRightHeader()} />
+        <View style={{
+          flex: 1,
+          alignItems: "center"
+        }}>
+        {
+          this.state.viewMode === ViewMode.LIST ? (
+            <DetailHeader title={"Spotlight"} />
+          ) : (
+            <DetailHeader title={"Spotlight"} RightComponent={() => this._renderRightHeader()} />
+          )
+        }
         {
           this.state.viewMode === ViewMode.LIST ? (
             <FlatList
@@ -73,6 +83,8 @@ class Spotlight extends Component {
             this._renderCarousel()
           )
         }
+        </View>
+        <QuickAccessMenu />
       </WrapperComponent>
     );
   }

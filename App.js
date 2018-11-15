@@ -1,17 +1,21 @@
 import React, { Component } from "react";
-import { YellowBox } from "react-native";
+import { YellowBox, View } from "react-native";
 import { store } from "./src/store";
 import { Provider } from "react-redux";
 import NavigationService from "./src/helpers/navigation-service";
 import AppWithNavigationState from "./src/navigator";
+import QRCodePopup from "./src/components/QRCodePopup";
 
 export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <AppWithNavigationState ref={navigatorRef => {
-          NavigationService.setTopLevelNavigator(navigatorRef);
-        }} />
+        <View style={{flex: 1}}>
+          <AppWithNavigationState ref={navigatorRef => {
+            NavigationService.setTopLevelNavigator(navigatorRef);
+          }} />
+          <QRCodePopup />
+        </View>
       </Provider>
     );
   }

@@ -19,13 +19,18 @@ class Search extends Component {
   render() {
     return (
       <WrapperComponent>
-        {this._renderHeader()}
-        {this._renderSearchBox()}
-        <View style={styles.searchResult}>
-          <Text style={styles.founds}>Search Results (1)</Text>
-          <ScrollView showsVerticalScrollIndicator={false}>
-            {this._renderSearchResult(results)}
-          </ScrollView>
+        <View style={{
+          flex: 1,
+          alignItems: "center"
+        }}>
+          {this._renderHeader()}
+          {this._renderSearchBox()}
+          <View style={styles.searchResult}>
+            <Text style={styles.founds}>Search Results (1)</Text>
+            <ScrollView showsVerticalScrollIndicator={false}>
+              {this._renderSearchResult(results)}
+            </ScrollView>
+          </View>
         </View>
       </WrapperComponent>
     );

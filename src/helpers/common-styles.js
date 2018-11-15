@@ -13,7 +13,6 @@ export const COLORS = {
 export const CommonStyles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
     backgroundColor: "#FFF"
   },
   header: {
