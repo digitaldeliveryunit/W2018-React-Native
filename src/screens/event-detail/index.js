@@ -11,7 +11,9 @@ class EventDetail extends Component {
   render() {
     const cover = _.get(event, "imageUrl");
     return (
-      <View>
+      <View style={{
+        flex: 1
+      }}>
         <ScrollView style={styles.whiteOverlay}>
           <View style={styles.container}>
             <Image source={{ uri: cover }} style={styles.imageCover} />
