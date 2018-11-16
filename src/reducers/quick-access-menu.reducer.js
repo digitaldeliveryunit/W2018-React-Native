@@ -27,7 +27,8 @@ const initState = {
       id: "Agenda",
       actived: false,
       icon: require("../../assets/images/agenda.png"),
-      activedIcon: require("../../assets/images/agenda_white.png")
+      activedIcon: require("../../assets/images/agenda_white.png"),
+      screen: "Agenda"
     },
     {
       id: "About",
