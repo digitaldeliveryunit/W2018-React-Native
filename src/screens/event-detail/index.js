@@ -1,22 +1,62 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { ScrollView, View, Image, Text } from "react-native";
+import { ScrollView, View, Image, Text, TouchableOpacity } from "react-native";
 import _ from "lodash";
 import moment from "moment";
 import styles from "./styles";
 import { event } from "../../helpers/mock-data.helper";
 import QuickAccessMenu from "../../components/QuickAccessMenu";
+import { OPEN_QRCODE_POPUP } from "../../actions/qrcode.action";
+import openGoogleMapDirection from "../../helpers/google-map-direction";
 
 class EventDetail extends Component {
+  _onPressOpenGoogleMap = (location) => {
+    const lat = _.get(location, 'latitude');
+    const lng = _.get(location, 'longitude');
+
+    if (lat && lng) {
+      const data = {
+        source: null,
+        destination: {
+          latitude: lat,
+          longitude: lng
+        }
+      };
+
+      openGoogleMapDirection(data);
+    }
+  };
+
   render() {
     const cover = _.get(event, "imageUrl");
     return (
-      <View style={{
-        flex: 1
-      }}>
-        <ScrollView style={styles.whiteOverlay}>
+      <View style={styles.whiteOverlay}>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.container}>
             <Image source={{ uri: cover }} style={styles.imageCover} />
+            <View style={styles.containerActionButton}>
+              <TouchableOpacity style={styles.actionButton}>
+                <Image
+                  source={require("../../../assets/images/close.png")}
+                  style={styles.iconActionButton}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.actionButton}>
+                <Image
+                  source={require("../../../assets/images/bookmarked.png")}
+                  style={[styles.iconActionButton, { width: 15 }]}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.actionButton}
+                onPress={() => this.props.openPopupQRCode()}
+              >
+                <Image
+                  source={require("../../../assets/images/qrcode.png")}
+                  style={styles.iconActionButton}
+                />
+              </TouchableOpacity>
+            </View>
             <View style={styles.titleContainer}>
               <Text style={styles.lblEventName} numberOfLines={2}>
                 {_.get(event, "eventName", "")}
@@ -56,7 +96,10 @@ class EventDetail extends Component {
                   />
                   <View style={styles.infoLabelWrapper}>
                     <Text
-                      style={{ ...styles.lblInfoName, ...styles.colorHighLight }}
+                      style={{
+                        ...styles.lblInfoName,
+                        ...styles.colorHighLight
+                      }}
                     >
                       {_.get(event, "eventLocation.locationName")}
                     </Text>
@@ -65,11 +108,14 @@ class EventDetail extends Component {
                     </Text>
                   </View>
                 </View>
-                <Image
-                  style={styles.mapsImage}
-                  borderRadius={5}
-                  source={require("../../../assets/images/googlemap.png")}
-                />
+                <TouchableOpacity
+                  onPress={() => this._onPressOpenGoogleMap(_.get(event, "eventLocation"))}
+                >
+                  <Image
+                    style={styles.mapsImage}
+                    source={require("../../../assets/images/googlemap.png")}
+                  />
+                </TouchableOpacity>
               </View>
             </View>
             <View style={styles.horizontalDivider} />
@@ -87,7 +133,15 @@ class EventDetail extends Component {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    openPopupQRCode: () => {
+      dispatch({ type: OPEN_QRCODE_POPUP });
+    }
+  };
+};
+
 export default connect(
   null,
-  null
+  mapDispatchToProps
 )(EventDetail);

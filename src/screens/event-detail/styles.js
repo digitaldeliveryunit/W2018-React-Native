@@ -5,6 +5,7 @@ const { width } = Dimensions.get("window");
 
 export default StyleSheet.create({
   whiteOverlay: {
+    flex: 1,
     backgroundColor: "#FFF",
     position: "relative"
   },
@@ -88,5 +89,34 @@ export default StyleSheet.create({
     color: COLORS.GRAYISH_BLUE,
     lineHeight: 18,
     paddingBottom: 20
+  },
+  // begin styles for action button
+  containerActionButton: {
+    flexDirection: "row",
+    position: "absolute",
+    right: 10,
+    top: 150
+  },
+  actionButton: {
+    backgroundColor: "#FFF",
+    borderColor: COLORS.LIGHT_GRAY,
+    borderWidth: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    marginLeft: 5,
+    shadowColor: COLORS.GRAYISH_BLUE,
+    shadowOffset: {
+      width: 0,
+      height: 1
+    },
+    shadowRadius: 10,
+    shadowOpacity: 0.2
+  },
+  iconActionButton: {
+    width: 20,
+    height: 20
   }
 });

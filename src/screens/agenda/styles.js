@@ -21,6 +21,7 @@ export default StyleSheet.create({
     margin: 6
   },
   containerSessionItem: {
+    paddingHorizontal: 10,
     marginBottom: 5
   }
 });
