@@ -1,14 +1,10 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
-import PropTypes from "prop-types";
-import FastImage from "react-native-fast-image";
-import {sizeWidth, sizeHeight} from "../helpers/size.helper";
-import { COLORS } from "../helpers/common-styles";
-import NavigationService from "../helpers/navigation-service";
 import { connect } from "react-redux";
-import {
-    OPEN_QRCODE_POPUP
-} from "../actions/qrcode.action";
+import PropTypes from "prop-types";
+import { sizeWidth, sizeHeight } from "../helpers/size.helper";
+import { COLORS } from "../helpers/common-styles";
+import { OPEN_QRCODE_POPUP } from "../actions/qrcode.action";
 
 const styles = StyleSheet.create({
   image: {
@@ -19,9 +15,7 @@ const styles = StyleSheet.create({
     width: "100%",
     flexDirection: "row",
     alignItems: "center",
-    borderBottomColor: "#F3F3F3",
-    borderBottomWidth: 1,
-    paddingBottom: 10
+    paddingBottom: 5
   },
   dateCountDown: {
     borderColor: COLORS.GRAYISH_BLUE,
@@ -33,7 +27,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingTop: 5
+    marginTop: 10,
+    paddingTop: 8,
+    borderTopColor: "#F3F3F3",
+    borderTopWidth: 1
   },
   actionButton: {
     borderColor: "#CCC",
@@ -49,80 +46,109 @@ const styles = StyleSheet.create({
 
 const DateCountDown = () => (
   <View style={styles.dateCountDown}>
-    <View style={{
-      width: "100%",
-      alignItems: "center",
-      backgroundColor: COLORS.GRAYISH_BLUE,
-      paddingLeft: 5,
-      paddingRight: 5,
-      paddingBottom: 2
-    }}>
+    <View
+      style={{
+        width: "100%",
+        alignItems: "center",
+        backgroundColor: COLORS.GRAYISH_BLUE,
+        paddingHorizontal: 5,
+        paddingBottom: 2
+      }}
+    >
       <Text style={{ fontSize: 28, color: "#FFF", marginTop: -2 }}>28</Text>
       <Text style={{ fontSize: 16, color: "#FFF", marginTop: -5 }}>OCT</Text>
     </View>
-    <Text style={{fontSize: 9, padding: 2}}>3 days</Text>
+    <Text style={{ fontSize: 9, padding: 2 }}>3 days</Text>
   </View>
 );
 
 class EventCard extends React.Component {
-  render () {
-    const {containerStyles, event, width} = this.props;
+  render() {
+    const { containerStyles, event, width, withoutBottom } = this.props;
     return (
-      <View style={[containerStyles, {width: width}]}>
-        <Image source={require("../../assets/event_image.png")} style={styles.image} resizeMode={"cover"} />
-        <View style={{ padding: 10 }}>
+      <View style={[containerStyles, { width: width }]}>
+        <Image
+          source={require("../../assets/event_image.png")}
+          style={styles.image}
+          resizeMode={"cover"}
+        />
+        <View style={{ paddingHorizontal: 15, paddingVertical: 10 }}>
           <View style={styles.content}>
             <DateCountDown />
             <View style={{ marginLeft: 10, width: sizeWidth(60) }}>
-              <Text style={{ color: COLORS.GREEN_PET_ICT, fontSize: 15 }}>Formula 1 PETRONAS Malaysia Grand Prix 2018</Text>
-              <Text style={{ color: COLORS.GRAYISH_BLUE, fontSize: 12 }}>Sepang 28th - 30th October 2018</Text>
+              <Text style={{ color: COLORS.GREEN_PET_ICT, fontSize: 15 }}>
+                Formula 1 PETRONAS Malaysia Grand Prix 2018
+              </Text>
+              <Text style={{ color: COLORS.GRAYISH_BLUE, fontSize: 12 }}>
+                Sepang 28th - 30th October 2018
+              </Text>
             </View>
           </View>
-          <View style={styles.bottom}>
-            <Text style={{ fontSize: 12, color: COLORS.GRAYISH_BLUE }}>
-              <Text style={{ color: "#CBD34C" }}>• </Text>
-              {
-                event.isPrivate ? " Private Event" : " Public Event"
-              }
-            </Text>
-            {
-              event.isUpcoming ? (
+          {!withoutBottom && (
+            <View style={styles.bottom}>
+              <Text style={{ fontSize: 12, color: COLORS.GRAYISH_BLUE }}>
+                <Text style={{ color: "#CBD34C" }}>• </Text>
+                {event.isPrivate ? " Private Event" : " Public Event"}
+              </Text>
+              {event.isUpcoming ? (
                 <View style={{ flexDirection: "row" }}>
                   <TouchableOpacity style={styles.actionButton}>
-                    <Image source={require("../../assets/images/plus_filled.png")} style={{ width: 20, height: 20 }} />
+                    <Image
+                      source={require("../../assets/images/plus_filled.png")}
+                      style={{ width: 20, height: 20 }}
+                    />
                   </TouchableOpacity>
                   <TouchableOpacity style={styles.actionButton}>
-                    <Image source={require("../../assets/images/bookmark.png")} style={{ width: 15, height: 20 }} />
+                    <Image
+                      source={require("../../assets/images/bookmark.png")}
+                      style={{ width: 15, height: 20 }}
+                    />
                   </TouchableOpacity>
                   <TouchableOpacity style={styles.actionButton}>
-                    <Image source={require("../../assets/images/qrcodelighter.png")} style={{ width: 20, height: 20 }} />
+                    <Image
+                      source={require("../../assets/images/qrcodelighter.png")}
+                      style={{ width: 20, height: 20 }}
+                    />
                   </TouchableOpacity>
                 </View>
               ) : (
                 <View style={{ flexDirection: "row" }}>
                   <TouchableOpacity style={styles.actionButton}>
-                    <Image source={require("../../assets/images/close.png")} style={{ width: 20, height: 20 }} />
+                    <Image
+                      source={require("../../assets/images/close.png")}
+                      style={{ width: 20, height: 20 }}
+                    />
                   </TouchableOpacity>
                   <TouchableOpacity style={styles.actionButton}>
-                    <Image source={require("../../assets/images/bookmarked.png")} style={{ width: 15, height: 20 }} />
+                    <Image
+                      source={require("../../assets/images/bookmarked.png")}
+                      style={{ width: 15, height: 20 }}
+                    />
                   </TouchableOpacity>
-                  <TouchableOpacity style={styles.actionButton} onPress={() => this.props.openPopup()}>
-                    <Image source={require("../../assets/images/qrcode.png")} style={{ width: 20, height: 20 }} />
+                  <TouchableOpacity
+                    style={styles.actionButton}
+                    onPress={() => this.props.openPopup()}
+                  >
+                    <Image
+                      source={require("../../assets/images/qrcode.png")}
+                      style={{ width: 20, height: 20 }}
+                    />
                   </TouchableOpacity>
                 </View>
-              )
-            }
-          </View>
+              )}
+            </View>
+          )}
         </View>
       </View>
     );
   }
-};
+}
 
 EventCard.propTypes = {
   event: PropTypes.object,
   containerStyles: PropTypes.object,
-  width: PropTypes.any
+  width: PropTypes.any,
+  withoutBottom: PropTypes.bool
 };
 
 EventCard.defaultProps = {
@@ -145,6 +171,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-  null, 
+  null,
   mapDispatchToProps
 )(EventCard);

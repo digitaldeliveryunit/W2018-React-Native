@@ -78,6 +78,8 @@ export const user = {
   position: "Senior Developer (Onshore)",
   office: "Level 23, Menara ExxonMobil",
   employeeNumber: "C0019240",
+  photo:
+    "http://1.gravatar.com/avatar/767fc9c115a1b989744c755db47feb60?size=840",
   thumbnailPhoto:
     "https://oexstorage.blob.core.windows.net/fileservices/UserPhotos/PETRONAS_nhan.nguyendinh.jpg",
   isFirstLogon: false,
