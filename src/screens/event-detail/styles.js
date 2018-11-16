@@ -11,7 +11,7 @@ export default StyleSheet.create({
   container: CommonStyles.container,
   imageCover: {
     width,
-    height: 180
+    height: 200
   },
   titleContainer: {
     backgroundColor: "rgba(6, 6, 6, .05)"
