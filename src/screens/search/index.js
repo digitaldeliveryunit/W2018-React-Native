@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { View, Text, ScrollView, TouchableOpacity, Image, TextInput } from "react-native";
+import {
+  View,
+  ScrollView,
+  TouchableOpacity,
+  Image,
+  TextInput
+} from "react-native";
+import Text from "../../components/Text.component";
 import styles from "./styles";
 import { CommonStyles, COLORS } from "../../helpers/common-styles";
 import WrapperComponent from "../../components/Wrapper.component";
@@ -8,10 +15,14 @@ import EventCard from "../..//components/EventCard";
 
 const results = [
   {
-    id: 1, isPrivate: false, isUpcoming: true
+    id: 1,
+    isPrivate: false,
+    isUpcoming: true
   },
   {
-    id: 2, isPrivate: true, isUpcoming: true
+    id: 2,
+    isPrivate: true,
+    isUpcoming: true
   }
 ];
 
@@ -19,10 +30,12 @@ class Search extends Component {
   render() {
     return (
       <WrapperComponent>
-        <View style={{
-          flex: 1,
-          alignItems: "center"
-        }}>
+        <View
+          style={{
+            flex: 1,
+            alignItems: "center"
+          }}
+        >
           {this._renderHeader()}
           {this._renderSearchBox()}
           <View style={styles.searchResult}>
@@ -44,35 +57,35 @@ class Search extends Component {
 
   _renderSearchBox = () => (
     <View style={styles.searchBox}>
-      <Image 
+      <Image
         source={require("../../../assets/images/search_white.png")}
         style={styles.searchIcon}
-        resizeMode={"contain"} />
+        resizeMode={"contain"}
+      />
       <TextInput
-          placeholder={"Say something..."}
-          style={styles.searchInput}
-          underlineColorAndroid="transparent"
-          placeholderTextColor={COLORS.PALE_NAVY}
-        />
+        placeholder={"Say something..."}
+        style={styles.searchInput}
+        underlineColorAndroid="transparent"
+        placeholderTextColor={COLORS.PALE_NAVY}
+      />
     </View>
   );
 
-  _renderSearchResult = (events) => (
+  _renderSearchResult = events => (
     <View style={styles.listContainer}>
-    {
-      events.map((item, index) => (
-        <TouchableOpacity 
-          key={index} 
-          style={{ marginBottom: 20}} 
-          onPress={() => this.onGoDetail()}>
+      {events.map((item, index) => (
+        <TouchableOpacity
+          key={index}
+          style={{ marginBottom: 20 }}
+          onPress={() => this.onGoDetail()}
+        >
           <EventCard event={item} />
         </TouchableOpacity>
-      ))
-    }
+      ))}
     </View>
   );
 
-  onGoDetail () {
+  onGoDetail() {
     this.props.navigation.navigate("EventDetail");
   }
 }

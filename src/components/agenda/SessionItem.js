@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import {
   StyleSheet,
   View,
-  Text,
   Image,
   TouchableOpacity,
   Dimensions
 } from "react-native";
+import Text from "../Text.component";
 import _ from "lodash";
 import PropTypes from "prop-types";
 import { COLORS } from "../../helpers/common-styles";

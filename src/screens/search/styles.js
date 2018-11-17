@@ -24,16 +24,16 @@ export default StyleSheet.create({
     searchInput: {
         borderWidth: 0,
         width: "100%",
-        height: 40,
+        height: 45,
         color: "#FFF",
         paddingLeft: 5,
         paddingRight: 12,
-        fontSize: 22
+        fontSize: 20
     },
     searchResult: {
         flex: 1,
         width: sizeWidth(100),
-        paddingTop: 40
+        paddingTop: 30
     },
     founds: {
         paddingLeft: 20,

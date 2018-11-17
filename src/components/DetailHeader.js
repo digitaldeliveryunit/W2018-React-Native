@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
+import Text from "./Text.component";
 import PropTypes from "prop-types";
 import { sizeWidth } from "../helpers/size.helper";
 import NavigationService from "../helpers/navigation-service";

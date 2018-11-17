@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View } from "react-native";
+import Text from "./Text.component";
 import PropTypes from "prop-types";
 import FastImage from "react-native-fast-image";
 import _ from "lodash";

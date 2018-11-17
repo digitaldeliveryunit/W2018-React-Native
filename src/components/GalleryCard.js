@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
+import Text from "./Text.component";
 import PropTypes from "prop-types";
 import FastImage from "react-native-fast-image";
 import { sizeWidth, sizeHeight } from "../helpers/size.helper";

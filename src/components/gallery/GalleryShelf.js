@@ -3,9 +3,9 @@ import {
   StyleSheet,
   View,
   TouchableOpacity,
-  Text,
   FlatList
 } from "react-native";
+import Text from "../Text.component";
 import PropTypes from "prop-types";
 import { sizeWidth } from "../../helpers/size.helper";
 import GalleryCard from "../../components/GalleryCard";

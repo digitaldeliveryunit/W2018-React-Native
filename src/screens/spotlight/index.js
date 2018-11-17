@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { View, Image, Text, FlatList, TouchableOpacity, Dimensions } from "react-native";
+import { View, Image, FlatList, TouchableOpacity, Dimensions } from "react-native";
+import Text from "../../components/Text.component";
 import _ from "lodash";
 import styles from "./styles";
 import WrapperComponent from "../../components/Wrapper.component";
@@ -11,7 +12,7 @@ import DetailHeader from "../../components/DetailHeader";
 import Carousel from "react-native-snap-carousel";
 import { sizeWidth, sizeHeight } from "../../helpers/size.helper";
 import {SpotlightItem} from "../../components/SpotlightCard";
-import QuickAccessMenu from "../../components/QuickAccessMenu";
+import QuickAccessButton from "../../components/QuickAccessButton";
 
 const { height } = Dimensions.get("window");
 
@@ -84,7 +85,7 @@ class Spotlight extends Component {
           )
         }
         </View>
-        <QuickAccessMenu />
+        <QuickAccessButton />
       </WrapperComponent>
     );
   }
