@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 import {
   StyleSheet,
   Image,
-  Text,
   View,
   TouchableOpacity,
   Dimensions
 } from "react-native";
 import { COLORS } from "../helpers/common-styles";
+import Text from "./Text.component";
 
 const { width } = Dimensions.get("window");
 const WIDTH_SPOTLIGHT_ITEM = width / 2 - 44;

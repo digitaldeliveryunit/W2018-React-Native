@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { View, Text, ScrollView, TouchableOpacity } from "react-native";
+import { View, ScrollView } from "react-native";
+import Text from "../../components/Text.component";
 import styles from "./styles";
 import { CommonStyles } from "../../helpers/common-styles";
 import WrapperComponent from "../../components/Wrapper.component";
 import DetailHeader from "../../components/DetailHeader";
 import GalleryCard from "../../components/GalleryCard";
 import GalleryShelf from "../../components/gallery/GalleryShelf";
-import QuickAccessMenu from "../../components/QuickAccessMenu";
+import QuickAccessButton from "../../components/QuickAccessButton";
 
 const files = [
   { id: 1, type: "file", extension: "PDF", name: "File PDF 1.pdf" },
@@ -43,7 +44,7 @@ class Gallery extends Component {
             <GalleryShelf title="Videos" items={videos} reversedColor={true} />
           </ScrollView>
         </View>
-        <QuickAccessMenu />
+        <QuickAccessButton />
       </WrapperComponent>
     );
   }

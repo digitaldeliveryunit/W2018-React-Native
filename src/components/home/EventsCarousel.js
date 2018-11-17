@@ -1,6 +1,6 @@
 
 import React, { Component } from "react";
-import { StyleSheet, View, TouchableOpacity } from "react-native";
+import { StyleSheet, TouchableOpacity } from "react-native";
 import { CommonStyles } from "../../helpers/common-styles";
 import Carousel from "react-native-snap-carousel";
 import PropTypes from "prop-types";

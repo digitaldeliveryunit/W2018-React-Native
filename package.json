@@ -34,5 +34,11 @@
   },
   "jest": {
     "preset": "react-native"
-  }
+  },
+  "rnpm": {
+    "assets": [
+      "assets/fonts/SF Pro Text",
+      "assets/fonts/Helvetica Neue"
+    ]
+   }
 }

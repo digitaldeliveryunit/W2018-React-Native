@@ -11,6 +11,7 @@ export const COLORS = {
   GREEN_PET_ICT: "#00A19C",
   SOFT_PURPLE: "#58478D",
   PALE_NAVY: "#C4C9DF",
+  LIGHT_BORDER: "#F3F3F3"
 };
 
 export const CommonStyles = StyleSheet.create({
@@ -30,8 +31,8 @@ export const CommonStyles = StyleSheet.create({
   },
   title: {
     color: "#FFF",
-    fontWeight: "bold",
-    fontSize: 23,
+    fontSize: 24,
+    fontWeight: "800",
     marginBottom: -5,
     paddingLeft: 30
   },

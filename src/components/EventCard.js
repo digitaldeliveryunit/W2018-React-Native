@@ -1,6 +1,7 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
+import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
+import Text from "../components/Text.component";
 import PropTypes from "prop-types";
 import { sizeWidth, sizeHeight } from "../helpers/size.helper";
 import { COLORS } from "../helpers/common-styles";

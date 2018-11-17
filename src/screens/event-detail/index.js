@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { ScrollView, View, Image, Text, TouchableOpacity } from "react-native";
+import { ScrollView, View, Image, TouchableOpacity } from "react-native";
+import Text from "../../components/Text.component";
 import _ from "lodash";
 import moment from "moment";
 import styles from "./styles";
 import { event } from "../../helpers/mock-data.helper";
-import QuickAccessMenu from "../../components/QuickAccessMenu";
 import { OPEN_QRCODE_POPUP } from "../../actions/qrcode.action";
 import openGoogleMapDirection from "../../helpers/google-map-direction";
+import QuickAccessButton from "../../components/QuickAccessButton";
 
 class EventDetail extends Component {
   _onPressOpenGoogleMap = (location) => {
@@ -127,7 +128,7 @@ class EventDetail extends Component {
             </View>
           </View>
         </ScrollView>
-        <QuickAccessMenu />
+        <QuickAccessButton />
       </View>
     );
   }
