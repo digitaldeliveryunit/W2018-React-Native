@@ -5,13 +5,15 @@ import {
   ScrollView,
   TouchableOpacity,
   Image,
-  TextInput
+  TextInput,
+  Animated
 } from "react-native";
 import Text from "../../components/Text.component";
 import styles from "./styles";
 import { CommonStyles, COLORS } from "../../helpers/common-styles";
 import WrapperComponent from "../../components/Wrapper.component";
 import EventCard from "../../components/EventCard";
+import ParallaxScrollView from "react-native-parallax-scroll-view";
 
 const results = [
   {
@@ -86,6 +88,47 @@ class Search extends Component {
               {this._renderSearchResult(results)}
             </ScrollView>
           </View>
+
+          {/* <ParallaxScrollView
+          // Reference id
+          ref={ref => {
+            this.parallaxScrollView = ref;
+          }}
+          // The color of the header background.
+          backgroundColor="none"
+          // The speed factor that the background moves at relative to the foreground.
+          backgroundScrollSpeed={2}
+          // If true, the foreground will fade out as the user scrolls up.
+          fadeOutForeground={true}
+          // The height of parallax header, required
+          parallaxHeaderHeight={200}
+          renderForeground={() => (
+            <View>
+              {
+                this._renderHeader()
+              }
+              {
+                this._renderSearchBox()
+              }
+            </View>
+          )}
+          stickyHeaderHeight={100}
+          renderStickyHeader={() => (
+            this._renderSearchBox()
+          )}
+          renderFixedHeader={() => (
+            this._renderSearchBox()
+          )}
+          // The background color of the content.
+          contentBackgroundColor="transparent"
+        >
+          <View style={styles.searchResult}>
+            <Text style={styles.founds}>Search Results (1)</Text>
+            <ScrollView showsVerticalScrollIndicator={false}>
+              {this._renderSearchResult(results)}
+            </ScrollView>
+          </View>
+        </ParallaxScrollView> */}
         </View>
       </WrapperComponent>
     );
