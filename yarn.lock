@@ -4379,6 +4379,12 @@ react-native-fast-image@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/react-native-fast-image/-/react-native-fast-image-5.1.0.tgz#df48a638fec71b6226ceff2d78e460aaa8008f4b"
 
+react-native-parallax-scroll-view@^0.21.3:
+  version "0.21.3"
+  resolved "https://registry.yarnpkg.com/react-native-parallax-scroll-view/-/react-native-parallax-scroll-view-0.21.3.tgz#d956ad224ce3b0a2725b80574bcbf688bbeda14e"
+  dependencies:
+    prop-types "^15.6.0"
+
 react-native-qrcode@^0.2.7:
   version "0.2.7"
   resolved "https://registry.yarnpkg.com/react-native-qrcode/-/react-native-qrcode-0.2.7.tgz#d103166fb1a5b53643e8bf7b88c0672e689ac4f8"

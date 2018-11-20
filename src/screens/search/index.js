@@ -5,13 +5,15 @@ import {
   ScrollView,
   TouchableOpacity,
   Image,
-  TextInput
+  TextInput,
+  Animated
 } from "react-native";
 import Text from "../../components/Text.component";
 import styles from "./styles";
 import { CommonStyles, COLORS } from "../../helpers/common-styles";
 import WrapperComponent from "../../components/Wrapper.component";
 import EventCard from "../../components/EventCard";
+import ParallaxScrollView from "react-native-parallax-scroll-view";
 
 const results = [
   {
@@ -69,31 +71,53 @@ const results = [
 ];
 
 class Search extends Component {
+  constructor () {
+    super();
+    this.state = {
+      query: ""
+    };
+  }
   render() {
     return (
       <WrapperComponent>
-        <View
-          style={{
-            flex: 1,
-            alignItems: "center"
+        <ParallaxScrollView
+          ref={ref => {
+            this.parallaxScrollView = ref;
           }}
+          backgroundColor={"transparent"}
+          backgroundScrollSpeed={2}
+          fadeOutForeground={true}
+          parallaxHeaderHeight={200}
+          renderForeground={this._renderForeground}
+          stickyHeaderHeight={100}
+          renderStickyHeader={this._renderStickyHeader}
+          contentBackgroundColor={"transparent"}
+          showsVerticalScrollIndicator={false}
         >
-          {this._renderHeader()}
-          {this._renderSearchBox()}
           <View style={styles.searchResult}>
-            <Text style={styles.founds}>Search Results (1)</Text>
-            <ScrollView showsVerticalScrollIndicator={false}>
-              {this._renderSearchResult(results)}
-            </ScrollView>
+            {this._renderSearchResult(results)}
           </View>
-        </View>
+        </ParallaxScrollView>
       </WrapperComponent>
     );
   }
 
-  _renderHeader = () => (
-    <View style={CommonStyles.header}>
-      <Text style={CommonStyles.title}>Search</Text>
+  _renderForeground = () => (
+    <View style={styles.foregroundSection}>
+      <View style={CommonStyles.header}>
+        <Text style={CommonStyles.title}>Search</Text>
+      </View>
+      <View>
+        { this._renderSearchBox() }
+        <Text style={styles.founds}>Search Results (1)</Text>
+      </View>
+    </View>
+  );
+  _renderStickyHeader = () => (
+    <View style={styles.stickyHeader}>
+      {
+        this._renderSearchBox()
+      }
     </View>
   );
 
@@ -109,6 +133,8 @@ class Search extends Component {
         style={styles.searchInput}
         underlineColorAndroid="transparent"
         placeholderTextColor={COLORS.PALE_NAVY}
+        value={this.state.query}
+        onChangeText={(query) => this.setState({ query })}
       />
     </View>
   );

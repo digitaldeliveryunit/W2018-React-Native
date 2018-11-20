@@ -55,6 +55,26 @@
 		0F3C6CC10E704CAEB98700DE /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 418A09CB6A9241219686527E /* Octicons.ttf */; };
 		B58816EF49B44CA08261944B /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 739C60A28DBD4FB0978A611C /* SimpleLineIcons.ttf */; };
 		8A241BB0DD6E444E89D921DB /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 086325E9163E4F71AEABC8D8 /* Zocial.ttf */; };
+		93789C163A854762B98E04D2 /* SF Pro Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 06C8E4F831D6498894EF8596 /* SF Pro Text-Bold.otf */; };
+		F7F9D47BE5A2404395F7F2D8 /* SF Pro Text-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C77CBEC8029D469F97BE498D /* SF Pro Text-BoldItalic.otf */; };
+		CB0D2DE1A54B4D2D9555EF20 /* SF Pro Text-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 01D8676908414A3FACC93A61 /* SF Pro Text-Heavy.otf */; };
+		99A34DD03B9D41BBB7A95EAF /* SF Pro Text-HeavyItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 444C18E0D70E4ACBBCA05287 /* SF Pro Text-HeavyItalic.otf */; };
+		C922EB1B6BD54D12BFCB3D9F /* SF Pro Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0CFC76D0D6284B8DB28AA4F5 /* SF Pro Text-Light.otf */; };
+		87416028CFB1494F91AADAAD /* SF Pro Text-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 24A06F3864E4482584BDE5C8 /* SF Pro Text-LightItalic.otf */; };
+		800377C753D84499A31165FD /* SF Pro Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0FF69EEA0F5D49D2B3872E42 /* SF Pro Text-Medium.otf */; };
+		484C6516ABD84A5BBEB71348 /* SF Pro Text-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 33FF5AF126734F1E8B020C1B /* SF Pro Text-MediumItalic.otf */; };
+		456271F6E57D47E0AA60F1D0 /* SF Pro Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0BD20192A7B443F499B61E70 /* SF Pro Text-Regular.otf */; };
+		E39322ABD18F4B5BA48D4445 /* SF Pro Text-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46D1A09F069D4A73999C94A1 /* SF Pro Text-RegularItalic.otf */; };
+		DAF92296A0974F8FB451BA4D /* SF Pro Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB5F286E76AD431695507EF9 /* SF Pro Text-Semibold.otf */; };
+		5B6EEBDEA8654A649961D41E /* SF Pro Text-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 509B1AC8A17841F0B5A3A939 /* SF Pro Text-SemiboldItalic.otf */; };
+		D852333BDAA94FF9AE636DE5 /* Helvetica Neue-BlackCond.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DC580A03915444B3AE621B03 /* Helvetica Neue-BlackCond.ttf */; };
+		19AEDF8D77EE49ECAFE70C72 /* Helvetica Neue-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8C78352A17E4AA6AF637957 /* Helvetica Neue-Bold.ttf */; };
+		E8C86FFABF4F463EAFF5F27E /* Helvetica Neue-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF56D8D22D654C929A98A3AA /* Helvetica Neue-Heavy.ttf */; };
+		4A71E32CD3D7491E88E9DF3F /* Helvetica Neue-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C275F81C46F04C8C850E2345 /* Helvetica Neue-Italic.ttf */; };
+		8CA8C73DD6DA464AA8DBF584 /* Helvetica Neue-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17A73BFD567E4D9CB9D5F9A9 /* Helvetica Neue-Light.ttf */; };
+		3ADF6CAD74BD4EF7847CF10F /* Helvetica Neue-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F892082B944B43FAAC8942D3 /* Helvetica Neue-Medium.ttf */; };
+		65F2CE32C90C4FCA93E96254 /* Helvetica Neue-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2BE38A2B18764868A64E217C /* Helvetica Neue-Regular.ttf */; };
+		D9037275B993444CB6E7A4CC /* Helvetica Neue-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41E0BEAB4BEB4DDAA17C034C /* Helvetica Neue-Thin.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -380,6 +400,26 @@
 		418A09CB6A9241219686527E /* Octicons.ttf */ = {isa = PBXFileReference; name = "Octicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		739C60A28DBD4FB0978A611C /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		086325E9163E4F71AEABC8D8 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		06C8E4F831D6498894EF8596 /* SF Pro Text-Bold.otf */ = {isa = PBXFileReference; name = "SF Pro Text-Bold.otf"; path = "../assets/fonts/SF Pro Text/SF Pro Text-Bold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C77CBEC8029D469F97BE498D /* SF Pro Text-BoldItalic.otf */ = {isa = PBXFileReference; name = "SF Pro Text-BoldItalic.otf"; path = "../assets/fonts/SF Pro Text/SF Pro Text-BoldItalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		01D8676908414A3FACC93A61 /* SF Pro Text-Heavy.otf */ = {isa = PBXFileReference; name = "SF Pro Text-Heavy.otf"; path = "../assets/fonts/SF Pro Text/SF Pro Text-Heavy.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		444C18E0D70E4ACBBCA05287 /* SF Pro Text-HeavyItalic.otf */ = {isa = PBXFileReference; name = "SF Pro Text-HeavyItalic.otf"; path = "../assets/fonts/SF Pro Text/SF Pro Text-HeavyItalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0CFC76D0D6284B8DB28AA4F5 /* SF Pro Text-Light.otf */ = {isa = PBXFileReference; name = "SF Pro Text-Light.otf"; path = "../assets/fonts/SF Pro Text/SF Pro Text-Light.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		24A06F3864E4482584BDE5C8 /* SF Pro Text-LightItalic.otf */ = {isa = PBXFileReference; name = "SF Pro Text-LightItalic.otf"; path = "../assets/fonts/SF Pro Text/SF Pro Text-LightItalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0FF69EEA0F5D49D2B3872E42 /* SF Pro Text-Medium.otf */ = {isa = PBXFileReference; name = "SF Pro Text-Medium.otf"; path = "../assets/fonts/SF Pro Text/SF Pro Text-Medium.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		33FF5AF126734F1E8B020C1B /* SF Pro Text-MediumItalic.otf */ = {isa = PBXFileReference; name = "SF Pro Text-MediumItalic.otf"; path = "../assets/fonts/SF Pro Text/SF Pro Text-MediumItalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0BD20192A7B443F499B61E70 /* SF Pro Text-Regular.otf */ = {isa = PBXFileReference; name = "SF Pro Text-Regular.otf"; path = "../assets/fonts/SF Pro Text/SF Pro Text-Regular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		46D1A09F069D4A73999C94A1 /* SF Pro Text-RegularItalic.otf */ = {isa = PBXFileReference; name = "SF Pro Text-RegularItalic.otf"; path = "../assets/fonts/SF Pro Text/SF Pro Text-RegularItalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DB5F286E76AD431695507EF9 /* SF Pro Text-Semibold.otf */ = {isa = PBXFileReference; name = "SF Pro Text-Semibold.otf"; path = "../assets/fonts/SF Pro Text/SF Pro Text-Semibold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		509B1AC8A17841F0B5A3A939 /* SF Pro Text-SemiboldItalic.otf */ = {isa = PBXFileReference; name = "SF Pro Text-SemiboldItalic.otf"; path = "../assets/fonts/SF Pro Text/SF Pro Text-SemiboldItalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DC580A03915444B3AE621B03 /* Helvetica Neue-BlackCond.ttf */ = {isa = PBXFileReference; name = "Helvetica Neue-BlackCond.ttf"; path = "../assets/fonts/Helvetica Neue/Helvetica Neue-BlackCond.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E8C78352A17E4AA6AF637957 /* Helvetica Neue-Bold.ttf */ = {isa = PBXFileReference; name = "Helvetica Neue-Bold.ttf"; path = "../assets/fonts/Helvetica Neue/Helvetica Neue-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		BF56D8D22D654C929A98A3AA /* Helvetica Neue-Heavy.ttf */ = {isa = PBXFileReference; name = "Helvetica Neue-Heavy.ttf"; path = "../assets/fonts/Helvetica Neue/Helvetica Neue-Heavy.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C275F81C46F04C8C850E2345 /* Helvetica Neue-Italic.ttf */ = {isa = PBXFileReference; name = "Helvetica Neue-Italic.ttf"; path = "../assets/fonts/Helvetica Neue/Helvetica Neue-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		17A73BFD567E4D9CB9D5F9A9 /* Helvetica Neue-Light.ttf */ = {isa = PBXFileReference; name = "Helvetica Neue-Light.ttf"; path = "../assets/fonts/Helvetica Neue/Helvetica Neue-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F892082B944B43FAAC8942D3 /* Helvetica Neue-Medium.ttf */ = {isa = PBXFileReference; name = "Helvetica Neue-Medium.ttf"; path = "../assets/fonts/Helvetica Neue/Helvetica Neue-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2BE38A2B18764868A64E217C /* Helvetica Neue-Regular.ttf */ = {isa = PBXFileReference; name = "Helvetica Neue-Regular.ttf"; path = "../assets/fonts/Helvetica Neue/Helvetica Neue-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		41E0BEAB4BEB4DDAA17C034C /* Helvetica Neue-Thin.ttf */ = {isa = PBXFileReference; name = "Helvetica Neue-Thin.ttf"; path = "../assets/fonts/Helvetica Neue/Helvetica Neue-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -664,6 +704,26 @@
 				418A09CB6A9241219686527E /* Octicons.ttf */,
 				739C60A28DBD4FB0978A611C /* SimpleLineIcons.ttf */,
 				086325E9163E4F71AEABC8D8 /* Zocial.ttf */,
+				06C8E4F831D6498894EF8596 /* SF Pro Text-Bold.otf */,
+				C77CBEC8029D469F97BE498D /* SF Pro Text-BoldItalic.otf */,
+				01D8676908414A3FACC93A61 /* SF Pro Text-Heavy.otf */,
+				444C18E0D70E4ACBBCA05287 /* SF Pro Text-HeavyItalic.otf */,
+				0CFC76D0D6284B8DB28AA4F5 /* SF Pro Text-Light.otf */,
+				24A06F3864E4482584BDE5C8 /* SF Pro Text-LightItalic.otf */,
+				0FF69EEA0F5D49D2B3872E42 /* SF Pro Text-Medium.otf */,
+				33FF5AF126734F1E8B020C1B /* SF Pro Text-MediumItalic.otf */,
+				0BD20192A7B443F499B61E70 /* SF Pro Text-Regular.otf */,
+				46D1A09F069D4A73999C94A1 /* SF Pro Text-RegularItalic.otf */,
+				DB5F286E76AD431695507EF9 /* SF Pro Text-Semibold.otf */,
+				509B1AC8A17841F0B5A3A939 /* SF Pro Text-SemiboldItalic.otf */,
+				DC580A03915444B3AE621B03 /* Helvetica Neue-BlackCond.ttf */,
+				E8C78352A17E4AA6AF637957 /* Helvetica Neue-Bold.ttf */,
+				BF56D8D22D654C929A98A3AA /* Helvetica Neue-Heavy.ttf */,
+				C275F81C46F04C8C850E2345 /* Helvetica Neue-Italic.ttf */,
+				17A73BFD567E4D9CB9D5F9A9 /* Helvetica Neue-Light.ttf */,
+				F892082B944B43FAAC8942D3 /* Helvetica Neue-Medium.ttf */,
+				2BE38A2B18764868A64E217C /* Helvetica Neue-Regular.ttf */,
+				41E0BEAB4BEB4DDAA17C034C /* Helvetica Neue-Thin.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1130,6 +1190,26 @@
 				0F3C6CC10E704CAEB98700DE /* Octicons.ttf in Resources */,
 				B58816EF49B44CA08261944B /* SimpleLineIcons.ttf in Resources */,
 				8A241BB0DD6E444E89D921DB /* Zocial.ttf in Resources */,
+				93789C163A854762B98E04D2 /* SF Pro Text-Bold.otf in Resources */,
+				F7F9D47BE5A2404395F7F2D8 /* SF Pro Text-BoldItalic.otf in Resources */,
+				CB0D2DE1A54B4D2D9555EF20 /* SF Pro Text-Heavy.otf in Resources */,
+				99A34DD03B9D41BBB7A95EAF /* SF Pro Text-HeavyItalic.otf in Resources */,
+				C922EB1B6BD54D12BFCB3D9F /* SF Pro Text-Light.otf in Resources */,
+				87416028CFB1494F91AADAAD /* SF Pro Text-LightItalic.otf in Resources */,
+				800377C753D84499A31165FD /* SF Pro Text-Medium.otf in Resources */,
+				484C6516ABD84A5BBEB71348 /* SF Pro Text-MediumItalic.otf in Resources */,
+				456271F6E57D47E0AA60F1D0 /* SF Pro Text-Regular.otf in Resources */,
+				E39322ABD18F4B5BA48D4445 /* SF Pro Text-RegularItalic.otf in Resources */,
+				DAF92296A0974F8FB451BA4D /* SF Pro Text-Semibold.otf in Resources */,
+				5B6EEBDEA8654A649961D41E /* SF Pro Text-SemiboldItalic.otf in Resources */,
+				D852333BDAA94FF9AE636DE5 /* Helvetica Neue-BlackCond.ttf in Resources */,
+				19AEDF8D77EE49ECAFE70C72 /* Helvetica Neue-Bold.ttf in Resources */,
+				E8C86FFABF4F463EAFF5F27E /* Helvetica Neue-Heavy.ttf in Resources */,
+				4A71E32CD3D7491E88E9DF3F /* Helvetica Neue-Italic.ttf in Resources */,
+				8CA8C73DD6DA464AA8DBF584 /* Helvetica Neue-Light.ttf in Resources */,
+				3ADF6CAD74BD4EF7847CF10F /* Helvetica Neue-Medium.ttf in Resources */,
+				65F2CE32C90C4FCA93E96254 /* Helvetica Neue-Regular.ttf in Resources */,
+				D9037275B993444CB6E7A4CC /* Helvetica Neue-Thin.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

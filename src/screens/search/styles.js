@@ -32,13 +32,29 @@ export default StyleSheet.create({
     },
     searchResult: {
         flex: 1,
-        width: sizeWidth(100),
-        paddingTop: 30
+        width: sizeWidth(100)
     },
     founds: {
-        paddingLeft: 20,
-        paddingBottom: 10,
+        marginTop: 40,
+        paddingLeft: 10,
         color: "#FFF",
         fontSize: 16
+    },
+    foregroundSection: {
+        alignItems: "center"
+    },
+    stickyHeader: {
+        alignItems: "center",
+        paddingTop: 25,
+        paddingBottom: 10,
+        justifyContent: "center",
+        backgroundColor: "rgb(64, 54, 129)",
+        opacity: 0.95,
+        shadowColor: "#060606",
+        shadowOpacity: 0.3,
+        shadowOffset: {
+        width: 0,
+        height: 10
+        }
     }
 });
