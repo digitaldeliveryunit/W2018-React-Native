@@ -4,18 +4,21 @@ import {
 } from "../actions/qrcode.action";
 
 const initState = {
-  isOpen: false
+  isOpen: false,
+  eventId: null
 };
 
 export default function qrCodeReducer(state = initState, action) {
   switch (action.type) {
     case OPEN_QRCODE_POPUP:
       return Object.assign({}, state, {
-        isOpen: true
+        isOpen: true,
+        eventId: action.eventId
       });
     case CLOSE_QRCODE_POPUP:
       return Object.assign({}, state, {
-        isOpen: false
+        isOpen: false,
+        eventId: null
       });
     default:
       return state;

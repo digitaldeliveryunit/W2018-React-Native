@@ -7,6 +7,7 @@ import moment from "moment";
 import DateItem from "../../components/agenda/DateItem";
 import SessionItem from "../../components/agenda/SessionItem";
 import { event, agenda } from "../../helpers/mock-data.helper";
+import { getDayDuration } from "../../helpers/date-time.helper";
 
 class Agenda extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class Agenda extends Component {
   };
 
   _renderDatesOfEvent = (dateFrom, dateTo) => {
-    const numberDayEvent = moment(dateTo).diff(dateFrom, "days");
+    const numberDayEvent = getDayDuration(dateFrom, dateTo);
     const datesOfEvent = [];
     for (let i = 0; i < numberDayEvent; i++) {
       const date = moment(dateFrom).add(i, "days");

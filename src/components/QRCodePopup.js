@@ -22,12 +22,13 @@ const styles = StyleSheet.create({
 
 class QRCodePopup extends Component {
   render() {
+    const { eventId } = this.props;
     return (
       this.props.isOpen && (
         <TouchableWithoutFeedback onPress={() => this.props.closePopup()}>
           <View style={styles.container}>
             <QRCode
-              value="1"
+              value={eventId}
               size={sizeWidth(60)}
               bgColor={COLORS.GRAYISH_BLUE}
               fgColor="#FFF"
