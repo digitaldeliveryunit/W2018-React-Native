@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { View, ScrollView, TouchableOpacity } from "react-native";
+import { View, ScrollView, TouchableOpacity, FlatList, RefreshControl } from "react-native";
 import Text from "../../components/Text.component";
 import styles from "./styles";
 import { CommonStyles } from "../../helpers/common-styles";
 import WrapperComponent from "../../components/Wrapper.component";
 import Avatar from "../../components/Avatar";
 import EventCard from "../..//components/EventCard";
+import EventAPI from "../../api/event";
+import AppActivityIndicator from "../../components/AppActivityIndicator";
 
 const upcomingEvents = [
   {
@@ -27,15 +29,57 @@ const upcomingEvents = [
 ];
 
 class MyEvents extends Component {
+  constructor () {
+    super();
+    this.state = {
+      loadingMyEvents: false,
+      loadingMore: false,
+      loadedMyEvents: false,
+      myEvents: [],
+      refreshing: false,
+      skip: 0,
+      take: 10,
+      hasNextItems: true
+    };
+    this.onFreshMyEvents = this.onFreshMyEvents.bind(this);
+    this.onLoadMore = this.onLoadMore.bind(this);
+  }
   render() {
+    const { myEvents } = this.state;
     return (
       <WrapperComponent>
-        <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
-          {this._renderHeader()}
-          {this._renderMyEvents(upcomingEvents)}
-        </ScrollView>
+        <View style={styles.listContainer}>
+          <FlatList
+            data={myEvents}
+            keyExtractor={this._keyExtractor}
+            renderItem={this._renderItem}
+            onEndReached={this.onLoadMore}
+            onEndReachedThreshold={1}
+            showsVerticalScrollIndicator={false}
+            refreshControl={
+              <RefreshControl
+                  refreshing={this.state.refreshing}
+                  onRefresh={this.onFreshMyEvents}
+                  tintColor="#FFF"
+              />
+            }
+            ListHeaderComponent={this._renderHeader}
+            ListFooterComponent={() => {
+              return (
+                this.state.loadingMore && <AppActivityIndicator color="#000" containerStyles={{
+                  paddingBottom: 20
+                }} />
+              )
+            }}
+            ListEmptyComponent={<AppActivityIndicator />}
+          />
+        </View>
       </WrapperComponent>
     );
+  }
+
+  componentDidMount () {
+    this.loadMyEvents();
   }
 
   _renderHeader = () => (
@@ -48,23 +92,78 @@ class MyEvents extends Component {
     </View>
   );
 
-  _renderMyEvents = (events) => (
-    <View style={styles.listContainer}>
-    {
-      events.map((item, index) => (
-        <TouchableOpacity 
-          key={index} 
-          style={{ marginBottom: 20}} 
-          onPress={() => this.onGoDetail()}>
-          <EventCard event={item} />
-        </TouchableOpacity>
-      ))
-    }
-    </View>
+  _keyExtractor = (item, index) => `${index}`;
+
+  _renderItem = ({item}) => (
+    <TouchableOpacity 
+      style={{ marginBottom: 20, paddingLeft: 15, paddingRight: 15}} 
+      onPress={() => this.onGoDetail()}>
+      <EventCard event={item} />
+    </TouchableOpacity>
   );
 
   onGoDetail () {
     this.props.navigation.navigate("EventDetail");
+  }
+
+  async loadMyEvents () {
+    this.setState({
+      loadingMyEvents: true,
+      loadedMyEvents: false
+    });
+    try {
+      const myEvents = await EventAPI.getUpcomingEvents({
+        skip: 0,
+        take: this.state.take
+      });
+      this.setState({
+        loadingMyEvents: false,
+        loadedMyEvents: true,
+        myEvents,
+        hasNextItems: myEvents.length === this.state.take
+      });
+    } catch (e) {
+      this.setState({
+        loadingMyEvents: false,
+        loadedMyEvents: false,
+        myEvents: [],
+        hasNextItems: false
+      });
+    };
+  }
+  async onFreshMyEvents () {
+    this.setState({
+      refreshing: true,
+      skip: 0
+    });
+    const myEvents = await EventAPI.getUpcomingEvents({
+      skip: 0,
+      take: this.state.take
+    });
+    this.setState({
+      myEvents,
+      refreshing: false,
+      hasNextItems: myEvents.length === this.state.take
+    });
+  }
+  async onLoadMore () {
+    if (!this.state.hasNextItems) {
+      return;
+    }
+    this.setState({
+      loadingMore: true
+    });
+    const nextSkip = this.state.skip + this.state.take;
+    const nextEvents = await EventAPI.getUpcomingEvents({
+      skip: nextSkip,
+      take: this.state.take
+    });
+    this.setState({
+      myEvents: this.state.myEvents.concat(nextEvents),
+      skip: nextSkip,
+      hasNextItems: nextEvents.length === this.state.take,
+      loadingMore: false
+    });
   }
 }
 
