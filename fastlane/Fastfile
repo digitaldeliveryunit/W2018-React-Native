@@ -1,0 +1,38 @@
+fastlane_version "2.96.0"
+
+platform :android do
+  lane :apk do
+    gradle(task: "clean", project_dir: "android/")
+    increment_version_code(
+      gradle_file_path: "./android/app/build.gradle",
+    )
+    gradle(task: "assemble", build_type: "Release", project_dir: "android/")
+    version = get_version_name(
+      gradle_file_path: "./android/app/build.gradle",
+      ext_constant_name:"versionCode"
+    )
+    Dir.chdir ".." do
+      sh("mkdir -p build/#{Time.now.strftime("%F")}/")
+      sh("cp -f android/app/build/outputs/apk/release/app-release.apk build/#{Time.now.strftime("%F")}/#{Time.now.strftime("%FT%H-%M")}-version-code-#{version}-my-events.apk")
+    end
+  end
+end
+
+platform :ios do
+  lane :package do
+    # get_certificates
+    # get_provisioning_profile
+    project_path = "./ios/myevents.xcodeproj"
+    increment_version_number(
+      xcodeproj: project_path
+    )
+    version = get_version_number(xcodeproj: project_path, target: "myevents")
+    gym(
+      scheme: "myevents",
+      project: project_path,
+      export_method: "ad-hoc",
+      output_directory: "build/#{Time.now.strftime("%F")}/",
+      output_name: "#{Time.now.strftime("%FT%H-%M")}-version-number-#{version}-my-events.ipa"
+    )
+  end
+end
