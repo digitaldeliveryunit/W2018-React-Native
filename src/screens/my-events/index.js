@@ -9,24 +9,7 @@ import Avatar from "../../components/Avatar";
 import EventCard from "../..//components/EventCard";
 import EventAPI from "../../api/event";
 import AppActivityIndicator from "../../components/AppActivityIndicator";
-
-const upcomingEvents = [
-  {
-    id: 1, isPrivate: false, isUpcoming: true
-  },
-  {
-    id: 2, isPrivate: true, isUpcoming: true
-  },
-  {
-    id: 3, isPrivate: true, isUpcoming: true
-  },
-  {
-    id: 4, isPrivate: false, isUpcoming: true
-  },
-  {
-    id: 5, isPrivate: true, isUpcoming: true
-  }
-];
+import AppEmpty from "../../components/AppEmpty";
 
 class MyEvents extends Component {
   constructor () {
@@ -45,7 +28,7 @@ class MyEvents extends Component {
     this.onLoadMore = this.onLoadMore.bind(this);
   }
   render() {
-    const { myEvents } = this.state;
+    const { myEvents, loadingMyEvents } = this.state;
     return (
       <WrapperComponent>
         <View style={styles.listContainer}>
@@ -71,7 +54,7 @@ class MyEvents extends Component {
                 }} />
               )
             }}
-            ListEmptyComponent={<AppActivityIndicator />}
+            ListEmptyComponent={() => loadingMyEvents ? <AppActivityIndicator /> : <AppEmpty textColor={"#FFF"} />}
           />
         </View>
       </WrapperComponent>

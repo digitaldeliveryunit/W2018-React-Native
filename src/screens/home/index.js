@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { View, ScrollView, TouchableOpacity, FlatList } from "react-native";
+import { View, Image, TouchableOpacity, FlatList } from "react-native";
 import Text from "../../components/Text.component";
 import styles from "./styles";
 import { CommonStyles, COLORS } from "../../helpers/common-styles";
@@ -10,6 +10,10 @@ import EventsCarousel from "../../components/home/EventsCarousel";
 import EventCard from "../../components/EventCard";
 import AppActivityIndicator from "../../components/AppActivityIndicator";
 import EventAPI from "../../api/event";
+import _ from "lodash";
+import AppEmpty from "../../components/AppEmpty";
+import ParallaxScrollView from "react-native-parallax-scroll-view";
+import { sizeHeight, sizeWidth } from "../../helpers/size.helper";
 
 class Home extends Component {
   constructor () {
@@ -29,28 +33,28 @@ class Home extends Component {
     this.onScroll = this.onScroll.bind(this);
   }
   render() {
-    const { loadingFeatured, featuredEvents, loadingUpcoming, upcomingEvents } = this.state;
     return (
       <WrapperComponent>
-        <ScrollView 
-          style={{ flex: 1 }} 
+        <ParallaxScrollView
+          ref={ref => {
+            this.parallaxScrollView = ref;
+          }}
+          backgroundColor={"transparent"}
+          backgroundScrollSpeed={2}
+          fadeOutForeground={true}
+          parallaxHeaderHeight={sizeHeight(63)}
+          renderForeground={this._renderForeground}
+          stickyHeaderHeight={100}
+          renderStickyHeader={this._renderStickyHeader}
+          contentBackgroundColor={"transparent"}
           showsVerticalScrollIndicator={false}
           onMomentumScrollEnd={this.onScroll}
-          scrollEventThrottle={500}>
-          {this._renderHeader()}
-          {
-            loadingFeatured ? (
-              <AppActivityIndicator containerStyles={styles.featuredLoadingContainer} />
-            ) : (
-              <EventsCarousel events={featuredEvents} navigation={this.props.navigation} />
-            )
-          }
-          {
-            loadingUpcoming ? (
-              <AppActivityIndicator color="#000" />
-            ) : this._renderUpcomingEvents(upcomingEvents)
-          }
-        </ScrollView>
+          scrollEventThrottle={500}
+        >
+        { 
+          this._renderUpcomingEvents()
+        }
+        </ParallaxScrollView>
       </WrapperComponent>
     );
   }
@@ -73,35 +77,43 @@ class Home extends Component {
   );
 
   _keyExtractor = (item, index) => `${index}`;
-
-  _renderUpcomingEvents = (events) => (
-    <View style={{ 
-      backgroundColor: "#F1F3F5", 
-      marginTop: 20, 
-      paddingTop: 20,
-      paddingBottom: 20 }}>
-      <Text style={[CommonStyles.title, { color: COLORS.GRAYISH_BLUE }]}>Upcoming Events</Text>
-      <View style={{
-        paddingLeft: 15,
-        paddingRight: 15,
-        paddingTop: 25
-      }}>
-        <FlatList
-          data={events}
-          keyExtractor={this._keyExtractor}
-          renderItem={this._renderItem}
-          showsVerticalScrollIndicator={false}
-        />
+  _renderUpcomingEvents = () => {
+    const {loadingUpcoming, upcomingEvents, loadingNextUpcoming} = this.state;
+    return (
+      <View style={{ 
+        backgroundColor: "#F1F3F5", 
+        marginTop: 20, 
+        paddingTop: 20,
+        paddingBottom: 20 }}>
+        <Text style={[CommonStyles.title, { color: COLORS.GRAYISH_BLUE }]}>Upcoming Events</Text>
         {
-          this.state.loadingNextUpcoming && (
-            <AppActivityIndicator color="#000" containerStyles={{
-              paddingBottom: 20
-            }} />
+          loadingUpcoming ? (
+            <AppActivityIndicator color="#000" containerStyles={styles.emptyUpcomingContainer} />
+          ) : (
+            <FlatList
+              style={{
+                paddingLeft: 15,
+                paddingRight: 15,
+                paddingTop: 25
+              }}
+              data={upcomingEvents}
+              keyExtractor={this._keyExtractor}
+              renderItem={this._renderItem}
+              showsVerticalScrollIndicator={false}
+              ListFooterComponent={() => {
+                return loadingNextUpcoming && (
+                  <AppActivityIndicator color="#000" containerStyles={{
+                    paddingBottom: 20
+                  }} />
+                );
+              }}
+              ListEmptyComponent={<AppEmpty containerStyles={styles.emptyUpcomingContainer} />}
+            />
           )
         }
       </View>
-    </View>
-  );
+    );
+  };
 
   _renderItem = ({item}) => (
     <TouchableOpacity 
@@ -109,6 +121,39 @@ class Home extends Component {
       onPress={() => this.onGoDetail()}>
       <EventCard event={item} />
     </TouchableOpacity>
+  );
+  _renderForeground = () => {
+    const { loadingFeatured, featuredEvents } = this.state;
+    return (
+      <View style={styles.foregroundSection}>
+      { this._renderHeader() }
+      {
+        loadingFeatured ? (
+          <AppActivityIndicator containerStyles={styles.featuredLoadingContainer} />
+        ) : (
+          _.isEmpty(featuredEvents) ? (
+            <AppEmpty textColor={"#FFF"} containerStyles={styles.emptyContainer} />
+          ) : (
+            <EventsCarousel events={featuredEvents} navigation={this.props.navigation} />
+          )
+        )
+      }
+      </View>
+    );
+  };
+
+  _renderStickyHeader = () => (
+    <View style={styles.stickyHeader}>
+      <View style={styles.stickyContainer}>
+        <TouchableOpacity 
+          style={styles.closeButton} 
+          onPress={() => this.parallaxScrollView.scrollTo({ x: 0, y: 0, animated: true })}
+        >
+          <Image source={require("../../../assets/images/close_white.png")} style={styles.closeIcon} resizeMode="contain" />
+        </TouchableOpacity>
+        <Text style={styles.title}>HOME</Text>
+      </View>
+    </View>
   );
 
   onGoDetail () {

@@ -7,6 +7,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@remobile/react-native-toast": "^1.0.7",
     "axios": "^0.18.0",
     "lodash": "^4.17.11",
     "moment": "^2.22.2",
@@ -14,7 +15,6 @@
     "qs": "^6.5.2",
     "react": "16.6.0-alpha.8af6728",
     "react-native": "0.57.4",
-    "react-native-easy-toast": "^1.1.0",
     "react-native-fast-image": "^5.1.0",
     "react-native-parallax-scroll-view": "^0.21.3",
     "react-native-qrcode": "^0.2.7",
