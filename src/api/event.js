@@ -19,4 +19,10 @@ export default class EventAPI {
     const data = await RequestHelper.get(`${AppConfig.apiUrl}Event/Upcoming`, params);
     return data;
   }
+
+  // for Profile screen
+  static async getPastEvents (params) {
+    const data = await RequestHelper.get(`${AppConfig.apiUrl}Event/Past`, params);
+    return data;
+  }
 }
