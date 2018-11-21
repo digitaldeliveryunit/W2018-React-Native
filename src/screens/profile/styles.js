@@ -1,13 +1,20 @@
 import { StyleSheet } from "react-native";
-import { CommonStyles } from "../../helpers/common-styles";
+import { COLORS } from "../../helpers/common-styles";
 
 export default StyleSheet.create({
+  foregroundSection: {
+    paddingTop: 40
+  },
   containerHeader: {
     flexDirection: "row",
-    paddingHorizontal: 22,
-    paddingTop: 40,
     justifyContent: "flex-start",
-    alignItems: "center"
+    alignItems: "center",
+    paddingHorizontal: 22,
+    paddingBottom: 12
+  },
+  stickyHeader: {
+    paddingTop: 25,
+    backgroundColor: "rgba(64, 54, 129, .95)"
   },
   containerInfo: {
     flexDirection: "column",
@@ -33,14 +40,16 @@ export default StyleSheet.create({
     color: "#FFF"
   },
   title: {
-    ...CommonStyles.title,
-    marginTop: 35,
-    marginBottom: 10
+    fontWeight: "bold",
+    fontSize: 22,
+    lineHeight: 26,
+    color: "#FFF",
+    paddingHorizontal: 22,
+    marginTop: 25,
+    marginBottom: 20
   },
   containerEvents: {
-    paddingTop: 10,
-    paddingBottom: 20,
-    paddingHorizontal: 12
+    padding: 12
   },
   containerEventItem: {
     marginBottom: 20
