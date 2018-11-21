@@ -14,7 +14,13 @@ export default StyleSheet.create({
   },
   stickyHeader: {
     paddingTop: 25,
-    backgroundColor: "rgba(64, 54, 129, .95)"
+    backgroundColor: "rgba(64, 54, 129, .95)",
+    shadowColor: "#060606",
+    shadowOpacity: 0.3,
+    shadowOffset: {
+      width: 0,
+      height: 6
+    }
   },
   containerInfo: {
     flexDirection: "column",
