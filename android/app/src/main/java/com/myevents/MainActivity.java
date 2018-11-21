@@ -1,4 +1,4 @@
-package com.myevents;
+package com.petronas.myevents2;
 
 import com.facebook.react.ReactActivity;
 

@@ -1,4 +1,4 @@
-package com.myevents;
+package com.petronas.myevents2;
 
 import android.app.Application;
 
