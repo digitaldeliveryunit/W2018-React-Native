@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { View, ScrollView, TouchableOpacity, FlatList, RefreshControl } from "react-native";
+import _ from "lodash";
 import Text from "../../components/Text.component";
 import styles from "./styles";
 import { CommonStyles } from "../../helpers/common-styles";
@@ -80,13 +81,13 @@ class MyEvents extends Component {
   _renderItem = ({item}) => (
     <TouchableOpacity 
       style={{ marginBottom: 20, paddingLeft: 15, paddingRight: 15}} 
-      onPress={() => this.onGoDetail()}>
+      onPress={() => this.onGoDetail(_.get(item, "eventId"))}>
       <EventCard event={item} />
     </TouchableOpacity>
   );
 
-  onGoDetail () {
-    this.props.navigation.navigate("EventDetail");
+  onGoDetail (eventId) {
+    this.props.navigation.navigate("EventDetail", { eventId });
   }
 
   async loadMyEvents () {
