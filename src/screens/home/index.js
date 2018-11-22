@@ -61,8 +61,6 @@ class Home extends Component {
   }
 
   componentDidMount () {
-    // test
-    this.props.navigation.navigate("Gallery");
     this.loadFeaturedEvents();
     this.loadUpcomingEvents();
   }
@@ -118,7 +116,7 @@ class Home extends Component {
   _renderItem = ({item}) => (
     <TouchableOpacity 
       style={{ marginBottom: 20 }}
-      onPress={() => this.onGoDetail()}>
+      onPress={() => this.onGoDetail(_.get(item, "eventId"))}>
       <EventCard event={item} />
     </TouchableOpacity>
   );
@@ -156,8 +154,8 @@ class Home extends Component {
     </View>
   );
 
-  onGoDetail () {
-    this.props.navigation.navigate("EventDetail");
+  onGoDetail (eventId) {
+    this.props.navigation.navigate("EventDetail", { eventId });
   }
 
   async loadFeaturedEvents () {
