@@ -14,6 +14,7 @@ import _ from "lodash";
 import AppEmpty from "../../components/AppEmpty";
 import ParallaxScrollView from "react-native-parallax-scroll-view";
 import { sizeHeight, sizeWidth } from "../../helpers/size.helper";
+import {user} from "../../helpers/mock-data.helper";
 
 class Home extends Component {
   constructor () {
@@ -60,6 +61,8 @@ class Home extends Component {
   }
 
   componentDidMount () {
+    // test
+    this.props.navigation.navigate("Gallery");
     this.loadFeaturedEvents();
     this.loadUpcomingEvents();
   }
@@ -68,10 +71,7 @@ class Home extends Component {
     <View style={CommonStyles.header}>
       <Text style={CommonStyles.title}>Featured Events</Text>
       <TouchableOpacity>
-        <Avatar user={{
-          firstName: "Khoa",
-          lastName: "Tran"
-        }} />
+        <Avatar user={user} />
       </TouchableOpacity>
     </View>
   );

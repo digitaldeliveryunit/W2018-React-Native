@@ -28,7 +28,7 @@ AppEmpty.defaultProps = {
     fontStyle: "italic",
     fontSize: 15
   },
-  message: "There is no event to show here",
+  message: "There is nothing to show here",
   textColor: "#000"
 };
 

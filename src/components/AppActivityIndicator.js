@@ -13,7 +13,8 @@ const AppActivityIndicator = props => {
 
 AppActivityIndicator.propTypes = {
   size: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired
+  color: PropTypes.string.isRequired,
+  containerStyles: PropTypes.object
 };
 
 AppActivityIndicator.defaultProps = {
