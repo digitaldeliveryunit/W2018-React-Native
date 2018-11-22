@@ -35,7 +35,7 @@ class ProfileComponent extends Component {
   }
 
   _onPressEventItem = (eventId) => {
-    this.props.navigation.navigate("EventDetail");
+    this.props.navigation.navigate("EventDetail", { eventId });
   };
 
   _keyExtractor = (item, index) => `${index}`;
@@ -44,7 +44,7 @@ class ProfileComponent extends Component {
     return (
       <TouchableOpacity
         style={styles.containerEventItem}
-        onPress={() => this._onPressEventItem(_.get(item, "id"))}
+        onPress={() => this._onPressEventItem(_.get(item, "eventId"))}
       >
         <EventCard event={item} withoutBottom />
       </TouchableOpacity>

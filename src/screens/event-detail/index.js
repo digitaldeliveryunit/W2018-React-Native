@@ -5,15 +5,24 @@ import Text from "../../components/Text.component";
 import _ from "lodash";
 import moment from "moment";
 import styles from "./styles";
-import { event } from "../../helpers/mock-data.helper";
 import { OPEN_QRCODE_POPUP } from "../../actions/qrcode.action";
 import openGoogleMapDirection from "../../helpers/google-map-direction";
 import QuickAccessButton from "../../components/QuickAccessButton";
+import EventAPI from "../../api/event";
 
 class EventDetail extends Component {
-  _onPressOpenGoogleMap = (location) => {
-    const lat = _.get(location, 'latitude');
-    const lng = _.get(location, 'longitude');
+  constructor(props) {
+    super(props);
+    this.state = {
+      loadingEvent: false,
+      loadedEvent: false,
+      event: {}
+    };
+  }
+
+  _onPressOpenGoogleMap = location => {
+    const lat = _.get(location, "latitude");
+    const lng = _.get(location, "longitude");
 
     if (lat && lng) {
       const data = {
@@ -29,11 +38,22 @@ class EventDetail extends Component {
   };
 
   render() {
+    const { event } = this.state;
     const cover = _.get(event, "imageUrl");
     return (
       <View style={styles.whiteOverlay}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.container}>
+            <TouchableOpacity
+              style={styles.backButton}
+              onPress={() => this.props.navigation.goBack()}
+            >
+              <Image
+                source={require("../../../assets/images/left_black.png")}
+                style={styles.backIcon}
+                resizeMode="contain"
+              />
+            </TouchableOpacity>
             <Image source={{ uri: cover }} style={styles.imageCover} />
             <View style={styles.containerActionButton}>
               <TouchableOpacity style={styles.actionButton}>
@@ -131,6 +151,32 @@ class EventDetail extends Component {
         <QuickAccessButton />
       </View>
     );
+  }
+
+  componentDidMount() {
+    const { params } = this.props.navigation.state;
+    this.loadEventDetail(_.get(params, "eventId"));
+  }
+
+  async loadEventDetail(eventId) {
+    this.setState({
+      loadingEvent: true,
+      loadedEvent: false
+    });
+    try {
+      const event = await EventAPI.getEventDetail(eventId);
+      this.setState({
+        loadingEvent: false,
+        loadedEvent: true,
+        event
+      });
+    } catch (e) {
+      this.setState({
+        loadingEvent: false,
+        loadedEvent: false,
+        event: {}
+      });
+    }
   }
 }
 

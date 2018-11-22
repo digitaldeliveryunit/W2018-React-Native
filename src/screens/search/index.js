@@ -2,12 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import {
   View,
-  ScrollView,
   TouchableOpacity,
   Image,
-  TextInput,
-  Animated
+  TextInput
 } from "react-native";
+import _ from "lodash";
 import Text from "../../components/Text.component";
 import styles from "./styles";
 import { CommonStyles, COLORS } from "../../helpers/common-styles";
@@ -145,7 +144,7 @@ class Search extends Component {
         <TouchableOpacity
           key={index}
           style={{ marginBottom: 20 }}
-          onPress={() => this.onGoDetail()}
+          onPress={() => this.onGoDetail(_.get(item, "eventId"))}
         >
           <EventCard event={item} />
         </TouchableOpacity>
@@ -153,8 +152,8 @@ class Search extends Component {
     </View>
   );
 
-  onGoDetail() {
-    this.props.navigation.navigate("EventDetail");
+  onGoDetail(eventId) {
+    this.props.navigation.navigate("EventDetail", { eventId });
   }
 }
 

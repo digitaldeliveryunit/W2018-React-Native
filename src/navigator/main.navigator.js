@@ -1,10 +1,10 @@
 import React from "react";
 import { Image, StyleSheet } from "react-native";
 import { createBottomTabNavigator } from "react-navigation";
-import HomeScreen from "../screens/home";
+import HomeNavigatior from "./home.navigator";
 import MyEventsNavigator from "./my-events.navigator";
-import SearchScreen from "../screens/search";
-import ProfileScreen from "../screens/profile";
+import SearchNavigator from "./search.navigator";
+import ProfileNavigator from "./profile.navigator";
 import { COLORS } from "../helpers/common-styles";
 
 const styles = StyleSheet.create({
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 const MainNavigator = createBottomTabNavigator(
   {
     Home: {
-      screen: HomeScreen,
+      screen: HomeNavigatior,
       navigationOptions: {
         title: "Home",
         tabBarIcon: ({ focused }) => {
@@ -57,7 +57,7 @@ const MainNavigator = createBottomTabNavigator(
       }
     },
     Search: {
-      screen: SearchScreen,
+      screen: SearchNavigator,
       navigationOptions: {
         title: "Search",
         tabBarIcon: ({ focused }) => {
@@ -76,7 +76,7 @@ const MainNavigator = createBottomTabNavigator(
       }
     },
     Profile: {
-      screen: ProfileScreen,
+      screen: ProfileNavigator,
       navigationOptions: {
         title: "Profile",
         tabBarIcon: ({ focused }) => {

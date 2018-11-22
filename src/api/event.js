@@ -25,4 +25,10 @@ export default class EventAPI {
     const data = await RequestHelper.get(`${AppConfig.apiUrl}Event/Past`, params);
     return data;
   }
+
+  // for Event detail screen
+  static async getEventDetail (eventId) {
+    const data = await RequestHelper.get(`${AppConfig.apiUrl}Event/${eventId}`);
+    return data;
+  }
 }
