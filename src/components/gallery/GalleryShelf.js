@@ -10,6 +10,10 @@ import PropTypes from "prop-types";
 import { sizeWidth } from "../../helpers/size.helper";
 import GalleryCard from "../../components/GalleryCard";
 import { COLORS } from "../../helpers/common-styles";
+import AppEmpty from "../../components/AppEmpty";
+import {sizeHeight} from "../../helpers/size.helper";
+import _ from "lodash";
+import AppActivityIndicator from "../../components/AppActivityIndicator";
 
 const styles = StyleSheet.create({
   shelfContainer: {
@@ -45,12 +49,17 @@ const styles = StyleSheet.create({
     marginTop: 10,
     paddingLeft: 20,
     paddingRight: 10
+  },
+  emptyContainer: {
+    height: sizeHeight(20),
+    justifyContent: "center",
+    alignItems: "center"
   }
 });
 
 class GalleryShelf extends React.Component {
   render() {
-    const { reversedColor, title, items } = this.props;
+    const { reversedColor, title, items, loading } = this.props;
     return (
       <View style={styles.shelfContainer}>
         <View style={styles.shelfHeader}>
@@ -63,7 +72,19 @@ class GalleryShelf extends React.Component {
             </Text>
           </TouchableOpacity>
         </View>
-        {this._renderGalleries(items)}
+        {
+          loading ? (
+            <AppActivityIndicator 
+              containerStyles={styles.emptyContainer} 
+              color={reversedColor ? "#000" : "#FFF"} />
+          ) : (
+            _.isEmpty(items) ? (
+              <AppEmpty 
+                containerStyles={styles.emptyContainer} 
+                textColor={reversedColor ? "#000" : "#FFF"} />
+            ) : this._renderGalleries(items)
+          )
+        }
       </View>
     );
   }
@@ -75,14 +96,13 @@ class GalleryShelf extends React.Component {
             keyExtractor={this._keyExtractor}
             renderItem={({ item, index }) => {
             return (
-                <TouchableOpacity
-                key={index}
+              <TouchableOpacity key={index}
                 style={{
                     paddingRight: 10
                 }}
-                >
+              >
                 <GalleryCard item={item} width={sizeWidth(50)} />
-                </TouchableOpacity>
+              </TouchableOpacity>
             );
             }}
             horizontal
@@ -101,11 +121,13 @@ class GalleryShelf extends React.Component {
 GalleryShelf.propTypes = {
   reversedColor: PropTypes.bool,
   title: PropTypes.string.isRequired,
-  items: PropTypes.array
+  items: PropTypes.array,
+  loading: PropTypes.bool
 };
 
 GalleryShelf.defaultProps = {
-  reversedColor: false
+  reversedColor: false,
+  loading: false
 };
 
 export default GalleryShelf;

@@ -6,31 +6,41 @@ import styles from "./styles";
 import { CommonStyles } from "../../helpers/common-styles";
 import WrapperComponent from "../../components/Wrapper.component";
 import DetailHeader from "../../components/DetailHeader";
-import GalleryCard from "../../components/GalleryCard";
 import GalleryShelf from "../../components/gallery/GalleryShelf";
 import QuickAccessButton from "../../components/QuickAccessButton";
+import GalleryAPI from "../../api/gallery";
 
-const files = [
-  { id: 1, type: "file", extension: "PDF", name: "File PDF 1.pdf" },
-  { id: 2, type: "file", extension: "Docx", name: "File Docx 2.pdf" },
-  { id: 3, type: "file", extension: "Xlsx", name: "File Xlsx 3.pdf" },
-  { id: 4, type: "file", extension: "Pptx", name: "File Pptx 4.pdf" }
-];
-const images = [
-  { id: 1, type: "image", extension: "jpg", name: "Image 1.jpg" },
-  { id: 2, type: "image", extension: "png", name: "Image 2.png" },
-  { id: 3, type: "image", extension: "gif", name: "Image 3.gif" }
-];
-const videos = [
-  { id: 1, type: "video", extension: "mp4", name: "sample 1.mp4" },
-  { id: 2, type: "video", extension: "mp4", name: "sample 2.mp4" },
-  { id: 3, type: "video", extension: "mp4", name: "sample 3.mp4" },
-  { id: 4, type: "video", extension: "mp4", name: "sample 4.mp4" },
-  { id: 5, type: "video", extension: "mp4", name: "sample 4.mp4" }
-];
+const MEDIA_TYPES = {
+  DOCUMENT: "Document",
+  IMAGE: "Image",
+  VIDEO: "Video"
+};
+
+const eventId = "ca301f67-7b95-4c97-8013-19b5f15ad78e";
 
 class Gallery extends Component {
+  constructor () {
+    super();
+    this.state = {
+      document: {
+        loading: false,
+        loaded: false,
+        items: []
+      },
+      image: {
+        loading: false,
+        loaded: false,
+        items: []
+      },
+      video: {
+        loading: false,
+        loaded: false,
+        items: []
+      }
+    };
+  }
   render() {
+    const {document, image, video} = this.state;
     return (
       <WrapperComponent>
         <View style={{
@@ -38,15 +48,21 @@ class Gallery extends Component {
           alignItems: "center"
         }}>
           <DetailHeader title={"Gallery"} />
-          <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
-            <GalleryShelf title="Files" items={files} />
-            <GalleryShelf title="Images" items={images} reversedColor={true} />
-            <GalleryShelf title="Videos" items={videos} reversedColor={true} />
+          <ScrollView showsVerticalScrollIndicator={false}>
+            <GalleryShelf title="Files" items={document.items} loading={document.loading} />
+            <GalleryShelf title="Images" items={image.items} loading={image.loading} reversedColor={true} />
+            <GalleryShelf title="Videos" items={video.items} loading={video.loading} reversedColor={true} />
           </ScrollView>
         </View>
         <QuickAccessButton />
       </WrapperComponent>
     );
+  }
+
+  async componentDidMount () {
+    this.loadDocuments();
+    this.loadImages();
+    this.loadVideos();
   }
 
   _renderHeader = () => (
@@ -55,11 +71,89 @@ class Gallery extends Component {
     </View>
   );
 
-  _renderFiles = (files) => (
-    <View style={styles.listContainer}>
-      <GalleryCard />
-    </View>
-  );
+  async loadDocuments () {
+    const { document } = this.state;
+    this.setState({
+      document: Object.assign({}, document, {
+        loading: true,
+        loaded: false
+      })
+    });
+    try {
+      const items = await GalleryAPI.getMediasByType(eventId, MEDIA_TYPES.DOCUMENT);
+      this.setState({
+        document: Object.assign({}, document, {
+          loading: false,
+          loaded: true,
+          items
+        })
+      });
+    } catch (e) {
+      this.setState({
+        document: {
+          loading: false,
+          loaded: false,
+          items: []
+        }
+      });
+    };
+  }
+
+  async loadVideos () {
+    const { video } = this.state;
+    this.setState({
+      video: Object.assign({}, video, {
+        loading: true,
+        loaded: false
+      })
+    });
+    try {
+      const items = await GalleryAPI.getMediasByType(eventId, MEDIA_TYPES.VIDEO);
+      this.setState({
+        video: Object.assign({}, video, {
+          loading: false,
+          loaded: true,
+          items
+        })
+      });
+    } catch (e) {
+      this.setState({
+        video: {
+          loading: false,
+          loaded: false,
+          items: []
+        }
+      });
+    };
+  }
+
+  async loadImages () {
+    const { image } = this.state;
+    this.setState({
+      image: Object.assign({}, image, {
+        loading: true,
+        loaded: false
+      })
+    });
+    try {
+      const items = await GalleryAPI.getMediasByType(eventId, MEDIA_TYPES.IMAGE);
+      this.setState({
+        image: Object.assign({}, image, {
+          loading: false,
+          loaded: true,
+          items
+        })
+      });
+    } catch (e) {
+      this.setState({
+        image: {
+          loading: false,
+          loaded: false,
+          items: []
+        }
+      });
+    };
+  }
 }
 
 export default connect(
