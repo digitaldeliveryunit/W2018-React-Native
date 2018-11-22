@@ -10,6 +10,19 @@ export default StyleSheet.create({
     position: "relative"
   },
   container: CommonStyles.container,
+  backButton: {
+    position: "absolute",
+    top: 30,
+    left: 5,
+    zIndex: 2,
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    backgroundColor: "transparent"
+  },
+  backIcon: {
+    width: 13,
+    height: 28
+  },
   imageCover: {
     width,
     height: 200
@@ -71,6 +84,7 @@ export default StyleSheet.create({
   },
   horizontalDivider: {
     ...CommonStyles.horizontalDivider,
+    alignSelf: "center",
     width: width - 60
   },
   aboutContainer: {
@@ -85,10 +99,7 @@ export default StyleSheet.create({
     paddingVertical: 10
   },
   contentAbout: {
-    fontSize: 14,
-    color: COLORS.GRAYISH_BLUE,
-    lineHeight: 18,
-    paddingBottom: 20
+    marginVertical: 10
   },
   // begin styles for action button
   containerActionButton: {

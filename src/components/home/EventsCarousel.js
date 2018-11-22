@@ -1,9 +1,8 @@
 
 import React, { Component } from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
-import { CommonStyles } from "../../helpers/common-styles";
 import Carousel from "react-native-snap-carousel";
-import PropTypes from "prop-types";
+import _ from "lodash";
 import EventCard from "../EventCard";
 import { sizeWidth, sizeHeight } from "../../helpers/size.helper";
 
@@ -38,12 +37,12 @@ export default class EventsCarousel extends Component {
   }
   _renderItem({ item, index }) {
     return (
-      <TouchableOpacity key={index} onPress={() => this.onGoDetail()}>
+      <TouchableOpacity key={index} onPress={() => this.onGoDetail(_.get(item, "eventId"))}>
         <EventCard event={item} />
       </TouchableOpacity>
     );
   }
-  onGoDetail () {
-    this.props.navigation.navigate("EventDetail");
+  onGoDetail (eventId) {
+    this.props.navigation.navigate("EventDetail", { eventId });
   }
 }

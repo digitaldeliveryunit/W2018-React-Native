@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { ScrollView, View, Image, TouchableOpacity } from "react-native";
-import Text from "../../components/Text.component";
 import _ from "lodash";
+import AutoHeightWebView from 'react-native-autoheight-webview';
 import moment from "moment";
 import styles from "./styles";
 import { OPEN_QRCODE_POPUP } from "../../actions/qrcode.action";
 import openGoogleMapDirection from "../../helpers/google-map-direction";
 import QuickAccessButton from "../../components/QuickAccessButton";
+import Text from "../../components/Text.component";
 import EventAPI from "../../api/event";
 
 class EventDetail extends Component {
@@ -142,9 +143,26 @@ class EventDetail extends Component {
             <View style={styles.horizontalDivider} />
             <View style={styles.aboutContainer}>
               <Text style={styles.lblAbout}>About</Text>
-              <Text style={styles.contentAbout}>
-                {_.get(event, "eventDescription")}
-              </Text>
+              <AutoHeightWebView
+                style={styles.contentAbout}
+                source={{ html: _.get(event, "eventDescription") }}
+                customStyle={`
+                      * {
+                        font-family: Helvetica Neue;
+                        font-size: 14px;
+                        line-height: 18px;
+                        color: #3C5063;
+                        margin: 0;
+                        padding-right: 10;
+                        padding-bottom: 10;
+                        max-width: 100% !important;
+                      }
+
+                      img {
+                        height: auto !important;
+                        max-width: 100% !important;
+                      }
+                    `} />
             </View>
           </View>
         </ScrollView>
