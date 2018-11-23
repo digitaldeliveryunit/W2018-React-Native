@@ -22,12 +22,15 @@ const ViewMode = {
 };
 
 class Spotlight extends Component {
-  constructor () {
-    super();
+  constructor (props) {
+    super(props);
+    const { currentEvent } = props.navigation.state.params;
     this.state = {
       viewMode: ViewMode.LIST,
-      activeSlide: 0
+      activeSlide: 0,
+      currentEvent
     };
+    this._renderSpotlightFullCard = this._renderSpotlightFullCard.bind(this);
   }
 
   _renderRightHeader = () => (
@@ -85,7 +88,7 @@ class Spotlight extends Component {
           )
         }
         </View>
-        <QuickAccessButton />
+        <QuickAccessButton currentEvent={this.state.currentEvent} />
       </WrapperComponent>
     );
   }
@@ -97,7 +100,7 @@ class Spotlight extends Component {
           this._carousel = c;
         }}
         data={spotlightList}
-        renderItem={this._renderSpotlightFullCard.bind(this)}
+        renderItem={this._renderSpotlightFullCard}
         sliderWidth={sizeWidth(100)}
         itemWidth={sizeWidth(90)}
         loop={false}

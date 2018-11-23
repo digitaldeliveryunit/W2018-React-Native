@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native";
-import { CommonStyles } from "../../helpers/common-styles";
 import { sizeHeight, sizeWidth } from "../../helpers/size.helper";
 
 export default StyleSheet.create({

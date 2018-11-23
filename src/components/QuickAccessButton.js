@@ -34,7 +34,7 @@ class QuickAccessButton extends Component {
   render() {
     return (
       <TouchableOpacity
-        onPress={() => this.props.toggleMenu()}
+        onPress={() => this.props.toggleMenu(this.props.currentEvent)}
         style={[styles.menu, styles.item, styles.activedItem]}
       >
         <Image
@@ -52,7 +52,7 @@ class QuickAccessButton extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    toggleMenu: () => dispatch({ type: TOGGLE_MENU })
+    toggleMenu: (currentEvent) => dispatch({ type: TOGGLE_MENU, currentEvent })
   };
 };
 

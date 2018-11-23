@@ -1,6 +1,6 @@
 import { StyleSheet, Dimensions } from "react-native";
 import { CommonStyles, COLORS } from "../../helpers/common-styles";
-
+import { sizeWidth } from "../../helpers/size.helper";
 const { width } = Dimensions.get("window");
 
 export default StyleSheet.create({
@@ -37,11 +37,11 @@ export default StyleSheet.create({
     lineHeight: 24,
     color: COLORS.GREEN_PET_ICT,
     paddingVertical: 12,
-    paddingHorizontal: 30
+    paddingHorizontal: 20
   },
   infoContainer: {
     width,
-    paddingHorizontal: 30,
+    paddingHorizontal: 20,
     marginBottom: 15
   },
   rowInfo: {
@@ -60,8 +60,10 @@ export default StyleSheet.create({
     height: 22
   },
   infoLabelWrapper: {
-    marginLeft: 25,
-    flexDirection: "column"
+    marginLeft: 10,
+    flexDirection: "column",
+    width: sizeWidth(60),
+    overflow: "hidden"
   },
   colorHighLight: {
     color: COLORS.SOFT_PURPLE
@@ -85,11 +87,12 @@ export default StyleSheet.create({
   horizontalDivider: {
     ...CommonStyles.horizontalDivider,
     alignSelf: "center",
-    width: width - 60
+    width: width - 40
   },
   aboutContainer: {
     paddingVertical: 10,
-    paddingHorizontal: 30
+    paddingHorizontal: 20,
+    flex: 1
   },
   lblAbout: {
     fontWeight: "bold",
@@ -99,7 +102,6 @@ export default StyleSheet.create({
     paddingVertical: 10
   },
   contentAbout: {
-    marginVertical: 10
   },
   // begin styles for action button
   containerActionButton: {

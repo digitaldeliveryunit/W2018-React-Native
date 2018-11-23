@@ -13,8 +13,10 @@ import EventAPI from "../../api/event";
 import _ from "lodash";
 import AppEmpty from "../../components/AppEmpty";
 import ParallaxScrollView from "react-native-parallax-scroll-view";
-import { sizeHeight, sizeWidth } from "../../helpers/size.helper";
-import {user} from "../../helpers/mock-data.helper";
+import { sizeHeight } from "../../helpers/size.helper";
+import { user } from "../../helpers/mock-data.helper";
+
+const heightOfForegroundDefault = sizeHeight(65);
 
 class Home extends Component {
   constructor () {
@@ -29,7 +31,8 @@ class Home extends Component {
       upcomingEvents: [],
       skipUpcoming: 0,
       takeUpcoming: 10,
-      hasNextUpcomingItems: true
+      hasNextUpcomingItems: true,
+      heightOfForeground: heightOfForegroundDefault
     };
     this.onScroll = this.onScroll.bind(this);
   }
@@ -43,7 +46,7 @@ class Home extends Component {
           backgroundColor={"transparent"}
           backgroundScrollSpeed={2}
           fadeOutForeground={true}
-          parallaxHeaderHeight={sizeHeight(63)}
+          parallaxHeaderHeight={this.state.heightOfForeground}
           renderForeground={this._renderForeground}
           stickyHeaderHeight={100}
           renderStickyHeader={this._renderStickyHeader}
@@ -80,7 +83,6 @@ class Home extends Component {
     return (
       <View style={{ 
         backgroundColor: "#F1F3F5", 
-        marginTop: 20, 
         paddingTop: 20,
         paddingBottom: 20 }}>
         <Text style={[CommonStyles.title, { color: COLORS.GRAYISH_BLUE }]}>Upcoming Events</Text>
@@ -123,7 +125,14 @@ class Home extends Component {
   _renderForeground = () => {
     const { loadingFeatured, featuredEvents } = this.state;
     return (
-      <View style={styles.foregroundSection}>
+      <View style={styles.foregroundSection} onLayout={(event) => {
+        var {height} = event.nativeEvent.layout;
+        if (height > heightOfForegroundDefault) {
+          this.setState({
+            heightOfForeground: height + 20
+          });
+        }
+      }}>
       { this._renderHeader() }
       {
         loadingFeatured ? (

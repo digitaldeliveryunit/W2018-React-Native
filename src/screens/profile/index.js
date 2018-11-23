@@ -98,7 +98,7 @@ class ProfileComponent extends Component {
           showsVerticalScrollIndicator={false}
         >
           <FlatList
-            style={styles.containerEvents}
+            contentContainerStyle={styles.containerEvents}
             data={pastEvents}
             keyExtractor={this._keyExtractor}
             onEndReached={this.onLoadMore}
