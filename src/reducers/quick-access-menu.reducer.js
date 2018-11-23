@@ -37,14 +37,16 @@ const initState = {
       icon: require("../../assets/images/about.png"),
       activedIcon: require("../../assets/images/about_white.png")
     }
-  ]
+  ],
+  currentEvent: null
 };
 
 export default function quickAccessMenuReducer(state = initState, action) {
   switch (action.type) {
     case TOGGLE_MENU:
       return Object.assign({}, state, {
-        isOpen: !state.isOpen
+        isOpen: !state.isOpen,
+        currentEvent: action.currentEvent
       });
     case SELECT_MENU:
       return Object.assign({}, state, {

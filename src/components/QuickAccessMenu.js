@@ -108,8 +108,12 @@ class QuickAccessMenu extends Component {
   );
 
   onSelect(menu) {
+    const {currentEvent} = this.props;
     this.props.selectMenu(menu.id);
-    NavigationService.navigate(menu.screen);
+    NavigationService.navigate(menu.screen, {
+      currentEvent,
+      eventId: currentEvent.eventId
+    });
   }
 }
 

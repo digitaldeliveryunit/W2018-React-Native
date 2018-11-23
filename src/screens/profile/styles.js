@@ -55,7 +55,8 @@ export default StyleSheet.create({
     marginBottom: 20
   },
   containerEvents: {
-    padding: 12
+    paddingLeft: 15,
+    paddingRight: 15
   },
   containerEventItem: {
     marginBottom: 20

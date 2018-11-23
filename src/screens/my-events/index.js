@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { View, ScrollView, TouchableOpacity, FlatList, RefreshControl } from "react-native";
+import { View, TouchableOpacity, FlatList, RefreshControl } from "react-native";
 import _ from "lodash";
 import Text from "../../components/Text.component";
 import styles from "./styles";
@@ -11,6 +11,7 @@ import EventCard from "../..//components/EventCard";
 import EventAPI from "../../api/event";
 import AppActivityIndicator from "../../components/AppActivityIndicator";
 import AppEmpty from "../../components/AppEmpty";
+import {user} from "../../helpers/mock-data.helper";
 
 class MyEvents extends Component {
   constructor () {
@@ -69,10 +70,7 @@ class MyEvents extends Component {
   _renderHeader = () => (
     <View style={CommonStyles.header}>
       <Text style={CommonStyles.title}>myEvents</Text>
-      <Avatar user={{
-        firstName: "Khoa",
-        lastName: "Tran"
-      }} />
+      <Avatar user={user} />
     </View>
   );
 

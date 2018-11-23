@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { ScrollView, View, Image, TouchableOpacity } from "react-native";
 import _ from "lodash";
-import AutoHeightWebView from 'react-native-autoheight-webview';
 import moment from "moment";
 import styles from "./styles";
 import { OPEN_QRCODE_POPUP } from "../../actions/qrcode.action";
@@ -10,6 +9,8 @@ import openGoogleMapDirection from "../../helpers/google-map-direction";
 import QuickAccessButton from "../../components/QuickAccessButton";
 import Text from "../../components/Text.component";
 import EventAPI from "../../api/event";
+import { SELECT_MENU } from "../../actions/quick-access-menu.action";
+import AppWebView from "../../components/AppWebView";
 
 class EventDetail extends Component {
   constructor(props) {
@@ -143,30 +144,13 @@ class EventDetail extends Component {
             <View style={styles.horizontalDivider} />
             <View style={styles.aboutContainer}>
               <Text style={styles.lblAbout}>About</Text>
-              <AutoHeightWebView
-                style={styles.contentAbout}
-                source={{ html: _.get(event, "eventDescription") }}
-                customStyle={`
-                      * {
-                        font-family: Helvetica Neue;
-                        font-size: 14px;
-                        line-height: 18px;
-                        color: #3C5063;
-                        margin: 0;
-                        padding-right: 10;
-                        padding-bottom: 10;
-                        max-width: 100% !important;
-                      }
-
-                      img {
-                        height: auto !important;
-                        max-width: 100% !important;
-                      }
-                    `} />
+              <View style={styles.contentAbout}>
+                <AppWebView content={event.eventDescription} />
+              </View>
             </View>
           </View>
         </ScrollView>
-        <QuickAccessButton />
+        <QuickAccessButton currentEvent={event} />
       </View>
     );
   }
@@ -174,6 +158,9 @@ class EventDetail extends Component {
   componentDidMount() {
     const { params } = this.props.navigation.state;
     this.loadEventDetail(_.get(params, "eventId"));
+
+    // Reset Quick Access Menu to section About
+    this.props.resetQuickAccessMenu();
   }
 
   async loadEventDetail(eventId) {
@@ -202,7 +189,8 @@ const mapDispatchToProps = dispatch => {
   return {
     openPopupQRCode: () => {
       dispatch({ type: OPEN_QRCODE_POPUP });
-    }
+    },
+    resetQuickAccessMenu: () => dispatch({ type: SELECT_MENU, selectedMenuId: "About" })
   };
 };
 

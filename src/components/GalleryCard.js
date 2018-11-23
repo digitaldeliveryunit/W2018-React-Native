@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import FastImage from "react-native-fast-image";
 import { sizeWidth, sizeHeight } from "../helpers/size.helper";
 import { COLORS } from "../helpers/common-styles";
+import { toDateString } from "../helpers/date-time.helper";
 
 const MEDIA_TYPES = {
   DOCUMENT: "Document",
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
 
 const GalleryCard = props => {
   const { containerStyles, item } = props;
-  const split = item.url.split(".");
+  const split = item.fileName.split(".");
   const extension = split[split.length - 1];
   return (
     <View style={[containerStyles, { width: props.width }]}>
@@ -35,14 +36,14 @@ const GalleryCard = props => {
       />
       <View style={{ padding: 10 }}>
         <View style={styles.content}>
-            <Text style={{ color: COLORS.GRAYISH_BLUE, fontSize: 15, marginBottom: 10 }}>{"Unknown"}</Text>
+            <Text style={{ color: COLORS.GRAYISH_BLUE, fontSize: 15, marginBottom: 10 }}>{item.fileName}</Text>
             <View style={{
                 flexDirection: "row",
                 justifyContent: "space-between",
                 alignItems: "center"
             }}>
                 <FileType type={item.mediaType} extension={extension} />
-                <Text style={{ fontSize: 10, color: "#CCC" }}>18 Feb 2018</Text>
+                <Text style={{ fontSize: 10, color: "#CCC" }}>{toDateString(item.createDate)}</Text>
             </View>
         </View>
       </View>

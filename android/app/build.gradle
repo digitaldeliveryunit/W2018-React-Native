@@ -101,7 +101,7 @@ android {
         applicationId "com.petronas.myevents2"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 7
+        versionCode 9
         versionName "1.0"
         ndk {
             abiFilters "armeabi-v7a", "x86"
@@ -148,6 +148,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-autoheight-webview')
     compile project(':@remobile_react-native-toast')
     compile project(':react-native-vector-icons')
     compile project(':react-native-fast-image')

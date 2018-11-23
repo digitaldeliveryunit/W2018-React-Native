@@ -48,6 +48,9 @@ export default class RequestHelper {
         }
       })
       .then(data => {
+        if (data.status === 204) {
+          Toast.showLongBottom("Data not found!");
+        }
         return data.data;
       })
       .catch(e => {

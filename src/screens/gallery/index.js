@@ -16,11 +16,10 @@ const MEDIA_TYPES = {
   VIDEO: "Video"
 };
 
-const eventId = "ca301f67-7b95-4c97-8013-19b5f15ad78e";
-
 class Gallery extends Component {
-  constructor () {
-    super();
+  constructor (props) {
+    super(props);
+    const { currentEvent } = props.navigation.state.params;
     this.state = {
       document: {
         loading: false,
@@ -36,11 +35,12 @@ class Gallery extends Component {
         loading: false,
         loaded: false,
         items: []
-      }
+      },
+      currentEvent
     };
   }
   render() {
-    const {document, image, video} = this.state;
+    const {document, image, video, currentEvent} = this.state;
     return (
       <WrapperComponent>
         <View style={{
@@ -54,7 +54,7 @@ class Gallery extends Component {
             <GalleryShelf title="Videos" items={video.items} loading={video.loading} reversedColor={true} />
           </ScrollView>
         </View>
-        <QuickAccessButton />
+        <QuickAccessButton currentEvent={currentEvent} />
       </WrapperComponent>
     );
   }
@@ -72,7 +72,7 @@ class Gallery extends Component {
   );
 
   async loadDocuments () {
-    const { document } = this.state;
+    const { document, currentEvent } = this.state;
     this.setState({
       document: Object.assign({}, document, {
         loading: true,
@@ -80,7 +80,7 @@ class Gallery extends Component {
       })
     });
     try {
-      const items = await GalleryAPI.getMediasByType(eventId, MEDIA_TYPES.DOCUMENT);
+      const items = await GalleryAPI.getMediasByType(currentEvent.eventId, MEDIA_TYPES.DOCUMENT);
       this.setState({
         document: Object.assign({}, document, {
           loading: false,
@@ -100,7 +100,7 @@ class Gallery extends Component {
   }
 
   async loadVideos () {
-    const { video } = this.state;
+    const { video, currentEvent } = this.state;
     this.setState({
       video: Object.assign({}, video, {
         loading: true,
@@ -108,7 +108,7 @@ class Gallery extends Component {
       })
     });
     try {
-      const items = await GalleryAPI.getMediasByType(eventId, MEDIA_TYPES.VIDEO);
+      const items = await GalleryAPI.getMediasByType(currentEvent.eventId, MEDIA_TYPES.VIDEO);
       this.setState({
         video: Object.assign({}, video, {
           loading: false,
@@ -128,7 +128,7 @@ class Gallery extends Component {
   }
 
   async loadImages () {
-    const { image } = this.state;
+    const { image, currentEvent } = this.state;
     this.setState({
       image: Object.assign({}, image, {
         loading: true,
@@ -136,7 +136,7 @@ class Gallery extends Component {
       })
     });
     try {
-      const items = await GalleryAPI.getMediasByType(eventId, MEDIA_TYPES.IMAGE);
+      const items = await GalleryAPI.getMediasByType(currentEvent.eventId, MEDIA_TYPES.IMAGE);
       this.setState({
         image: Object.assign({}, image, {
           loading: false,
