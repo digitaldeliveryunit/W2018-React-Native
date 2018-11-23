@@ -31,4 +31,9 @@ export default class EventAPI {
     const data = await RequestHelper.get(`${AppConfig.apiUrl}Event/${eventId}`);
     return data;
   }
+
+  static async searchEvents (params) {
+    const data = await RequestHelper.get(`${AppConfig.apiUrl}Event/Search`, params);
+    return data;
+  }
 }

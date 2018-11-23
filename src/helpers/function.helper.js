@@ -13,3 +13,8 @@ export const getShortcutName = (_firstName, _lastName, _fullName) => {
   }
   return null;
 };
+
+export const isCloseToBottom = ({layoutMeasurement, contentOffset, contentSize}) => {
+  const paddingToBottom = 50;
+  return layoutMeasurement.height + contentOffset.y >= contentSize.height - paddingToBottom;
+};

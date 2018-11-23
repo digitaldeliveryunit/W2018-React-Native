@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import { CommonStyles, COLORS } from "../../helpers/common-styles";
-import { sizeWidth } from "../../helpers/size.helper";
+import { sizeWidth, sizeHeight } from "../../helpers/size.helper";
 
 export default StyleSheet.create({
     listContainer: {
@@ -31,8 +31,8 @@ export default StyleSheet.create({
         fontSize: 20
     },
     searchResult: {
-        flex: 1,
-        width: sizeWidth(100)
+        width: sizeWidth(100),
+        minHeight: sizeHeight(100) - 150
     },
     founds: {
         marginTop: 40,
@@ -45,16 +45,15 @@ export default StyleSheet.create({
     },
     stickyHeader: {
         alignItems: "center",
-        paddingTop: 25,
-        paddingBottom: 10,
+        height: 80,
         justifyContent: "center",
         backgroundColor: "rgb(64, 54, 129)",
         opacity: 0.95,
         shadowColor: "#060606",
         shadowOpacity: 0.3,
         shadowOffset: {
-        width: 0,
-        height: 10
+            width: 0,
+            height: 10
         }
     }
 });
