@@ -15,6 +15,7 @@ import AppEmpty from "../../components/AppEmpty";
 import ParallaxScrollView from "react-native-parallax-scroll-view";
 import { sizeHeight } from "../../helpers/size.helper";
 import { user } from "../../helpers/mock-data.helper";
+import { isCloseToBottom } from "../../helpers/function.helper";
 
 const heightOfForegroundDefault = sizeHeight(65);
 
@@ -237,13 +238,8 @@ class Home extends Component {
     });
   }
 
-  isCloseToBottom = ({layoutMeasurement, contentOffset, contentSize}) => {
-    const paddingToBottom = 50;
-    return layoutMeasurement.height + contentOffset.y >= contentSize.height - paddingToBottom;
-  };
-
   onScroll ({nativeEvent}) {
-    if (this.isCloseToBottom(nativeEvent)) {
+    if (isCloseToBottom(nativeEvent)) {
       this.onLoadMoreUpcoming();
     }
   }
