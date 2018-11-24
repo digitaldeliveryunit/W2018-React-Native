@@ -46,7 +46,7 @@ class Search extends Component {
           backgroundColor={"transparent"}
           backgroundScrollSpeed={2}
           fadeOutForeground={true}
-          parallaxHeaderHeight={200}
+          parallaxHeaderHeight={190}
           renderForeground={this._renderForeground}
           stickyHeaderHeight={100}
           renderStickyHeader={this._renderStickyHeader}
@@ -54,13 +54,8 @@ class Search extends Component {
           showsVerticalScrollIndicator={false}
           onMomentumScrollEnd={this.onScroll}
           scrollEventThrottle={500}
-          
         >
-          <View style={styles.searchResult}>
-          {
-            this._renderSearchResult(events)
-          }
-          </View>
+          { this._renderSearchResult(events) }
         </ParallaxScrollView>
       </WrapperComponent>
     );
@@ -145,6 +140,17 @@ class Search extends Component {
   }
 
   onSearchText (searchKey) {
+    if (_.isEmpty(searchKey)) {
+      this.setState({ 
+        searchKey,
+        loading: false,
+        loaded: false,
+        events: [],
+        hasNextItems: false
+      });
+      this.searchMyEventsDelayed.cancel();
+      return;
+    }
     this.setState({ 
       searchKey,
       loading: true,

@@ -5,7 +5,8 @@ import { sizeWidth, sizeHeight } from "../../helpers/size.helper";
 export default StyleSheet.create({
     listContainer: {
         paddingLeft: 15,
-        paddingRight: 15
+        paddingRight: 15,
+        minHeight: sizeHeight(100) - 160
     },
     searchBox: {
         width: "100%",
@@ -30,12 +31,8 @@ export default StyleSheet.create({
         paddingRight: 12,
         fontSize: 20
     },
-    searchResult: {
-        width: sizeWidth(100),
-        minHeight: sizeHeight(100) - 150
-    },
     founds: {
-        marginTop: 40,
+        marginTop: 30,
         paddingLeft: 10,
         color: "#FFF",
         fontSize: 16
@@ -45,7 +42,7 @@ export default StyleSheet.create({
     },
     stickyHeader: {
         alignItems: "center",
-        height: 80,
+        height: 90,
         justifyContent: "center",
         backgroundColor: "rgb(64, 54, 129)",
         opacity: 0.95,
