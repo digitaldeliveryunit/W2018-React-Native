@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { COLORS } from "../helpers/common-styles";
 import Text from "./Text.component";
+import _ from "lodash";
 
 const { width } = Dimensions.get("window");
 const WIDTH_SPOTLIGHT_ITEM = width / 2 - 44;
@@ -58,7 +59,7 @@ export const SpotlightItem = (props) => {
     <TouchableOpacity
       elevation={5}
       style={[styles.wrapperItem, containerStyle]}
-      onPress={() => onPressSpotlightItem(item.id)}
+      onPress={() => onPressSpotlightItem(item.spotlightId)}
     >
       <View style={styles.imageContainer}>
         <Image
@@ -71,7 +72,7 @@ export const SpotlightItem = (props) => {
         {item.spotlightName}
       </Text>
       <Text style={roleStyle} numberOfLines={1}>
-        {item.role}
+        {item.description}
       </Text>
       {
         showDetail && (
@@ -80,7 +81,6 @@ export const SpotlightItem = (props) => {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
               incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
               exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-    
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
               incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
               exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
@@ -96,22 +96,19 @@ const SpotlightCard = props => {
   const { spotlight, onPressSpotlightItem } = props;
   return (
     <View style={styles.container}>
-      <SpotlightItem
-        item={spotlight[0]}
-        onPressSpotlightItem={spotlightId => onPressSpotlightItem(spotlightId)}
-        containerStyle={{
-          width: WIDTH_SPOTLIGHT_ITEM,
-          margin: 10
-        }}
-      />
-      <SpotlightItem
-        item={spotlight[1]}
-        onPressSpotlightItem={spotlightId => onPressSpotlightItem(spotlightId)} 
-        containerStyle={{
-          width: WIDTH_SPOTLIGHT_ITEM,
-          margin: 10
-        }}
-      />
+    {
+      !_.isEmpty(spotlight) && spotlight.map((item, index) => (
+        <SpotlightItem
+          key={index}
+          item={item}
+          onPressSpotlightItem={spotlightId => onPressSpotlightItem(spotlightId)}
+          containerStyle={{
+            width: WIDTH_SPOTLIGHT_ITEM,
+            margin: 10
+          }}
+        />
+      ))
+    }
     </View>
   );
 };

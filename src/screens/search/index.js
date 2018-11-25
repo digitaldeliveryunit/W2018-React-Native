@@ -184,7 +184,6 @@ class Search extends Component {
   }
 
   async onLoadMore () {
-    console.log('onLoadMore', this.state.hasNextItems);
     if (!this.state.hasNextItems) {
       return;
     }
