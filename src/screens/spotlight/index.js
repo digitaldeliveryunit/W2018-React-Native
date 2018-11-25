@@ -13,13 +13,16 @@ import Carousel from "react-native-snap-carousel";
 import { sizeWidth, sizeHeight } from "../../helpers/size.helper";
 import {SpotlightItem} from "../../components/SpotlightCard";
 import QuickAccessButton from "../../components/QuickAccessButton";
-
-const { height } = Dimensions.get("window");
+import SpotlightAPI from "../../api/spotlight";
+import AppActivityIndicator from "../../components/AppActivityIndicator";
+import AppEmpty from "../../components/AppEmpty";
 
 const ViewMode = {
   LIST: 0,
   CAROUSEL: 1
 };
+
+const eventId = "76e7d2a0-11f9-4a4c-b609-aada83a3535a";
 
 class Spotlight extends Component {
   constructor (props) {
@@ -28,9 +31,18 @@ class Spotlight extends Component {
     this.state = {
       viewMode: ViewMode.LIST,
       activeSlide: 0,
-      currentEvent
+      currentEvent,
+      loading: false,
+      loadingMore: false,
+      loaded: false,
+      spotlights: [],
+      refreshing: false,
+      skip: 0,
+      take: 10,
+      hasNextItems: true
     };
     this._renderSpotlightFullCard = this._renderSpotlightFullCard.bind(this);
+    this.onLoadMore = this.onLoadMore.bind(this);
   }
 
   _renderRightHeader = () => (
@@ -43,9 +55,10 @@ class Spotlight extends Component {
     </TouchableOpacity>
   );
 
-  _onPressSpotlightItem = spotlightId => {
+  _onPressSpotlightItem = (spotlightId) => {
     this.setState({
-      viewMode: ViewMode.CAROUSEL
+      viewMode: ViewMode.CAROUSEL,
+      activeSlide: this.state.spotlights.findIndex(item => item.spotlightId === spotlightId)
     });
   };
 
@@ -61,7 +74,8 @@ class Spotlight extends Component {
   _keyExtractor = (item, index) => index.toString();
 
   render() {
-    const spotlightCouples = _.chunk(spotlightList, 2);
+    const { spotlights, loading, loadingMore, viewMode } = this.state;
+    const spotlightCouples = _.chunk(spotlights, 2);
     return (
       <WrapperComponent>
         <View style={{
@@ -69,19 +83,29 @@ class Spotlight extends Component {
           alignItems: "center"
         }}>
         {
-          this.state.viewMode === ViewMode.LIST ? (
+          viewMode === ViewMode.LIST ? (
             <DetailHeader title={"Spotlight"} />
           ) : (
             <DetailHeader title={"Spotlight"} RightComponent={() => this._renderRightHeader()} />
           )
         }
         {
-          this.state.viewMode === ViewMode.LIST ? (
+          viewMode === ViewMode.LIST ? (
             <FlatList
               data={spotlightCouples}
               renderItem={({ item, index }) => this._renderItem(item, index)}
               keyExtractor={this._keyExtractor}
+              onEndReached={this.onLoadMore}
+              onEndReachedThreshold={1}
               showsVerticalScrollIndicator={false}
+              ListFooterComponent={() => {
+                return (
+                  loadingMore && <AppActivityIndicator color="#000" containerStyles={{
+                    paddingBottom: 20
+                  }} />
+                )
+              }}
+              ListEmptyComponent={() => loading ? <AppActivityIndicator /> : <AppEmpty textColor={"#FFF"} />}
             />
           ) : (
             this._renderCarousel()
@@ -93,27 +117,35 @@ class Spotlight extends Component {
     );
   }
 
-  _renderCarousel = () => (
-    <View style={styles.carouselContainer}>
-      <Carousel
-        ref={c => {
-          this._carousel = c;
-        }}
-        data={spotlightList}
-        renderItem={this._renderSpotlightFullCard}
-        sliderWidth={sizeWidth(100)}
-        itemWidth={sizeWidth(90)}
-        loop={false}
-        onSnapToItem={(index) => this.setState({ activeSlide: index }) }
-        inactiveSlideOpacity={1}
-        inactiveSlideScale={1}
-        slideStyle={styles.slide}
-      />
-      <View style={styles.currentSlide}>
-        <Text style={styles.currentSlideText}>{ this.state.activeSlide + 1 } / {spotlightList.length}</Text>
+  componentDidMount () {
+    this.loadSpotlights();
+  }
+
+  _renderCarousel = () => {
+    const { activeSlide, spotlights } = this.state;
+    return (
+      <View style={styles.carouselContainer}>
+        <Carousel
+          ref={c => {
+            this._carousel = c;
+          }}
+          firstItem={activeSlide}
+          data={spotlights}
+          renderItem={this._renderSpotlightFullCard}
+          sliderWidth={sizeWidth(100)}
+          itemWidth={sizeWidth(90)}
+          loop={false}
+          onSnapToItem={(index) => this.setState({ activeSlide: index }) }
+          inactiveSlideOpacity={1}
+          inactiveSlideScale={1}
+          slideStyle={styles.slide}
+        />
+        <View style={styles.currentSlide}>
+          <Text style={styles.currentSlideText}>{ activeSlide + 1 } / { spotlights.length }</Text>
+        </View>
       </View>
-    </View>
-  );
+    );
+  }
 
   _renderSpotlightFullCard({ item, index }) {
     return (
@@ -144,6 +176,61 @@ class Spotlight extends Component {
         />
       </TouchableOpacity>
     );
+  }
+  
+  async loadSpotlights () {
+    this.setState({
+      loading: true,
+      loaded: false
+    });
+    try {
+      const spotlights = await SpotlightAPI.getSpotlights(eventId, {
+        skip: 0,
+        take: this.state.take
+      });
+      this.setState({
+        loading: false,
+        loaded: true,
+        spotlights,
+        hasNextItems: spotlights.length === this.state.take
+      });
+    } catch (e) {
+      this.setState({
+        loading: false,
+        loaded: false,
+        spotlights: [],
+        hasNextItems: false
+      });
+    };
+  }
+
+  async onLoadMore () {
+    try {
+      if (!this.state.hasNextItems || this.state.loadingMore) {
+        return;
+      }
+      this.setState({
+        loadingMore: true
+      });
+      const nextSkip = this.state.skip + this.state.take;
+      const nextItems = await SpotlightAPI.getSpotlights(eventId, {
+        skip: nextSkip,
+        take: this.state.take
+      });
+      this.setState({
+        spotlights: this.state.spotlights.concat(nextItems),
+        skip: nextSkip,
+        hasNextItems: nextItems.length === this.state.take,
+        loadingMore: false
+      });
+    } catch (e) {
+      this.setState({
+        loading: false,
+        loaded: false,
+        spotlights: [],
+        hasNextItems: false
+      });
+    }
   }
 }
 

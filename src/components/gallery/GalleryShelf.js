@@ -3,7 +3,8 @@ import {
   StyleSheet,
   View,
   TouchableOpacity,
-  FlatList
+  FlatList,
+  Linking
 } from "react-native";
 import Text from "../Text.component";
 import PropTypes from "prop-types";
@@ -96,10 +97,10 @@ class GalleryShelf extends React.Component {
             keyExtractor={this._keyExtractor}
             renderItem={({ item, index }) => {
             return (
-              <TouchableOpacity key={index}
-                style={{
-                    paddingRight: 10
-                }}
+              <TouchableOpacity 
+                key={index}
+                style={{ paddingRight: 10 }} 
+                onPress={() => this.openMediaUrl(item.url)}
               >
                 <GalleryCard item={item} width={sizeWidth(50)} />
               </TouchableOpacity>
@@ -116,6 +117,12 @@ class GalleryShelf extends React.Component {
         />
     );
   };
+  openMediaUrl (url) {
+    if (!url) {
+      return;
+    }
+    Linking.openURL(url);
+  }
 }
 
 GalleryShelf.propTypes = {
