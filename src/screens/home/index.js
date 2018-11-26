@@ -118,7 +118,7 @@ class Home extends Component {
 
   _renderItem = ({item}) => (
     <TouchableOpacity 
-      style={{ marginBottom: 20 }}
+      style={{ marginBottom: 20, padding: 5, ...CommonStyles.boxShadow }}
       onPress={() => this.onGoDetail(_.get(item, "eventId"))}>
       <EventCard event={item} />
     </TouchableOpacity>

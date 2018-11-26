@@ -78,7 +78,7 @@ class MyEvents extends Component {
 
   _renderItem = ({item}) => (
     <TouchableOpacity 
-      style={{ marginBottom: 20, paddingLeft: 15, paddingRight: 15}} 
+      style={{ marginBottom: 20, paddingLeft: 15, paddingRight: 15, ...CommonStyles.boxShadow }} 
       onPress={() => this.onGoDetail(_.get(item, "eventId"))}>
       <EventCard event={item} />
     </TouchableOpacity>

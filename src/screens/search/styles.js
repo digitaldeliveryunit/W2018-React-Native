@@ -4,8 +4,6 @@ import { sizeWidth, sizeHeight } from "../../helpers/size.helper";
 
 export default StyleSheet.create({
     listContainer: {
-        paddingLeft: 15,
-        paddingRight: 15,
         minHeight: sizeHeight(100) - 160
     },
     searchBox: {

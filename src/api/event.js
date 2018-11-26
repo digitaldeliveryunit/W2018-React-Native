@@ -36,4 +36,24 @@ export default class EventAPI {
     const data = await RequestHelper.get(`${AppConfig.apiUrl}Event/Search`, params);
     return data;
   }
+
+  static async bookmark (eventId) {
+    const data = await RequestHelper.post(`${AppConfig.apiUrl}Event/${eventId}/Bookmark`);
+    return data;
+  }
+
+  static async unBookmark (eventId) {
+    const data = await RequestHelper.post(`${AppConfig.apiUrl}Event/${eventId}/UnBookmark`);
+    return data;
+  }
+
+  static async join (eventId) {
+    const data = await RequestHelper.post(`${AppConfig.apiUrl}Event/${eventId}/Join`);
+    return data;
+  }
+
+  static async unJoin (eventId) {
+    const data = await RequestHelper.post(`${AppConfig.apiUrl}Event/${eventId}/UnJoin`);
+    return data;
+  }
 }
