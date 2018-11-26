@@ -39,5 +39,14 @@ export const CommonStyles = StyleSheet.create({
   horizontalDivider: {
     backgroundColor: COLORS.PALE_NAVY,
     height: 1
+  },
+  boxShadow: {
+    shadowColor: "#060606",
+    shadowOpacity: 0.3,
+    shadowOffset: {
+      width: 0,
+      height: 0
+    },
+    elevation: 3
   }
 });

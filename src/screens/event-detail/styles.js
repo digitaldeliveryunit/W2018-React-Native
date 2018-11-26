@@ -112,21 +112,14 @@ export default StyleSheet.create({
   },
   actionButton: {
     backgroundColor: "#FFF",
-    borderColor: COLORS.LIGHT_GRAY,
+    borderColor: "#F6F6F6",
     borderWidth: 1,
     justifyContent: "center",
     alignItems: "center",
     width: 40,
     height: 40,
     borderRadius: 20,
-    marginLeft: 5,
-    shadowColor: COLORS.GRAYISH_BLUE,
-    shadowOffset: {
-      width: 0,
-      height: 1
-    },
-    shadowRadius: 10,
-    shadowOpacity: 0.2
+    marginLeft: 5
   },
   iconActionButton: {
     width: 20,

@@ -4,7 +4,7 @@ import Text from "./Text.component";
 import PropTypes from "prop-types";
 import FastImage from "react-native-fast-image";
 import { sizeWidth, sizeHeight } from "../helpers/size.helper";
-import { COLORS } from "../helpers/common-styles";
+import { COLORS, CommonStyles } from "../helpers/common-styles";
 import { toDateString } from "../helpers/date-time.helper";
 
 const MEDIA_TYPES = {
@@ -74,10 +74,9 @@ GalleryCard.propTypes = {
 GalleryCard.defaultProps = {
   containerStyles: {
     borderRadius: 10,
-    borderWidth: 1,
-    borderColor: "#F3F3F3",
     overflow: "hidden",
-    backgroundColor: "#FFF"
+    backgroundColor: "#FFF",
+    ...CommonStyles.boxShadow
   },
   width: "100%"
 };

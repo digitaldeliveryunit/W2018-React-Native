@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { COLORS } from "../../helpers/common-styles";
+import { CommonStyles } from "../../helpers/common-styles";
 
 export default StyleSheet.create({
   foregroundSection: {
@@ -59,6 +59,7 @@ export default StyleSheet.create({
     paddingRight: 15
   },
   containerEventItem: {
-    marginBottom: 20
+    marginBottom: 20,
+    ...CommonStyles.boxShadow
   }
 });

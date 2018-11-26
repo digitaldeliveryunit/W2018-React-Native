@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   Dimensions
 } from "react-native";
-import { COLORS } from "../helpers/common-styles";
+import { COLORS, CommonStyles } from "../helpers/common-styles";
 import Text from "./Text.component";
 import _ from "lodash";
 
@@ -24,12 +24,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 9,
     margin: 0,
-    shadowColor: "#060606",
-    shadowOffset: {
-      width: 0,
-      height: 0
-    },
-    shadowOpacity: 0.1
+    ...CommonStyles.boxShadow
   },
   imageContainer: {
     width: "100%",
@@ -78,9 +73,6 @@ export const SpotlightItem = (props) => {
         showDetail && (
           <View style={styles.description}>
             <Text style={styles.descriptionText}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
               incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
               exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 

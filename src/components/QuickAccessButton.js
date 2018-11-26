@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
 import { TOGGLE_MENU } from "../actions/quick-access-menu.action";
-import {COLORS} from "../helpers/common-styles";
+import {COLORS, CommonStyles} from "../helpers/common-styles";
 
 const styles = StyleSheet.create({
   menu: {
@@ -16,14 +16,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 25,
-    shadowColor: "#060606",
-    shadowOpacity: 0.3,
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    borderColor: COLORS.LIGHT_BORDER,
-    borderWidth: 0.5
+    ...CommonStyles.boxShadow
   },
   activedItem: {
     backgroundColor: "rgb(55, 163, 184)"

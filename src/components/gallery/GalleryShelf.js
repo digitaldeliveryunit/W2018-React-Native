@@ -10,7 +10,7 @@ import Text from "../Text.component";
 import PropTypes from "prop-types";
 import { sizeWidth } from "../../helpers/size.helper";
 import GalleryCard from "../../components/GalleryCard";
-import { COLORS } from "../../helpers/common-styles";
+import { COLORS, CommonStyles } from "../../helpers/common-styles";
 import AppEmpty from "../../components/AppEmpty";
 import {sizeHeight} from "../../helpers/size.helper";
 import _ from "lodash";
@@ -99,7 +99,7 @@ class GalleryShelf extends React.Component {
             return (
               <TouchableOpacity 
                 key={index}
-                style={{ paddingRight: 10 }} 
+                style={{ paddingRight: 5, paddingLeft: 5, marginBottom: 5, ...CommonStyles.boxShadow }} 
                 onPress={() => this.openMediaUrl(item.url)}
               >
                 <GalleryCard item={item} width={sizeWidth(50)} />

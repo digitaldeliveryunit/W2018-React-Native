@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import Text from "./Text.component";
-import { COLORS } from "../helpers/common-styles";
+import { COLORS, CommonStyles } from "../helpers/common-styles";
 import NavigationService from "../helpers/navigation-service";
 import { connect } from "react-redux";
 import { TOGGLE_MENU, SELECT_MENU } from "../actions/quick-access-menu.action";
@@ -40,14 +40,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 25,
-    shadowColor: "#060606",
-    shadowOpacity: 0.3,
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    borderColor: COLORS.LIGHT_BORDER,
-    borderWidth: 1
+    ...CommonStyles.boxShadow
   },
   activedItem: {
     backgroundColor: "rgb(55, 163, 184)"

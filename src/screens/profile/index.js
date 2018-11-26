@@ -16,6 +16,7 @@ import EventCard from "../../components/EventCard";
 import AppActivityIndicator from "../../components/AppActivityIndicator";
 import EventAPI from "../../api/event";
 import { user } from "../../helpers/mock-data.helper";
+import { CommonStyles } from "../../helpers/common-styles";
 
 class ProfileComponent extends Component {
   constructor(props) {
