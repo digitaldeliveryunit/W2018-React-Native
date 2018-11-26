@@ -59,7 +59,7 @@ class ProfileComponent extends Component {
         <View style={styles.containerInfo}>
           <Text style={styles.displayName}>{_.get(user, "displayName")}</Text>
           <Text style={styles.displayPosition}>
-            {_.get(user, "displayPosition")}
+            {_.get(user, "department")}
           </Text>
           <Text style={styles.company}>{_.get(user, "company")}</Text>
         </View>
@@ -102,30 +102,30 @@ class ProfileComponent extends Component {
             contentContainerStyle={styles.containerEvents}
             data={pastEvents}
             keyExtractor={this._keyExtractor}
-            onEndReached={this.onLoadMore}
-            onEndReachedThreshold={1}
             renderItem={this._renderEventItem}
             showsVerticalScrollIndicator={false}
-            refreshControl={
-              <RefreshControl
-                refreshing={refreshing}
-                onRefresh={this.onFreshPastEvents}
-                tintColor="#FFF"
-              />
-            }
-            ListFooterComponent={() => {
-              return (
-                this.state.loadingMore && (
-                  <AppActivityIndicator
-                    color="#000"
-                    containerStyles={{
-                      paddingBottom: 20
-                    }}
-                  />
-                )
-              );
-            }}
-            ListEmptyComponent={<AppActivityIndicator />}
+            // onEndReached={this.onLoadMore}
+            // onEndReachedThreshold={1}
+            // refreshControl={
+            //   <RefreshControl
+            //     refreshing={refreshing}
+            //     onRefresh={this.onFreshPastEvents}
+            //     tintColor="#FFF"
+            //   />
+            // }
+            // ListFooterComponent={() => {
+            //   return (
+            //     this.state.loadingMore && (
+            //       <AppActivityIndicator
+            //         color="#000"
+            //         containerStyles={{
+            //           paddingBottom: 20
+            //         }}
+            //       />
+            //     )
+            //   );
+            // }}
+            // ListEmptyComponent={<AppActivityIndicator />}
           />
         </ParallaxScrollView>
       </WrapperComponent>

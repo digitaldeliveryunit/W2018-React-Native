@@ -272,7 +272,8 @@ class EventDetail extends Component {
   }
   async onBookmark() {
     const { event } = this.state;
-    const result = await EventAPI.bookmark(event.eventId);
+    // const result = await EventAPI.bookmark(event.eventId);
+    const result = true;
     if (result) {
       event.isBookmark = true;
       this.setState({ event });
@@ -283,7 +284,8 @@ class EventDetail extends Component {
   }
   async onUnBookmark() {
     const { event } = this.state;
-    const result = await EventAPI.unBookmark(event.eventId);
+    // const result = await EventAPI.unBookmark(event.eventId);
+    const result = true;
     if (result) {
       event.isBookmark = false;
       this.setState({ event });
@@ -294,7 +296,8 @@ class EventDetail extends Component {
   }
   async onJoin() {
     const { event } = this.state;
-    const result = await EventAPI.join(event.eventId);
+    // const result = await EventAPI.join(event.eventId);
+    const result = true;
     if (result) {
       event.userStatus = USER_STATUS.JOINED;
       this.setState({ event });
@@ -305,7 +308,8 @@ class EventDetail extends Component {
   }
   async onUnJoin() {
     const { event } = this.state;
-    const result = await EventAPI.unJoin(event.eventId);
+    // const result = await EventAPI.unJoin(event.eventId);
+    const result = true;
     if (result) {
       event.userStatus = USER_STATUS.NEW;
       this.setState({ event });

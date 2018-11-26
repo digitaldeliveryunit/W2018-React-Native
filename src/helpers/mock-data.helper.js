@@ -1,943 +1,769 @@
+/**
+ * For Event Detail
+*/
 export const event = {
-  eventId: "86b56676-231f-4302-b372-c03ef837c706",
+  eventId: "76e7d2a0-11f9-4a4c-b609-aada83a3535a",
   imageUrl:
-    "https://fileservice.petronas.com/api/v1/view/image/2d34c3d2-d509-46cf-a7ea-e1cfdb237271-jom-hangatkan-cub-prix-2017-di-pahang-2017030.png",
-  eventName: "Jom Hangatkan Cub Prix 2017 di Pahang!",
+    "https://stagingfileservice.petronas.com/api/v2/r/p/ccb3ce26-af6f-42e9-a9e4-4d009f29a7bc/b831b4f2-05a3-47b0-b37f-56c5dde380ae-1-906845.jpg",
+  eventName: "Formula 1 PETRONAS Malaysia Grand Prix 2018",
   eventDescription:
-    "Jumpa anda di PETRONAS AAM Malaysian Cub&nbsp;Prix 2017. Jumpa anda di PETRONAS AAM Malaysian Cub&nbsp;Prix 2017. Jumpa anda di PETRONAS AAM Malaysian Cub&nbsp;Prix 2017. Jumpa anda di PETRONAS AAM Malaysian Cub&nbsp;Prix 2017. Jumpa anda di PETRONAS AAM Malaysian Cub&nbsp;Prix 2017. Jumpa anda di PETRONAS AAM Malaysian Cub&nbsp;Prix 2017",
-  dateFrom: "2017-03-04T02:00:00",
-  dateTo: "2017-03-08T10:00:00",
-  gmt: "+08:00",
+    "<p>The Malaysian Grand Prix is a round of the Formula One World Championship. It has been held at the Sepang International Circuit since 1999, although FIA-sanctioned racing in Malaysia has existed since the 1960s. Since 2011, the race has been officially known as the Malaysia Grand Prix.</p>",
+  dateFrom: "2018-12-26T08:00:00",
+  dateTo: "2018-12-27T16:00:00",
+  venue: "Entrance",
   eventLocation: {
-    locationId: "0481847f-67b8-4df8-a78e-8c5cde379312",
-    locationName: "Temerloh",
-    formattedAddress: "Temerloh , ",
-    latitude: 3.448649,
-    longitude: 102.4163482
+    locationName: "Sepang",
+    latitude: 2.7568664,
+    longitude: 101.6463927,
+    id: "465a327a-470c-4900-b623-bdb3f476063a",
+    isDeleted: false,
+    discriminator: "Location"
   },
-  eventCategories: [
-    {
-      categoryId: "059d6a06-9076-4d6c-8bf2-0f8ec8868cb1",
-      categoryName: "Sports"
-    }
-  ],
-  eventOrganizers: [
-    {
-      isSuperAdmin: false,
-      objectGUID: "609a2593-284f-4de3-9bf6-6aef548a4374",
-      displayName: "Wan Noor Maheran Bt Majidin (GSC/PETH)",
-      email: "noormaheran.majidin@petronas.com.my",
-      sAMAccountName: "noormaheran.majidin",
-      company: "Petroliam Nasional Berhad",
-      department: "Media Engagement",
-      division: "Group Strategic Communications",
-      position: "Executive (Social Media)",
-      office: "PETT L70 T1",
-      telephoneNumber: "+603 - 2331 9135",
-      employeeNumber: "1005944",
-      thumbnailPhoto:
-        "https://oexstorage.blob.core.windows.net/fileservices/UserPhotos/PETRONAS_noormaheran.majidin.jpg",
-      isFirstLogon: false,
-      isFirstJoin: false,
-      domain: "PETRONAS",
-      isExternal: false,
-      pwdLastSet: "2018-09-18T15:52:20.3891435"
-    }
-  ],
-  seatLeft: 0,
-  seatTotal: 0,
-  seatAttendees: 0,
-  seatWaitList: 0,
-  seatPendingList: 0,
-  checkedInTotal: 0,
-  eventStatus: "PAST",
-  isFeatured: false,
-  isScreening: false,
+  eventStatus: "Published",
+  isFeatured: true,
   eventType: "Public",
-  slugName: "Jom-Hangatkan-Cub-Prix-2017-di-Pahang",
-  isCheckedIn: false,
-  isOrganizer: false,
-  isSuperAdmin: false,
-  isBookmark: false,
-  userStatus: "NEW",
-  isEmailTicket: false
+  surveyUrl: null,
+  surveyResultUrl: null,
+  isBookmark: true,
+  userStatus: "JOINED"
 };
 
+/**
+ * For User Detail
+ */
 export const user = {
-  firstName: "Nhan",
-  lastName: "Nguyen",
-  isSuperAdmin: false,
-  objectGUID: "c5baaa3c-6317-4bf3-a595-408787e8d53a",
-  displayName: "Nhan Nguyen Dinh",
-  displayPosition: "(EXT/PET-ICT)",
-  email: "nhan.nguyendinh@petronas.com.my",
-  sAMAccountName: "nhan.nguyendinh",
+  displayName: "Taylor Swift",
+  email: "taylor.swift@petronas.com.my",
+  department: "DD-PM/PET ICT",
   company: "PETRONAS ICT Sdn Bhd",
-  department: "Delivery",
-  division: "Digital Delivery",
-  position: "Senior Developer (Onshore)",
-  office: "Level 23, Menara ExxonMobil",
-  employeeNumber: "C0019240",
-  photo:
-    "http://1.gravatar.com/avatar/767fc9c115a1b989744c755db47feb60?size=840",
+  username: "taylor.swift",
   thumbnailPhoto:
-    "https://oexstorage.blob.core.windows.net/fileservices/UserPhotos/PETRONAS_nhan.nguyendinh.jpg",
-  isFirstLogon: false,
-  isFirstJoin: false,
-  domain: "PETRONAS",
-  isExternal: false,
-  accountExpires: "2018-10-31T23:59:59",
-  pwdLastSet: "2018-09-20T11:55:31.854427"
+    "https://stagingfileservice.petronas.com/api/v2/r/p/ccb3ce26-af6f-42e9-a9e4-4d009f29a7bc/2c29cc2c-f5eb-48ba-96ef-b831325c39c9-1-taylor-1427121683146-thumbnail.jpg",
+  id: "010E08F1-44F4-4B7F-AA22-5F4611F84CD0",
+  isDeleted: false,
+  discriminator: "User"
 };
 
-export const eventList = [
+/**
+ * For List of featured events
+ */
+export const featuredEvents = [
   {
-    eventId: "6afd89f9-5c04-4f8e-a7ed-99908ba18972",
+    eventId: "76e7d2a0-11f9-4a4c-b609-aada83a3535a",
     imageUrl:
-      "https://fileservice.petronas.com/api/v1/view/image/a8f7a20f-b6a7-41e6-9cab-e6b1ee4ebee6-google-map-load-20170126022617459-test-sign-1.png",
-    eventName: "Google Map Load",
-    eventDescription: "<p>GML</p>",
-    dateFrom: "2017-01-27T02:00:00",
-    dateTo: "2017-01-27T03:00:00",
-    gmt: "+08:00",
-    eventLocation: {
-      locationId: "69a2cc08-65d4-45b0-af8d-ebb59569de17",
-      locationName: "A'famosa Resort",
-      locality: "",
-      country: "",
-      formattedAddress: "A'famosa Resort , ",
-      latitude: 2.446784,
-      longitude: 102.2008489
-    },
-    eventCategories: [
-      {
-        categoryId: "059d6a06-9076-4d6c-8bf2-0f8ec8868ca0",
-        categoryName: "Charity & Community"
-      }
-    ],
-    eventHashTagCategories: [
-      {
-        hashTagId: "18dc399c-1813-42db-a9b2-a4b9f2a4cf52",
-        hashTagName: "map"
-      }
-    ],
-    eventOrganizers: [
-      {
-        isSuperAdmin: false,
-        objectGUID: "5c12c56a-3def-4b9a-96ec-4d1c57de1bb7",
-        displayName: "Nurfilzah M Rahim (PET-ICT)",
-        email: "nurfilzah.mrahim@petronas.com.my",
-        sAMAccountName: "nurfilzah.mrahim",
-        company: "PETRONAS ICT Sdn Bhd",
-        department: "BF Unity - Productivity & Mobility",
-        position: "Intern",
-        office: "Menara Perak Level 13",
-        isFirstLogon: false,
-        isFirstJoin: false,
-        isExternal: false
-      }
-    ],
-    seatLeft: 0,
-    seatTotal: 0,
-    seatAttendees: 0,
-    seatWaitList: 0,
-    seatPendingList: 0,
-    checkedInTotal: 0,
-    eventStatus: "DRAFT",
-    isFeatured: false,
-    isScreening: false,
-    eventType: "Public",
-    slugName: "Google-Map-Load",
-    isCheckedIn: false,
-    isOrganizer: false,
-    isSuperAdmin: false,
-    isBookmark: false,
-    userStatus: "NEW",
-    isEmailTicket: false
-  },
-  {
-    eventId: "76a101df-de72-4254-8b99-ab49698daee3",
-    imageUrl:
-      "https://fileservice.petronas.com/api/v1/view/image/c03a9908-d446-4c19-beb1-4c080a418153-hr-downstream-leadership-engagement-2017-2017.png",
-    eventName: "HR Downstream Leadership Engagement 2017",
+      "https://stagingfileservice.petronas.com/api/v2/r/p/ccb3ce26-af6f-42e9-a9e4-4d009f29a7bc/b831b4f2-05a3-47b0-b37f-56c5dde380ae-1-906845.jpg",
+    eventName: "Formula 1 PETRONAS Malaysia Grand Prix 2018",
     eventDescription:
-      "<p>The objective is to get together with HR Downstream Leadership focal to:&nbsp;</p><p>1. Impart Post Cactus Rethinking Talent solutions</p><p>2. Share the plan of activities and set the momentum for year 2017</p><p>3. Network and get-to-know team members from both Business and OPU</p><p><br></p><p>We look forward to your presence and active participation!&nbsp;</p><p><br></p>",
-    dateFrom: "2017-02-28T00:30:00",
-    dateTo: "2017-02-28T09:00:00",
-    gmt: "+08:00",
-    venue: "Meeting Room 404, Level 4",
+      "<p>The Malaysian Grand Prix is a round of the Formula One World Championship. It has been held at the Sepang International Circuit since 1999, although FIA-sanctioned racing in Malaysia has existed since the 1960s. Since 2011, the race has been officially known as the Malaysia Grand Prix.</p>",
+    dateFrom: "2018-12-26T08:00:00",
+    dateTo: "2018-12-27T16:00:00",
+    venue: "Entrance",
     eventLocation: {
-      locationId: "0459e2b4-22f4-4f57-8d49-52338b26303c",
-      locationName: "Pusat Konvensyen Kuala Lumpur",
-      locality: "",
-      country: "",
-      formattedAddress: "Pusat Konvensyen Kuala Lumpur , ",
-      latitude: 3.153889,
-      longitude: 101.713333
+      locationName: "Sepang",
+      latitude: 2.7568664,
+      longitude: 101.6463927,
+      id: "465a327a-470c-4900-b623-bdb3f476063a",
+      isDeleted: false,
+      discriminator: "Location"
     },
-    eventCategories: [
-      {
-        categoryId: "059d6a06-9076-4d6c-8bf2-0f8ec8868ca1",
-        categoryName: "Conference & Exhibition"
-      }
-    ],
-    eventHashTagCategories: [],
-    eventOrganizers: [
-      {
-        isSuperAdmin: false,
-        objectGUID: "9f02f768-ad29-411b-ab6f-23e8085f2192",
-        displayName: "Arfah Bt M Nor (HRM_Downstream/PETH)",
-        email: "arfah_nor@petronas.com.my",
-        sAMAccountName: "arfah_nor",
-        company: "Petroliam Nasional Berhad",
-        department: "HRM - Downstream",
-        division: "Downstream Corporate Office",
-        position: "Manager (People Strategy)",
-        office: "HRM_Downstream",
-        telephoneNumber: "+603 - 2331 1350",
-        employeeNumber: "126502",
-        thumbnailPhoto:
-          "https://oexstorage.blob.core.windows.net/fileservices/UserPhotos/PETRONAS_arfah_nor.jpg",
-        isFirstLogon: false,
-        isFirstJoin: false,
-        domain: "PETRONAS",
-        isExternal: false
-      }
-    ],
-    seatLeft: -16,
-    seatTotal: 0,
-    seatAttendees: 16,
-    seatWaitList: 0,
-    seatPendingList: 0,
-    checkedInTotal: 0,
-    eventStatus: "PAST",
-    isFeatured: false,
-    isScreening: false,
+    eventStatus: "Published",
+    isFeatured: true,
     eventType: "Public",
-    slugName: "HR-Downstream-Leadership-Engagement-2017",
-    surveyUrl: "https://www.surveymonkey.com/r/SCS93HT",
-    surveyResultUrl: "https://www.surveymonkey.com/results/SM-G7GRHC53/",
-    isCheckedIn: false,
-    isOrganizer: false,
-    isSuperAdmin: false,
-    isBookmark: false,
-    userStatus: "NEW",
-    isEmailTicket: false
+    surveyUrl: null,
+    surveyResultUrl: null,
+    isBookmark: true,
+    userStatus: "JOINED"
   },
   {
-    eventId: "86b56676-231f-4302-b372-c03ef837c706",
+    eventId: "4f04af55-b092-47ed-a53d-87960d3eeaab",
     imageUrl:
-      "https://fileservice.petronas.com/api/v1/view/image/2d34c3d2-d509-46cf-a7ea-e1cfdb237271-jom-hangatkan-cub-prix-2017-di-pahang-2017030.png",
-    eventName: "Jom Hangatkan Cub Prix 2017 di Pahang!",
+      "https://fileservice.petronas.com/api/v1/view/image/6747e91a-4e26-479c-8645-4d8337c7840d-capture-1280x720.png",
+    eventName: "BAMup Strategy 2019 & PUReCOP#4 2018",
     eventDescription:
-      "<p>Jumpa anda di PETRONAS AAM Malaysian Cub&nbsp;Prix 2017</p>",
-    dateFrom: "2017-03-04T02:00:00",
-    dateTo: "2017-03-05T10:00:00",
-    gmt: "+08:00",
+      "<p>Bad Actor Upstream Strategy 2019 &amp; PETRONAS Upstream Reliability COP 2018&nbsp;</p>",
+    dateFrom: "2018-12-30T08:00:00",
+    dateTo: "2018-12-31T18:30:00",
+    venue: "Be Amazing-Level 21",
     eventLocation: {
-      locationId: "0481847f-67b8-4df8-a78e-8c5cde379312",
-      locationName: "Temerloh",
-      locality: "",
-      country: "",
-      formattedAddress: "Temerloh , ",
-      latitude: 3.448649,
-      longitude: 102.4163482
+      locationName: "Suria KLCC, Kuala Lumpur",
+      latitude: 3.157951,
+      longitude: 101.711623,
+      id: "000d59dd-59a2-444d-b713-9e992d5718a5",
+      isDeleted: false,
+      discriminator: "Location"
     },
-    eventCategories: [
-      {
-        categoryId: "059d6a06-9076-4d6c-8bf2-0f8ec8868cb1",
-        categoryName: "Sports"
-      }
-    ],
-    eventHashTagCategories: [],
-    eventOrganizers: [
-      {
-        isSuperAdmin: false,
-        objectGUID: "609a2593-284f-4de3-9bf6-6aef548a4374",
-        displayName: "Wan Noor Maheran Bt Majidin (GSC/PETH)",
-        email: "noormaheran.majidin@petronas.com.my",
-        sAMAccountName: "noormaheran.majidin",
-        company: "Petroliam Nasional Berhad",
-        department: "Media Engagement",
-        division: "Group Strategic Communications",
-        position: "Executive (Social Media)",
-        office: "PETT L70 T1",
-        telephoneNumber: "+603 - 2331 9135",
-        employeeNumber: "1005944",
-        thumbnailPhoto:
-          "https://oexstorage.blob.core.windows.net/fileservices/UserPhotos/PETRONAS_noormaheran.majidin.jpg",
-        isFirstLogon: false,
-        isFirstJoin: false,
-        domain: "PETRONAS",
-        isExternal: false
-      }
-    ],
-    seatLeft: 0,
-    seatTotal: 0,
-    seatAttendees: 0,
-    seatWaitList: 0,
-    seatPendingList: 0,
-    checkedInTotal: 0,
-    eventStatus: "PAST",
-    isFeatured: false,
-    isScreening: false,
+    eventStatus: "Published",
+    isFeatured: true,
     eventType: "Public",
-    slugName: "Jom-Hangatkan-Cub-Prix-2017-di-Pahang",
-    isCheckedIn: false,
-    isOrganizer: false,
-    isSuperAdmin: false,
-    isBookmark: false,
-    userStatus: "NEW",
-    isEmailTicket: false
-  },
-  {
-    eventId: "62750b8f-730f-4518-8b1f-deff4ad775b6",
-    imageUrl:
-      "https://fileservice.petronas.com/api/v1/view/image/d142091b-0dd1-45f3-99e8-7229bbdeb5e7-manah---alam-pusaka-kehidupan-documentary-scr.png",
-    eventName: "MANAH - Alam Pusaka Kehidupan (Documentary Screening)",
-    eventDescription: "<p>Documentary Screening: Timeless Temiar, 1956</p>",
-    dateFrom: "2017-03-10T07:00:00",
-    dateTo: "2017-03-10T09:30:00",
-    gmt: "+08:00",
-    eventLocation: {
-      locationId: "f1903afb-df94-476b-9cb0-b7ee764f63bd",
-      locationName: "Galeri Petronas",
-      locality: "",
-      country: "",
-      formattedAddress: "Galeri Petronas , ",
-      latitude: 3.1578237,
-      longitude: 101.7130817
-    },
-    eventCategories: [
-      {
-        categoryId: "059d6a06-9076-4d6c-8bf2-0f8ec8868ca9",
-        categoryName: "Arts & Entertainment"
-      }
-    ],
-    eventHashTagCategories: [],
-    eventOrganizers: [
-      {
-        isSuperAdmin: false,
-        objectGUID: "d40b244b-4639-498d-9785-63b7b320b4de",
-        displayName: "Ahmad Nazmi Anuar (DD-DEL/PET-ICT)",
-        email: "nazmi.anuar@petronas.com.my",
-        sAMAccountName: "nazmi.anuar",
-        company: "PETRONAS ICT Sdn Bhd",
-        department: "Delivery",
-        division: "Digital Delivery",
-        position: "Executive (Digital Delivery)",
-        office: "Level 23, Menara ExxonMobil, KL",
-        mobile: "+6013 - 223 6883",
-        telephoneNumber: "+603 - 3831 3699",
-        employeeNumber: "1024850",
-        thumbnailPhoto:
-          "https://oexstorage.blob.core.windows.net/fileservices/UserPhotos/PETRONAS_nazmi.anuar.jpg",
-        isFirstLogon: false,
-        isFirstJoin: false,
-        domain: "PETRONAS",
-        isExternal: false
-      },
-      {
-        isSuperAdmin: false,
-        objectGUID: "609a2593-284f-4de3-9bf6-6aef548a4374",
-        displayName: "Wan Noor Maheran Bt Majidin (GSC/PETH)",
-        email: "noormaheran.majidin@petronas.com.my",
-        sAMAccountName: "noormaheran.majidin",
-        company: "Petroliam Nasional Berhad",
-        department: "Media Engagement",
-        division: "Group Strategic Communications",
-        position: "Executive (Social Media)",
-        office: "PETT L70 T1",
-        telephoneNumber: "+603 - 2331 9135",
-        employeeNumber: "1005944",
-        thumbnailPhoto:
-          "https://oexstorage.blob.core.windows.net/fileservices/UserPhotos/PETRONAS_noormaheran.majidin.jpg",
-        isFirstLogon: false,
-        isFirstJoin: false,
-        domain: "PETRONAS",
-        isExternal: false
-      },
-      {
-        isSuperAdmin: false,
-        objectGUID: "bda94634-8c85-491b-94b3-7c8efe921407",
-        displayName: "Amir Shariffuddin Arbain (BFS-ADS/PET-ICT)",
-        email: "amir.arbain@petronas.com.my",
-        sAMAccountName: "amir.arbain",
-        company: "PETRONAS ICT Sdn Bhd",
-        position: "Manager, Mobility",
-        office: "Level 13, Menara Perak, KL",
-        mobile: "+6019-335 5519",
-        telephoneNumber: "+603 - 3831 3151",
-        employeeNumber: "1024842",
-        thumbnailPhoto:
-          "https://oexstorage.blob.core.windows.net/fileservices/UserPhotos/PETRONAS_amir.arbain.jpg",
-        isFirstLogon: false,
-        isFirstJoin: false,
-        domain: "PETRONAS",
-        isExternal: false
-      }
-    ],
-    seatLeft: -7,
-    seatTotal: 0,
-    seatAttendees: 7,
-    seatWaitList: 0,
-    seatPendingList: 0,
-    checkedInTotal: 0,
-    eventStatus: "PAST",
-    isFeatured: false,
-    isScreening: false,
-    eventType: "Public",
-    slugName: "MANAH-Alam-Pusaka-Kehidupan-Documentary-Screening",
-    isCheckedIn: false,
-    isOrganizer: false,
-    isSuperAdmin: false,
-    isBookmark: false,
-    userStatus: "NEW",
-    isEmailTicket: false
-  },
-  {
-    eventId: "71763682-3542-4e69-8092-a82b575d81bb",
-    imageUrl:
-      "https://fileservice.petronas.com/api/v1/view/image/27309b99-15a5-4c4a-95e4-01fbce512504-the-brandenburg-concertos-v-vi-20170306022112.png",
-    eventName: "The Brandenburg Concertos V & VI",
-    eventDescription:
-      '<table width="100%" height="100%" cellspacing="0" cellpadding="0"><tbody><tr><td width="100%" height="100%" colspan="2">SAT 11 MAR 2017 8:30pm<br>SUN 12 MAR 2017 3:00pm<br><br>Malaysian Philharmonic Orchestra<br>Benjamin Bayl, conductor &amp; harpsichord<br><br>BACH Cantata No. 29: Sinfonia<br>BACH Brandenburg Concerto No. 6<br>BACH Brandenburg Concerto No. 5<br>MOZART Serenade No. 10 “Gran Partita”<br><br>The second Brandenburg Concerto programme features Concertos Nos. 5 and 6, led by Benjamin Bayl. Bayl also assumes the role of soloist in Concerto No. 5, the first work ever composed with a keyboard instrument as featured soloist. Among other things, it includes a long passage of astonishing virtuosity for the keyboard. Brandenburg Concerto No. 6 requires only strings but no violins! Its tone is exceptionally rich and dark, but its character is vigorous and exuberant.<br><br>RM150 / RM120 &nbsp;/ RM90 / &nbsp;RM60<br><br>To purchase tickets, visit our Box Office at Ground Floor, Tower 2, PETRONAS Twin Towers, KLCC or call 603 2331 7007, you may also purchase online at http://mpo.com.my/43-the-brandenburg-concertos-v-vi/<br><br><br></td></tr></tbody></table>',
-    dateFrom: "2017-03-11T12:30:00",
-    dateTo: "2017-03-12T07:00:00",
-    gmt: "+08:00",
-    eventLocation: {
-      locationId: "511ee969-583d-44f1-9cad-d6a629a93a59",
-      locationName: "Dewan Filharmonik PETRONAS",
-      locality: "",
-      country: "",
-      formattedAddress: "Dewan Filharmonik PETRONAS , ",
-      latitude: 3.1583895,
-      longitude: 101.7113859
-    },
-    eventCategories: [
-      {
-        categoryId: "059d6a06-9076-4d6c-8bf2-0f8ec8868ca9",
-        categoryName: "Arts & Entertainment"
-      }
-    ],
-    eventHashTagCategories: [
-      {
-        hashTagId: "70a5c9de-d4c5-4443-a834-5bc56ca082a3",
-        hashTagName: "Malaysian Philharmonic Orchestra"
-      },
-      {
-        hashTagId: "81d2b038-0571-423e-bfb1-9a97d6f29bbf",
-        hashTagName: "orchestra"
-      },
-      {
-        hashTagId: "ed2ebe44-df42-47b3-ac2e-f0c6ee70dc92",
-        hashTagName: "classical music"
-      }
-    ],
-    eventOrganizers: [
-      {
-        isSuperAdmin: false,
-        objectGUID: "e3300d71-9b70-45eb-b841-f09d1bb4da84",
-        displayName: "Farah Diyana Ismail (MAR/DFP)",
-        email: "farah.ismail@dfp.com.my",
-        sAMAccountName: "farah.ismail",
-        company: "Dewan Filhar. PETRONAS",
-        department: "Marketing",
-        division: "Operations Division",
-        position: "Executive, Web Administration",
-        office: "MAR/DFP",
-        mobile: "0129259077",
-        telephoneNumber: "+603 - 2392 4921",
-        employeeNumber: "1020428",
-        thumbnailPhoto:
-          "https://oexstorage.blob.core.windows.net/fileservices/UserPhotos/PETRONAS_farah.ismail.jpg",
-        isFirstLogon: false,
-        isFirstJoin: false,
-        domain: "PETRONAS",
-        isExternal: false
-      }
-    ],
-    seatLeft: -7,
-    seatTotal: 0,
-    seatAttendees: 7,
-    seatWaitList: 0,
-    seatPendingList: 0,
-    checkedInTotal: 0,
-    eventStatus: "PAST",
-    isFeatured: false,
-    isScreening: false,
-    eventType: "Public",
-    slugName: "The-Brandenburg-Concertos-V-and-VI",
-    isCheckedIn: false,
-    isOrganizer: false,
-    isSuperAdmin: false,
-    isBookmark: false,
-    userStatus: "NEW",
-    isEmailTicket: false
+    surveyUrl: null,
+    surveyResultUrl: null,
+    isBookmark: true,
+    userStatus: "NEW"
   }
 ];
 
-export const spotlightList = [
+/**
+ * For List of upcoming events on myEvents screen
+ */
+export const upcomingEvents = [
   {
-    spotlightId: "d9505911-f68c-4d0d-8707-cfbe047fd226",
-    spotlightName: "Pn Hjh Nur Zahirah M Sukran",
-    role: "Founder, CEO",
-    description:
-      '<p>Puan Hjh Nur Zahirah is currently a Chief Executive Officer at ILuvQuran Institute and Khadijah Learning Centre. She was born in 1981, graduated from Rensselaer Polytechnic Institute and obtained Masters of Business Administration (MBA) from University College Dublin. Currently completing her second masters at International Islamic University Malaysia (IIUM) in Education (Curriculum Instruction. Her passion in Quranic Education especially to children drives her and husband to form ILuvQuran institute to assist Muslims to appreciate and embrace the meaning of Al-Quran by loving, memorizing, understanding, applying and conveying the Quran. They have set up in house modules for Juz 30 from Al-Quran.&nbsp;</p><p><br></p><p>She has been invited to be speakers for PETRONAS (BAKIP) for parenting talk series, Kementerian Kerja Raya for teambuilding session, Persatuan Jaringan Bisnes Muslim Malaysia (MUBIN) on Human Resource training program.&nbsp;</p><p><br></p><p>Recently she was invited on air to radio IKIM.fm for "Inspirasiku" Program.&nbsp;</p>',
-    spotlightType: "People",
-    sequence: 1,
+    eventId: "76e7d2a0-11f9-4a4c-b609-aada83a3535a",
     imageUrl:
-      "https://fileservice.petronas.com/api/v1/view/image/48d38a06-ce10-41c4-9316-0f2bbf22bc57-zahirah-thumbnail.png",
-    bannerImageUrl:
-      "https://fileservice.petronas.com/api/v1/view/image/48d38a06-ce10-41c4-9316-0f2bbf22bc57-zahirah.png"
+      "https://stagingfileservice.petronas.com/api/v2/r/p/ccb3ce26-af6f-42e9-a9e4-4d009f29a7bc/b831b4f2-05a3-47b0-b37f-56c5dde380ae-1-906845.jpg",
+    eventName: "Formula 1 PETRONAS Malaysia Grand Prix 2018",
+    eventDescription:
+      "<p>The Malaysian Grand Prix is a round of the Formula One World Championship. It has been held at the Sepang International Circuit since 1999, although FIA-sanctioned racing in Malaysia has existed since the 1960s. Since 2011, the race has been officially known as the Malaysia Grand Prix.</p>",
+    dateFrom: "2018-12-26T08:00:00",
+    dateTo: "2018-12-27T16:00:00",
+    venue: "Entrance",
+    eventLocation: {
+      locationName: "Sepang",
+      latitude: 2.7568664,
+      longitude: 101.6463927,
+      id: "465a327a-470c-4900-b623-bdb3f476063a",
+      isDeleted: false,
+      discriminator: "Location"
+    },
+    eventStatus: "Published",
+    isFeatured: true,
+    eventType: "Public",
+    surveyUrl: null,
+    surveyResultUrl: null,
+    isBookmark: true,
+    userStatus: "JOINED"
   },
   {
-    spotlightId: "96fa882b-00a9-43c0-875e-289f133c94f7",
-    spotlightName: "Dr. Fong",
-    role:
-      "Consultant Ear, Nose & Throat Surgeon (Special Interest in Head & Neck Cancer Surgery)",
-    description:
-      "<p>Dr. Fong Voon Hoong is an Honorary Lecturer and Consultant ENT Surgeon from University Putra Malaysia. He is an award winning recipient in ENT areas and a regular speaker in Symposiums and Seminar. Currently, he operates his clinic at Twin Tower Medical Center in KLCC.</p>",
-    spotlightType: "People",
-    sequence: 1,
+    eventId: "1f4a0387-9ed1-4b84-9e8c-3813e11d0b53",
     imageUrl:
-      "https://fileservice.petronas.com/api/v1/view/image/031805f1-422f-4825-9934-519e2e8b931a-20170814112004blobid4-thumbnail.jpg",
-    bannerImageUrl:
-      "https://fileservice.petronas.com/api/v1/view/image/031805f1-422f-4825-9934-519e2e8b931a-20170814112004blobid4.jpg"
+      "https://fileservice.petronas.com/api/v1/view/image/112ee790-5610-4a62-8c6f-cf6d5b543238-ffe-14-nov-1280x720.png",
+    eventName: "PETRONAS ICT Core Academy Foundation for Executives",
+    eventDescription:
+      "<p>The PETRONAS ICT Core Academy: Foundation for Executives programme is our very own in-house academy which aims to provide common trainings across the organization to increase the levels of business knowledge. This is a great opportunity for you to network with your colleagues from other divisions.</p>",
+    dateFrom: "2018-12-23T08:30:00",
+    dateTo: "2018-12-28T16:00:00",
+    venue: "Entrance",
+    eventLocation: {
+      locationName: "PETRONAS Twin Towers, Kuala Lumpur",
+      latitude: 3.157797,
+      longitude: 101.711959,
+      id: "25cc87bf-d17f-4deb-999a-1ce2c2164d27",
+      isDeleted: false,
+      discriminator: "Location"
+    },
+    eventStatus: "Published",
+    isFeatured: false,
+    eventType: "Public",
+    surveyUrl: null,
+    surveyResultUrl: null,
+    isBookmark: false,
+    userStatus: "JOINED"
   },
   {
-    spotlightId: "d9505911-f68c-4d0d-8707-cfbe047fd000",
-    spotlightName: "Sukran",
-    role: "Founder, CEO of ILuvQuran Institute",
-    description:
-      '<p>Puan Hjh Nur Zahirah is currently a Chief Executive Officer at ILuvQuran Institute and Khadijah Learning Centre. She was born in 1981, graduated from Rensselaer Polytechnic Institute and obtained Masters of Business Administration (MBA) from University College Dublin. Currently completing her second masters at International Islamic University Malaysia (IIUM) in Education (Curriculum Instruction. Her passion in Quranic Education especially to children drives her and husband to form ILuvQuran institute to assist Muslims to appreciate and embrace the meaning of Al-Quran by loving, memorizing, understanding, applying and conveying the Quran. They have set up in house modules for Juz 30 from Al-Quran.&nbsp;</p><p><br></p><p>She has been invited to be speakers for PETRONAS (BAKIP) for parenting talk series, Kementerian Kerja Raya for teambuilding session, Persatuan Jaringan Bisnes Muslim Malaysia (MUBIN) on Human Resource training program.&nbsp;</p><p><br></p><p>Recently she was invited on air to radio IKIM.fm for "Inspirasiku" Program.&nbsp;</p>',
-    spotlightType: "People",
-    sequence: 1,
+    eventId: "790ab234-0be8-4a86-8af6-44efaa73eed1",
     imageUrl:
-      "https://fileservice.petronas.com/api/v1/view/image/48d38a06-ce10-41c4-9316-0f2bbf22bc57-zahirah-thumbnail.png",
-    bannerImageUrl:
-      "https://fileservice.petronas.com/api/v1/view/image/48d38a06-ce10-41c4-9316-0f2bbf22bc57-zahirah.png"
+      "https://fileservice.petronas.com/api/v1/view/image/112ee790-5610-4a62-8c6f-cf6d5b543238-ffe-14-nov-1280x720.png",
+    eventName: "PETRONAS ICT Core Academy Foundation for Executives",
+    eventDescription:
+      "<p>The PETRONAS ICT Core Academy: Foundation for Executives programme is our very own in-house academy which aims to provide common trainings across the organization to increase the levels of business knowledge. This is a great opportunity for you to network with your colleagues from other divisions.</p>",
+    dateFrom: "2018-12-23T08:30:00",
+    dateTo: "2018-12-28T16:00:00",
+    venue: "Entrance",
+    eventLocation: {
+      locationName: "PETRONAS Twin Towers, Kuala Lumpur",
+      latitude: 3.157797,
+      longitude: 101.711959,
+      id: "25cc87bf-d17f-4deb-999a-1ce2c2164d27",
+      isDeleted: false,
+      discriminator: "Location"
+    },
+    eventStatus: "Published",
+    isFeatured: false,
+    eventType: "Public",
+    surveyUrl: null,
+    surveyResultUrl: null,
+    isBookmark: true,
+    userStatus: "JOINED"
   },
   {
-    spotlightId: "96fa882b-00a9-43c0-875e-289f133c9000",
-    spotlightName: "Dr. Fong Voon Hoong",
-    role: "Consultant",
-    description:
-      "<p>Dr. Fong Voon Hoong is an Honorary Lecturer and Consultant ENT Surgeon from University Putra Malaysia. He is an award winning recipient in ENT areas and a regular speaker in Symposiums and Seminar. Currently, he operates his clinic at Twin Tower Medical Center in KLCC.</p>",
-    spotlightType: "People",
-    sequence: 1,
+    eventId: "92d433a0-9c46-4339-bdc5-049f355bc3d3",
     imageUrl:
-      "https://fileservice.petronas.com/api/v1/view/image/031805f1-422f-4825-9934-519e2e8b931a-20170814112004blobid4-thumbnail.jpg",
-    bannerImageUrl:
-      "https://fileservice.petronas.com/api/v1/view/image/031805f1-422f-4825-9934-519e2e8b931a-20170814112004blobid4.jpg"
+      "https://fileservice.petronas.com/api/v1/view/image/112ee790-5610-4a62-8c6f-cf6d5b543238-ffe-14-nov-1280x720.png",
+    eventName: "PETRONAS ICT Core Academy Foundation for Executives",
+    eventDescription:
+      "<p>The PETRONAS ICT Core Academy: Foundation for Executives programme is our very own in-house academy which aims to provide common trainings across the organization to increase the levels of business knowledge. This is a great opportunity for you to network with your colleagues from other divisions.</p>",
+    dateFrom: "2018-12-23T08:30:00",
+    dateTo: "2018-12-28T16:00:00",
+    venue: "Entrance",
+    eventLocation: {
+      locationName: "PETRONAS Twin Towers, Kuala Lumpur",
+      latitude: 3.157797,
+      longitude: 101.711959,
+      id: "25cc87bf-d17f-4deb-999a-1ce2c2164d27",
+      isDeleted: false,
+      discriminator: "Location"
+    },
+    eventStatus: "Published",
+    isFeatured: false,
+    eventType: "Public",
+    surveyUrl: null,
+    surveyResultUrl: null,
+    isBookmark: true,
+    userStatus: "JOINED"
   },
   {
-    spotlightId: "96fa882b-00a9-43c0-875e-289f133c94f7",
-    spotlightName: "Dr. Fong",
-    role:
-      "Consultant Ear, Nose & Throat Surgeon (Special Interest in Head & Neck Cancer Surgery)",
-    description:
-      "<p>Dr. Fong Voon Hoong is an Honorary Lecturer and Consultant ENT Surgeon from University Putra Malaysia. He is an award winning recipient in ENT areas and a regular speaker in Symposiums and Seminar. Currently, he operates his clinic at Twin Tower Medical Center in KLCC.</p>",
-    spotlightType: "People",
-    sequence: 1,
+    eventId: "b5577215-5809-4d0d-b6df-d722f5cabd5e",
     imageUrl:
-      "https://fileservice.petronas.com/api/v1/view/image/031805f1-422f-4825-9934-519e2e8b931a-20170814112004blobid4-thumbnail.jpg",
-    bannerImageUrl:
-      "https://fileservice.petronas.com/api/v1/view/image/031805f1-422f-4825-9934-519e2e8b931a-20170814112004blobid4.jpg"
+      "https://fileservice.petronas.com/api/v1/view/image/112ee790-5610-4a62-8c6f-cf6d5b543238-ffe-14-nov-1280x720.png",
+    eventName: "PETRONAS ICT Core Academy Foundation for Executives",
+    eventDescription:
+      "<p>The PETRONAS ICT Core Academy: Foundation for Executives programme is our very own in-house academy which aims to provide common trainings across the organization to increase the levels of business knowledge. This is a great opportunity for you to network with your colleagues from other divisions.</p>",
+    dateFrom: "2018-12-23T08:30:00",
+    dateTo: "2018-12-28T16:00:00",
+    venue: "Entrance",
+    eventLocation: {
+      locationName: "PETRONAS Twin Towers, Kuala Lumpur",
+      latitude: 3.157797,
+      longitude: 101.711959,
+      id: "25cc87bf-d17f-4deb-999a-1ce2c2164d27",
+      isDeleted: false,
+      discriminator: "Location"
+    },
+    eventStatus: "Published",
+    isFeatured: false,
+    eventType: "Public",
+    surveyUrl: null,
+    surveyResultUrl: null,
+    isBookmark: false,
+    userStatus: "JOINED"
   },
   {
-    spotlightId: "d9505911-f68c-4d0d-8707-cfbe047fd000",
-    spotlightName: "Sukran",
-    role: "Founder, CEO of ILuvQuran Institute",
-    description:
-      '<p>Puan Hjh Nur Zahirah is currently a Chief Executive Officer at ILuvQuran Institute and Khadijah Learning Centre. She was born in 1981, graduated from Rensselaer Polytechnic Institute and obtained Masters of Business Administration (MBA) from University College Dublin. Currently completing her second masters at International Islamic University Malaysia (IIUM) in Education (Curriculum Instruction. Her passion in Quranic Education especially to children drives her and husband to form ILuvQuran institute to assist Muslims to appreciate and embrace the meaning of Al-Quran by loving, memorizing, understanding, applying and conveying the Quran. They have set up in house modules for Juz 30 from Al-Quran.&nbsp;</p><p><br></p><p>She has been invited to be speakers for PETRONAS (BAKIP) for parenting talk series, Kementerian Kerja Raya for teambuilding session, Persatuan Jaringan Bisnes Muslim Malaysia (MUBIN) on Human Resource training program.&nbsp;</p><p><br></p><p>Recently she was invited on air to radio IKIM.fm for "Inspirasiku" Program.&nbsp;</p>',
-    spotlightType: "People",
-    sequence: 1,
+    eventId: "befee51f-10e3-4d9a-99ce-1513790d785f",
     imageUrl:
-      "https://fileservice.petronas.com/api/v1/view/image/48d38a06-ce10-41c4-9316-0f2bbf22bc57-zahirah-thumbnail.png",
-    bannerImageUrl:
-      "https://fileservice.petronas.com/api/v1/view/image/48d38a06-ce10-41c4-9316-0f2bbf22bc57-zahirah.png"
+      "https://fileservice.petronas.com/api/v1/view/image/112ee790-5610-4a62-8c6f-cf6d5b543238-ffe-14-nov-1280x720.png",
+    eventName: "PETRONAS ICT Core Academy Foundation for Executives",
+    eventDescription:
+      "<p>The PETRONAS ICT Core Academy: Foundation for Executives programme is our very own in-house academy which aims to provide common trainings across the organization to increase the levels of business knowledge. This is a great opportunity for you to network with your colleagues from other divisions.</p>",
+    dateFrom: "2018-12-23T08:30:00",
+    dateTo: "2018-12-28T16:00:00",
+    venue: "Entrance",
+    eventLocation: {
+      locationName: "PETRONAS Twin Towers, Kuala Lumpur",
+      latitude: 3.157797,
+      longitude: 101.711959,
+      id: "25cc87bf-d17f-4deb-999a-1ce2c2164d27",
+      isDeleted: false,
+      discriminator: "Location"
+    },
+    eventStatus: "Published",
+    isFeatured: false,
+    eventType: "Public",
+    surveyUrl: null,
+    surveyResultUrl: null,
+    isBookmark: false,
+    userStatus: "JOINED"
   },
   {
-    spotlightId: "d9505911-f68c-4d0d-8707-cfbe047fd111",
-    spotlightName: "Pn Hjh Nur Zahirah M Sukran",
-    role: "Founder, CEO of ILuvQuran Institute",
-    description:
-      '<p>Puan Hjh Nur Zahirah is currently a Chief Executive Officer at ILuvQuran Institute and Khadijah Learning Centre. She was born in 1981, graduated from Rensselaer Polytechnic Institute and obtained Masters of Business Administration (MBA) from University College Dublin. Currently completing her second masters at International Islamic University Malaysia (IIUM) in Education (Curriculum Instruction. Her passion in Quranic Education especially to children drives her and husband to form ILuvQuran institute to assist Muslims to appreciate and embrace the meaning of Al-Quran by loving, memorizing, understanding, applying and conveying the Quran. They have set up in house modules for Juz 30 from Al-Quran.&nbsp;</p><p><br></p><p>She has been invited to be speakers for PETRONAS (BAKIP) for parenting talk series, Kementerian Kerja Raya for teambuilding session, Persatuan Jaringan Bisnes Muslim Malaysia (MUBIN) on Human Resource training program.&nbsp;</p><p><br></p><p>Recently she was invited on air to radio IKIM.fm for "Inspirasiku" Program.&nbsp;</p>',
-    spotlightType: "People",
-    sequence: 1,
+    eventId: "e54fa954-5319-43ba-b772-d6dfda8ee33a",
     imageUrl:
-      "https://fileservice.petronas.com/api/v1/view/image/48d38a06-ce10-41c4-9316-0f2bbf22bc57-zahirah-thumbnail.png",
-    bannerImageUrl:
-      "https://fileservice.petronas.com/api/v1/view/image/48d38a06-ce10-41c4-9316-0f2bbf22bc57-zahirah.png"
+      "https://fileservice.petronas.com/api/v1/view/image/112ee790-5610-4a62-8c6f-cf6d5b543238-ffe-14-nov-1280x720.png",
+    eventName: "PETRONAS ICT Core Academy Foundation for Executives",
+    eventDescription:
+      "<p>The PETRONAS ICT Core Academy: Foundation for Executives programme is our very own in-house academy which aims to provide common trainings across the organization to increase the levels of business knowledge. This is a great opportunity for you to network with your colleagues from other divisions.</p>",
+    dateFrom: "2018-12-23T08:30:00",
+    dateTo: "2018-12-28T16:00:00",
+    venue: "Entrance",
+    eventLocation: {
+      locationName: "PETRONAS Twin Towers, Kuala Lumpur",
+      latitude: 3.157797,
+      longitude: 101.711959,
+      id: "25cc87bf-d17f-4deb-999a-1ce2c2164d27",
+      isDeleted: false,
+      discriminator: "Location"
+    },
+    eventStatus: "Published",
+    isFeatured: false,
+    eventType: "Public",
+    surveyUrl: null,
+    surveyResultUrl: null,
+    isBookmark: false,
+    userStatus: "JOINED"
   },
   {
-    spotlightId: "96fa882b-00a9-43c0-875e-289f133c9111",
-    spotlightName: "Dr. Fong Voon Hoong",
-    role:
-      "Consultant Ear, Nose & Throat Surgeon (Special Interest in Head & Neck Cancer Surgery)",
-    description:
-      "<p>Dr. Fong Voon Hoong is an Honorary Lecturer and Consultant ENT Surgeon from University Putra Malaysia. He is an award winning recipient in ENT areas and a regular speaker in Symposiums and Seminar. Currently, he operates his clinic at Twin Tower Medical Center in KLCC.</p>",
-    spotlightType: "People",
-    sequence: 1,
+    eventId: "edc638eb-546b-498f-a8b6-f0e60ad22daf",
     imageUrl:
-      "https://fileservice.petronas.com/api/v1/view/image/031805f1-422f-4825-9934-519e2e8b931a-20170814112004blobid4-thumbnail.jpg",
-    bannerImageUrl:
-      "https://fileservice.petronas.com/api/v1/view/image/031805f1-422f-4825-9934-519e2e8b931a-20170814112004blobid4.jpg"
+      "https://fileservice.petronas.com/api/v1/view/image/112ee790-5610-4a62-8c6f-cf6d5b543238-ffe-14-nov-1280x720.png",
+    eventName: "PETRONAS ICT Core Academy Foundation for Executives",
+    eventDescription:
+      "<p>The PETRONAS ICT Core Academy: Foundation for Executives programme is our very own in-house academy which aims to provide common trainings across the organization to increase the levels of business knowledge. This is a great opportunity for you to network with your colleagues from other divisions.</p>",
+    dateFrom: "2018-12-23T08:30:00",
+    dateTo: "2018-12-28T16:00:00",
+    venue: "Entrance",
+    eventLocation: {
+      locationName: "PETRONAS Twin Towers, Kuala Lumpur",
+      latitude: 3.157797,
+      longitude: 101.711959,
+      id: "25cc87bf-d17f-4deb-999a-1ce2c2164d27",
+      isDeleted: false,
+      discriminator: "Location"
+    },
+    eventStatus: "Published",
+    isFeatured: false,
+    eventType: "Public",
+    surveyUrl: null,
+    surveyResultUrl: null,
+    isBookmark: false,
+    userStatus: "JOINED"
+  },
+  {
+    eventId: "f05c1dd7-1190-44e8-bace-371d0f69c22f",
+    imageUrl:
+      "https://fileservice.petronas.com/api/v1/view/image/112ee790-5610-4a62-8c6f-cf6d5b543238-ffe-14-nov-1280x720.png",
+    eventName: "PETRONAS ICT Core Academy Foundation for Executives",
+    eventDescription:
+      "<p>The PETRONAS ICT Core Academy: Foundation for Executives programme is our very own in-house academy which aims to provide common trainings across the organization to increase the levels of business knowledge. This is a great opportunity for you to network with your colleagues from other divisions.</p>",
+    dateFrom: "2018-12-23T08:30:00",
+    dateTo: "2018-12-28T16:00:00",
+    venue: "Entrance",
+    eventLocation: {
+      locationName: "PETRONAS Twin Towers, Kuala Lumpur",
+      latitude: 3.157797,
+      longitude: 101.711959,
+      id: "25cc87bf-d17f-4deb-999a-1ce2c2164d27",
+      isDeleted: false,
+      discriminator: "Location"
+    },
+    eventStatus: "Published",
+    isFeatured: false,
+    eventType: "Public",
+    surveyUrl: null,
+    surveyResultUrl: null,
+    isBookmark: false,
+    userStatus: "JOINED"
+  },
+  {
+    eventId: "4f04af55-b092-47ed-a53d-87960d3eeaab",
+    imageUrl:
+      "https://fileservice.petronas.com/api/v1/view/image/6747e91a-4e26-479c-8645-4d8337c7840d-capture-1280x720.png",
+    eventName: "BAMup Strategy 2019 & PUReCOP#4 2018",
+    eventDescription:
+      "<p>Bad Actor Upstream Strategy 2019 &amp; PETRONAS Upstream Reliability COP 2018&nbsp;</p>",
+    dateFrom: "2018-12-30T08:00:00",
+    dateTo: "2018-12-31T18:30:00",
+    venue: "Be Amazing-Level 21",
+    eventLocation: {
+      locationName: "Suria KLCC, Kuala Lumpur",
+      latitude: 3.157951,
+      longitude: 101.711623,
+      id: "000d59dd-59a2-444d-b713-9e992d5718a5",
+      isDeleted: false,
+      discriminator: "Location"
+    },
+    eventStatus: "Published",
+    isFeatured: true,
+    eventType: "Public",
+    surveyUrl: null,
+    surveyResultUrl: null,
+    isBookmark: true,
+    userStatus: "NEW"
   }
 ];
 
-export const agendaList = [
-  //"eventId": "4a935cb9-6d0e-48c9-acb0-150337804833"
+/**
+ * For List of upcoming events on Home screen
+ */
+export const upcomingAllEvents = [
   {
-    agendaId: "d2720a9a-52de-41a5-9e2b-65dd9a98f035",
-    day: 1,
-    timeFrom: "13:00",
-    timeTo: "14:00",
-    checkedInTotal: 0,
-    seatsLeft: 0,
-    seatsTotal: 0,
-    name: "Check in",
-    venue: "Hotel Lobby Garden Wing",
-    isBooked: false,
-    description: "",
-    isCheckedIn: false
+    eventId: "c4926650-d306-47ac-9e9c-291dcd17a3a7",
+    imageUrl:
+      "https://fileservice.petronas.com/api/v1/view/image/83b92f2d-e882-4c1a-b771-a17870acd2bc-hse-myevent-1280x720.png",
+    eventName: "HSE Day",
+    eventDescription:
+      "<p>The key of this event is to deliver the message about health and safety awareness to PETRONAS ICT staff.</p><p>The event will involve free health check, booth exhibition, staff price promotion on selected items, etc.</p>",
+    dateFrom: "2018-12-21T09:00:00",
+    dateTo: "2018-12-25T17:00:00",
+    venue: "Entrance",
+    eventLocation: {
+      locationName: "Etiqa Twin Towers, Kuala Lumpur",
+      latitude: 3.154262,
+      longitude: 101.711194,
+      id: "85d6dbf8-e3a2-4d7f-9a78-c2fbfa5cdbc8",
+      isDeleted: false,
+      discriminator: "Location"
+    },
+    eventStatus: "Published",
+    isFeatured: false,
+    eventType: "Public",
+    surveyUrl: null,
+    surveyResultUrl: null,
+    isBookmark: false,
+    userStatus: "NEW"
   },
   {
-    agendaId: "2ded179a-78de-4a7b-a2f2-d7d83ff3d928",
-    day: 1,
-    timeFrom: "14:30",
-    timeTo: "17:00",
-    checkedInTotal: 0,
-    seatsLeft: 0,
-    seatsTotal: 0,
-    name: "Drain your sweat",
-    venue: "Beach Front",
-    isBooked: false,
-    description: "",
-    isCheckedIn: false
+    eventId: "f0204d95-02dd-438f-b04c-1d17334956c6",
+    imageUrl:
+      "https://fileservice.petronas.com/api/v1/view/image/ae5ea49a-0a8c-4af9-aac1-fe0b3d1f2f73-edu-tafseer-ig-0-1280x720.png",
+    eventName: "Tafseer 1.0 [Sessions to bring us closer to Al-Quran]",
+    eventDescription:
+      '<p>Join PETRONITA from <strong>Fri,</strong>\n<strong>12 Oct - Fri, 30 Nov 2018</strong> to learn &amp; understand the meaning of specific Quran verses and its application.</p><p><br></p><p>By participating in this<strong>&nbsp;8 weekly sessions</strong> , we hope that our members will ;</p><ol><li>Be able to understand, relate and practice the knowledge obtained in day to day life as a person and leader in an organisation</li><li>Increase in self-motivation to be a better person from all aspects including leadership</li><li>Be able to appreciate and embrace PETRONAS cultural beliefs across all situations</li></ol><p><strong>Program Fee</strong> (8 sessions):</p><ul><li>Member: &nbsp;RM 50</li><li>Non Member: RM 65</li></ul><p><strong>Payment:</strong></p><ul><li>By cash to PETRONITA Office; or</li><li>Online transfer to Maybank 5644 9041 1972</li></ul><p data-empty="true"><strong>To Register;&nbsp;</strong></p><ul><li data-empty="true">Click on <strong>Join&nbsp;</strong>to register your interest</li><li data-empty="true">Proof of payment of fees is required prior to confirmation of your seat.</li></ul><p data-empty="true"><br></p>',
+    dateFrom: "2018-12-25T08:00:00",
+    dateTo: "2018-12-25T19:30:00",
+    venue: "Entrance",
+    eventLocation: {
+      locationName: "PETRONAS Twin Towers, Kuala Lumpur",
+      latitude: 3.157797,
+      longitude: 101.711959,
+      id: "25cc87bf-d17f-4deb-999a-1ce2c2164d27",
+      isDeleted: false,
+      discriminator: "Location"
+    },
+    eventStatus: "Published",
+    isFeatured: false,
+    eventType: "Public",
+    surveyUrl: null,
+    surveyResultUrl: null,
+    isBookmark: false,
+    userStatus: "NEW"
   },
   {
-    agendaId: "f5a278c2-6e67-453e-998b-bdb45f933928",
-    day: 1,
-    timeFrom: "18:30",
-    timeTo: "19:45",
-    checkedInTotal: 0,
-    seatsLeft: 0,
-    seatsTotal: 0,
-    name: "Dinner day 1",
-    venue: "Jasmine Room",
-    isBooked: false,
-    description: "",
-    isCheckedIn: false
+    eventId: "76e7d2a0-11f9-4a4c-b609-aada83a3535a",
+    imageUrl:
+      "https://stagingfileservice.petronas.com/api/v2/r/p/ccb3ce26-af6f-42e9-a9e4-4d009f29a7bc/b831b4f2-05a3-47b0-b37f-56c5dde380ae-1-906845.jpg",
+    eventName: "Formula 1 PETRONAS Malaysia Grand Prix 2018",
+    eventDescription:
+      "<p>The Malaysian Grand Prix is a round of the Formula One World Championship. It has been held at the Sepang International Circuit since 1999, although FIA-sanctioned racing in Malaysia has existed since the 1960s. Since 2011, the race has been officially known as the Malaysia Grand Prix.</p>",
+    dateFrom: "2018-12-26T08:00:00",
+    dateTo: "2018-12-27T16:00:00",
+    venue: "Entrance",
+    eventLocation: {
+      locationName: "Sepang",
+      latitude: 2.7568664,
+      longitude: 101.6463927,
+      id: "465a327a-470c-4900-b623-bdb3f476063a",
+      isDeleted: false,
+      discriminator: "Location"
+    },
+    eventStatus: "Published",
+    isFeatured: true,
+    eventType: "Public",
+    surveyUrl: null,
+    surveyResultUrl: null,
+    isBookmark: true,
+    userStatus: "JOINED"
   },
   {
-    agendaId: "709cff52-53e8-4e34-83bf-8b44077f0553",
-    day: 1,
-    timeFrom: "20:00",
-    timeTo: "22:30",
-    checkedInTotal: 0,
-    seatsLeft: 0,
-    seatsTotal: 0,
-    name: "Why are we here?",
-    venue: "Jasmine Room",
-    isBooked: false,
-    description: "",
-    isCheckedIn: false
+    eventId: "8e6e8959-219a-46ac-aff3-0e2ab444e836",
+    imageUrl:
+      "https://fileservice.petronas.com/api/v1/view/image/fda59b1d-5409-415e-8991-98c289dacdd9-banners2-1280x720.png",
+    eventName: "In It 2 Win It Session 8",
+    eventDescription: "<p>PCFSSB Company Away Day 2018</p>",
+    dateFrom: "2018-12-26T08:00:00",
+    dateTo: "2018-12-27T18:00:00",
+    venue: "Entrance",
+    eventLocation: {
+      locationName: "Etiqa Twin Towers, Kuala Lumpur",
+      latitude: 3.154262,
+      longitude: 101.711194,
+      id: "85d6dbf8-e3a2-4d7f-9a78-c2fbfa5cdbc8",
+      isDeleted: false,
+      discriminator: "Location"
+    },
+    eventStatus: "Published",
+    isFeatured: false,
+    eventType: "Public",
+    surveyUrl: null,
+    surveyResultUrl: null,
+    isBookmark: false,
+    userStatus: "NEW"
   },
   {
-    agendaId: "2626bef0-f9e2-4af0-8d57-85d2b48fc987",
-    day: 1,
-    timeFrom: "22:30",
-    timeTo: "22:45",
-    checkedInTotal: 0,
-    seatsLeft: 0,
-    seatsTotal: 0,
-    name: "Supper",
-    venue: "",
-    isBooked: false,
-    description: "",
-    isCheckedIn: false
+    eventId: "1f4a0387-9ed1-4b84-9e8c-3813e11d0b53",
+    imageUrl:
+      "https://fileservice.petronas.com/api/v1/view/image/112ee790-5610-4a62-8c6f-cf6d5b543238-ffe-14-nov-1280x720.png",
+    eventName: "PETRONAS ICT Core Academy Foundation for Executives",
+    eventDescription:
+      "<p>The PETRONAS ICT Core Academy: Foundation for Executives programme is our very own in-house academy which aims to provide common trainings across the organization to increase the levels of business knowledge. This is a great opportunity for you to network with your colleagues from other divisions.</p>",
+    dateFrom: "2018-12-23T08:30:00",
+    dateTo: "2018-12-28T16:00:00",
+    venue: "Entrance",
+    eventLocation: {
+      locationName: "PETRONAS Twin Towers, Kuala Lumpur",
+      latitude: 3.157797,
+      longitude: 101.711959,
+      id: "25cc87bf-d17f-4deb-999a-1ce2c2164d27",
+      isDeleted: false,
+      discriminator: "Location"
+    },
+    eventStatus: "Published",
+    isFeatured: false,
+    eventType: "Public",
+    surveyUrl: null,
+    surveyResultUrl: null,
+    isBookmark: false,
+    userStatus: "JOINED"
   },
   {
-    agendaId: "4e2e4cd4-4747-4773-94aa-c3f4bebb4189",
-    day: 2,
-    timeFrom: "06:30",
-    timeTo: "07:00",
-    checkedInTotal: 0,
-    seatsLeft: 0,
-    seatsTotal: 0,
-    name: "Senam-robik",
-    venue: "Beach Front",
-    isBooked: false,
-    description: "",
-    isCheckedIn: false
+    eventId: "790ab234-0be8-4a86-8af6-44efaa73eed1",
+    imageUrl:
+      "https://fileservice.petronas.com/api/v1/view/image/112ee790-5610-4a62-8c6f-cf6d5b543238-ffe-14-nov-1280x720.png",
+    eventName: "PETRONAS ICT Core Academy Foundation for Executives",
+    eventDescription:
+      "<p>The PETRONAS ICT Core Academy: Foundation for Executives programme is our very own in-house academy which aims to provide common trainings across the organization to increase the levels of business knowledge. This is a great opportunity for you to network with your colleagues from other divisions.</p>",
+    dateFrom: "2018-12-23T08:30:00",
+    dateTo: "2018-12-28T16:00:00",
+    venue: "Entrance",
+    eventLocation: {
+      locationName: "PETRONAS Twin Towers, Kuala Lumpur",
+      latitude: 3.157797,
+      longitude: 101.711959,
+      id: "25cc87bf-d17f-4deb-999a-1ce2c2164d27",
+      isDeleted: false,
+      discriminator: "Location"
+    },
+    eventStatus: "Published",
+    isFeatured: false,
+    eventType: "Public",
+    surveyUrl: null,
+    surveyResultUrl: null,
+    isBookmark: true,
+    userStatus: "JOINED"
   },
   {
-    agendaId: "a5628fc1-6f22-4f88-baaa-6fd67040a25a",
-    day: 2,
-    timeFrom: "07:00",
-    timeTo: "08:00",
-    checkedInTotal: 0,
-    seatsLeft: 0,
-    seatsTotal: 0,
-    name: "Breakfast day 2",
-    venue: "Hotel Restaurant",
-    isBooked: false,
-    description: "",
-    isCheckedIn: false
+    eventId: "92d433a0-9c46-4339-bdc5-049f355bc3d3",
+    imageUrl:
+      "https://fileservice.petronas.com/api/v1/view/image/112ee790-5610-4a62-8c6f-cf6d5b543238-ffe-14-nov-1280x720.png",
+    eventName: "PETRONAS ICT Core Academy Foundation for Executives",
+    eventDescription:
+      "<p>The PETRONAS ICT Core Academy: Foundation for Executives programme is our very own in-house academy which aims to provide common trainings across the organization to increase the levels of business knowledge. This is a great opportunity for you to network with your colleagues from other divisions.</p>",
+    dateFrom: "2018-12-23T08:30:00",
+    dateTo: "2018-12-28T16:00:00",
+    venue: "Entrance",
+    eventLocation: {
+      locationName: "PETRONAS Twin Towers, Kuala Lumpur",
+      latitude: 3.157797,
+      longitude: 101.711959,
+      id: "25cc87bf-d17f-4deb-999a-1ce2c2164d27",
+      isDeleted: false,
+      discriminator: "Location"
+    },
+    eventStatus: "Published",
+    isFeatured: false,
+    eventType: "Public",
+    surveyUrl: null,
+    surveyResultUrl: null,
+    isBookmark: true,
+    userStatus: "JOINED"
   },
   {
-    agendaId: "16e7cc53-18f7-48eb-b491-31840ac487b8",
-    day: 2,
-    timeFrom: "08:30",
-    timeTo: "09:30",
-    checkedInTotal: 0,
-    seatsLeft: 0,
-    seatsTotal: 0,
-    name: "In it 2 win it",
-    venue: "Orchid Room",
-    isBooked: false,
-    description: "",
-    isCheckedIn: false
+    eventId: "befee51f-10e3-4d9a-99ce-1513790d785f",
+    imageUrl:
+      "https://fileservice.petronas.com/api/v1/view/image/112ee790-5610-4a62-8c6f-cf6d5b543238-ffe-14-nov-1280x720.png",
+    eventName: "PETRONAS ICT Core Academy Foundation for Executives",
+    eventDescription:
+      "<p>The PETRONAS ICT Core Academy: Foundation for Executives programme is our very own in-house academy which aims to provide common trainings across the organization to increase the levels of business knowledge. This is a great opportunity for you to network with your colleagues from other divisions.</p>",
+    dateFrom: "2018-12-23T08:30:00",
+    dateTo: "2018-12-28T16:00:00",
+    venue: "Entrance",
+    eventLocation: {
+      locationName: "PETRONAS Twin Towers, Kuala Lumpur",
+      latitude: 3.157797,
+      longitude: 101.711959,
+      id: "25cc87bf-d17f-4deb-999a-1ce2c2164d27",
+      isDeleted: false,
+      discriminator: "Location"
+    },
+    eventStatus: "Published",
+    isFeatured: false,
+    eventType: "Public",
+    surveyUrl: null,
+    surveyResultUrl: null,
+    isBookmark: false,
+    userStatus: "JOINED"
   },
   {
-    agendaId: "e5162907-a1ca-4507-9d23-4d5f99776a63",
-    day: 2,
-    timeFrom: "09:30",
-    timeTo: "10:30",
-    checkedInTotal: 0,
-    seatsLeft: 0,
-    seatsTotal: 0,
-    name: "Infinity & beyond",
-    venue: "",
-    isBooked: false,
-    description: "",
-    isCheckedIn: false
+    eventId: "e54fa954-5319-43ba-b772-d6dfda8ee33a",
+    imageUrl:
+      "https://fileservice.petronas.com/api/v1/view/image/112ee790-5610-4a62-8c6f-cf6d5b543238-ffe-14-nov-1280x720.png",
+    eventName: "PETRONAS ICT Core Academy Foundation for Executives",
+    eventDescription:
+      "<p>The PETRONAS ICT Core Academy: Foundation for Executives programme is our very own in-house academy which aims to provide common trainings across the organization to increase the levels of business knowledge. This is a great opportunity for you to network with your colleagues from other divisions.</p>",
+    dateFrom: "2018-12-23T08:30:00",
+    dateTo: "2018-12-28T16:00:00",
+    venue: "Entrance",
+    eventLocation: {
+      locationName: "PETRONAS Twin Towers, Kuala Lumpur",
+      latitude: 3.157797,
+      longitude: 101.711959,
+      id: "25cc87bf-d17f-4deb-999a-1ce2c2164d27",
+      isDeleted: false,
+      discriminator: "Location"
+    },
+    eventStatus: "Published",
+    isFeatured: false,
+    eventType: "Public",
+    surveyUrl: null,
+    surveyResultUrl: null,
+    isBookmark: false,
+    userStatus: "JOINED"
   },
   {
-    agendaId: "ba83b75d-5f8a-412c-9e1b-289de4cf6a1a",
-    day: 2,
-    timeFrom: "10:30",
-    timeTo: "10:45",
-    checkedInTotal: 0,
-    seatsLeft: 0,
-    seatsTotal: 0,
-    name: "Morning break",
-    venue: "",
-    isBooked: false,
-    description: "",
-    isCheckedIn: false
+    eventId: "4f04af55-b092-47ed-a53d-87960d3eeaab",
+    imageUrl:
+      "https://fileservice.petronas.com/api/v1/view/image/6747e91a-4e26-479c-8645-4d8337c7840d-capture-1280x720.png",
+    eventName: "BAMup Strategy 2019 & PUReCOP#4 2018",
+    eventDescription:
+      "<p>Bad Actor Upstream Strategy 2019 &amp; PETRONAS Upstream Reliability COP 2018&nbsp;</p>",
+    dateFrom: "2018-12-30T08:00:00",
+    dateTo: "2018-12-31T18:30:00",
+    venue: "Be Amazing-Level 21",
+    eventLocation: {
+      locationName: "Suria KLCC, Kuala Lumpur",
+      latitude: 3.157951,
+      longitude: 101.711623,
+      id: "000d59dd-59a2-444d-b713-9e992d5718a5",
+      isDeleted: false,
+      discriminator: "Location"
+    },
+    eventStatus: "Published",
+    isFeatured: true,
+    eventType: "Public",
+    surveyUrl: null,
+    surveyResultUrl: null,
+    isBookmark: true,
+    userStatus: "NEW"
+  }
+];
+
+/**
+ * For List of past events
+ */
+export const pastEvents = [
+  {
+    eventId: "f5f3e64e-91a5-4af6-8e37-3ecfe00eadf5",
+    imageUrl:
+      "https://fileservice.petronas.com/api/v1/view/image/836a52bc-943f-4fa7-83f0-b3640ef3df6a-oe-r2-poster-1280x720.png",
+    eventName: "MRCSB OE R2 Power Up Session",
+    eventDescription:
+      "<p><u>Details agenda</u></p><p><br></p><p><strong>8.30 - 9.00 a.m. &nbsp;:&nbsp;</strong><strong>Registration</strong></p><p><strong>9:00 -&nbsp;</strong><strong>9:10 a.m. &nbsp;:&nbsp;</strong><strong>Safety Moment, Doa</strong></p><p><strong>9:15 &nbsp;- 9:30 a.m. &nbsp;:&nbsp;</strong><strong>PCB Moment</strong></p><p><strong>9:30 - 9.45 a.m. &nbsp; :&nbsp;</strong><strong>Welcoming Remarks</strong></p><p><strong>9.45 - 10.15 a.m. &nbsp;:&nbsp;</strong><strong>Context Setting</strong></p><p><strong>10.15 - 10.30 a.m.:&nbsp;</strong><strong>Living the PETRONAS Cultural Beliefs</strong></p><p><strong>10.30 - 11.00 a.m.:&nbsp;</strong><strong>Feedback Preparation</strong></p><p><strong>11.00 - 11.15 a.m. :&nbsp;</strong><strong>Tea Break</strong></p><p><strong>11.15 - 11.30 a.m. :&nbsp;</strong><strong>Feedback Exchange Round 1</strong></p><p><strong>11.30 - 11.45 a.m. :&nbsp;</strong><strong>Feedback Exchange Round 2</strong></p><p><strong>11.45 - 12.00 p.m.:&nbsp;</strong><strong>Feedback Exchange Round 3</strong></p><p><strong>12.00 - 12.15 p.m.:&nbsp;</strong><strong>Feedback Exchange Round 4</strong></p><p><strong>12.15 - 12.45 p.m. :&nbsp;</strong><strong>Changing Beliefs Preparation</strong></p><p><strong>12.45 - 2.30 p.m. &nbsp;:&nbsp;</strong><strong>Lunch &amp; Prayers</strong></p><p><strong>&nbsp;2.30 - 2.50 p.m. &nbsp;:&nbsp;</strong><strong>Changing Beliefs Conversation Group 1</strong></p><p><strong>2.50 - 3.10 p.m. &nbsp; :&nbsp;</strong><strong>Changing Beliefs Conversation Group 2</strong></p><p><strong>3.10 – 3.30 p.m. &nbsp;:&nbsp;</strong><strong>Changing Beliefs Conversation Group 3</strong></p><p><strong>3.30 – 3.45 p.m. &nbsp;:&nbsp;</strong><strong>Tea time</strong></p><p><strong>3.45 - 4.05 p.m. &nbsp; :&nbsp;</strong><strong>Changing Beliefs Conversation Group 4</strong></p><p><strong>4.25 - 4.45 p.m. &nbsp; :&nbsp;</strong><strong>Changing Beliefs Conversation Group 5</strong></p><p><strong>4.45 - 5.00 p.m. &nbsp; :&nbsp;</strong><strong>Key Take Away &amp; Expectation</strong></p>",
+    dateFrom: "2018-07-01T08:00:00",
+    dateTo: "2018-07-02T18:00:00",
+    venue: "Be Amazing-Level 21",
+    eventLocation: {
+      locationName: "Suria KLCC, Kuala Lumpur",
+      latitude: 3.157951,
+      longitude: 101.711623,
+      id: "000d59dd-59a2-444d-b713-9e992d5718a5",
+      isDeleted: false,
+      discriminator: "Location"
+    },
+    eventStatus: "Published",
+    isFeatured: false,
+    eventType: "Public",
+    surveyUrl: null,
+    surveyResultUrl: null,
+    isBookmark: false,
+    userStatus: "CHECKEDIN"
   },
   {
-    agendaId: "7b65c4a5-5518-4996-b638-38f020109c03",
-    day: 2,
-    timeFrom: "10:45",
-    timeTo: "12:00",
-    checkedInTotal: 0,
-    seatsLeft: 0,
-    seatsTotal: 0,
-    name: "Cont.: Infinity & beyond",
-    venue: "",
-    isBooked: false,
-    description: "",
-    isCheckedIn: false
+    eventId: "403a9340-2672-4d9a-9c46-baff386d6e3f",
+    imageUrl:
+      "https://fileservice.petronas.com/api/v1/view/image/397e9a18-475e-47e6-b3fb-471841e4ab8a-picture2-1280x720.png",
+    eventName: "Tender Committee Secretaries Round Table Meeting No 2",
+    eventDescription:
+      '<p style="text-align: center;">Dear Esteemed TC Secretaries,</p><p style="text-align: center;"><br></p><p style="text-align: center;">We are pleased to invite you to the 2nd TC Secretaries Round Table Meeting in 2018</p>',
+    dateFrom: "2018-09-02T08:00:00",
+    dateTo: "2018-09-03T17:00:00",
+    venue: "Main Hall",
+    eventLocation: {
+      locationName: "Traders Hotel, Kuala Lumpur",
+      latitude: 3.153958,
+      longitude: 101.71403,
+      id: "79ec34a6-47d6-4bdf-825b-61662765ac21",
+      isDeleted: false,
+      discriminator: "Location"
+    },
+    eventStatus: "Published",
+    isFeatured: false,
+    eventType: "Public",
+    surveyUrl: null,
+    surveyResultUrl: null,
+    isBookmark: true,
+    userStatus: "CHECKEDIN"
+  }
+];
+
+/**
+ * For List of spotlights
+ */
+export const spotlights = [
+  {
+    spotlightId: "54896f31-ab60-46ba-a1fe-e726773ef891",
+    spotlightName: "Lewis Hamilton",
+    description: "F1 Driver",
+    imageUrl:
+      "https://stagingfileservice.petronas.com/api/v2/r/p/ccb3ce26-af6f-42e9-a9e4-4d009f29a7bc/ddb20aa4-4d29-4a43-8c05-fb174d8d9eb6-1-440px-lewis-hamilton-2016-malaysia-2.jpg"
   },
   {
-    agendaId: "b6f3553e-2a36-4405-ad58-a0afd54d1ab2",
-    day: 2,
-    timeFrom: "12:00",
-    timeTo: "13:30",
-    checkedInTotal: 0,
-    seatsLeft: 0,
-    seatsTotal: 0,
-    name: "Lunch break day 2",
-    venue: "Jasmine Room",
-    isBooked: false,
-    description: "",
-    isCheckedIn: false
+    spotlightId: "4e84348a-1d01-436f-b20a-a4bd337aeb39",
+    spotlightName: "Kimi Räikkönen",
+    description: "F1 Driver",
+    imageUrl:
+      "https://stagingfileservice.petronas.com/api/v2/r/p/ccb3ce26-af6f-42e9-a9e4-4d009f29a7bc/349630b9-2ebd-4b18-b5f8-5628c2f2f704-1-rai-at-2017-russian-grand-prix-podium-cropped.jpg"
   },
   {
-    agendaId: "efdf5920-41d9-4e5c-8778-84dac77e31d0",
-    day: 2,
-    timeFrom: "13:30",
-    timeTo: "13:45",
-    checkedInTotal: 0,
-    seatsLeft: 0,
-    seatsTotal: 0,
-    name: "Berat mata memandang",
-    venue: "Orchid Room",
-    isBooked: false,
-    description: "",
-    isCheckedIn: false
+    spotlightId: "63a7fb1f-0789-4c3d-95cf-937d68101fa0",
+    spotlightName: "Fernando Alonso",
+    description: "F1 Driver",
+    imageUrl:
+      "https://stagingfileservice.petronas.com/api/v2/r/p/ccb3ce26-af6f-42e9-a9e4-4d009f29a7bc/a16b6151-ce40-4a40-962b-e6061ecea52e-1-alonso-2016.jpg"
   },
   {
-    agendaId: "5ded48e1-cfeb-4930-bc97-3bfd232c1ac5",
-    day: 2,
-    timeFrom: "13:45",
-    timeTo: "15:15",
-    checkedInTotal: 0,
-    seatsLeft: 0,
-    seatsTotal: 0,
-    name: "Oh my car!",
-    venue: "",
-    isBooked: false,
-    description: "",
-    isCheckedIn: false
+    spotlightId: "88ee8795-aa9e-4dea-ae4e-5fa4705b5f80",
+    spotlightName: "Celine Dion",
+    description: "Singer",
+    imageUrl:
+      "https://stagingfileservice.petronas.com/api/v2/r/p/ccb3ce26-af6f-42e9-a9e4-4d009f29a7bc/453a74fa-581a-4fb7-93e1-75a7a4cb0bad-1-440px-celine-dion-live-2017.jpg"
   },
   {
-    agendaId: "871be24e-c0e3-49fb-9f0c-5a3f5fb3b7a1",
-    day: 2,
-    timeFrom: "15:15",
-    timeTo: "15:30",
-    checkedInTotal: 0,
-    seatsLeft: 0,
-    seatsTotal: 0,
-    name: "Afternoon break",
-    venue: "",
-    isBooked: false,
-    description: "",
-    isCheckedIn: false
+    spotlightId: "7a8a751f-74c9-4e3a-b88b-25fd1b65138e",
+    spotlightName: "Il Divo",
+    description: "Band",
+    imageUrl:
+      "https://stagingfileservice.petronas.com/api/v2/r/p/ccb3ce26-af6f-42e9-a9e4-4d009f29a7bc/7a16367f-6bd5-40e8-8fcb-4aef031e1396-1-440px-il-divo-inhk.JPG"
   },
   {
-    agendaId: "dbbe929a-5392-48a4-ba74-3660fe82d286",
-    day: 2,
-    timeFrom: "15:30",
-    timeTo: "17:00",
-    checkedInTotal: 0,
-    seatsLeft: 0,
-    seatsTotal: 0,
-    name: "Zootopia",
-    venue: "",
-    isBooked: false,
-    description: "",
-    isCheckedIn: false
+    spotlightId: "539a1b62-113d-48ad-8f1d-89c79b22704c",
+    spotlightName: "Natalie Portman",
+    description: "Actress",
+    imageUrl:
+      "https://stagingfileservice.petronas.com/api/v2/r/p/ccb3ce26-af6f-42e9-a9e4-4d009f29a7bc/bfdc1ebb-f229-454a-ad9d-ac0b778bb0b0-1-440px-natalie-portman-cannes-2015-5-cropped.jpg"
   },
   {
-    agendaId: "06d9bddd-ed23-4dc2-b874-4d5c62024439",
-    day: 2,
-    timeFrom: "17:00",
-    timeTo: "19:30",
-    checkedInTotal: 0,
-    seatsLeft: 0,
-    seatsTotal: 0,
-    name: "Free time",
-    venue: "",
-    isBooked: false,
-    description: "",
-    isCheckedIn: false
+    spotlightId: "7995293d-9822-41be-9828-ac675425ba5e",
+    spotlightName: "Emma Watson",
+    description: "Actress",
+    imageUrl:
+      "https://stagingfileservice.petronas.com/api/v2/r/p/ccb3ce26-af6f-42e9-a9e4-4d009f29a7bc/694c6e85-35e4-4ea5-8349-a14b60515fed-1-440px-emma-watson-2013.jpg"
   },
   {
-    agendaId: "de31d9e7-a42d-47b0-9ce7-e32d52e6f3ef",
-    day: 2,
-    timeFrom: "19:30",
-    timeTo: "22:00",
-    checkedInTotal: 0,
-    seatsLeft: 0,
-    seatsTotal: 0,
-    name: "Masquerade Night",
-    venue: "Coast Restaurant",
-    isBooked: false,
-    description: "",
-    isCheckedIn: false
+    spotlightId: "9fffd501-6db9-43fd-8c88-2cf259cef828",
+    spotlightName: "Bill Gates",
+    description: "Microsoft CEO",
+    imageUrl:
+      "https://stagingfileservice.petronas.com/api/v2/r/p/ccb3ce26-af6f-42e9-a9e4-4d009f29a7bc/2b71b121-ff49-4851-b996-14b3f9e11842-1-440px-bill-gates-2018.jpg"
   },
   {
-    agendaId: "9933177f-4fe4-42ec-a564-ff34cc3af130",
-    day: 3,
-    timeFrom: "05:00",
-    timeTo: "07:00",
-    checkedInTotal: 0,
-    seatsLeft: 0,
-    seatsTotal: 0,
-    name: "To the summit",
-    venue: "Nature Reserve",
-    isBooked: false,
-    description: "",
-    isCheckedIn: false
+    spotlightId: "d87a8960-7cc9-42a6-8dae-6e3bd2c87148",
+    spotlightName: "Warren Buffett",
+    description: "Berkshire Hathaway CEO",
+    imageUrl:
+      "https://stagingfileservice.petronas.com/api/v2/r/p/ccb3ce26-af6f-42e9-a9e4-4d009f29a7bc/b09f08b8-6aed-47d7-8365-f509a7525799-1-440px-warren-buffett-ku-visit.jpg"
   },
   {
-    agendaId: "4e43d9c6-fb88-4a8c-910a-7b8dcbdaa3b5",
-    day: 3,
-    timeFrom: "07:00",
-    timeTo: "11:00",
-    checkedInTotal: 0,
-    seatsLeft: 0,
-    seatsTotal: 0,
-    name: "Breakfast day 3 & Free time",
-    venue: "",
-    isBooked: false,
-    description: "",
-    isCheckedIn: false
-  },
-  {
-    agendaId: "d3e42950-8d3d-49cc-bc90-6ca1b37902f4",
-    day: 3,
-    timeFrom: "11:00",
-    timeTo: "11:30",
-    checkedInTotal: 0,
-    seatsLeft: 0,
-    seatsTotal: 0,
-    name: "Let's get together",
-    venue: "Jasmine Room",
-    isBooked: false,
-    description: "",
-    isCheckedIn: false
-  },
-  {
-    agendaId: "31caf6d8-d65a-40aa-920a-96bda02fbb88",
-    day: 3,
-    timeFrom: "11:30",
-    timeTo: "12:30",
-    checkedInTotal: 0,
-    seatsLeft: 0,
-    seatsTotal: 0,
-    name: "Closing & lunch",
-    venue: "",
-    isBooked: false,
-    description: "",
-    isCheckedIn: false
-  },
-  {
-    agendaId: "d3e42950-8d3d-49cc-bc90-6ca1b3790444",
-    day: 4,
-    timeFrom: "11:00",
-    timeTo: "11:30",
-    checkedInTotal: 0,
-    seatsLeft: 0,
-    seatsTotal: 0,
-    name: "Let's get together",
-    venue: "Jasmine Room",
-    isBooked: false,
-    description: "",
-    isCheckedIn: false
-  },
-  {
-    agendaId: "31caf6d8-d65a-40aa-920a-96bda02fb444",
-    day: 4,
-    timeFrom: "11:30",
-    timeTo: "12:30",
-    checkedInTotal: 0,
-    seatsLeft: 0,
-    seatsTotal: 0,
-    name: "Closing & lunch",
-    venue: "",
-    isBooked: false,
-    description: "",
-    isCheckedIn: false
-  },
-  {
-    agendaId: "31caf6d8-d65a-40aa-920a-96bda02fb555",
-    day: 5,
-    timeFrom: "11:30",
-    timeTo: "12:30",
-    checkedInTotal: 0,
-    seatsLeft: 0,
-    seatsTotal: 0,
-    name: "Closing & lunch",
-    venue: "",
-    isBooked: false,
-    description: "",
-    isCheckedIn: false
+    spotlightId: "983bed49-cfef-44e7-abb2-eb2249fcaef5",
+    spotlightName: "Larry Page",
+    description: "Google CEO",
+    imageUrl:
+      "https://stagingfileservice.petronas.com/api/v2/r/p/ccb3ce26-af6f-42e9-a9e4-4d009f29a7bc/e0c48375-1e5f-4c56-9e3f-bd5c111afa75-1-440px-larry-page-in-the-european-parliament-1.jpg"
   }
 ];
 

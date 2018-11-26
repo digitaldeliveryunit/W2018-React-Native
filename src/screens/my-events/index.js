@@ -38,16 +38,7 @@ class MyEvents extends Component {
             data={myEvents}
             keyExtractor={this._keyExtractor}
             renderItem={this._renderItem}
-            onEndReached={this.onLoadMore}
-            onEndReachedThreshold={1}
             showsVerticalScrollIndicator={false}
-            refreshControl={
-              <RefreshControl
-                  refreshing={this.state.refreshing}
-                  onRefresh={this.onFreshMyEvents}
-                  tintColor="#FFF"
-              />
-            }
             ListHeaderComponent={this._renderHeader}
             ListFooterComponent={() => {
               return (
@@ -57,6 +48,15 @@ class MyEvents extends Component {
               )
             }}
             ListEmptyComponent={() => loadingMyEvents ? <AppActivityIndicator /> : <AppEmpty textColor={"#FFF"} />}
+            // onEndReached={this.onLoadMore}
+            // onEndReachedThreshold={1}
+            // refreshControl={
+            //   <RefreshControl
+            //       refreshing={this.state.refreshing}
+            //       onRefresh={this.onFreshMyEvents}
+            //       tintColor="#FFF"
+            //   />
+            // }
           />
         </View>
       </WrapperComponent>

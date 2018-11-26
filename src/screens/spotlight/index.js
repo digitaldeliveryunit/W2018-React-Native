@@ -95,8 +95,6 @@ class Spotlight extends Component {
               data={spotlightCouples}
               renderItem={({ item, index }) => this._renderItem(item, index)}
               keyExtractor={this._keyExtractor}
-              onEndReached={this.onLoadMore}
-              onEndReachedThreshold={1}
               showsVerticalScrollIndicator={false}
               ListFooterComponent={() => {
                 return (
@@ -106,6 +104,8 @@ class Spotlight extends Component {
                 )
               }}
               ListEmptyComponent={() => loading ? <AppActivityIndicator /> : <AppEmpty textColor={"#FFF"} />}
+              // onEndReached={this.onLoadMore}
+              // onEndReachedThreshold={1}
             />
           ) : (
             this._renderCarousel()

@@ -18,10 +18,10 @@ const Avatar = props => {
     <View style={containerStyles}>
       <View style={avatarStyle}>
         {user ? (
-          user.photo ? (
+          user.thumbnailPhoto ? (
             <FastImage
               style={avatarStyle}
-              source={{ uri: user.photo }}
+              source={{ uri: user.thumbnailPhoto }}
               resizeMode={FastImage.resizeMode.cover}
             />
           ) : (
