@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import {
   StyleSheet,
   View,
@@ -9,6 +10,7 @@ import {
 import Text from "../Text.component";
 import _ from "lodash";
 import PropTypes from "prop-types";
+import { OPEN_QRCODE_POPUP } from "../../actions/qrcode.action";
 import { COLORS } from "../../helpers/common-styles";
 
 const { width } = Dimensions.get("window");
@@ -20,7 +22,7 @@ const styles = StyleSheet.create({
   wrapperItem: {
     flexDirection: "column"
   },
-  containerSessionItem: {
+  containerAgendaItem: {
     flexDirection: "row",
     backgroundColor: COLORS.GREEN_PET_ICT,
     alignItems: "center",
@@ -79,11 +81,11 @@ const styles = StyleSheet.create({
     width: 22,
     height: 22
   },
-  containerSubSessionList: {
+  containerSubAgendaList: {
     paddingVertical: 10
   },
-  // begin styles for SubSession Item
-  containerSubSession: {
+  // begin styles for SubAgenda Item
+  wrapperSubAgenda: {
     flexDirection: "row",
     backgroundColor: "#FFF",
     marginVertical: 5,
@@ -131,28 +133,28 @@ const styles = StyleSheet.create({
   }
 });
 
-const SubSessionItem = ({ subSession }) => (
-  <View style={styles.containerSubSession}>
+const SubAgendaItem = ({ subAgenda }) => (
+  <View style={styles.wrapperSubAgenda}>
     <View style={styles.containerTime}>
-      <Text style={styles.time}>{_.get(subSession, "timeFrom")}</Text>
-      <Text style={styles.time}>{_.get(subSession, "timeTo")}</Text>
+      <Text style={styles.time}>{_.get(subAgenda, "timeFrom")}</Text>
+      <Text style={styles.time}>{_.get(subAgenda, "timeTo")}</Text>
     </View>
     <View style={styles.containerSubAgenda}>
       <Text style={styles.subAgendaName}>
-        {_.get(subSession, "agendaName")}
+        {_.get(subAgenda, "agendaName")}
       </Text>
       <Text style={styles.subVenueName}>
-        {_.get(subSession, "venue.venueName")}
+        {_.get(subAgenda, "venue")}
       </Text>
     </View>
   </View>
 );
 
-SubSessionItem.propsTypes = {
-  subSession: PropTypes.object.isRequired
+SubAgendaItem.propsTypes = {
+  subAgenda: PropTypes.object.isRequired
 };
 
-export default class SessionItem extends Component {
+class AgendaItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -164,19 +166,15 @@ export default class SessionItem extends Component {
     this.setState({ isOpen: !this.state.isOpen });
   };
 
-  _onPressQRCodeIcon = () => {
-    console.log("_onPressQRCodeIcon");
-  };
-
   render() {
-    const { session } = this.props;
+    const { agenda } = this.props;
     const { isOpen } = this.state;
     const iconToggle = isOpen
       ? require("../../../assets/images/arrow_up.png")
       : require("../../../assets/images/arrow_down.png");
     return (
       <View style={styles.wrapperItem}>
-        <View style={styles.containerSessionItem}>
+        <View style={styles.containerAgendaItem}>
           <TouchableOpacity
             style={styles.containerIconToggle}
             onPress={() => this._onPressToggleIcon()}
@@ -185,16 +183,16 @@ export default class SessionItem extends Component {
           </TouchableOpacity>
           <View style={styles.containerAgenda}>
             <Text style={styles.agendaName}>
-              {_.get(session, "agendaName")}
+              {_.get(agenda, "agendaName")}
             </Text>
             <Text style={styles.venueName}>
-              {_.get(session, "venue.venueName")}
+              {_.get(agenda, "venue")}
             </Text>
           </View>
           <TouchableOpacity
             elevation={5}
             style={styles.containerIconQRCode}
-            onPress={() => this._onPressQRCodeIcon()}
+            onPress={() => this.props.openPopup(_.get(agenda, "agendaId"))}
           >
             <Image
               style={styles.iconQRCode}
@@ -203,9 +201,9 @@ export default class SessionItem extends Component {
           </TouchableOpacity>
         </View>
         {isOpen && (
-          <View style={styles.containerSubSessionList}>
-            {session.subSessions.map((subSession, index) => (
-              <SubSessionItem key={index} subSession={subSession} />
+          <View style={styles.containerSubAgendaList}>
+            {agenda.subAgendas.map((subAgenda, index) => (
+              <SubAgendaItem key={index} subAgenda={subAgenda} />
             ))}
           </View>
         )}
@@ -214,6 +212,17 @@ export default class SessionItem extends Component {
   }
 }
 
-SessionItem.propsTypes = {
-  session: PropTypes.object.isRequired
+AgendaItem.propsTypes = {
+  agenda: PropTypes.object.isRequired
 };
+
+const mapDispatchToProps = dispatch => {
+  return {
+    openPopup: (agendaId) => dispatch({ type: OPEN_QRCODE_POPUP, agendaId })
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(AgendaItem);

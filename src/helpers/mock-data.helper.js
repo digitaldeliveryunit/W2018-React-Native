@@ -587,7 +587,8 @@ export const spotlightList = [
   }
 ];
 
-export const agendaList = [ //"eventId": "4a935cb9-6d0e-48c9-acb0-150337804833"
+export const agendaList = [
+  //"eventId": "4a935cb9-6d0e-48c9-acb0-150337804833"
   {
     agendaId: "d2720a9a-52de-41a5-9e2b-65dd9a98f035",
     day: 1,
@@ -940,256 +941,79 @@ export const agendaList = [ //"eventId": "4a935cb9-6d0e-48c9-acb0-150337804833"
   }
 ];
 
-export const agenda = {
-  event: {
-    eventId: "DB3B283A-B896-4042-A778-F63AE811ADC3",
-    eventName: "Formula 1 PETRONAS Malaysia Grand Prix 2018",
-    eventDescription:
-      "<p>The Malaysian Grand Prix is a round of the Formula One World Championship. It has been held at the Sepang International Circuit since 1999, although FIA-sanctioned racing in Malaysia has existed since the 1960s. Since 2011, the race has been officially known as the Malaysia Grand Prix.</p>",
-    eventDateFrom: "2018-12-26T08:00:00",
-    eventDateTo: "2018-12-27T16:00:00",
-    eventType: "Public",
-    venue: {
-      venueId: "901A0076-B983-4E8D-8D7F-FF89065040A1",
-      venueName: "Entrance",
-      location: {
-        locationId: "94205F48-8A5A-4A76-8797-74813A8B4F0B",
-        locationName: "Sepang",
-        latitude: 2.7568664,
-        longitude: 101.6463927,
-        isDeleted: false
+export const agenda = [
+  {
+    agendaId: "d48879be-03af-485c-b875-21e12e94de4e",
+    agendaName: "Paddock Club",
+    venue: "Paddock Club",
+    day: 1,
+    subAgendas: [
+      {
+        subAgendaId: "b6de16c7-c053-45c1-9f0c-3c8b08a9b6b5",
+        timeFrom: "09:00",
+        timeTo: "10:00",
+        venue: "Paddock Club",
+        agendaName: "F1 Drivers Arrival"
       },
-      isDeleted: false
-    },
-    isFeatured: true,
-    eventImageUrl:
-      "https://stagingfileservice.petronas.com/api/v2/r/p/ccb3ce26-af6f-42e9-a9e4-4d009f29a7bc/b831b4f2-05a3-47b0-b37f-56c5dde380ae-1-906845.jpg",
-    eventStatus: "Published",
-    SurveyUrl: null,
-    SurveyResultUrl: null,
-    location: {
-      locationId: "94205F48-8A5A-4A76-8797-74813A8B4F0B",
-      locationName: "Sepang",
-      latitude: 2.7568664,
-      longitude: 101.6463927,
-      isDeleted: false
-    },
-    isDeleted: false
+      {
+        subAgendaId: "ee75b634-6fa8-4d5c-9d6e-5f9af5e9f07d",
+        timeFrom: "10:00",
+        timeTo: "10:30",
+        venue: "Paddock Club",
+        agendaName: "Team Pit Stop Practice"
+      },
+      {
+        subAgendaId: "5ca50407-20a8-46c2-b082-12369ae8c7a1",
+        timeFrom: "14:00",
+        timeTo: "15:00",
+        venue: "Paddock Club",
+        agendaName: "Practice 3"
+      },
+      {
+        subAgendaId: "f9e98c56-5008-400d-bf97-070bf8761263",
+        timeFrom: "17:00",
+        timeTo: "18:00",
+        venue: "Paddock Club",
+        agendaName: "Qualifying 1"
+      }
+    ],
+    userStatus: "NEW"
   },
-  sessionList: [
-    {
-      sessionId: "e7d6b55f-f3f9-4285-a894-1da5a7c18b0f",
-      isAgenda: true,
-      agendaName: "Paddock Club",
-      venue: {
-        venueId: "901A0076-B983-4E8D-8D7F-FF89065040A3",
-        venueName: "Pit Lane",
-        location: {
-          locationId: "94205F48-8A5A-4A76-8797-74813A8B4F0B",
-          locationName: "Sepang",
-          latitude: 2.7568664,
-          longitude: 101.6463927,
-          isDeleted: false
-        },
-        isDeleted: false
+  {
+    agendaId: "fad7c2d5-5316-459b-8d8f-ece83d712b53",
+    agendaName: "Formula 1",
+    venue: "Sepang Race Track",
+    day: 2,
+    subAgendas: [
+      {
+        subAgendaId: "612ba343-ab73-4445-b122-feba36511616",
+        timeFrom: "09:00",
+        timeTo: "09:30",
+        venue: "Pit 1 - 3",
+        agendaName: "Pit Lane Walk"
       },
-      isDeleted: false,
-      day: 1,
-      subSessions: [
-        {
-          subSessionId: "efdce9ba-635a-494a-8549-2855b4a0f2c6",
-          sessionId: "e7d6b55f-f3f9-4285-a894-1da5a7c18b0f",
-          timeFrom: "9:00",
-          timeTo: "10:00",
-          agendaName: "F1 Drivers Arrival",
-          venue: {
-            venueId: "901A0076-B983-4E8D-8D7F-FF89065040A3",
-            venueName: "Paddock Club",
-            location: {
-              locationId: "94205F48-8A5A-4A76-8797-74813A8B4F0B",
-              locationName: "Sepang",
-              latitude: 2.7568664,
-              longitude: 101.6463927,
-              isDeleted: false
-            },
-            isDeleted: false
-          },
-          isDeleted: false
-        },
-        {
-          subSessionId: "ad60b7c7-d3a1-4bb8-90ce-0a2cd3a2d363",
-          sessionId: "e7d6b55f-f3f9-4285-a894-1da5a7c18b0f",
-          timeFrom: "10:00",
-          timeTo: "10:30",
-          agendaName: "Team Pit Stop Practice",
-          venue: {
-            venueId: "901A0076-B983-4E8D-8D7F-FF89065040A3",
-            venueName: "Paddock Club",
-            location: {
-              locationId: "94205F48-8A5A-4A76-8797-74813A8B4F0B",
-              locationName: "Sepang",
-              latitude: 2.7568664,
-              longitude: 101.6463927,
-              isDeleted: false
-            },
-            isDeleted: false
-          },
-          isDeleted: false
-        },
-        {
-          subSessionId: "46c00dbe-64bb-4d07-be64-120fa11fdab4",
-          sessionId: "e7d6b55f-f3f9-4285-a894-1da5a7c18b0f",
-          timeFrom: "14:00",
-          timeTo: "15:00",
-          agendaName: "Practice 3",
-          venue: {
-            venueId: "901A0076-B983-4E8D-8D7F-FF89065040A3",
-            venueName: "Paddock Club",
-            location: {
-              locationId: "94205F48-8A5A-4A76-8797-74813A8B4F0B",
-              locationName: "Sepang",
-              latitude: 2.7568664,
-              longitude: 101.6463927,
-              isDeleted: false
-            },
-            isDeleted: false
-          },
-          isDeleted: false
-        },
-        {
-          subSessionId: "148d4a1b-a7b0-450f-a747-0cad60b7622a",
-          sessionId: "e7d6b55f-f3f9-4285-a894-1da5a7c18b0f",
-          timeFrom: "17:00",
-          timeTo: "18:00",
-          agendaName: "Qualifying 1",
-          venue: {
-            venueId: "901A0076-B983-4E8D-8D7F-FF89065040A3",
-            venueName: "Paddock Club",
-            location: {
-              locationId: "94205F48-8A5A-4A76-8797-74813A8B4F0B",
-              locationName: "Sepang",
-              latitude: 2.7568664,
-              longitude: 101.6463927,
-              isDeleted: false
-            },
-            isDeleted: false
-          },
-          isDeleted: false
-        }
-      ],
-      id: "9362caed-d248-4398-a69e-58f46edfee5d",
-      _rid: "YCocAJZ6690KAAAAAAAAAA==",
-      _self: "dbs/YCocAA==/colls/YCocAJZ6690=/docs/YCocAJZ6690KAAAAAAAAAA==/",
-      _etag: "00009493-0000-0000-0000-5bed272e0000",
-      _attachments: "attachments/",
-      _ts: 1542268718
-    },
-    {
-      sessionId: "e7d6b55f-f3f9-4285-a894-1da5a7c18111",
-      isAgenda: true,
-      agendaName: "Paddock Club",
-      venue: {
-        venueId: "901A0076-B983-4E8D-8D7F-FF8906504111",
-        venueName: "Pit Lane",
-        location: {
-          locationId: "94205F48-8A5A-4A76-8797-74813A8B4F0B",
-          locationName: "Sepang",
-          latitude: 2.7568664,
-          longitude: 101.6463927,
-          isDeleted: false
-        },
-        isDeleted: false
+      {
+        subAgendaId: "c49b7d77-056c-4cc2-89c7-71f38d23bba6",
+        timeFrom: "11:00",
+        timeTo: "11:30",
+        venue: "Paddock Club",
+        agendaName: "Autograph Session"
       },
-      isDeleted: false,
-      day: 2,
-      subSessions: [
-        {
-          subSessionId: "efdce9ba-635a-494a-8549-2855b4a0f111",
-          sessionId: "e7d6b55f-f3f9-4285-a894-1da5a7c18b0f",
-          timeFrom: "9:00",
-          timeTo: "10:00",
-          agendaName: "F1 Drivers Arrival 1",
-          venue: {
-            venueId: "901A0076-B983-4E8D-8D7F-FF89065040A3",
-            venueName: "Paddock Club",
-            location: {
-              locationId: "94205F48-8A5A-4A76-8797-74813A8B4F0B",
-              locationName: "Sepang",
-              latitude: 2.7568664,
-              longitude: 101.6463927,
-              isDeleted: false
-            },
-            isDeleted: false
-          },
-          isDeleted: false
-        },
-        {
-          subSessionId: "ad60b7c7-d3a1-4bb8-90ce-0a2cd3a2d363",
-          sessionId: "e7d6b55f-f3f9-4285-a894-1da5a7c18b0f",
-          timeFrom: "10:00",
-          timeTo: "10:30",
-          agendaName: "Team Pit Stop Practice 2",
-          venue: {
-            venueId: "901A0076-B983-4E8D-8D7F-FF89065040A3",
-            venueName: "Paddock Club",
-            location: {
-              locationId: "94205F48-8A5A-4A76-8797-74813A8B4F0B",
-              locationName: "Sepang",
-              latitude: 2.7568664,
-              longitude: 101.6463927,
-              isDeleted: false
-            },
-            isDeleted: false
-          },
-          isDeleted: false
-        },
-        {
-          subSessionId: "46c00dbe-64bb-4d07-be64-120fa11fdab4",
-          sessionId: "e7d6b55f-f3f9-4285-a894-1da5a7c18b0f",
-          timeFrom: "14:00",
-          timeTo: "15:00",
-          agendaName: "Practice 3",
-          venue: {
-            venueId: "901A0076-B983-4E8D-8D7F-FF89065040A3",
-            venueName: "Paddock Club",
-            location: {
-              locationId: "94205F48-8A5A-4A76-8797-74813A8B4F0B",
-              locationName: "Sepang",
-              latitude: 2.7568664,
-              longitude: 101.6463927,
-              isDeleted: false
-            },
-            isDeleted: false
-          },
-          isDeleted: false
-        },
-        {
-          subSessionId: "148d4a1b-a7b0-450f-a747-0cad60b7622a",
-          sessionId: "e7d6b55f-f3f9-4285-a894-1da5a7c18b0f",
-          timeFrom: "17:00",
-          timeTo: "18:00",
-          agendaName: "Qualifying 1",
-          venue: {
-            venueId: "901A0076-B983-4E8D-8D7F-FF89065040A3",
-            venueName: "Paddock Club",
-            location: {
-              locationId: "94205F48-8A5A-4A76-8797-74813A8B4F0B",
-              locationName: "Sepang",
-              latitude: 2.7568664,
-              longitude: 101.6463927,
-              isDeleted: false
-            },
-            isDeleted: false
-          },
-          isDeleted: false
-        }
-      ],
-      id: "9362caed-d248-4398-a69e-58f46edfee5d",
-      _rid: "YCocAJZ6690KAAAAAAAAAA==",
-      _self: "dbs/YCocAA==/colls/YCocAJZ6690=/docs/YCocAJZ6690KAAAAAAAAAA==/",
-      _etag: "00009493-0000-0000-0000-5bed272e0000",
-      _attachments: "attachments/",
-      _ts: 1542268718
-    }
-  ]
-};
+      {
+        subAgendaId: "4b9174fa-a709-422c-a62e-c1e579c22795",
+        timeFrom: "14:00",
+        timeTo: "15:00",
+        venue: "Paddock Club",
+        agendaName: "Truck Tour"
+      },
+      {
+        subAgendaId: "0a07529c-1044-4e2f-849e-5914b7cc924a",
+        timeFrom: "17:00",
+        timeTo: "18:00",
+        venue: "Pit 4 - 6",
+        agendaName: "Pit Lane Walk"
+      }
+    ],
+    userStatus: "JOINED"
+  }
+];
