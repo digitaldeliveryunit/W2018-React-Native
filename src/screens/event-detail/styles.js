@@ -102,6 +102,8 @@ export default StyleSheet.create({
     paddingVertical: 10
   },
   contentAbout: {
+    marginLeft: -10,
+    marginRight: -10
   },
   // begin styles for action button
   containerActionButton: {
