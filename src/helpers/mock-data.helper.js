@@ -941,7 +941,7 @@ export const agendaList = [
   }
 ];
 
-export const agenda = [
+export const agendas = [
   {
     agendaId: "d48879be-03af-485c-b875-21e12e94de4e",
     agendaName: "Paddock Club",

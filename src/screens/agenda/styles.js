@@ -9,6 +9,19 @@ export default StyleSheet.create({
     position: "relative"
   },
   container: CommonStyles.container,
+  backButton: {
+    position: "absolute",
+    top: 30,
+    left: 5,
+    zIndex: 2,
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    backgroundColor: "transparent"
+  },
+  backIcon: {
+    width: 13,
+    height: 28
+  },
   imageCover: {
     width,
     height: 200
@@ -20,12 +33,13 @@ export default StyleSheet.create({
   dateItem: {
     margin: 6
   },
-  containerAgendaItem: {
+  containerAgendas: {
     paddingHorizontal: 10,
     marginBottom: 5
   },
-  loadingAgenda: {
+  loadingOrEmptyContainer: {
     height: 200,
-    justifyContent: "center"
+    justifyContent: "center",
+    alignSelf: "center"
   }
 });
