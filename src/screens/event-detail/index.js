@@ -47,7 +47,6 @@ class EventDetail extends Component {
 
   render() {
     const { event } = this.state;
-    console.log(event);
     const cover = _.get(event, "imageUrl");
     return (
       <View style={styles.whiteOverlay}>
