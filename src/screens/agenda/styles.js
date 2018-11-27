@@ -20,8 +20,12 @@ export default StyleSheet.create({
   dateItem: {
     margin: 6
   },
-  containerSessionItem: {
+  containerAgendaItem: {
     paddingHorizontal: 10,
     marginBottom: 5
+  },
+  loadingAgenda: {
+    height: 200,
+    justifyContent: "center"
   }
 });
