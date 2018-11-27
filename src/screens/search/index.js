@@ -5,7 +5,8 @@ import {
   TouchableOpacity,
   Image,
   TextInput,
-  FlatList
+  FlatList,
+  ImageBackground
 } from "react-native";
 import Text from "../../components/Text.component";
 import styles from "./styles";
@@ -30,13 +31,17 @@ class Search extends Component {
       loading: false,
       loaded: false,
       loadingMore: false,
-      hasNextItems: false
+      hasNextItems: false,
+      firstInit: true
     };
     this.searchMyEventsDelayed = _.debounce(this.searchMyEvents, 1000);
     this.onScroll = this.onScroll.bind(this);
   }
   render() {
-    const { loading, loaded, events } = this.state;
+    const { events, firstInit } = this.state;
+    if (firstInit) {
+      return this._renderEmptyState();
+    }
     return (
       <WrapperComponent>
         <ParallaxScrollView
@@ -133,6 +138,17 @@ class Search extends Component {
     >
       <EventCard event={item} />
     </TouchableOpacity>
+  );
+
+  _renderEmptyState = () => (
+    <ImageBackground 
+      source={require("../../../assets/images/empty_state.png")}
+      style={[CommonStyles.container, styles.emptyContainer]}>
+      <Text style={styles.emptyText}>No events available at the moment</Text>
+      <TouchableOpacity style={styles.emptyButton} onPress={() => this.setState({ firstInit: false })}>
+        <Text style={styles.emptyButtonText}>New Search</Text>
+      </TouchableOpacity>
+    </ImageBackground>
   );
 
   onGoDetail (eventId) {
