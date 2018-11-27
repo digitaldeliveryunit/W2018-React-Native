@@ -6,6 +6,7 @@ import _ from "lodash";
 import moment from "moment";
 import DateItem from "../../components/agenda/DateItem";
 import AgendaItem from "../../components/agenda/AgendaItem";
+import AppEmpty from "../../components/AppEmpty";
 import AppActivityIndicator from "../../components/AppActivityIndicator";
 import AgendaAPI from "../../api/agenda";
 
@@ -14,9 +15,9 @@ class Agenda extends Component {
     super(props);
     this.state = {
       dayInOrderActive: 1,
-      loadingAgenda: false,
-      loadedAgenda: false,
-      agenda: {}
+      loadingAgendas: false,
+      loadedAgendas: false,
+      agendas: []
     };
   }
 
@@ -48,10 +49,18 @@ class Agenda extends Component {
     return datesOfEvent;
   };
 
+  _renderAgenda = (agenda) => {
+    return agenda ? (
+      <AgendaItem agenda={agenda} />
+    ) : (
+      <AppEmpty containerStyles={styles.loadingOrEmptyContainer} textColor={"#000"} />
+    );
+  };
+
   render() {
     const { currentEvent } = this.props.navigation.state.params;
-    const { agenda, loadingAgenda } = this.state;
-    const agendaOfActiveDay = _.find(agenda, [
+    const { agendas, loadingAgendas } = this.state;
+    const agendaOfActiveDay = _.find(agendas, [
       "day",
       this.state.dayInOrderActive
     ]);
@@ -61,6 +70,16 @@ class Agenda extends Component {
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.container}>
+          <TouchableOpacity
+            style={styles.backButton}
+            onPress={() => this.props.navigation.goBack()}
+          >
+            <Image
+              source={require("../../../assets/images/left_black.png")}
+              style={styles.backIcon}
+              resizeMode="contain"
+            />
+          </TouchableOpacity>
           <Image
             source={{ uri: currentEvent.imageUrl }}
             style={styles.imageCover}
@@ -75,15 +94,13 @@ class Agenda extends Component {
               _.get(currentEvent, "dateTo")
             )}
           </ScrollView>
-          <View style={styles.containerAgendaItem}>
-           {
-             loadingAgenda ? (
-                <AppActivityIndicator
-                  color="#000"
-                  containerStyles={styles.loadingAgenda}
-                />
-              ) : (agendaOfActiveDay && <AgendaItem agenda={agendaOfActiveDay} />)
-           }
+          <View style={styles.containerAgendas}>
+            {loadingAgendas ? (
+              <AppActivityIndicator
+                color="#000"
+                containerStyles={styles.loadingOrEmptyContainer}
+              />
+            ) : this._renderAgenda(agendaOfActiveDay)}
           </View>
         </View>
       </ScrollView>
@@ -97,21 +114,21 @@ class Agenda extends Component {
 
   async loadAgendaOfEvent(eventId) {
     this.setState({
-      loadingAgenda: true,
-      loadedAgenda: false
+      loadingAgendas: true,
+      loadedAgendas: false
     });
     try {
-      const agenda = await AgendaAPI.getAgendaOfEvent(eventId);
+      const agendas = await AgendaAPI.getAgendasOfEvent(eventId);
       this.setState({
-        loadingAgenda: false,
-        loadedAgenda: true,
-        agenda
+        loadingAgendas: false,
+        loadedAgendas: true,
+        agendas
       });
     } catch (e) {
       this.setState({
-        loadingAgenda: false,
-        loadedAgenda: false,
-        agenda: {}
+        loadingAgendas: false,
+        loadedAgendas: false,
+        agendas: []
       });
     }
   }
