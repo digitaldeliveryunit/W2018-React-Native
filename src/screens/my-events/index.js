@@ -89,6 +89,7 @@ class MyEvents extends Component {
   }
 
   async loadMyEvents () {
+    const { take } = this.state;
     this.setState({
       loadingMyEvents: true,
       loadedMyEvents: false
@@ -96,13 +97,13 @@ class MyEvents extends Component {
     try {
       const myEvents = await EventAPI.getUpcomingEvents({
         skip: 0,
-        take: this.state.take
+        take
       });
       this.setState({
         loadingMyEvents: false,
         loadedMyEvents: true,
         myEvents,
-        hasNextItems: myEvents.length === this.state.take
+        hasNextItems: myEvents.length === take
       });
     } catch (e) {
       this.setState({
@@ -114,36 +115,44 @@ class MyEvents extends Component {
     };
   }
   async onFreshMyEvents () {
+    const { take } = this.state;
     this.setState({
       refreshing: true,
       skip: 0
     });
     const myEvents = await EventAPI.getUpcomingEvents({
       skip: 0,
-      take: this.state.take
+      take
     });
     this.setState({
       myEvents,
       refreshing: false,
-      hasNextItems: myEvents.length === this.state.take
+      hasNextItems: myEvents.length === take
     });
   }
   async onLoadMore () {
-    if (!this.state.hasNextItems || this.state.loadingMore) {
+    const {
+      hasNextItems,
+      loadingMore,
+      skip,
+      take,
+      myEvents
+    } = this.state;
+    if (!hasNextItems || loadingMore) {
       return;
     }
     this.setState({
       loadingMore: true
     });
-    const nextSkip = this.state.skip + this.state.take;
+    const nextSkip = skip + take;
     const nextEvents = await EventAPI.getUpcomingEvents({
       skip: nextSkip,
-      take: this.state.take
+      take
     });
     this.setState({
-      myEvents: this.state.myEvents.concat(nextEvents),
+      myEvents: myEvents.concat(nextEvents),
       skip: nextSkip,
-      hasNextItems: nextEvents.length === this.state.take,
+      hasNextItems: nextEvents.length === take,
       loadingMore: false
     });
   }

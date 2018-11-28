@@ -179,6 +179,7 @@ class Spotlight extends Component {
   }
   
   async loadSpotlights () {
+    const { take } = this.state;
     this.setState({
       loading: true,
       loaded: false
@@ -186,13 +187,13 @@ class Spotlight extends Component {
     try {
       const spotlights = await SpotlightAPI.getSpotlights(eventId, {
         skip: 0,
-        take: this.state.take
+        take
       });
       this.setState({
         loading: false,
         loaded: true,
         spotlights,
-        hasNextItems: spotlights.length === this.state.take
+        hasNextItems: spotlights.length === take
       });
     } catch (e) {
       this.setState({
@@ -206,21 +207,28 @@ class Spotlight extends Component {
 
   async onLoadMore () {
     try {
-      if (!this.state.hasNextItems || this.state.loadingMore) {
+      const {
+        hasNextItems,
+        loadingMore,
+        skip,
+        take,
+        spotlights
+      } = this.state;
+      if (!hasNextItems || loadingMore) {
         return;
       }
       this.setState({
         loadingMore: true
       });
-      const nextSkip = this.state.skip + this.state.take;
+      const nextSkip = skip + take;
       const nextItems = await SpotlightAPI.getSpotlights(eventId, {
         skip: nextSkip,
-        take: this.state.take
+        take
       });
       this.setState({
-        spotlights: this.state.spotlights.concat(nextItems),
+        spotlights: spotlights.concat(nextItems),
         skip: nextSkip,
-        hasNextItems: nextItems.length === this.state.take,
+        hasNextItems: nextItems.length === take,
         loadingMore: false
       });
     } catch (e) {
