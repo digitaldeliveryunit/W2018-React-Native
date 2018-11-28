@@ -57,8 +57,8 @@ class Search extends Component {
           renderStickyHeader={this._renderStickyHeader}
           contentBackgroundColor={"transparent"}
           showsVerticalScrollIndicator={false}
-          // onMomentumScrollEnd={this.onScroll}
-          // scrollEventThrottle={500}
+          onMomentumScrollEnd={this.onScroll}
+          scrollEventThrottle={500}
         >
           { this._renderSearchResult(events) }
         </ParallaxScrollView>

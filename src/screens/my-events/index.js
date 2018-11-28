@@ -7,11 +7,11 @@ import styles from "./styles";
 import { CommonStyles } from "../../helpers/common-styles";
 import WrapperComponent from "../../components/Wrapper.component";
 import Avatar from "../../components/Avatar";
-import EventCard from "../..//components/EventCard";
+import EventCard from "../../components/EventCard";
 import EventAPI from "../../api/event";
 import AppActivityIndicator from "../../components/AppActivityIndicator";
 import AppEmpty from "../../components/AppEmpty";
-import {user} from "../../helpers/mock-data.helper";
+import MockData from "../../helpers/mock-data";
 
 class MyEvents extends Component {
   constructor () {
@@ -48,15 +48,15 @@ class MyEvents extends Component {
               )
             }}
             ListEmptyComponent={() => loadingMyEvents ? <AppActivityIndicator /> : <AppEmpty textColor={"#FFF"} />}
-            // onEndReached={this.onLoadMore}
-            // onEndReachedThreshold={1}
-            // refreshControl={
-            //   <RefreshControl
-            //       refreshing={this.state.refreshing}
-            //       onRefresh={this.onFreshMyEvents}
-            //       tintColor="#FFF"
-            //   />
-            // }
+            onEndReached={this.onLoadMore}
+            onEndReachedThreshold={1}
+            refreshControl={
+              <RefreshControl
+                  refreshing={this.state.refreshing}
+                  onRefresh={this.onFreshMyEvents}
+                  tintColor="#FFF"
+              />
+            }
           />
         </View>
       </WrapperComponent>
@@ -70,7 +70,7 @@ class MyEvents extends Component {
   _renderHeader = () => (
     <View style={CommonStyles.header}>
       <Text style={CommonStyles.title}>myEvents</Text>
-      <Avatar user={user} />
+      <Avatar user={MockData.user} />
     </View>
   );
 

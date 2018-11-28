@@ -163,8 +163,7 @@ class EventCard extends React.Component {
 
   async onBookmark () {
     const { event } = this.props;
-    // const result = await EventAPI.bookmark(event.eventId);
-    const result = true;
+    const result = await EventAPI.bookmark(event.eventId);
     if (result) {
       this.setState({ isBookmark: true });
       Toast.showLongBottom("Event is bookmarked successfully.");
@@ -174,8 +173,7 @@ class EventCard extends React.Component {
   }
   async onUnBookmark () {
     const { event } = this.props;
-    // const result = await EventAPI.unBookmark(event.eventId);
-    const result = true;
+    const result = await EventAPI.unBookmark(event.eventId);
     if (result) {
       this.setState({ isBookmark: false });
       Toast.showLongBottom("Event is unbookmarked successfully.");
@@ -185,8 +183,7 @@ class EventCard extends React.Component {
   }
   async onJoin () {
     const { event } = this.props;
-    // const result = await EventAPI.join(event.eventId);
-    const result = true;
+    const result = await EventAPI.join(event.eventId);
     if (result) {
       this.setState({ userStatus: USER_STATUS.JOINED });
       Toast.showLongBottom("Event is joined successfully.");
@@ -196,8 +193,7 @@ class EventCard extends React.Component {
   }
   async onUnJoin () {
     const { event } = this.props;
-    // const result = await EventAPI.unJoin(event.eventId);
-    const result = true;
+    const result = await EventAPI.unJoin(event.eventId);
     if (result) {
       this.setState({ userStatus: USER_STATUS.NEW });
       Toast.showLongBottom("Event is unjoined successfully.");

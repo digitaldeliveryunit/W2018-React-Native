@@ -14,8 +14,8 @@ import _ from "lodash";
 import AppEmpty from "../../components/AppEmpty";
 import ParallaxScrollView from "react-native-parallax-scroll-view";
 import { sizeHeight } from "../../helpers/size.helper";
-import { user } from "../../helpers/mock-data.helper";
 import { isCloseToBottom } from "../../helpers/function.helper";
+import MockData from "../../helpers/mock-data";
 
 const heightOfForegroundDefault = sizeHeight(65);
 
@@ -53,8 +53,8 @@ class Home extends Component {
           renderStickyHeader={this._renderStickyHeader}
           contentBackgroundColor={"transparent"}
           showsVerticalScrollIndicator={false}
-          // onMomentumScrollEnd={this.onScroll}
-          // scrollEventThrottle={500}
+          onMomentumScrollEnd={this.onScroll}
+          scrollEventThrottle={500}
         >
         { 
           this._renderUpcomingEvents()
@@ -73,7 +73,7 @@ class Home extends Component {
     <View style={CommonStyles.header}>
       <Text style={CommonStyles.title}>Featured Events</Text>
       <TouchableOpacity>
-        <Avatar user={user} />
+        <Avatar user={MockData.user} />
       </TouchableOpacity>
     </View>
   );

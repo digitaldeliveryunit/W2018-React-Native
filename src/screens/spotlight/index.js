@@ -7,7 +7,6 @@ import styles from "./styles";
 import WrapperComponent from "../../components/Wrapper.component";
 import SpotlightCard from "../../components/SpotlightCard";
 import { CommonStyles, COLORS } from "../../helpers/common-styles";
-import { spotlightList } from "../../helpers/mock-data.helper";
 import DetailHeader from "../../components/DetailHeader";
 import Carousel from "react-native-snap-carousel";
 import { sizeWidth, sizeHeight } from "../../helpers/size.helper";
@@ -104,8 +103,8 @@ class Spotlight extends Component {
                 )
               }}
               ListEmptyComponent={() => loading ? <AppActivityIndicator /> : <AppEmpty textColor={"#FFF"} />}
-              // onEndReached={this.onLoadMore}
-              // onEndReachedThreshold={1}
+              onEndReached={this.onLoadMore}
+              onEndReachedThreshold={1}
             />
           ) : (
             this._renderCarousel()
@@ -118,6 +117,7 @@ class Spotlight extends Component {
   }
 
   componentDidMount () {
+    console.log('did mount');
     this.loadSpotlights();
   }
 

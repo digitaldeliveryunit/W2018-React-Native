@@ -15,8 +15,7 @@ import Avatar from "../../components/Avatar";
 import EventCard from "../../components/EventCard";
 import AppActivityIndicator from "../../components/AppActivityIndicator";
 import EventAPI from "../../api/event";
-import { user } from "../../helpers/mock-data.helper";
-import { CommonStyles } from "../../helpers/common-styles";
+import MockData from "../../helpers/mock-data";
 
 class ProfileComponent extends Component {
   constructor(props) {
@@ -55,13 +54,11 @@ class ProfileComponent extends Component {
   _renderForeground = () => (
     <View style={styles.foregroundSection}>
       <View style={styles.containerHeader}>
-        <Avatar user={user} size={84} />
+        <Avatar user={MockData.user} size={84} />
         <View style={styles.containerInfo}>
-          <Text style={styles.displayName}>{_.get(user, "displayName")}</Text>
-          <Text style={styles.displayPosition}>
-            {_.get(user, "department")}
-          </Text>
-          <Text style={styles.company}>{_.get(user, "company")}</Text>
+          <Text style={styles.displayName}>{_.get(MockData.user, "displayName")}</Text>
+          <Text style={styles.displayPosition}>{_.get(MockData.user, "department")}</Text>
+          <Text style={styles.company}>{_.get(MockData.user, "company")}</Text>
         </View>
       </View>
       <Text style={styles.title}>Past Events</Text>
@@ -70,12 +67,10 @@ class ProfileComponent extends Component {
 
   _renderStickyHeader = () => (
     <View style={[styles.containerHeader, styles.stickyHeader]}>
-      <Avatar user={user} size={54} />
+      <Avatar user={MockData.user} size={54} />
       <View style={styles.containerInfo}>
-        <Text style={styles.displayName}>{_.get(user, "displayName")}</Text>
-        <Text style={styles.displayPosition}>
-          {_.get(user, "displayPosition")}
-        </Text>
+        <Text style={styles.displayName}>{_.get(MockData.user, "displayName")}</Text>
+        <Text style={styles.displayPosition}>{_.get(MockData.user, "department")}</Text>
       </View>
     </View>
   );
@@ -104,28 +99,28 @@ class ProfileComponent extends Component {
             keyExtractor={this._keyExtractor}
             renderItem={this._renderEventItem}
             showsVerticalScrollIndicator={false}
-            // onEndReached={this.onLoadMore}
-            // onEndReachedThreshold={1}
-            // refreshControl={
-            //   <RefreshControl
-            //     refreshing={refreshing}
-            //     onRefresh={this.onFreshPastEvents}
-            //     tintColor="#FFF"
-            //   />
-            // }
-            // ListFooterComponent={() => {
-            //   return (
-            //     this.state.loadingMore && (
-            //       <AppActivityIndicator
-            //         color="#000"
-            //         containerStyles={{
-            //           paddingBottom: 20
-            //         }}
-            //       />
-            //     )
-            //   );
-            // }}
-            // ListEmptyComponent={<AppActivityIndicator />}
+            onEndReached={this.onLoadMore}
+            onEndReachedThreshold={1}
+            refreshControl={
+              <RefreshControl
+                refreshing={refreshing}
+                onRefresh={this.onFreshPastEvents}
+                tintColor="#FFF"
+              />
+            }
+            ListFooterComponent={() => {
+              return (
+                this.state.loadingMore && (
+                  <AppActivityIndicator
+                    color="#000"
+                    containerStyles={{
+                      paddingBottom: 20
+                    }}
+                  />
+                )
+              );
+            }}
+            ListEmptyComponent={<AppActivityIndicator />}
           />
         </ParallaxScrollView>
       </WrapperComponent>

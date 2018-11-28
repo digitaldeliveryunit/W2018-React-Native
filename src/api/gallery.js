@@ -1,11 +1,7 @@
 // API for gallery
 import RequestHelper from "../helpers/request.helper";
 import AppConfig from "../config";
-import {
-  mediaDocuments,
-  mediaImages,
-  mediaVideos
-} from "../helpers/mock-data.helper";
+import MockData from "../helpers/mock-data";
 
 const MEDIA_TYPES = {
   DOCUMENT: "Document",
@@ -28,13 +24,13 @@ export default class GalleryAPI {
     // });
     // return data;
     if (MEDIA_TYPES.DOCUMENT === mediaType) {
-      return mediaDocuments;
+      return MockData.mediaDocuments;
     }
     if (MEDIA_TYPES.IMAGE === mediaType) {
-      return mediaImages;
+      return MockData.mediaImages;
     }
     if (MEDIA_TYPES.VIDEO === mediaType) {
-      return mediaVideos;
+      return MockData.mediaVideos;
     }
     return [];
   }
