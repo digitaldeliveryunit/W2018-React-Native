@@ -10,6 +10,6 @@ export default class SpotlightAPI {
     // return data;
     await sleep(500);
     const { take, skip } = params;
-    return MockData.spotlights.slice(skip, (skip + 1) * take);
+    return MockData.spotlights.slice(skip, skip + take);
   }
 }

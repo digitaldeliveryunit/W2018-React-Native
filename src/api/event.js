@@ -18,7 +18,7 @@ export default class EventAPI {
     // return data;
     await sleep(500);
     const { take, skip } = params;
-    return MockData.upcomingAllEvents.slice(skip, (skip + 1) * take);
+    return MockData.upcomingAllEvents.slice(skip, skip + take);
   }
 
   // for myEvents screen
@@ -27,7 +27,7 @@ export default class EventAPI {
     // return data;
     await sleep(500);
     const { take, skip } = params;
-    return MockData.upcomingEvents.slice(skip, (skip + 1) * take);
+    return MockData.upcomingEvents.slice(skip, skip + take);
   }
 
   // for Profile screen
@@ -36,7 +36,7 @@ export default class EventAPI {
     // return data;
     await sleep(500);
     const { take, skip } = params;
-    return MockData.pastEvents.slice(skip, (skip + 1) * take);
+    return MockData.pastEvents.slice(skip, skip + take);
   }
 
   // for Event detail screen
@@ -49,7 +49,13 @@ export default class EventAPI {
   static async searchEvents (params) {
     // const data = await RequestHelper.get(`${AppConfig.apiUrl}Event/Search`, params);
     // return data;
-    return MockData.upcomingAllEvents.filter((item) => item.eventName.indexOf(params.searchKey) > -1);
+    await sleep(500);
+    const data = MockData.upcomingAllEvents.filter((item) => item.eventName.indexOf(params.searchKey) > -1);
+    if (_.isEmpty(data)) {
+      return [];
+    }
+    const { take, skip } = params;
+    return data.slice(skip, skip + take);
   }
 
   static async bookmark (eventId) {
