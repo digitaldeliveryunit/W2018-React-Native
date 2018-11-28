@@ -200,7 +200,7 @@ class Search extends Component {
   }
 
   async onLoadMore () {
-    if (!this.state.hasNextItems) {
+    if (!this.state.hasNextItems || this.state.loadingMore) {
       return;
     }
     this.setState({
