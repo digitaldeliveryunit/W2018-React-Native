@@ -193,6 +193,7 @@ class Home extends Component {
     };
   }
   async loadUpcomingEvents () {
+    const { takeUpcoming } = this.state;
     this.setState({
       loadingUpcoming: true,
       loadedUpcoming: false
@@ -200,13 +201,13 @@ class Home extends Component {
     try {
       const upcomingEvents = await EventAPI.getUpcomingAllEvents({
         skip: 0,
-        take: this.state.takeUpcoming
+        take: takeUpcoming
       });
       this.setState({
         loadingUpcoming: false,
         loadedUpcoming: true,
         upcomingEvents,
-        hasNextUpcomingItems: upcomingEvents.length === this.state.takeUpcoming
+        hasNextUpcomingItems: upcomingEvents.length === takeUpcoming
       });
     } catch (e) {
       this.setState({
@@ -219,21 +220,28 @@ class Home extends Component {
   }
 
   async onLoadMoreUpcoming () {
-    if (!this.state.hasNextUpcomingItems || this.state.loadingNextUpcoming) {
+    const {
+      hasNextUpcomingItems, 
+      loadingNextUpcoming, 
+      skipUpcoming, 
+      takeUpcoming,
+      upcomingEvents
+    } = this.state;
+    if (!hasNextUpcomingItems || loadingNextUpcoming) {
       return;
     }
     this.setState({
       loadingNextUpcoming: true
     });
-    const nextSkip = this.state.skipUpcoming + this.state.takeUpcoming;
+    const nextSkip = skipUpcoming + takeUpcoming;
     const nextUpcomingEvents = await EventAPI.getUpcomingAllEvents({
       skip: nextSkip,
-      take: this.state.take
+      take: takeUpcoming
     });
     this.setState({
-      upcomingEvents: this.state.upcomingEvents.concat(nextUpcomingEvents),
+      upcomingEvents: upcomingEvents.concat(nextUpcomingEvents),
       skipUpcoming: nextSkip,
-      hasNextUpcomingItems: nextUpcomingEvents.length === this.state.takeUpcoming,
+      hasNextUpcomingItems: nextUpcomingEvents.length === takeUpcoming,
       loadingNextUpcoming: false
     });
   }
