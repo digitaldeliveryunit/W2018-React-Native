@@ -137,6 +137,7 @@ class ProfileComponent extends Component {
   }
 
   async loadPastEvents() {
+    const { take } = this.state;
     this.setState({
       loadingPastEvents: true,
       loadedPastEvents: false
@@ -144,13 +145,13 @@ class ProfileComponent extends Component {
     try {
       const pastEvents = await EventAPI.getPastEvents({
         skip: 0,
-        take: this.state.take
+        take
       });
       this.setState({
         loadingPastEvents: false,
         loadedPastEvents: true,
         pastEvents,
-        hasNextItems: pastEvents.length === this.state.take
+        hasNextItems: pastEvents.length === take
       });
     } catch (e) {
       this.setState({
@@ -163,37 +164,45 @@ class ProfileComponent extends Component {
   }
 
   async onFreshPastEvents() {
+    const { take } = this.state;
     this.setState({
       refreshing: true,
       skip: 0
     });
     const pastEvents = await EventAPI.getPastEvents({
       skip: 0,
-      take: this.state.take
+      take
     });
     this.setState({
       pastEvents,
       refreshing: false,
-      hasNextItems: pastEvents.length === this.state.take
+      hasNextItems: pastEvents.length === take
     });
   }
 
   async onLoadMore() {
-    if (!this.state.hasNextItems || this.state.loadingMore) {
+    const {
+      hasNextItems,
+      loadingMore,
+      skip,
+      take,
+      pastEvents
+    } = this.state;
+    if (!hasNextItems || loadingMore) {
       return;
     }
     this.setState({
       loadingMore: true
     });
-    const nextSkip = this.state.skip + this.state.take;
+    const nextSkip = skip + take;
     const nextEvents = await EventAPI.getPastEvents({
       skip: nextSkip,
-      take: this.state.take
+      take
     });
     this.setState({
-      pastEvents: this.state.pastEvents.concat(nextEvents),
+      pastEvents: pastEvents.concat(nextEvents),
       skip: nextSkip,
-      hasNextItems: nextEvents.length === this.state.take,
+      hasNextItems: nextEvents.length === ttake,
       loadingMore: false
     });
   }

@@ -176,18 +176,22 @@ class Search extends Component {
   }
 
   async searchMyEvents () {
+    const {
+      take,
+      searchKey
+    } = this.state;
     try {
       const events = await EventAPI.searchEvents({
         skip: 0,
-        take: this.state.take,
-        searchKey: this.state.searchKey
+        take,
+        searchKey
       });
       this.setState({
         skip: 0,
         loading: false,
         loaded: true,
         events,
-        hasNextItems: events.length === this.state.take
+        hasNextItems: events.length === take
       });
     } catch (e) {
       this.setState({
@@ -200,22 +204,30 @@ class Search extends Component {
   }
 
   async onLoadMore () {
-    if (!this.state.hasNextItems || this.state.loadingMore) {
+    const {
+      hasNextItems,
+      loadingMore,
+      skip,
+      take,
+      searchKey,
+      events
+    } = this.state;
+    if (!hasNextItems || loadingMore) {
       return;
     }
     this.setState({
       loadingMore: true
     });
-    const nextSkip = this.state.skip + this.state.take;
+    const nextSkip = skip + take;
     const nextEvents = await EventAPI.searchEvents({
-      searchKey: this.state.searchKey,
+      searchKey,
       skip: nextSkip,
-      take: this.state.take
+      take
     });
     this.setState({
-      events: this.state.events.concat(nextEvents),
+      events: events.concat(nextEvents),
       skip: nextSkip,
-      hasNextItems: nextEvents.length === this.state.take,
+      hasNextItems: nextEvents.length === take,
       loadingMore: false
     });
   }
