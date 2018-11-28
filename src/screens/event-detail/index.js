@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { ScrollView, View, Image, TouchableOpacity } from "react-native";
+import { ScrollView, View, Image, TouchableOpacity, Alert } from "react-native";
 import _ from "lodash";
 import moment from "moment";
+import Toast from "@remobile/react-native-toast";
+import RNCalendarEvents from "react-native-calendar-events";
 import styles from "./styles";
 import { OPEN_QRCODE_POPUP } from "../../actions/qrcode.action";
 import openGoogleMapDirection from "../../helpers/google-map-direction";
@@ -12,7 +14,6 @@ import EventAPI from "../../api/event";
 import { SELECT_MENU } from "../../actions/quick-access-menu.action";
 import AppWebView from "../../components/AppWebView";
 import { USER_STATUS } from "../../config";
-import Toast from "@remobile/react-native-toast";
 
 class EventDetail extends Component {
   constructor(props) {
@@ -45,9 +46,48 @@ class EventDetail extends Component {
     }
   };
 
+  _addEventToCalendar = (title, location, startDate, endDate) => {
+    RNCalendarEvents
+      .saveEvent(title, { location, startDate, endDate })
+      .then(() => {
+        Toast.showLongBottom("Event is added to calendar successfully.");
+      });
+  };
+
+  _onPressAddCalendar = event => {
+    RNCalendarEvents.authorizeEventStore().then((res) => {
+      if (res === "authorized") {
+        const title = _.get(event, "eventName");
+        const location = _.get(event, "eventLocation.locationName");
+        const startDate = moment(_.get(event, "dateFrom")).format('YYYY-MM-DDTHH:mm:ss.SSS[Z]');
+        const endDate = moment(_.get(event, "dateTo")).format('YYYY-MM-DDTHH:mm:ss.SSS[Z]');
+
+        RNCalendarEvents
+          .fetchAllEvents(startDate, endDate)
+          .then(res => {
+            const isAddedCalendar = _.findIndex(res, { title, location, startDate, endDate }) >= 0;
+            if (isAddedCalendar) {
+              Toast.showLongBottom("Event is added to calendar successfully.");
+            } else {
+              Alert.alert(
+                'Confirm',
+                '\nWould you like add this event to calendar?',
+                [
+                  {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+                  {text: 'OK', onPress: () => this._addEventToCalendar(title, location, startDate, endDate)},
+                ],
+                { cancelable: true }
+              )
+            }
+          });
+      }
+      
+    });
+    
+  };
+
   render() {
     const { event } = this.state;
-    console.log(event);
     const cover = _.get(event, "imageUrl");
     return (
       <View style={styles.whiteOverlay}>
@@ -65,49 +105,51 @@ class EventDetail extends Component {
             </TouchableOpacity>
             <Image source={{ uri: cover }} style={styles.imageCover} />
             <View style={styles.containerActionButton}>
-            {
-              event.userStatus === USER_STATUS.NEW && (
-                <TouchableOpacity style={styles.actionButton} onPress={this.onJoin}>
+              {event.userStatus === USER_STATUS.NEW && (
+                <TouchableOpacity
+                  style={styles.actionButton}
+                  onPress={this.onJoin}
+                >
                   <Image
                     source={require("../../../assets/images/plus_filled.png")}
                     style={styles.iconActionButton}
                   />
                 </TouchableOpacity>
-              )
-            }
-            {
-              event.userStatus === USER_STATUS.JOINED && (
-                <TouchableOpacity style={styles.actionButton} onPress={this.onUnJoin}>
+              )}
+              {event.userStatus === USER_STATUS.JOINED && (
+                <TouchableOpacity
+                  style={styles.actionButton}
+                  onPress={this.onUnJoin}
+                >
                   <Image
                     source={require("../../../assets/images/close.png")}
                     style={styles.iconActionButton}
                   />
                 </TouchableOpacity>
-              )
-            }
-            {
-              event.isBookmark ? (
-                <TouchableOpacity style={styles.actionButton} onPress={this.onUnBookmark}>
+              )}
+              {event.isBookmark ? (
+                <TouchableOpacity
+                  style={styles.actionButton}
+                  onPress={this.onUnBookmark}
+                >
                   <Image
                     source={require("../../../assets/images/bookmarked.png")}
                     style={[styles.iconActionButton, { width: 15 }]}
                   />
                 </TouchableOpacity>
               ) : (
-                <TouchableOpacity style={styles.actionButton} onPress={this.onBookmark}>
+                <TouchableOpacity
+                  style={styles.actionButton}
+                  onPress={this.onBookmark}
+                >
                   <Image
                     source={require("../../../assets/images/bookmark.png")}
                     style={[styles.iconActionButton, { width: 15 }]}
                   />
                 </TouchableOpacity>
-              )
-            }
-            {
-              event.userStatus === USER_STATUS.CHECKIN ? (
-                <TouchableOpacity
-                  style={styles.actionButton}
-                  disabled={true}
-                >
+              )}
+              {event.userStatus === USER_STATUS.CHECKIN ? (
+                <TouchableOpacity style={styles.actionButton} disabled={true}>
                   <Image
                     source={require("../../../assets/images/qrcode_selected.png")}
                     style={styles.iconActionButton}
@@ -123,8 +165,7 @@ class EventDetail extends Component {
                     style={styles.iconActionButton}
                   />
                 </TouchableOpacity>
-              )
-            }
+              )}
             </View>
             <View style={styles.titleContainer}>
               <Text style={styles.lblEventName} numberOfLines={2}>
@@ -142,7 +183,9 @@ class EventDetail extends Component {
                     {moment(_.get(event, "dateFrom")).format("MMM DD, YYYY")} -{" "}
                     {moment(_.get(event, "dateTo")).format("MMM DD, YYYY")}
                   </Text>
-                  <Text style={styles.colorHighLight}>Add to calendar</Text>
+                  <TouchableOpacity onPress={() => this._onPressAddCalendar(event)}>
+                    <Text style={styles.colorHighLight}>Add to calendar</Text>
+                  </TouchableOpacity>
                 </View>
               </View>
               <View style={styles.rowInfo}>
@@ -177,9 +220,7 @@ class EventDetail extends Component {
                     </Text>
                   </View>
                 </View>
-                <TouchableOpacity
-                  onPress={() => this._onPressOpenGoogleMap(_.get(event, "eventLocation"))}
-                >
+                <TouchableOpacity onPress={() => this._onPressOpenGoogleMap(_.get(event, "eventLocation"))}>
                   <Image
                     style={styles.mapsImage}
                     source={require("../../../assets/images/googlemap.png")}
@@ -229,7 +270,7 @@ class EventDetail extends Component {
       });
     }
   }
-  async onBookmark () {
+  async onBookmark() {
     const { event } = this.state;
     const result = await EventAPI.bookmark(event.eventId);
     if (result) {
@@ -240,7 +281,7 @@ class EventDetail extends Component {
       Toast.showLongBottom("Event is bookmarked failed.");
     }
   }
-  async onUnBookmark () {
+  async onUnBookmark() {
     const { event } = this.state;
     const result = await EventAPI.unBookmark(event.eventId);
     if (result) {
@@ -251,7 +292,7 @@ class EventDetail extends Component {
       Toast.showLongBottom("Event is unbookmarked failed.");
     }
   }
-  async onJoin () {
+  async onJoin() {
     const { event } = this.state;
     const result = await EventAPI.join(event.eventId);
     if (result) {
@@ -262,7 +303,7 @@ class EventDetail extends Component {
       Toast.showLongBottom("Event is joined failed.");
     }
   }
-  async onUnJoin () {
+  async onUnJoin() {
     const { event } = this.state;
     const result = await EventAPI.unJoin(event.eventId);
     if (result) {
@@ -280,7 +321,8 @@ const mapDispatchToProps = dispatch => {
     openPopupQRCode: () => {
       dispatch({ type: OPEN_QRCODE_POPUP });
     },
-    resetQuickAccessMenu: () => dispatch({ type: SELECT_MENU, selectedMenuId: "About" })
+    resetQuickAccessMenu: () =>
+      dispatch({ type: SELECT_MENU, selectedMenuId: "About" })
   };
 };
 

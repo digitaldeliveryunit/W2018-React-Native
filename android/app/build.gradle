@@ -148,6 +148,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-calendar-events')
     compile project(':react-native-autoheight-webview')
     compile project(':@remobile_react-native-toast')
     compile project(':react-native-vector-icons')
