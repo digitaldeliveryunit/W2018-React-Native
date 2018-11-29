@@ -9,6 +9,7 @@ import GalleryScreen from "../screens/gallery";
 import SpotlightScreen from "../screens/spotlight";
 import AgendaScreen from "../screens/agenda";
 import FeedbackScreen from "../screens/feedback";
+import getSlideFromRightTransition from "../helpers/react-navigation-slide-from-right-transition";
 
 export const AppNavigator = StackNavigator(
   {
