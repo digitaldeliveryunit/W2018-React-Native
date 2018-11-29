@@ -21,7 +21,8 @@ export const AppNavigator = StackNavigator(
     Feedback: { screen: FeedbackScreen }
   },
   {
-    headerMode: "none"
+    headerMode: "none",
+    transitionConfig: getSlideFromRightTransition
   }
 );
 
