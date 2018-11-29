@@ -1,10 +1,10 @@
 import React from "react";
 import { Image, StyleSheet } from "react-native";
 import { createBottomTabNavigator } from "react-navigation";
-import HomeNavigatior from "./home.navigator";
-import MyEventsNavigator from "./my-events.navigator";
-import SearchNavigator from "./search.navigator";
-import ProfileNavigator from "./profile.navigator";
+import HomeScreen from "../screens/home";
+import MyEventScreen from "../screens/my-events";
+import SearchScreen from "../screens/search";
+import ProfileScreen from "../screens/profile";
 import { COLORS } from "../helpers/common-styles";
 
 const styles = StyleSheet.create({
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 const MainNavigator = createBottomTabNavigator(
   {
     Home: {
-      screen: HomeNavigatior,
+      screen: HomeScreen,
       navigationOptions: {
         title: "Home",
         tabBarIcon: ({ focused }) => {
@@ -38,7 +38,7 @@ const MainNavigator = createBottomTabNavigator(
       }
     },
     MyEvents: {
-      screen: MyEventsNavigator,
+      screen: MyEventScreen,
       navigationOptions: {
         title: "myEvents",
         tabBarIcon: ({ focused }) => {
@@ -57,7 +57,7 @@ const MainNavigator = createBottomTabNavigator(
       }
     },
     Search: {
-      screen: SearchNavigator,
+      screen: SearchScreen,
       navigationOptions: {
         title: "Search",
         tabBarIcon: ({ focused }) => {
@@ -76,7 +76,7 @@ const MainNavigator = createBottomTabNavigator(
       }
     },
     Profile: {
-      screen: ProfileNavigator,
+      screen: ProfileScreen,
       navigationOptions: {
         title: "Profile",
         tabBarIcon: ({ focused }) => {

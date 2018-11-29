@@ -29,10 +29,15 @@ function resetPage(route) {
   );
 }
 
+function getNavigation () {
+  return _navigator;
+}
+
 // add other navigation functions that you need and export them
 export default {
   navigate,
   goBack,
   setTopLevelNavigator,
-  resetPage
+  resetPage,
+  getNavigation
 };

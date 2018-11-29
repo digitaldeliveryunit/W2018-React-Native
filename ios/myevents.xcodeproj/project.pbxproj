@@ -75,6 +75,7 @@
 		3ADF6CAD74BD4EF7847CF10F /* Helvetica Neue-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F892082B944B43FAAC8942D3 /* Helvetica Neue-Medium.ttf */; };
 		65F2CE32C90C4FCA93E96254 /* Helvetica Neue-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2BE38A2B18764868A64E217C /* Helvetica Neue-Regular.ttf */; };
 		D9037275B993444CB6E7A4CC /* Helvetica Neue-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41E0BEAB4BEB4DDAA17C034C /* Helvetica Neue-Thin.ttf */; };
+		4415C6708C85465287E76B42 /* libRCTToast.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB3C4F0D5A54747AE7D0A5E /* libRCTToast.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -420,6 +421,8 @@
 		F892082B944B43FAAC8942D3 /* Helvetica Neue-Medium.ttf */ = {isa = PBXFileReference; name = "Helvetica Neue-Medium.ttf"; path = "../assets/fonts/Helvetica Neue/Helvetica Neue-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		2BE38A2B18764868A64E217C /* Helvetica Neue-Regular.ttf */ = {isa = PBXFileReference; name = "Helvetica Neue-Regular.ttf"; path = "../assets/fonts/Helvetica Neue/Helvetica Neue-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		41E0BEAB4BEB4DDAA17C034C /* Helvetica Neue-Thin.ttf */ = {isa = PBXFileReference; name = "Helvetica Neue-Thin.ttf"; path = "../assets/fonts/Helvetica Neue/Helvetica Neue-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FE26340E8A1246F38E42DB05 /* RCTToast.xcodeproj */ = {isa = PBXFileReference; name = "RCTToast.xcodeproj"; path = "../node_modules/@remobile/react-native-toast/ios/RCTToast.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		1FB3C4F0D5A54747AE7D0A5E /* libRCTToast.a */ = {isa = PBXFileReference; name = "libRCTToast.a"; path = "libRCTToast.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -449,6 +452,7 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				C6455D43816F4C11AA233EAE /* libFastImage.a in Frameworks */,
 				F7232436F90942B7A0C0B589 /* libRNVectorIcons.a in Frameworks */,
+				4415C6708C85465287E76B42 /* libRCTToast.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -638,6 +642,7 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				F70F0F0E89EB49FFBD6F0758 /* FastImage.xcodeproj */,
 				FB4AC8CFD24044FB8F4E8945 /* RNVectorIcons.xcodeproj */,
+				FE26340E8A1246F38E42DB05 /* RCTToast.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1347,11 +1352,13 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-fast-image/ios/FastImage/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/@remobile/react-native-toast/ios/RCTToast",
 				);
 			};
 			name = Debug;
@@ -1376,11 +1383,13 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-fast-image/ios/FastImage/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/@remobile/react-native-toast/ios/RCTToast",
 				);
 			};
 			name = Release;
@@ -1405,6 +1414,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-fast-image/ios/FastImage/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/@remobile/react-native-toast/ios/RCTToast",
 				);
 			};
 			name = Debug;
@@ -1428,6 +1438,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-fast-image/ios/FastImage/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/@remobile/react-native-toast/ios/RCTToast",
 				);
 			};
 			name = Release;
@@ -1460,11 +1471,13 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-fast-image/ios/FastImage/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/@remobile/react-native-toast/ios/RCTToast",
 				);
 			};
 			name = Debug;
@@ -1497,11 +1510,13 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-fast-image/ios/FastImage/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/@remobile/react-native-toast/ios/RCTToast",
 				);
 			};
 			name = Release;
@@ -1533,11 +1548,13 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-fast-image/ios/FastImage/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/@remobile/react-native-toast/ios/RCTToast",
 				);
 			};
 			name = Debug;
@@ -1569,11 +1586,13 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-fast-image/ios/FastImage/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/@remobile/react-native-toast/ios/RCTToast",
 				);
 			};
 			name = Release;

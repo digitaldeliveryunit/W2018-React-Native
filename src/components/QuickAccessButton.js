@@ -7,7 +7,7 @@ import {COLORS, CommonStyles} from "../helpers/common-styles";
 const styles = StyleSheet.create({
   menu: {
     position: "absolute",
-    bottom: 15,
+    bottom: 25,
     right: 25
   },
   item: {

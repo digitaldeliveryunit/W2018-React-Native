@@ -165,7 +165,7 @@ class Home extends Component {
   );
 
   onGoDetail (eventId) {
-    this.props.navigation.navigate("EventDetail", { eventId });
+    this.props.navigation.navigate("About", { eventId });
   }
 
   async loadFeaturedEvents () {

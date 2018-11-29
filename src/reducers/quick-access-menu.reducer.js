@@ -34,7 +34,7 @@ const initState = {
     {
       id: "About",
       actived: true,
-      screen: "EventDetail",
+      screen: "About",
       icon: require("../../assets/images/about.png"),
       activedIcon: require("../../assets/images/about_white.png")
     }
