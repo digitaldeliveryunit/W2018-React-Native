@@ -9,6 +9,9 @@ import AgendaItem from "../../components/agenda/AgendaItem";
 import AppEmpty from "../../components/AppEmpty";
 import AppActivityIndicator from "../../components/AppActivityIndicator";
 import AgendaAPI from "../../api/agenda";
+import QuickAccessButton from "../../components/QuickAccessButton";
+import NavigationService from "../../helpers/navigation-service";
+import { SELECT_MENU } from "../../actions/quick-access-menu.action";
 
 class Agenda extends Component {
   constructor(props) {
@@ -65,45 +68,48 @@ class Agenda extends Component {
       this.state.dayInOrderActive
     ]);
     return (
-      <ScrollView
-        style={styles.whiteOverlay}
-        showsVerticalScrollIndicator={false}
-      >
-        <View style={styles.container}>
-          <TouchableOpacity
-            style={styles.backButton}
-            onPress={() => this.props.navigation.goBack()}
-          >
-            <Image
-              source={require("../../../assets/images/left_black.png")}
-              style={styles.backIcon}
-              resizeMode="contain"
-            />
-          </TouchableOpacity>
-          <Image
-            source={{ uri: currentEvent.imageUrl }}
-            style={styles.imageCover}
-          />
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            style={styles.datesContainer}
-          >
-            {this._renderDatesOfEvent(
-              _.get(currentEvent, "dateFrom"),
-              _.get(currentEvent, "dateTo")
-            )}
-          </ScrollView>
-          <View style={styles.containerAgendas}>
-            {loadingAgendas ? (
-              <AppActivityIndicator
-                color="#000"
-                containerStyles={styles.loadingOrEmptyContainer}
+      <View style={{ flex: 1, alignItems: "center"}}>
+        <ScrollView
+          style={styles.whiteOverlay}
+          showsVerticalScrollIndicator={false}
+        >
+          <View style={styles.container}>
+            <TouchableOpacity
+              style={styles.backButton}
+              onPress={() => this.onBack()}
+            >
+              <Image
+                source={require("../../../assets/images/left_black.png")}
+                style={styles.backIcon}
+                resizeMode="contain"
               />
-            ) : this._renderAgenda(agendaOfActiveDay)}
+            </TouchableOpacity>
+            <Image
+              source={{ uri: currentEvent.imageUrl }}
+              style={styles.imageCover}
+            />
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              style={styles.datesContainer}
+            >
+              {this._renderDatesOfEvent(
+                _.get(currentEvent, "dateFrom"),
+                _.get(currentEvent, "dateTo")
+              )}
+            </ScrollView>
+            <View style={styles.containerAgendas}>
+              {loadingAgendas ? (
+                <AppActivityIndicator
+                  color="#000"
+                  containerStyles={styles.loadingOrEmptyContainer}
+                />
+              ) : this._renderAgenda(agendaOfActiveDay)}
+            </View>
           </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+        <QuickAccessButton currentEvent={currentEvent} />
+      </View>
     );
   }
 
@@ -132,9 +138,22 @@ class Agenda extends Component {
       });
     }
   }
+  onBack () {
+    const navigation = NavigationService.getNavigation();
+    const { index, routes } = navigation.state.nav;
+    const backRoute = routes[index - 1].routeName;
+    this.props.selectMenu(backRoute);
+    NavigationService.goBack();
+  }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    selectMenu: selectedMenuId => dispatch({ type: SELECT_MENU, selectedMenuId })
+  };
+};
 
 export default connect(
   null,
-  null
+  mapDispatchToProps
 )(Agenda);

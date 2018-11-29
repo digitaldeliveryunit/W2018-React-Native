@@ -36,7 +36,7 @@ class ProfileComponent extends Component {
   }
 
   _onPressEventItem = (eventId) => {
-    this.props.navigation.navigate("EventDetail", { eventId });
+    this.props.navigation.navigate("About", { eventId });
   };
 
   _keyExtractor = (item, index) => `${index}`;

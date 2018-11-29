@@ -2494,7 +2494,6 @@ image-size@^0.6.0:
 immutable@^3.8.1:
   version "3.8.2"
   resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.8.2.tgz#c2439951455bb39913daf281376f1530e104adf3"
-  integrity sha1-wkOZUUVbs5kT2vKBN28VMOEErfM=
 
 import-local@^1.0.0:
   version "1.0.0"
@@ -4365,7 +4364,6 @@ react-lifecycles-compat@^3, react-lifecycles-compat@^3.0.0, react-lifecycles-com
 react-native-autoheight-webview@^0.10.6:
   version "0.10.6"
   resolved "https://registry.yarnpkg.com/react-native-autoheight-webview/-/react-native-autoheight-webview-0.10.6.tgz#c11136b5e64b6defd0ae873eb1c1ed308012b13b"
-  integrity sha512-ndI5cSHGWyN9Zj7HXhM4IFhJKodADINGXC767uS1jJaOo4U66+i9Qc1ZYvJljfPV73Lcv50FjycXYfaMVhnizQ==
   dependencies:
     immutable "^3.8.1"
     prop-types "^15.6.2"
@@ -4421,6 +4419,12 @@ react-native-snap-carousel@^3.7.5:
     prop-types "^15.6.1"
     react-addons-shallow-compare "15.6.2"
 
+react-native-swiper@^1.5.14:
+  version "1.5.14"
+  resolved "https://registry.yarnpkg.com/react-native-swiper/-/react-native-swiper-1.5.14.tgz#1c6f949ca377186300f972bb0f30d24062c899aa"
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-tab-view@^0.0.77:
   version "0.0.77"
   resolved "http://registry.npmjs.org/react-native-tab-view/-/react-native-tab-view-0.0.77.tgz#11ceb8e7c23100d07e628dc151b57797524d00d4"
@@ -4440,6 +4444,10 @@ react-native-vector-icons@^6.0.2:
     lodash "^4.0.0"
     prop-types "^15.6.2"
     yargs "^8.0.2"
+
+react-native-webview-autoheight@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/react-native-webview-autoheight/-/react-native-webview-autoheight-1.0.6.tgz#08d6ece62877f5ef33ef857102193760085afc3a"
 
 react-native@0.57.4:
   version "0.57.4"
