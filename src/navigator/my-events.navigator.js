@@ -4,6 +4,7 @@ import EventDetailScreen from "../screens/event-detail";
 import GalleryScreen from "../screens/gallery";
 import SpotlightScreen from "../screens/spotlight";
 import AgendaScreen from "../screens/agenda";
+import FeedbackScreen from "../screens/feedback";
 
 export default createStackNavigator(
   {
@@ -11,7 +12,8 @@ export default createStackNavigator(
     EventDetail: EventDetailScreen,
     Gallery: GalleryScreen,
     Spotlight: SpotlightScreen,
-    Agenda: AgendaScreen
+    Agenda: AgendaScreen,
+    Feedback: FeedbackScreen
   },
   {
     headerMode: "none"

@@ -21,7 +21,8 @@ const initState = {
       id: "Feedback",
       actived: false,
       icon: require("../../assets/images/feedback.png"),
-      activedIcon: require("../../assets/images/feedback_white.png")
+      activedIcon: require("../../assets/images/feedback_white.png"),
+      screen: "Feedback"
     },
     {
       id: "Agenda",
