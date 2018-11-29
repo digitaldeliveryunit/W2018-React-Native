@@ -8,6 +8,7 @@ import EventDetailScreen from "../screens/event-detail";
 import GalleryScreen from "../screens/gallery";
 import SpotlightScreen from "../screens/spotlight";
 import AgendaScreen from "../screens/agenda";
+import FeedbackScreen from "../screens/feedback";
 
 export const AppNavigator = StackNavigator(
   {
@@ -16,7 +17,8 @@ export const AppNavigator = StackNavigator(
     About: { screen: EventDetailScreen },
     Gallery: { screen: GalleryScreen },
     Spotlight: { screen: SpotlightScreen },
-    Agenda: { screen: AgendaScreen }
+    Agenda: { screen: AgendaScreen },
+    Feedback: { screen: FeedbackScreen }
   },
   {
     headerMode: "none"
