@@ -6,6 +6,7 @@ import MyEventScreen from "../screens/my-events";
 import SearchScreen from "../screens/search";
 import ProfileScreen from "../screens/profile";
 import { COLORS } from "../helpers/common-styles";
+import { fontMaker } from "../helpers/font.helper";
 
 const styles = StyleSheet.create({
   iconStyle: {
@@ -102,7 +103,8 @@ const MainNavigator = createBottomTabNavigator(
         height: 60
       },
       labelStyle: {
-        fontSize: 11
+        fontSize: 11,
+        ...fontMaker({})
       },
       activeTintColor: COLORS.GREEN_PET_ICT,
       inactiveTintColor: COLORS.GRAYISH_BLUE

@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import { sizeHeight, sizeWidth } from "../../helpers/size.helper";
+import { fontMaker } from "../../helpers/font.helper";
 
 export default StyleSheet.create({
   featuredLoadingContainer: {
@@ -44,7 +45,7 @@ export default StyleSheet.create({
   title: {
     fontSize: 17,
     color: "#FFF",
-    fontWeight: "500"
+    ...fontMaker({ weight: "500" })
   },
   closeIcon: {
     width: 16,

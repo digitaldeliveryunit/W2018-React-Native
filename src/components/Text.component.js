@@ -3,7 +3,6 @@ import { Text, StyleSheet } from "react-native";
 import {fontMaker} from "../helpers/font.helper";
 
 const EMPTY = "";
-
 const styles = StyleSheet.create({
   default: Object.assign({
     backgroundColor: "transparent"

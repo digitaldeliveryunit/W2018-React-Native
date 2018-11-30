@@ -2,6 +2,7 @@ import { StyleSheet } from "react-native";
 import {
   sizeWidth
 } from "../helpers/size.helper";
+import { fontMaker } from "../helpers/font.helper";
 
 export const COLORS = {
   GRAY: "#979797",
@@ -32,9 +33,9 @@ export const CommonStyles = StyleSheet.create({
   title: {
     color: "#FFF",
     fontSize: 24,
-    fontWeight: "800",
     marginBottom: -5,
-    paddingLeft: 30
+    paddingLeft: 30,
+    ...fontMaker({ weight: "600" })
   },
   horizontalDivider: {
     backgroundColor: COLORS.PALE_NAVY,

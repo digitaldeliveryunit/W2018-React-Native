@@ -43,7 +43,8 @@
   "rnpm": {
     "assets": [
       "assets/fonts/SF Pro Text",
-      "assets/fonts/Helvetica Neue"
+      "assets/fonts/Helvetica Neue",
+      "assets/fonts/Montserrat"
     ]
   }
 }

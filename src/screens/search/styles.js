@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
 import { CommonStyles, COLORS } from "../../helpers/common-styles";
 import { sizeWidth, sizeHeight } from "../../helpers/size.helper";
+import { fontMaker } from "../../helpers/font.helper";
 
 export default StyleSheet.create({
   listContainer: {
@@ -27,7 +28,8 @@ export default StyleSheet.create({
     color: "#FFF",
     paddingLeft: 5,
     paddingRight: 12,
-    fontSize: 20
+    fontSize: 20,
+    ...fontMaker({})
   },
   founds: {
     marginTop: 30,

@@ -27,6 +27,19 @@ const font = {
     "styles": {
       "italic": "Italic"
     }
+  },
+  "Montserrat": {
+    "weights": {
+      "800": "ExtraBold",
+      "700": "Bold",
+      "600": "SemiBold",
+      "500": "Medium",
+      "400": "Regular",
+      "300": "Light"
+    },
+    "styles": {
+      "italic": "Italic"
+    }
   }
 };
 
@@ -36,18 +49,16 @@ export const fontMaker = (options = {}) => {
     {
       weight: null,
       style: null,
-      family: "Helvetica Neue"
+      family: "Montserrat"
     },
     options
   );
 
   const { weights, styles } = font[family];
-
   if (Platform.OS === "android") {
-    weight = weights[weight] ? weights[weight] : "";
+    weight = weights[weight] ? weights[weight] : "Regular";
     style = styles[style] ? styles[style] : "";
-
-    const suffix = weight + style;
+    const suffix = (weight === "Regular" && style) ? style : (weight + style);
 
     return {
       fontFamily: family + (suffix.length ? `-${suffix}` : ""),

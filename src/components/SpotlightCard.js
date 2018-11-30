@@ -10,6 +10,7 @@ import {
 import { COLORS, CommonStyles } from "../helpers/common-styles";
 import Text from "./Text.component";
 import _ from "lodash";
+import { fontMaker } from "../helpers/font.helper";
 
 const { width } = Dimensions.get("window");
 const WIDTH_SPOTLIGHT_ITEM = width / 2 - 44;
@@ -134,10 +135,10 @@ SpotlightItem.defaultProps = {
     marginTop: 10,
     paddingHorizontal: 25,
     alignSelf: "center",
-    fontWeight: "bold",
     fontSize: 13,
     lineHeight: 16,
-    color: COLORS.GREEN_PET_ICT
+    color: COLORS.GREEN_PET_ICT,
+    ...fontMaker({ weight: "600" })
   },
   roleStyle: {
     marginTop: 2,

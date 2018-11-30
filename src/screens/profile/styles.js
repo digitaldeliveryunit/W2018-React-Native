@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import { CommonStyles } from "../../helpers/common-styles";
+import { fontMaker } from "../../helpers/font.helper";
 
 export default StyleSheet.create({
   foregroundSection: {
@@ -28,10 +29,10 @@ export default StyleSheet.create({
     justifyContent: "center"
   },
   displayName: {
-    fontWeight: "bold",
     fontSize: 22,
     lineHeight: 25,
-    color: "#FFF"
+    color: "#FFF",
+    ...fontMaker({ weight: "600" })
   },
   displayPosition: {
     marginTop: 1,
@@ -46,13 +47,13 @@ export default StyleSheet.create({
     color: "#FFF"
   },
   title: {
-    fontWeight: "bold",
     fontSize: 22,
     lineHeight: 26,
     color: "#FFF",
     paddingHorizontal: 22,
     marginTop: 25,
-    marginBottom: 20
+    marginBottom: 20,
+    ...fontMaker({ weight: "600" })
   },
   containerEvents: {
     paddingLeft: 15,

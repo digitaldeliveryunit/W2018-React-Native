@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
-import { CommonStyles, COLORS } from "../../helpers/common-styles";
 import { sizeWidth, sizeHeight, sizeFont } from "../../helpers/size.helper";
-
+import { fontMaker } from "../../helpers/font.helper";
+ 
 export default StyleSheet.create({
   swiper: {
   },
@@ -37,8 +37,8 @@ export default StyleSheet.create({
   title: {
     color: "#FFF",
     fontSize: sizeFont(6),
-    fontWeight: "bold",
-    marginBottom: 10
+    marginBottom: 10,
+    ...fontMaker({ weight: "600" })
   },
   content: {
     color: "#FFF",
