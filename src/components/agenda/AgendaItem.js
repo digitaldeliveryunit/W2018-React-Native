@@ -12,6 +12,7 @@ import _ from "lodash";
 import PropTypes from "prop-types";
 import { OPEN_QRCODE_POPUP } from "../../actions/qrcode.action";
 import { COLORS } from "../../helpers/common-styles";
+import { fontMaker } from "../../helpers/font.helper";
 
 const { width } = Dimensions.get("window");
 const WIDTH_CONTAINER_ICON = 40;
@@ -49,10 +50,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20
   },
   agendaName: {
-    fontWeight: "bold",
     fontSize: 18,
     lineHeight: 22,
-    color: "#FFF"
+    color: "#FFF",
+    ...fontMaker({ weight: "600" })
   },
   venueName: {
     marginTop: 2,
@@ -110,10 +111,10 @@ const styles = StyleSheet.create({
     borderColor: COLORS.GRAY
   },
   time: {
-    fontWeight: "500",
     fontSize: 16,
     lineHeight: 19,
-    color: "#FFF"
+    color: "#FFF",
+    ...fontMaker({ weight: "500" })
   },
   containerSubAgenda: {
     paddingHorizontal: 20,

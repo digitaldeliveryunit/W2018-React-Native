@@ -6,6 +6,7 @@ import { sizeWidth } from "../helpers/size.helper";
 import NavigationService from "../helpers/navigation-service";
 import { connect } from "react-redux";
 import { SELECT_MENU } from "../actions/quick-access-menu.action";
+import { fontMaker } from "../helpers/font.helper";
 
 const styles = StyleSheet.create({
   container: {
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 17,
     color: "#FFF",
-    fontWeight: "500"
+    ...fontMaker({ weight: "500" })
   },
   rightComponent: {
     position: "absolute",

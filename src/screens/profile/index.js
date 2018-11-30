@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import {
   View,
-  Text,
   FlatList,
   TouchableOpacity,
   RefreshControl
@@ -16,7 +15,7 @@ import EventCard from "../../components/EventCard";
 import AppActivityIndicator from "../../components/AppActivityIndicator";
 import EventAPI from "../../api/event";
 import { user } from "../../helpers/mock-data.helper";
-import { CommonStyles } from "../../helpers/common-styles";
+import Text from "../../components/Text.component";
 
 class ProfileComponent extends Component {
   constructor(props) {

@@ -16,6 +16,7 @@ import QuickAccessButton from "../../components/QuickAccessButton";
 import SpotlightAPI from "../../api/spotlight";
 import AppActivityIndicator from "../../components/AppActivityIndicator";
 import AppEmpty from "../../components/AppEmpty";
+import { fontMaker } from "../../helpers/font.helper";
 
 const ViewMode = {
   LIST: 0,
@@ -164,9 +165,9 @@ class Spotlight extends Component {
           titleStyle={{
             fontSize: 20,
             color: COLORS.GREEN_PET_ICT,
-            fontWeight: "bold",
             marginTop: 15,
-            paddingHorizontal: 25
+            paddingHorizontal: 25,
+            ...fontMaker({ weight: "600" })
           }}
           roleStyle={{
             fontSize: 14,

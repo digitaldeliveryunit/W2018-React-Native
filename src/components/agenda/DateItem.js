@@ -4,6 +4,7 @@ import Text from "../Text.component";
 import { COLORS } from "../../helpers/common-styles";
 import PropTypes from "prop-types";
 import moment from "moment";
+import { fontMaker } from "../../helpers/font.helper";
 
 const styles = StyleSheet.create({
   wrapperItem: {
@@ -41,10 +42,10 @@ const styles = StyleSheet.create({
     color: "#FFF"
   },
   month: {
-    fontWeight: "500",
     fontSize: 14,
     lineHeight: 13,
-    color: "#FFF"
+    color: "#FFF",
+    ...fontMaker({ weight: "500" })
   },
   dayInOrder: {
     padding: 8,

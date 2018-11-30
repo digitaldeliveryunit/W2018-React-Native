@@ -15,6 +15,7 @@ import AppEmpty from "../../components/AppEmpty";
 import {sizeHeight} from "../../helpers/size.helper";
 import _ from "lodash";
 import AppActivityIndicator from "../../components/AppActivityIndicator";
+import { fontMaker } from "../../helpers/font.helper";
 
 const styles = StyleSheet.create({
   shelfContainer: {
@@ -31,12 +32,12 @@ const styles = StyleSheet.create({
   title: {
     color: "#FFF",
     fontSize: 20,
-    fontWeight: "bold"
+    ...fontMaker({ weight: "600" })
   },
   reversedTitle: {
     color: COLORS.GRAYISH_BLUE,
     fontSize: 20,
-    fontWeight: "bold"
+    ...fontMaker({ weight: "600" })
   },
   seeAll: {
     color: "#FFF",

@@ -1,6 +1,7 @@
 import { StyleSheet, Dimensions } from "react-native";
 import { CommonStyles, COLORS } from "../../helpers/common-styles";
 import { sizeWidth } from "../../helpers/size.helper";
+import { fontMaker } from "../../helpers/font.helper";
 const { width } = Dimensions.get("window");
 
 export default StyleSheet.create({
@@ -32,12 +33,12 @@ export default StyleSheet.create({
   },
   lblEventName: {
     width,
-    fontWeight: "bold",
     fontSize: 20,
     lineHeight: 24,
     color: COLORS.GREEN_PET_ICT,
     paddingVertical: 12,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
+    ...fontMaker({ weight: "600" })
   },
   infoContainer: {
     width,
@@ -95,11 +96,11 @@ export default StyleSheet.create({
     flex: 1
   },
   lblAbout: {
-    fontWeight: "bold",
     fontSize: 15,
     lineHeight: 18,
     color: COLORS.GRAYISH_BLUE,
-    paddingVertical: 10
+    paddingVertical: 10,
+    ...fontMaker({ weight: "600" })
   },
   contentAbout: {
     marginLeft: -10,
