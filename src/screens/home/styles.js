@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
 import { sizeHeight, sizeWidth } from "../../helpers/size.helper";
 import { fontMaker } from "../../helpers/font.helper";
+import { CommonStyles } from "../../helpers/common-styles";
 
 export default StyleSheet.create({
   featuredLoadingContainer: {
@@ -24,22 +25,16 @@ export default StyleSheet.create({
   stickyHeader: {
     alignItems: "center",
     justifyContent: "center",
-    paddingTop: 25,
-    paddingBottom: 10,
     backgroundColor: "rgb(64, 54, 129)",
     opacity: 0.95,
-    shadowColor: "#060606",
-    shadowOpacity: 0.3,
-    shadowOffset: {
-      width: 0,
-      height: 10
-    }
+    ...CommonStyles.boxShadow,
+    height: sizeHeight(10),
+    paddingTop: 10
   },
   stickyContainer: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    height: 30,
     width: sizeWidth(90)
   },
   title: {

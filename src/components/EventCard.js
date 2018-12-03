@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
   content: {
     width: "100%",
     flexDirection: "row",
-    alignItems: "center",
     paddingBottom: 5
   },
   dateCountDown: {
@@ -36,7 +35,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginTop: 10,
     paddingTop: 8,
     borderTopColor: "#F3F3F3",
     borderTopWidth: 1
@@ -73,19 +71,21 @@ class EventCard extends React.Component {
           source={{uri: event.imageUrl}}
           style={styles.image}
           resizeMode={FastImage.resizeMode.cover} />
-        <View style={{ paddingHorizontal: 15, paddingVertical: 10 }}>
+        <View style={{ padding: 10 }}>
           <View style={styles.content}>
-            <DateCountDown dateFrom={event.dateFrom} dateTo={event.dateTo} />
-            <View style={{ marginLeft: 10, width: sizeWidth(60) }}>
-              <Text style={{ color: COLORS.GREEN_PET_ICT, fontSize: 15 }}>
+            <View>
+              <DateCountDown dateFrom={event.dateFrom} dateTo={event.dateTo} />
+            </View>
+            <View style={{ marginLeft: 10, width: sizeWidth(60), height: sizeHeight(15) }}>
+              <Text style={{ color: COLORS.GREEN_PET_ICT, fontSize: 15 }} numberOfLines={2}>
                 {event.eventName}
               </Text>
-              <Text style={{ color: COLORS.GRAYISH_BLUE, fontSize: 12 }}>
+              <Text style={{ color: COLORS.GRAYISH_BLUE, fontSize: 12 }} numberOfLines={1}>
                 {event.eventLocation && event.eventLocation.locationName}
               </Text>
               {
                 (event.dateFrom && getDayDuration(event.dateFrom, event.dateTo) > 0) && (
-                  <Text style={{ color: COLORS.GRAYISH_BLUE, fontSize: 12 }}>
+                  <Text style={{ color: COLORS.GRAYISH_BLUE, fontSize: 12 }} numberOfLines={1}>
                     {`${toDateString(event.dateFrom)} - ${toDateString(event.dateTo)}`}
                   </Text>
                 )

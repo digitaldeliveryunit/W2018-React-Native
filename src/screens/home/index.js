@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { View, Image, TouchableOpacity, FlatList } from "react-native";
+import { View, Image, TouchableOpacity, FlatList, Animated } from "react-native";
 import Text from "../../components/Text.component";
 import styles from "./styles";
 import { CommonStyles, COLORS } from "../../helpers/common-styles";
@@ -45,11 +45,11 @@ class Home extends Component {
             this.parallaxScrollView = ref;
           }}
           backgroundColor={"transparent"}
-          backgroundScrollSpeed={2}
-          fadeOutForeground={true}
+          backgroundScrollSpeed={10}
+          fadeOutForeground={false}
           parallaxHeaderHeight={this.state.heightOfForeground}
           renderForeground={this._renderForeground}
-          stickyHeaderHeight={100}
+          stickyHeaderHeight={sizeHeight(10)}
           renderStickyHeader={this._renderStickyHeader}
           contentBackgroundColor={"transparent"}
           showsVerticalScrollIndicator={false}
