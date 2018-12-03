@@ -9,6 +9,7 @@ import styles from "./styles";
 import WrapperComponent from "../../components/Wrapper.component";
 import DetailHeader from "../../components/DetailHeader";
 import QuickAccessButton from "../../components/QuickAccessButton";
+import TabBarBottom from "../../components/tab-bar/TabBarBottom";
 
 class Feedback extends Component {
   constructor(props) {
@@ -37,6 +38,7 @@ class Feedback extends Component {
           </View>
         </View>
         <QuickAccessButton currentEvent={currentEvent} />
+        <TabBarBottom navigation={this.props.navigation}/>
       </WrapperComponent>
     )
   }

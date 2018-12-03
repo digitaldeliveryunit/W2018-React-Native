@@ -17,6 +17,7 @@ import SpotlightAPI from "../../api/spotlight";
 import AppActivityIndicator from "../../components/AppActivityIndicator";
 import AppEmpty from "../../components/AppEmpty";
 import { fontMaker } from "../../helpers/font.helper";
+import TabBarBottom from "../../components/tab-bar/TabBarBottom";
 
 const ViewMode = {
   LIST: 0,
@@ -114,6 +115,7 @@ class Spotlight extends Component {
         }
         </View>
         <QuickAccessButton currentEvent={this.state.currentEvent} />
+        <TabBarBottom navigation={this.props.navigation}/>
       </WrapperComponent>
     );
   }

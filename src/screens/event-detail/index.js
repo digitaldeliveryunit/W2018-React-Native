@@ -14,6 +14,7 @@ import EventAPI from "../../api/event";
 import { SELECT_MENU } from "../../actions/quick-access-menu.action";
 import AppWebView from "../../components/AppWebView";
 import { USER_STATUS } from "../../config";
+import TabBarBottom from "../../components/tab-bar/TabBarBottom";
 
 class EventDetail extends Component {
   constructor(props) {
@@ -238,6 +239,7 @@ class EventDetail extends Component {
           </View>
         </ScrollView>
         <QuickAccessButton currentEvent={event} />
+        <TabBarBottom navigation={this.props.navigation}/>
       </View>
     );
   }

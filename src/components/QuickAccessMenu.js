@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   },
   quickLists: {
     position: "absolute",
-    bottom: 25,
+    bottom: 85,
     right: 25
   },
   quickItem: {
