@@ -89,9 +89,9 @@ class Agenda extends Component {
               style={styles.imageCover}
             />
             <ScrollView
+              contentContainerStyle={styles.datesContainer}
               horizontal
               showsHorizontalScrollIndicator={false}
-              style={styles.datesContainer}
             >
               {this._renderDatesOfEvent(
                 _.get(currentEvent, "dateFrom"),
