@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: COLORS.GRAY,
     paddingHorizontal: 20,
-    paddingVertical: 10
+    paddingVertical: 12
   },
   containerIconToggle: {
     width: WIDTH_CONTAINER_ICON,
@@ -101,14 +101,13 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.15
   },
   containerTime: {
-    paddingHorizontal: 15,
-    paddingVertical: 13,
+    width: 70,
+    height: 70,
+    justifyContent: "center",
     flexDirection: "column",
     alignItems: "center",
     backgroundColor: COLORS.GRAYISH_BLUE,
-    borderRadius: 4,
-    borderWidth: 1,
-    borderColor: COLORS.GRAY
+    borderRadius: 4
   },
   time: {
     fontSize: 16,

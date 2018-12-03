@@ -1,14 +1,18 @@
 import { StyleSheet, Dimensions } from "react-native";
-import { CommonStyles } from "../../helpers/common-styles";
+import { CommonStyles, COLORS } from "../../helpers/common-styles";
+import { sizeHeight } from "../../helpers/size.helper";
 
 const { width } = Dimensions.get("window");
 
 export default StyleSheet.create({
   whiteOverlay: {
-    backgroundColor: "#FFF",
+    backgroundColor: COLORS.LIGHT_GRAY_WHITE,
     position: "relative"
   },
-  container: CommonStyles.container,
+  container: {
+    ...CommonStyles.container,
+    backgroundColor: COLORS.LIGHT_GRAY_WHITE
+  },
   backButton: {
     position: "absolute",
     top: 30,
@@ -24,7 +28,7 @@ export default StyleSheet.create({
   },
   imageCover: {
     width,
-    height: 200
+    height: sizeHeight(33)
   },
   datesContainer: {
     padding: 4,

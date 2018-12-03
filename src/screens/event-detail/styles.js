@@ -1,6 +1,6 @@
 import { StyleSheet, Dimensions } from "react-native";
 import { CommonStyles, COLORS } from "../../helpers/common-styles";
-import { sizeWidth } from "../../helpers/size.helper";
+import { sizeWidth, sizeHeight } from "../../helpers/size.helper";
 import { fontMaker } from "../../helpers/font.helper";
 const { width } = Dimensions.get("window");
 
@@ -26,7 +26,7 @@ export default StyleSheet.create({
   },
   imageCover: {
     width,
-    height: 200
+    height: sizeHeight(33)
   },
   titleContainer: {
     backgroundColor: "rgba(6, 6, 6, .05)"

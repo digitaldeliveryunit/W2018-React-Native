@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Platform } from "react-native";
 import Text from "../Text.component";
 import { COLORS } from "../../helpers/common-styles";
 import PropTypes from "prop-types";
@@ -11,56 +11,71 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     borderRadius: 4,
     alignItems: "center",
+    justifyContent: "center",
+    alignContent: "center",
+    alignItems: "center",
     backgroundColor: "#FFF",
-    shadowColor: "#060606",
-    shadowOffset: {
-      width: 0,
-      height: 3
-    },
-    shadowRadius: 4,
-    shadowOpacity: 0.2,
-    opacity: 0.2
-  },
-  activeItem: {
-    borderWidth: 1,
-    borderColor: COLORS.GRAY,
-    shadowOpacity: 0.1,
-    opacity: 1
+    borderColor: COLORS.GRAY
   },
   dayMonthContainer: {
+    width: 52,
+    height: 52,
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: COLORS.GRAYISH_BLUE,
-    borderRadius: 3,
-    paddingHorizontal: 6,
-    paddingVertical: 4
+    borderRadius: 4,
+    zIndex: 2
   },
   day: {
+    paddingTop: 7,
     fontSize: 28,
     lineHeight: 27,
     color: "#FFF"
   },
   month: {
-    fontSize: 14,
-    lineHeight: 13,
+    paddingBottom: 3,
+    fontSize: 15,
+    lineHeight: 15,
     color: "#FFF",
     ...fontMaker({ weight: "500" })
   },
+  containerDayInOrder: {
+    marginLeft: -4,
+    height: "100%",
+    justifyContent: "center",
+    borderTopRightRadius: 4,
+    borderBottomRightRadius: 4,
+    paddingLeft: 14,
+    paddingRight: 11
+  },
+  activeItem: {
+    borderColor: COLORS.GRAY,
+    borderWidth: 1,
+    borderLeftWidth: 0,
+    borderTopRightRadius: 4,
+    borderBottomRightRadius: 4
+  },
   dayInOrder: {
-    padding: 8,
     fontSize: 17,
     lineHeight: 20,
     color: COLORS.GRAYISH_BLUE
+  },
+  inactiveItem: {
+    backgroundColor: "#FFF",
+    position: "absolute",
+    top: 0,
+    left: 0,
+    zIndex: 2,
+    width: "100%",
+    height: "100%",
+    opacity: 0.8
   }
 });
 
 const DateItem = ({ date, dayInOrder, isActive }) => {
   return (
-    <View
-      elevation={5}
-      style={[styles.wrapperItem, isActive && styles.activeItem]}
-    >
+    <View style={styles.wrapperItem}>
       <View style={styles.dayMonthContainer}>
         <Text style={styles.day}>{moment(date).format("DD")}</Text>
         <Text style={styles.month}>
@@ -69,7 +84,10 @@ const DateItem = ({ date, dayInOrder, isActive }) => {
             .toUpperCase()}
         </Text>
       </View>
-      <Text style={styles.dayInOrder}>DAY {dayInOrder}</Text>
+      <View style={[styles.containerDayInOrder, isActive && styles.activeItem]}>
+        <Text style={styles.dayInOrder}>DAY {dayInOrder}</Text>
+      </View>
+      {!isActive && <View style={styles.inactiveItem} />}
     </View>
   );
 };
