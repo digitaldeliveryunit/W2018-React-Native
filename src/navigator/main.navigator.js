@@ -41,7 +41,7 @@ const MainNavigator = createBottomTabNavigator(
     MyEvents: {
       screen: MyEventScreen,
       navigationOptions: {
-        title: "myEvents",
+        title: "My Events",
         tabBarIcon: ({ focused }) => {
           return focused ? (
             <Image

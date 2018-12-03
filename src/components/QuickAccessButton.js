@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
 import { TOGGLE_MENU } from "../actions/quick-access-menu.action";
-import {COLORS, CommonStyles} from "../helpers/common-styles";
+import { CommonStyles } from "../helpers/common-styles";
 
 const styles = StyleSheet.create({
   menu: {
     position: "absolute",
-    bottom: 25,
+    bottom: 85,
     right: 25
   },
   item: {

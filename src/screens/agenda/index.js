@@ -12,6 +12,7 @@ import AgendaAPI from "../../api/agenda";
 import QuickAccessButton from "../../components/QuickAccessButton";
 import NavigationService from "../../helpers/navigation-service";
 import { SELECT_MENU } from "../../actions/quick-access-menu.action";
+import TabBarBottom from "../../components/tab-bar/TabBarBottom";
 
 class Agenda extends Component {
   constructor(props) {
@@ -109,6 +110,7 @@ class Agenda extends Component {
           </View>
         </ScrollView>
         <QuickAccessButton currentEvent={currentEvent} />
+        <TabBarBottom navigation={this.props.navigation}/>
       </View>
     );
   }

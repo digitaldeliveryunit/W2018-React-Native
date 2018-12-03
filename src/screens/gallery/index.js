@@ -9,6 +9,7 @@ import DetailHeader from "../../components/DetailHeader";
 import GalleryShelf from "../../components/gallery/GalleryShelf";
 import QuickAccessButton from "../../components/QuickAccessButton";
 import GalleryAPI from "../../api/gallery";
+import TabBarBottom from "../../components/tab-bar/TabBarBottom";
 
 const MEDIA_TYPES = {
   DOCUMENT: "Document",
@@ -55,6 +56,7 @@ class Gallery extends Component {
           </ScrollView>
         </View>
         <QuickAccessButton currentEvent={currentEvent} />
+        <TabBarBottom navigation={this.props.navigation}/>
       </WrapperComponent>
     );
   }
