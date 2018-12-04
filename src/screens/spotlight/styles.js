@@ -22,6 +22,7 @@ export default StyleSheet.create({
   },
   currentSlideText: {
     fontSize: 16,
-    color: COLORS.GRAYISH_BLUE
+    color: COLORS.GRAYISH_BLUE,
+    opacity: 0.55
   }
 });

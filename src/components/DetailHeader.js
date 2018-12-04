@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 17,
     color: "#FFF",
-    ...fontMaker({ weight: "500" })
+    ...fontMaker({ weight: "400" })
   },
   rightComponent: {
     position: "absolute",

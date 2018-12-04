@@ -169,7 +169,7 @@ class Spotlight extends Component {
             color: COLORS.GREEN_PET_ICT,
             marginTop: 15,
             paddingHorizontal: 25,
-            ...fontMaker({ weight: "600" })
+            ...fontMaker({ weight: "500" })
           }}
           roleStyle={{
             fontSize: 14,

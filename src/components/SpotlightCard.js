@@ -45,7 +45,9 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: COLORS.GRAYISH_BLUE,
     textAlign: "justify",
-    overflow: "hidden"
+    overflow: "hidden",
+    opacity: 0.8,
+    lineHeight: 24
   }
 });
 
@@ -53,7 +55,6 @@ export const SpotlightItem = (props) => {
   const { item, onPressSpotlightItem, containerStyle, imageStyle, titleStyle, roleStyle, showDetail } = props;
   return (
     <TouchableOpacity
-      elevation={5}
       style={[styles.wrapperItem, containerStyle]}
       onPress={() => onPressSpotlightItem(item.spotlightId)}
     >
@@ -76,9 +77,8 @@ export const SpotlightItem = (props) => {
             <Text style={styles.descriptionText}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
               incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              Lorem ipsum dolor sit amet, quis nostrud 
               exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             </Text>
           </View>
