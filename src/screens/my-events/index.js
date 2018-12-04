@@ -12,6 +12,7 @@ import EventAPI from "../../api/event";
 import AppActivityIndicator from "../../components/AppActivityIndicator";
 import AppEmpty from "../../components/AppEmpty";
 import {user} from "../../helpers/mock-data.helper";
+import CardPlaceholder from "../../components/CardPlaceholder";
 
 class MyEvents extends Component {
   constructor () {
@@ -30,7 +31,7 @@ class MyEvents extends Component {
     this.onLoadMore = this.onLoadMore.bind(this);
   }
   render() {
-    const { myEvents, loadingMyEvents } = this.state;
+    const { myEvents } = this.state;
     return (
       <WrapperComponent>
         <View style={styles.listContainer}>
@@ -56,7 +57,7 @@ class MyEvents extends Component {
                 }} />
               )
             }}
-            ListEmptyComponent={() => loadingMyEvents ? <AppActivityIndicator /> : <AppEmpty textColor={"#FFF"} />}
+            ListEmptyComponent={<AppEmpty textColor={"#FFF"} />}
           />
         </View>
       </WrapperComponent>
@@ -76,13 +77,18 @@ class MyEvents extends Component {
 
   _keyExtractor = (item, index) => `${index}`;
 
-  _renderItem = ({item}) => (
-    <TouchableOpacity 
-      style={{ marginBottom: 20, paddingLeft: 15, paddingRight: 15, ...CommonStyles.boxShadow }} 
-      onPress={() => this.onGoDetail(_.get(item, "eventId"))}>
-      <EventCard event={item} />
-    </TouchableOpacity>
-  );
+  _renderItem = ({item}) => {
+    const { loadingMyEvents, refreshing } = this.state;
+    return (
+      <View style={styles.itemWrapper} >
+        <CardPlaceholder onReady={(!loadingMyEvents && !refreshing)}>
+          <TouchableOpacity onPress={() => this.onGoDetail(_.get(item, "eventId"))}>
+            <EventCard event={item} />
+          </TouchableOpacity>
+        </CardPlaceholder>
+      </View>
+    )
+  };
 
   onGoDetail (eventId) {
     this.props.navigation.navigate("About", { eventId });
@@ -92,7 +98,8 @@ class MyEvents extends Component {
     const { take } = this.state;
     this.setState({
       loadingMyEvents: true,
-      loadedMyEvents: false
+      loadedMyEvents: false,
+      myEvents: [1, 2, 3, 4]
     });
     try {
       const myEvents = await EventAPI.getUpcomingEvents({
@@ -118,7 +125,8 @@ class MyEvents extends Component {
     const { take } = this.state;
     this.setState({
       refreshing: true,
-      skip: 0
+      skip: 0,
+      myEvents: [1, 2, 3, 4]
     });
     const myEvents = await EventAPI.getUpcomingEvents({
       skip: 0,
@@ -136,9 +144,11 @@ class MyEvents extends Component {
       loadingMore,
       skip,
       take,
-      myEvents
+      myEvents,
+      loadingMyEvents,
+      refreshing
     } = this.state;
-    if (!hasNextItems || loadingMore) {
+    if (!hasNextItems || loadingMore || loadingMyEvents || refreshing) {
       return;
     }
     this.setState({

@@ -230,7 +230,7 @@ const DateCountDown = ({dateFrom, dateTo}) => {
 }
 
 EventCard.propTypes = {
-  event: PropTypes.object,
+  event: PropTypes.any,
   containerStyles: PropTypes.object,
   width: PropTypes.any,
   withoutBottom: PropTypes.bool

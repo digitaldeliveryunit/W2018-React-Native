@@ -17,6 +17,8 @@ import EventAPI from "../../api/event";
 import { user } from "../../helpers/mock-data.helper";
 import Text from "../../components/Text.component";
 import { sizeWidth, sizeHeight } from "../../helpers/size.helper";
+import AppEmpty from "../../components/AppEmpty";
+import CardPlaceholder from "../../components/CardPlaceholder";
 
 class ProfileComponent extends Component {
   constructor(props) {
@@ -42,13 +44,15 @@ class ProfileComponent extends Component {
   _keyExtractor = (item, index) => `${index}`;
 
   _renderEventItem = ({ item }) => {
+    const {loadingPastEvents, refreshing} = this.state;
     return (
-      <TouchableOpacity
-        style={styles.containerEventItem}
-        onPress={() => this._onPressEventItem(_.get(item, "eventId"))}
-      >
-        <EventCard event={item} withoutBottom />
-      </TouchableOpacity>
+      <View style={styles.containerEventItem}>
+        <CardPlaceholder onReady={(!loadingPastEvents && !refreshing)}>
+          <TouchableOpacity onPress={() => this._onPressEventItem(_.get(item, "eventId"))}>
+            <EventCard event={item} withoutBottom />
+          </TouchableOpacity>
+        </CardPlaceholder>
+      </View>
     );
   };
 
@@ -125,7 +129,7 @@ class ProfileComponent extends Component {
                 )
               );
             }}
-            ListEmptyComponent={<AppActivityIndicator />}
+            ListEmptyComponent={<AppEmpty textColor={"#000"} />}
           />
         </ParallaxScrollView>
       </WrapperComponent>
@@ -140,7 +144,8 @@ class ProfileComponent extends Component {
     const { take } = this.state;
     this.setState({
       loadingPastEvents: true,
-      loadedPastEvents: false
+      loadedPastEvents: false,
+      pastEvents: [1, 2, 3, 4]
     });
     try {
       const pastEvents = await EventAPI.getPastEvents({
@@ -186,9 +191,11 @@ class ProfileComponent extends Component {
       loadingMore,
       skip,
       take,
-      pastEvents
+      pastEvents,
+      loadingPastEvents,
+      refreshing
     } = this.state;
-    if (!hasNextItems || loadingMore) {
+    if (!hasNextItems || loadingMore || loadingPastEvents || refreshing) {
       return;
     }
     this.setState({

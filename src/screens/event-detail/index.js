@@ -16,6 +16,9 @@ import AppWebView from "../../components/AppWebView";
 import { USER_STATUS } from "../../config";
 import TabBarBottom from "../../components/tab-bar/TabBarBottom";
 import { sizeWidth, sizeHeight } from "../../helpers/size.helper";
+import Placeholder from "rn-placeholder";
+import ImagePlaceholder from "../../components/ImagePlaceholder";
+import ImageContentPlaceholder from "../../components/ImageContentPlaceholder";
 
 class EventDetail extends Component {
   constructor(props) {
@@ -49,203 +52,266 @@ class EventDetail extends Component {
   };
 
   _addEventToCalendar = (title, location, startDate, endDate) => {
-    RNCalendarEvents
-      .saveEvent(title, { location, startDate, endDate })
-      .then(() => {
+    RNCalendarEvents.saveEvent(title, { location, startDate, endDate }).then(
+      () => {
         Toast.showLongBottom("Event is added to calendar successfully.");
-      });
+      }
+    );
   };
 
   _onPressAddCalendar = event => {
-    RNCalendarEvents.authorizeEventStore().then((res) => {
+    RNCalendarEvents.authorizeEventStore().then(res => {
       if (res === "authorized") {
         const title = _.get(event, "eventName");
         const location = _.get(event, "eventLocation.locationName");
-        const startDate = moment(_.get(event, "dateFrom")).format('YYYY-MM-DDTHH:mm:ss.SSS[Z]');
-        const endDate = moment(_.get(event, "dateTo")).format('YYYY-MM-DDTHH:mm:ss.SSS[Z]');
+        const startDate = moment(_.get(event, "dateFrom")).format(
+          "YYYY-MM-DDTHH:mm:ss.SSS[Z]"
+        );
+        const endDate = moment(_.get(event, "dateTo")).format(
+          "YYYY-MM-DDTHH:mm:ss.SSS[Z]"
+        );
 
-        RNCalendarEvents
-          .fetchAllEvents(startDate, endDate)
-          .then(res => {
-            const isAddedCalendar = _.findIndex(res, { title, location, startDate, endDate }) >= 0;
-            if (isAddedCalendar) {
-              Toast.showLongBottom("Event is added to calendar successfully.");
-            } else {
-              Alert.alert(
-                'Confirm',
-                '\nWould you like add this event to calendar?',
-                [
-                  {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-                  {text: 'OK', onPress: () => this._addEventToCalendar(title, location, startDate, endDate)},
-                ],
-                { cancelable: true }
-              )
-            }
-          });
+        RNCalendarEvents.fetchAllEvents(startDate, endDate).then(res => {
+          const isAddedCalendar =
+            _.findIndex(res, { title, location, startDate, endDate }) >= 0;
+          if (isAddedCalendar) {
+            Toast.showLongBottom("Event is added to calendar successfully.");
+          } else {
+            Alert.alert(
+              "Confirm",
+              "\nWould you like add this event to calendar?",
+              [
+                {
+                  text: "Cancel",
+                  onPress: () => console.log("Cancel Pressed"),
+                  style: "cancel"
+                },
+                {
+                  text: "OK",
+                  onPress: () =>
+                    this._addEventToCalendar(
+                      title,
+                      location,
+                      startDate,
+                      endDate
+                    )
+                }
+              ],
+              { cancelable: true }
+            );
+          }
+        });
       }
-      
     });
-    
   };
 
   render() {
-    const { event } = this.state;
+    const { event, loadingEvent } = this.state;
     const cover = _.get(event, "imageUrl");
     return (
       <View style={styles.whiteOverlay}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.container}>
-            <View style={{
-              width: sizeWidth(100),
-              height: sizeHeight(36)
-            }}>
-              <Image source={{ uri: cover }} style={styles.imageCover} resizeMode={"cover"} />
-              <TouchableOpacity
-                style={styles.backButton}
-                onPress={() => this.props.navigation.goBack()}
-              >
-                <Image
-                  source={require("../../../assets/images/left_black.png")}
-                  style={styles.backIcon}
-                  resizeMode="contain"
-                />
-              </TouchableOpacity>
-              <View style={styles.containerActionButton}>
-                {event.userStatus === USER_STATUS.NEW && (
-                  <TouchableOpacity
-                    style={styles.actionButton}
-                    onPress={this.onJoin}
-                  >
-                    <Image
-                      source={require("../../../assets/images/plus_filled.png")}
-                      style={styles.iconActionButton}
-                    />
-                  </TouchableOpacity>
-                )}
-                {event.userStatus === USER_STATUS.JOINED && (
-                  <TouchableOpacity
-                    style={styles.actionButton}
-                    onPress={this.onUnJoin}
-                  >
-                    <Image
-                      source={require("../../../assets/images/close.png")}
-                      style={styles.iconActionButton}
-                    />
-                  </TouchableOpacity>
-                )}
-                {event.isBookmark ? (
-                  <TouchableOpacity
-                    style={styles.actionButton}
-                    onPress={this.onUnBookmark}
-                  >
-                    <Image
-                      source={require("../../../assets/images/bookmarked.png")}
-                      style={[styles.iconActionButton, { width: 15 }]}
-                    />
-                  </TouchableOpacity>
-                ) : (
-                  <TouchableOpacity
-                    style={styles.actionButton}
-                    onPress={this.onBookmark}
-                  >
-                    <Image
-                      source={require("../../../assets/images/bookmark.png")}
-                      style={[styles.iconActionButton, { width: 15 }]}
-                    />
-                  </TouchableOpacity>
-                )}
-                {event.userStatus === USER_STATUS.CHECKIN ? (
-                  <TouchableOpacity style={styles.actionButton} disabled={true}>
-                    <Image
-                      source={require("../../../assets/images/qrcode_selected.png")}
-                      style={styles.iconActionButton}
-                    />
-                  </TouchableOpacity>
-                ) : (
-                  <TouchableOpacity
-                    style={styles.actionButton}
-                    onPress={() => this.props.openPopupQRCode()}
-                  >
-                    <Image
-                      source={require("../../../assets/images/qrcode.png")}
-                      style={styles.iconActionButton}
-                    />
-                  </TouchableOpacity>
-                )}
-              </View>
-            </View>
-            <View style={styles.titleContainer}>
-              <Text style={styles.lblEventName} numberOfLines={2}>
-                {_.get(event, "eventName", "")}
-              </Text>
-            </View>
-            <View style={styles.infoContainer}>
-              <View style={styles.rowInfo}>
-                <Image
-                  style={styles.infoIcon}
-                  source={require("../../../assets/images/calendar.png")}
-                />
-                <View style={styles.infoLabelWrapper}>
-                  <Text style={styles.lblInfoName}>
-                    {moment(_.get(event, "dateFrom")).format("MMM DD, YYYY")} -{" "}
-                    {moment(_.get(event, "dateTo")).format("MMM DD, YYYY")}
-                  </Text>
-                  <TouchableOpacity onPress={() => this._onPressAddCalendar(event)}>
-                    <Text style={styles.colorHighLight}>Add to calendar</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-              <View style={[styles.rowInfo, { alignItems: "center" }]}>
-                <Image
-                  style={{ ...styles.infoIcon, width: 22 }}
-                  source={require("../../../assets/images/clock.png")}
-                />
-                <View style={styles.infoLabelWrapper}>
-                  <Text style={styles.lblInfoName}>
-                    {moment(_.get(event, "dateFrom")).format("HH:MM A")} -{" "}
-                    {moment(_.get(event, "dateTo")).format("HH:MM A")}
-                  </Text>
-                </View>
-              </View>
-              <View style={styles.rowLocation}>
-                <View style={styles.rowInfo}>
+            <View
+              style={{
+                width: sizeWidth(100),
+                height: sizeHeight(36)
+              }}
+            >
+              <ImagePlaceholder onReady={!loadingEvent} animate="fade">
+                <View>
                   <Image
-                    style={{ ...styles.infoIcon, height: 25 }}
-                    source={require("../../../assets/images/marker.png")}
+                    source={{ uri: cover }}
+                    style={styles.imageCover}
+                    resizeMode={"cover"}
                   />
-                  <View style={styles.infoLabelWrapper}>
-                    <Text
-                      style={{
-                        ...styles.lblInfoName,
-                        ...styles.colorHighLight
-                      }}
-                    >
-                      {_.get(event, "eventLocation.locationName")}
-                    </Text>
-                    <Text style={styles.lblInfoMeta}>
-                      {`Unknown`}
-                    </Text>
+                  <TouchableOpacity
+                    style={styles.backButton}
+                    onPress={() => this.props.navigation.goBack()}
+                  >
+                    <Image
+                      source={require("../../../assets/images/left_black.png")}
+                      style={styles.backIcon}
+                      resizeMode="contain"
+                    />
+                  </TouchableOpacity>
+                  <View style={styles.containerActionButton}>
+                    {event.userStatus === USER_STATUS.NEW && (
+                      <TouchableOpacity
+                        style={styles.actionButton}
+                        onPress={this.onJoin}
+                      >
+                        <Image
+                          source={require("../../../assets/images/plus_filled.png")}
+                          style={styles.iconActionButton}
+                        />
+                      </TouchableOpacity>
+                    )}
+                    {event.userStatus === USER_STATUS.JOINED && (
+                      <TouchableOpacity
+                        style={styles.actionButton}
+                        onPress={this.onUnJoin}
+                      >
+                        <Image
+                          source={require("../../../assets/images/close.png")}
+                          style={styles.iconActionButton}
+                        />
+                      </TouchableOpacity>
+                    )}
+                    {event.isBookmark ? (
+                      <TouchableOpacity
+                        style={styles.actionButton}
+                        onPress={this.onUnBookmark}
+                      >
+                        <Image
+                          source={require("../../../assets/images/bookmarked.png")}
+                          style={[styles.iconActionButton, { width: 15 }]}
+                        />
+                      </TouchableOpacity>
+                    ) : (
+                      <TouchableOpacity
+                        style={styles.actionButton}
+                        onPress={this.onBookmark}
+                      >
+                        <Image
+                          source={require("../../../assets/images/bookmark.png")}
+                          style={[styles.iconActionButton, { width: 15 }]}
+                        />
+                      </TouchableOpacity>
+                    )}
+                    {event.userStatus === USER_STATUS.CHECKIN ? (
+                      <TouchableOpacity
+                        style={styles.actionButton}
+                        disabled={true}
+                      >
+                        <Image
+                          source={require("../../../assets/images/qrcode_selected.png")}
+                          style={styles.iconActionButton}
+                        />
+                      </TouchableOpacity>
+                    ) : (
+                      <TouchableOpacity
+                        style={styles.actionButton}
+                        onPress={() => this.props.openPopupQRCode()}
+                      >
+                        <Image
+                          source={require("../../../assets/images/qrcode.png")}
+                          style={styles.iconActionButton}
+                        />
+                      </TouchableOpacity>
+                    )}
                   </View>
                 </View>
-                <TouchableOpacity onPress={() => this._onPressOpenGoogleMap(_.get(event, "eventLocation"))}>
-                  <Image
-                    style={styles.mapsImage}
-                    source={require("../../../assets/images/googlemap.png")}
-                  />
-                </TouchableOpacity>
-              </View>
+              </ImagePlaceholder>
+            </View>
+            <View style={styles.titleContainer}>
+              <Placeholder.Paragraph
+                lineNumber={2}
+                textSize={14}
+                lineSpacing={5}
+                color="#CCCCCC"
+                lastLineWidth="70%"
+                firstLineWidth="50%"
+                onReady={!loadingEvent}
+                animate="fade"
+              >
+                <Text style={styles.lblEventName} numberOfLines={2}>
+                  {_.get(event, "eventName", "")}
+                </Text>
+              </Placeholder.Paragraph>
+            </View>
+            <View style={styles.infoContainer}>
+              <ImageContentPlaceholder onReady={!loadingEvent}>
+                <View>
+                  <View style={styles.rowInfo}>
+                    <Image
+                      style={styles.infoIcon}
+                      source={require("../../../assets/images/calendar.png")}
+                    />
+                    <View style={styles.infoLabelWrapper}>
+                      <Text style={styles.lblInfoName}>
+                        {moment(_.get(event, "dateFrom")).format(
+                          "MMM DD, YYYY"
+                        )}{" "}
+                        -{" "}
+                        {moment(_.get(event, "dateTo")).format("MMM DD, YYYY")}
+                      </Text>
+                      <TouchableOpacity
+                        onPress={() => this._onPressAddCalendar(event)}
+                      >
+                        <Text style={styles.colorHighLight}>
+                          Add to calendar
+                        </Text>
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                  <View style={[styles.rowInfo, { alignItems: "center" }]}>
+                    <Image
+                      style={{ ...styles.infoIcon, width: 22 }}
+                      source={require("../../../assets/images/clock.png")}
+                    />
+                    <View style={styles.infoLabelWrapper}>
+                      <Text style={styles.lblInfoName}>
+                        {moment(_.get(event, "dateFrom")).format("HH:MM A")} -{" "}
+                        {moment(_.get(event, "dateTo")).format("HH:MM A")}
+                      </Text>
+                    </View>
+                  </View>
+                  <View style={styles.rowLocation}>
+                    <View style={styles.rowInfo}>
+                      <Image
+                        style={{ ...styles.infoIcon, height: 25 }}
+                        source={require("../../../assets/images/marker.png")}
+                      />
+                      <View style={styles.infoLabelWrapper}>
+                        <Text
+                          style={{
+                            ...styles.lblInfoName,
+                            ...styles.colorHighLight
+                          }}
+                        >
+                          {_.get(event, "eventLocation.locationName")}
+                        </Text>
+                        <Text style={styles.lblInfoMeta}>{`Unknown`}</Text>
+                      </View>
+                    </View>
+                    <TouchableOpacity
+                      onPress={() =>
+                        this._onPressOpenGoogleMap(
+                          _.get(event, "eventLocation")
+                        )
+                      }
+                    >
+                      <Image
+                        style={styles.mapsImage}
+                        source={require("../../../assets/images/googlemap.png")}
+                      />
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              </ImageContentPlaceholder>
             </View>
             <View style={styles.horizontalDivider} />
             <View style={styles.aboutContainer}>
               <Text style={styles.lblAbout}>About</Text>
-              <View style={styles.contentAbout}>
-                <AppWebView content={event.eventDescription} />
-              </View>
+              <Placeholder.Paragraph
+                lineNumber={5}
+                textSize={12}
+                lineSpacing={5}
+                color="#CCCCCC"
+                lastLineWidth="50%"
+                onReady={!loadingEvent}
+                animate="fade"
+              >
+                <View style={styles.contentAbout}>
+                  <AppWebView content={event.eventDescription} />
+                </View>
+              </Placeholder.Paragraph>
             </View>
           </View>
         </ScrollView>
         <QuickAccessButton currentEvent={event} />
-        <TabBarBottom navigation={this.props.navigation}/>
+        <TabBarBottom navigation={this.props.navigation} />
       </View>
     );
   }

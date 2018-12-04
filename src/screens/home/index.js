@@ -16,6 +16,8 @@ import ParallaxScrollView from "react-native-parallax-scroll-view";
 import { sizeHeight } from "../../helpers/size.helper";
 import { user } from "../../helpers/mock-data.helper";
 import { isCloseToBottom } from "../../helpers/function.helper";
+import CardPlaceholder from "../../components/CardPlaceholder";
+import { sizeWidth } from "../../helpers/size.helper";
 
 const heightOfForegroundDefault = sizeHeight(70);
 
@@ -87,41 +89,38 @@ class Home extends Component {
         paddingTop: 20,
         paddingBottom: 20 }}>
         <Text style={[CommonStyles.title, { color: COLORS.GRAYISH_BLUE }]}>Upcoming Events</Text>
-        {
-          loadingUpcoming ? (
-            <AppActivityIndicator color="#000" containerStyles={styles.emptyUpcomingContainer} />
-          ) : (
-            <FlatList
-              style={{
-                paddingLeft: 15,
-                paddingRight: 15,
-                paddingTop: 25
-              }}
-              data={upcomingEvents}
-              keyExtractor={this._keyExtractor}
-              renderItem={this._renderItem}
-              showsVerticalScrollIndicator={false}
-              ListFooterComponent={() => {
-                return loadingNextUpcoming && (
-                  <AppActivityIndicator color="#000" containerStyles={{
-                    paddingBottom: 20
-                  }} />
-                );
-              }}
-              ListEmptyComponent={<AppEmpty containerStyles={styles.emptyUpcomingContainer} />}
-            />
-          )
-        }
+        <FlatList
+          style={{
+            paddingLeft: 15,
+            paddingRight: 15,
+            paddingTop: 25
+          }}
+          data={upcomingEvents}
+          keyExtractor={this._keyExtractor}
+          renderItem={this._renderItem}
+          showsVerticalScrollIndicator={false}
+          ListFooterComponent={() => {
+            return loadingNextUpcoming && (
+              <AppActivityIndicator color="#000" containerStyles={{
+                paddingBottom: 20
+              }} />
+            );
+          }}
+          ListEmptyComponent={<AppEmpty containerStyles={styles.emptyUpcomingContainer} />}
+        />
       </View>
     );
   };
 
   _renderItem = ({item}) => (
-    <TouchableOpacity 
-      style={{ marginBottom: 20, padding: 5, ...CommonStyles.boxShadow }}
-      onPress={() => this.onGoDetail(_.get(item, "eventId"))}>
-      <EventCard event={item} />
-    </TouchableOpacity>
+    <View style={{ marginBottom: 20, padding: 5 }}>
+      <CardPlaceholder onReady={!this.state.loadingUpcoming}>
+        <TouchableOpacity 
+          onPress={() => this.onGoDetail(_.get(item, "eventId"))}>
+          <EventCard event={item} />
+        </TouchableOpacity>
+      </CardPlaceholder>
+    </View>
   );
   _renderForeground = () => {
     const { loadingFeatured, featuredEvents } = this.state;
@@ -137,7 +136,9 @@ class Home extends Component {
       { this._renderHeader() }
       {
         loadingFeatured ? (
-          <AppActivityIndicator containerStyles={styles.featuredLoadingContainer} />
+          <View style={{ width: sizeWidth(85) }}>
+            <CardPlaceholder onReady={!loadingFeatured} />
+          </View>
         ) : (
           _.isEmpty(featuredEvents) ? (
             <AppEmpty textColor={"#FFF"} containerStyles={styles.emptyContainer} />
@@ -196,7 +197,8 @@ class Home extends Component {
     const { takeUpcoming } = this.state;
     this.setState({
       loadingUpcoming: true,
-      loadedUpcoming: false
+      loadedUpcoming: false,
+      upcomingEvents: [1, 2]
     });
     try {
       const upcomingEvents = await EventAPI.getUpcomingAllEvents({
@@ -225,9 +227,10 @@ class Home extends Component {
       loadingNextUpcoming, 
       skipUpcoming, 
       takeUpcoming,
-      upcomingEvents
+      upcomingEvents,
+      loadingUpcoming
     } = this.state;
-    if (!hasNextUpcomingItems || loadingNextUpcoming) {
+    if (!hasNextUpcomingItems || loadingNextUpcoming || loadingUpcoming) {
       return;
     }
     this.setState({
