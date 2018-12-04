@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { sizeHeight, sizeWidth } from "../../helpers/size.helper";
+import { sizeHeight, sizeWidth, sizeFont } from "../../helpers/size.helper";
 import { fontMaker } from "../../helpers/font.helper";
 import { CommonStyles } from "../../helpers/common-styles";
 
@@ -38,13 +38,13 @@ export default StyleSheet.create({
     width: sizeWidth(90)
   },
   title: {
-    fontSize: 17,
+    fontSize: sizeFont(5.5),
     color: "#FFF",
     ...fontMaker({ weight: "500" })
   },
   closeIcon: {
-    width: 16,
-    height: 16
+    width: sizeWidth(4.8),
+    height: sizeWidth(4.8)
   },
   closeButton: {
     position: "absolute",

@@ -7,11 +7,12 @@ import SearchScreen from "../screens/search";
 import ProfileScreen from "../screens/profile";
 import { COLORS } from "../helpers/common-styles";
 import { fontMaker } from "../helpers/font.helper";
+import { sizeWidth, sizeHeight, sizeFont } from "../helpers/size.helper";
 
 const styles = StyleSheet.create({
   iconStyle: {
-    width: 30,
-    height: 25,
+    width: sizeWidth(8),
+    height: sizeWidth(8),
     marginBottom: -5,
     resizeMode: "contain"
   }
@@ -100,10 +101,10 @@ const MainNavigator = createBottomTabNavigator(
     initialRouteName: "Home",
     tabBarOptions: {
       style: {
-        height: 60
+        height: sizeHeight(10.2)
       },
       labelStyle: {
-        fontSize: 11,
+        fontSize: sizeFont(3),
         ...fontMaker({})
       },
       activeTintColor: COLORS.GREEN_PET_ICT,

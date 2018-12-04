@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import Text from "../Text.component";
 import PropTypes from "prop-types";
-import { sizeWidth } from "../../helpers/size.helper";
+import { sizeWidth, sizeFont } from "../../helpers/size.helper";
 import GalleryCard from "../../components/GalleryCard";
 import { COLORS, CommonStyles } from "../../helpers/common-styles";
 import AppEmpty from "../../components/AppEmpty";
@@ -31,21 +31,21 @@ const styles = StyleSheet.create({
   },
   title: {
     color: "#FFF",
-    fontSize: 20,
+    fontSize: sizeFont(5),
     ...fontMaker({ weight: "600" })
   },
   reversedTitle: {
     color: COLORS.GRAYISH_BLUE,
-    fontSize: 20,
+    fontSize: sizeFont(5),
     ...fontMaker({ weight: "600" })
   },
   seeAll: {
     color: "#FFF",
-    fontSize: 14
+    fontSize: sizeFont(4)
   },
   reversedSeeAll: {
     color: COLORS.GREEN_PET_ICT,
-    fontSize: 14
+    fontSize: sizeFont(4)
   },
   shelf: {
     marginTop: 10,

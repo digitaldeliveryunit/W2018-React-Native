@@ -17,7 +17,7 @@ import { sizeHeight } from "../../helpers/size.helper";
 import { user } from "../../helpers/mock-data.helper";
 import { isCloseToBottom } from "../../helpers/function.helper";
 
-const heightOfForegroundDefault = sizeHeight(65);
+const heightOfForegroundDefault = sizeHeight(70);
 
 class Home extends Component {
   constructor () {
@@ -67,6 +67,7 @@ class Home extends Component {
   componentDidMount () {
     this.loadFeaturedEvents();
     this.loadUpcomingEvents();
+    console.log("oke");
   }
 
   _renderHeader = () => (
@@ -130,7 +131,7 @@ class Home extends Component {
         var {height} = event.nativeEvent.layout;
         if (height > heightOfForegroundDefault) {
           this.setState({
-            heightOfForeground: height + 20
+            heightOfForeground: height
           });
         }
       }}>
@@ -199,10 +200,12 @@ class Home extends Component {
       loadedUpcoming: false
     });
     try {
+      // console.log(upcomingEvents);
       const upcomingEvents = await EventAPI.getUpcomingAllEvents({
         skip: 0,
         take: takeUpcoming
       });
+      console.log(upcomingEvents);
       this.setState({
         loadingUpcoming: false,
         loadedUpcoming: true,
@@ -210,6 +213,7 @@ class Home extends Component {
         hasNextUpcomingItems: upcomingEvents.length === takeUpcoming
       });
     } catch (e) {
+      console.log(e);
       this.setState({
         loadingUpcoming: false,
         loadedUpcoming: false,

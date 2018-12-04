@@ -3,6 +3,7 @@ import { View } from "react-native";
 import Text from "../components/Text.component";
 import PropTypes from "prop-types";
 import { fontMaker } from "../helpers/font.helper";
+import { sizeFont } from "../helpers/size.helper";
 
 const AppEmpty = props => {
   const { containerStyles, textStyles, message, textColor } = props;
@@ -27,7 +28,7 @@ AppEmpty.defaultProps = {
     alignItems: "center"
   },
   textStyles: {
-    fontSize: 14,
+    fontSize: sizeFont(4),
     ...fontMaker({ style: "italic" })
   },
   message: "There is nothing to show here",

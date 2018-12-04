@@ -11,6 +11,7 @@ import { COLORS, CommonStyles } from "../helpers/common-styles";
 import Text from "./Text.component";
 import _ from "lodash";
 import { fontMaker } from "../helpers/font.helper";
+import { sizeWidth, sizeFont } from "../helpers/size.helper";
 
 const { width } = Dimensions.get("window");
 const WIDTH_SPOTLIGHT_ITEM = width / 2 - 44;
@@ -42,7 +43,7 @@ const styles = StyleSheet.create({
     paddingBottom: 10
   },
   descriptionText: {
-    fontSize: 14,
+    fontSize: sizeFont(4),
     color: COLORS.GRAYISH_BLUE,
     textAlign: "justify",
     overflow: "hidden",
@@ -138,7 +139,7 @@ SpotlightItem.defaultProps = {
     marginTop: 10,
     paddingHorizontal: 25,
     alignSelf: "center",
-    fontSize: 13,
+    fontSize: sizeFont(3.8),
     lineHeight: 16,
     color: COLORS.GREEN_PET_ICT,
     ...fontMaker({ weight: "600" })
@@ -147,7 +148,7 @@ SpotlightItem.defaultProps = {
     marginTop: 2,
     marginBottom: 14,
     paddingHorizontal: 25,
-    fontSize: 10,
+    fontSize: sizeFont(3),
     lineHeight: 13,
     color: COLORS.GRAYISH_BLUE
   },

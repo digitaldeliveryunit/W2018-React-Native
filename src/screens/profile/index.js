@@ -16,6 +16,7 @@ import AppActivityIndicator from "../../components/AppActivityIndicator";
 import EventAPI from "../../api/event";
 import { user } from "../../helpers/mock-data.helper";
 import Text from "../../components/Text.component";
+import { sizeWidth, sizeHeight } from "../../helpers/size.helper";
 
 class ProfileComponent extends Component {
   constructor(props) {
@@ -69,10 +70,10 @@ class ProfileComponent extends Component {
 
   _renderStickyHeader = () => (
     <View style={[styles.containerHeader, styles.stickyHeader]}>
-      <Avatar user={user} size={54} />
+      <Avatar user={user} size={sizeWidth(13)} />
       <View style={styles.containerInfo}>
-        <Text style={styles.displayName}>{_.get(user, "displayName")}</Text>
-        <Text style={styles.displayPosition}>
+        <Text style={styles.smallDisplayName}>{_.get(user, "displayName")}</Text>
+        <Text style={styles.smallDisplayPosition}>
           {_.get(user, "displayPosition")}
         </Text>
       </View>
@@ -90,9 +91,9 @@ class ProfileComponent extends Component {
           backgroundColor={"transparent"}
           backgroundScrollSpeed={2}
           fadeOutForeground={true}
-          parallaxHeaderHeight={200}
+          parallaxHeaderHeight={sizeHeight(33)}
           renderForeground={this._renderForeground}
-          stickyHeaderHeight={100}
+          stickyHeaderHeight={sizeHeight(14)}
           renderStickyHeader={this._renderStickyHeader}
           contentBackgroundColor={"transparent"}
           showsVerticalScrollIndicator={false}

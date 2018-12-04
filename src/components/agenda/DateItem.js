@@ -5,6 +5,7 @@ import { COLORS } from "../../helpers/common-styles";
 import PropTypes from "prop-types";
 import moment from "moment";
 import { fontMaker } from "../../helpers/font.helper";
+import { sizeFont } from "../../helpers/size.helper";
 
 const styles = StyleSheet.create({
   wrapperItem: {
@@ -29,13 +30,13 @@ const styles = StyleSheet.create({
   },
   day: {
     paddingTop: 7,
-    fontSize: 28,
     lineHeight: 27,
+    fontSize: sizeFont(7.5),
     color: "#FFF"
   },
   month: {
     paddingBottom: 3,
-    fontSize: 15,
+    fontSize: sizeFont(4),
     lineHeight: 15,
     color: "#FFF",
     ...fontMaker({ weight: "500" })
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 4
   },
   dayInOrder: {
-    fontSize: 17,
+    fontSize: sizeFont(5),
     lineHeight: 20,
     color: COLORS.GRAYISH_BLUE
   },

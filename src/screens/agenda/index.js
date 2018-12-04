@@ -13,6 +13,7 @@ import QuickAccessButton from "../../components/QuickAccessButton";
 import NavigationService from "../../helpers/navigation-service";
 import { SELECT_MENU } from "../../actions/quick-access-menu.action";
 import TabBarBottom from "../../components/tab-bar/TabBarBottom";
+import { sizeWidth, sizeHeight } from "../../helpers/size.helper";
 
 class Agenda extends Component {
   constructor(props) {
@@ -75,20 +76,26 @@ class Agenda extends Component {
           showsVerticalScrollIndicator={false}
         >
           <View style={styles.container}>
-            <TouchableOpacity
-              style={styles.backButton}
-              onPress={() => this.onBack()}
-            >
+            <View style={{
+              width: sizeWidth(100),
+              height: sizeHeight(36)
+            }}>
+              <TouchableOpacity
+                style={styles.backButton}
+                onPress={() => this.onBack()}
+              >
+                <Image
+                  source={require("../../../assets/images/left_black.png")}
+                  style={styles.backIcon}
+                  resizeMode="contain"
+                />
+              </TouchableOpacity>
               <Image
-                source={require("../../../assets/images/left_black.png")}
-                style={styles.backIcon}
-                resizeMode="contain"
+                source={{ uri: currentEvent.imageUrl }}
+                style={styles.imageCover}
+                resizeMode={"cover"}
               />
-            </TouchableOpacity>
-            <Image
-              source={{ uri: currentEvent.imageUrl }}
-              style={styles.imageCover}
-            />
+            </View>
             <ScrollView
               contentContainerStyle={styles.datesContainer}
               horizontal

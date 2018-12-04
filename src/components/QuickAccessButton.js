@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
 import { TOGGLE_MENU } from "../actions/quick-access-menu.action";
-import { CommonStyles } from "../helpers/common-styles";
+import {COLORS, CommonStyles} from "../helpers/common-styles";
+import { sizeWidth } from "../helpers/size.helper";
 
 const styles = StyleSheet.create({
   menu: {
@@ -11,11 +12,11 @@ const styles = StyleSheet.create({
     right: 25
   },
   item: {
-    width: 50,
-    height: 50,
+    width: sizeWidth(14),
+    height: sizeWidth(14),
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 25,
+    borderRadius: sizeWidth(7),
     ...CommonStyles.boxShadow
   },
   activedItem: {
@@ -34,8 +35,8 @@ class QuickAccessButton extends Component {
           source={require("../../assets/images/menu.png")}
           resizeMode={"contain"}
           style={{
-            width: 25,
-            height: 25
+            width: sizeWidth(7),
+            height: sizeWidth(7)
           }}
         />
       </TouchableOpacity>
