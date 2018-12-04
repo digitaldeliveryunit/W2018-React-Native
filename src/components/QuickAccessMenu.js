@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { View, StyleSheet, Image, TouchableOpacity, TouchableWithoutFeedback } from "react-native";
 import Text from "./Text.component";
 import { COLORS, CommonStyles } from "../helpers/common-styles";
 import NavigationService from "../helpers/navigation-service";
@@ -62,14 +62,16 @@ class QuickAccessMenu extends Component {
   }
 
   _renderDetailMenu = () => (
-    <View style={styles.container}>
-      <View style={[styles.container, styles.whiteCurtain]} />
-      <View style={styles.quickLists}>
-        {this.props.menus.map((item, index) =>
-          this._renderMenuItem(item, index)
-        )}
+    <TouchableWithoutFeedback onPress={() => this.props.toggleMenu()}>
+      <View style={styles.container}>
+        <View style={[styles.container, styles.whiteCurtain]} />
+        <View style={styles.quickLists}>
+          {this.props.menus.map((item, index) =>
+            this._renderMenuItem(item, index)
+          )}
+        </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 
   _renderMenuItem = (item, index) => (
