@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   },
   descriptionText: {
     fontSize: 14,
-    color: COLORS.GREEN_PET_ICT,
+    color: COLORS.GRAYISH_BLUE,
     textAlign: "justify",
     overflow: "hidden"
   }
@@ -77,6 +77,9 @@ export const SpotlightItem = (props) => {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
               incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
               exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             </Text>
           </View>
         )

@@ -136,7 +136,7 @@ class Spotlight extends Component {
           data={spotlights}
           renderItem={this._renderSpotlightFullCard}
           sliderWidth={sizeWidth(100)}
-          itemWidth={sizeWidth(90)}
+          itemWidth={sizeWidth(85)}
           loop={false}
           onSnapToItem={(index) => this.setState({ activeSlide: index }) }
           inactiveSlideOpacity={1}
