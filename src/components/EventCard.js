@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import Text from "../components/Text.component";
 import PropTypes from "prop-types";
-import { sizeWidth, sizeHeight } from "../helpers/size.helper";
+import { sizeWidth, sizeHeight, sizeFont } from "../helpers/size.helper";
 import { COLORS, CommonStyles } from "../helpers/common-styles";
 import { OPEN_QRCODE_POPUP } from "../actions/qrcode.action";
 import FastImage from "react-native-fast-image";
@@ -14,6 +14,7 @@ import {
 import EventAPI from "../api/event";
 import Toast from "@remobile/react-native-toast";
 import { USER_STATUS } from "../config";
+import { fontMaker } from "../helpers/font.helper";
 
 const styles = StyleSheet.create({
   image: {
@@ -23,7 +24,6 @@ const styles = StyleSheet.create({
   content: {
     width: "100%",
     flexDirection: "row",
-    alignItems: "center",
     paddingBottom: 5
   },
   dateCountDown: {
@@ -36,7 +36,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginTop: 10,
     paddingTop: 8,
     borderTopColor: "#F3F3F3",
     borderTopWidth: 1
@@ -73,19 +72,21 @@ class EventCard extends React.Component {
           source={{uri: event.imageUrl}}
           style={styles.image}
           resizeMode={FastImage.resizeMode.cover} />
-        <View style={{ paddingHorizontal: 15, paddingVertical: 10 }}>
+        <View style={{ padding: 10 }}>
           <View style={styles.content}>
-            <DateCountDown dateFrom={event.dateFrom} dateTo={event.dateTo} />
-            <View style={{ marginLeft: 10, width: sizeWidth(60) }}>
-              <Text style={{ color: COLORS.GREEN_PET_ICT, fontSize: 15 }}>
+            <View>
+              <DateCountDown dateFrom={event.dateFrom} dateTo={event.dateTo} />
+            </View>
+            <View style={{ marginLeft: 10, width: sizeWidth(60), height: sizeHeight(15) }}>
+              <Text style={{ color: COLORS.GREEN_PET_ICT, fontSize: sizeFont(4) }} numberOfLines={2}>
                 {event.eventName}
               </Text>
-              <Text style={{ color: COLORS.GRAYISH_BLUE, fontSize: 12 }}>
+              <Text style={{ color: COLORS.GRAYISH_BLUE, fontSize: sizeFont(3.5) }} numberOfLines={1}>
                 {event.eventLocation && event.eventLocation.locationName}
               </Text>
               {
                 (event.dateFrom && getDayDuration(event.dateFrom, event.dateTo) > 0) && (
-                  <Text style={{ color: COLORS.GRAYISH_BLUE, fontSize: 12 }}>
+                  <Text style={{ color: COLORS.GRAYISH_BLUE, fontSize: sizeFont(3.5) }} numberOfLines={1}>
                     {`${toDateString(event.dateFrom)} - ${toDateString(event.dateTo)}`}
                   </Text>
                 )
@@ -94,7 +95,7 @@ class EventCard extends React.Component {
           </View>
           {!withoutBottom && (
             <View style={styles.bottom}>
-              <Text style={{ fontSize: 12, color: COLORS.GRAYISH_BLUE }}>
+              <Text style={{ fontSize: sizeFont(3.5), color: COLORS.GRAYISH_BLUE }}>
                 <Text style={{ color: "#CBD34C" }}>• </Text>
                 {`${event.eventType} Event`}
               </Text>
@@ -218,11 +219,11 @@ const DateCountDown = ({dateFrom, dateTo}) => {
           paddingBottom: 2
         }}
       >
-        <Text style={{ fontSize: 28, color: "#FFF", marginTop: -2 }}>{day}</Text>
-        <Text style={{ fontSize: 16, color: "#FFF", marginTop: -5 }}>{month}</Text>
+        <Text style={{ fontSize: sizeFont(7.5), color: "#FFF", lineHeight: 35 }}>{day}</Text>
+        <Text style={{ fontSize: sizeFont(4), color: "#FFF", lineHeight: 20, ...fontMaker({ weight: "500" }) }}>{month && month.toUpperCase()}</Text>
       </View>
       {
-        dayDuration > 0 && <Text style={{ fontSize: 9, padding: 2 }}>{dayDuration + 1} days</Text>
+        dayDuration > 0 && <Text style={{ fontSize: sizeFont(2.5), padding: 2 }}>{dayDuration + 1} days</Text>
       }
     </View>
   );

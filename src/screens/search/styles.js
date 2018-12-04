@@ -1,11 +1,12 @@
 import { StyleSheet } from "react-native";
 import { CommonStyles, COLORS } from "../../helpers/common-styles";
-import { sizeWidth, sizeHeight } from "../../helpers/size.helper";
+import { sizeWidth, sizeHeight, sizeFont } from "../../helpers/size.helper";
 import { fontMaker } from "../../helpers/font.helper";
 
 export default StyleSheet.create({
   listContainer: {
-    minHeight: sizeHeight(100) - 160
+    minHeight: sizeHeight(75),
+    paddingTop: 10
   },
   searchBox: {
     width: "100%",
@@ -24,25 +25,24 @@ export default StyleSheet.create({
   searchInput: {
     borderWidth: 0,
     width: "100%",
-    height: 45,
     color: "#FFF",
     paddingLeft: 5,
     paddingRight: 12,
-    fontSize: 20,
+    fontSize: sizeFont(5),
     ...fontMaker({})
   },
   founds: {
-    marginTop: 30,
+    marginTop: 15,
     paddingLeft: 10,
     color: "#FFF",
-    fontSize: 16
+    fontSize: sizeFont(4.5)
   },
   foregroundSection: {
     alignItems: "center"
   },
   stickyHeader: {
     alignItems: "center",
-    height: 90,
+    height: sizeHeight(15),
     justifyContent: "center",
     backgroundColor: "rgb(64, 54, 129)",
     opacity: 0.95,
@@ -58,7 +58,7 @@ export default StyleSheet.create({
     alignItems: "center"
   },
   emptyText: {
-      fontSize: 22,
+      fontSize: sizeFont(6),
       color: COLORS.GRAYISH_BLUE,
       paddingLeft: sizeWidth(10),
       paddingRight: sizeWidth(10),
@@ -71,12 +71,12 @@ export default StyleSheet.create({
     paddingRight: 25,
     paddingTop: 10,
     paddingBottom: 10,
-    borderRadius: 20,
+    borderRadius: 25,
     marginTop: 20,
     ...CommonStyles.boxShadow
   },
   emptyButtonText: { 
     color: "#FFF", 
-    fontSize: 17
+    fontSize: sizeFont(4.5)
   }
 });

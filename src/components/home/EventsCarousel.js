@@ -13,13 +13,10 @@ const styles = StyleSheet.create({
 export default class EventsCarousel extends Component {
   constructor() {
     super();
-    this.state = {
-      activeSlide: 0
-    };
     this._renderItem = this._renderItem.bind(this);
   }
   render() {
-    const {events} = this.props;
+    const { events } = this.props;
     return (
       <Carousel
           ref={c => {
@@ -28,12 +25,16 @@ export default class EventsCarousel extends Component {
           data={events}
           renderItem={this._renderItem}
           sliderWidth={sizeWidth(100)}
-          itemWidth={sizeWidth(90)}
+          itemWidth={sizeWidth(85)}
           loop={false}
-          onSnapToItem={(index) => this.setState({ activeSlide: index }) }
           inactiveSlideOpacity={1}
           inactiveSlideScale={1}
-          slideStyle={{ paddingRight: 15, paddingLeft: 3, marginBottom: 10 }}
+          slideStyle={{ 
+            paddingRight: 5,
+            paddingLeft: 5, 
+            marginBottom: 10
+          }}
+          activeSlideAlignment={"center"}
         />
     );
   }

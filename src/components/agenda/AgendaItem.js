@@ -13,6 +13,7 @@ import PropTypes from "prop-types";
 import { OPEN_QRCODE_POPUP } from "../../actions/qrcode.action";
 import { COLORS } from "../../helpers/common-styles";
 import { fontMaker } from "../../helpers/font.helper";
+import { sizeFont, sizeWidth } from "../../helpers/size.helper";
 
 const { width } = Dimensions.get("window");
 const WIDTH_CONTAINER_ICON = 40;
@@ -50,14 +51,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20
   },
   agendaName: {
-    fontSize: 18,
+    fontSize: sizeFont(5.5),
     lineHeight: 22,
     color: "#FFF",
     ...fontMaker({ weight: "600" })
   },
   venueName: {
     marginTop: 2,
-    fontSize: 14,
+    fontSize: sizeFont(4),
     lineHeight: 16,
     color: "#FFF"
   },
@@ -79,8 +80,8 @@ const styles = StyleSheet.create({
     borderColor: COLORS.LIGHT_GRAY
   },
   iconQRCode: {
-    width: 22,
-    height: 22
+    width: sizeWidth(6),
+    height: sizeWidth(6)
   },
   containerSubAgendaList: {
     paddingVertical: 10
@@ -110,7 +111,7 @@ const styles = StyleSheet.create({
     borderRadius: 4
   },
   time: {
-    fontSize: 16,
+    fontSize: sizeFont(4.5),
     lineHeight: 19,
     color: "#FFF",
     ...fontMaker({ weight: "500" })
@@ -121,13 +122,13 @@ const styles = StyleSheet.create({
     flexDirection: "column"
   },
   subAgendaName: {
-    fontSize: 15,
+    fontSize: sizeFont(4.5),
     lineHeight: 17,
     color: COLORS.GRAYISH_BLUE
   },
   subVenueName: {
     marginTop: 2,
-    fontSize: 12,
+    fontSize: sizeFont(3.5),
     lineHeight: 14,
     color: "rgba(36, 37, 61, .5)"
   }

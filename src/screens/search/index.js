@@ -19,6 +19,7 @@ import _ from "lodash";
 import AppEmpty from "../../components/AppEmpty";
 import AppActivityIndicator from "../../components/AppActivityIndicator";
 import { isCloseToBottom } from "../../helpers/function.helper";
+import { sizeHeight } from "../../helpers/size.helper";
 
 class Search extends Component {
   constructor () {
@@ -51,14 +52,15 @@ class Search extends Component {
           backgroundColor={"transparent"}
           backgroundScrollSpeed={2}
           fadeOutForeground={true}
-          parallaxHeaderHeight={190}
+          parallaxHeaderHeight={sizeHeight(30)}
           renderForeground={this._renderForeground}
-          stickyHeaderHeight={100}
+          stickyHeaderHeight={sizeHeight(15)}
           renderStickyHeader={this._renderStickyHeader}
           contentBackgroundColor={"transparent"}
           showsVerticalScrollIndicator={false}
           onMomentumScrollEnd={this.onScroll}
           scrollEventThrottle={500}
+          
         >
           { this._renderSearchResult(events) }
         </ParallaxScrollView>

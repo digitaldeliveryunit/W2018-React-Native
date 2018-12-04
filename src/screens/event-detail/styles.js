@@ -1,6 +1,6 @@
 import { StyleSheet, Dimensions } from "react-native";
 import { CommonStyles, COLORS } from "../../helpers/common-styles";
-import { sizeWidth, sizeHeight } from "../../helpers/size.helper";
+import { sizeWidth, sizeFont, sizeHeight } from "../../helpers/size.helper";
 import { fontMaker } from "../../helpers/font.helper";
 const { width } = Dimensions.get("window");
 
@@ -26,14 +26,14 @@ export default StyleSheet.create({
   },
   imageCover: {
     width,
-    height: sizeHeight(33)
+    height: "100%"
   },
   titleContainer: {
     backgroundColor: "rgba(6, 6, 6, .05)"
   },
   lblEventName: {
     width,
-    fontSize: 20,
+    fontSize: sizeFont(5.8),
     lineHeight: 24,
     color: COLORS.GREEN_PET_ICT,
     paddingVertical: 12,
@@ -47,8 +47,6 @@ export default StyleSheet.create({
   },
   rowInfo: {
     flexDirection: "row",
-    justifyContent: "flex-start",
-    alignItems: "flex-start",
     paddingTop: 22
   },
   rowLocation: {
@@ -70,20 +68,19 @@ export default StyleSheet.create({
     color: COLORS.SOFT_PURPLE
   },
   lblInfoName: {
-    fontSize: 16,
+    fontSize: sizeFont(4),
     lineHeight: 18,
-    color: COLORS.GRAYISH_BLUE,
-    marginBottom: 5
-  },
-  lblInfoMeta: {
-    fontSize: 14,
-    lineHeight: 16,
     color: COLORS.GRAYISH_BLUE
   },
+  lblInfoMeta: {
+    fontSize: sizeFont(4),
+    lineHeight: 16,
+    color: COLORS.GRAYISH_BLUE,
+    marginTop: 3
+  },
   mapsImage: {
-    marginTop: 20,
-    width: 60,
-    height: 60
+    width: sizeWidth(17),
+    height: sizeWidth(17)
   },
   horizontalDivider: {
     ...CommonStyles.horizontalDivider,
@@ -96,7 +93,7 @@ export default StyleSheet.create({
     flex: 1
   },
   lblAbout: {
-    fontSize: 15,
+    fontSize: sizeFont(4),
     lineHeight: 18,
     color: COLORS.GRAYISH_BLUE,
     paddingVertical: 10,
@@ -111,7 +108,7 @@ export default StyleSheet.create({
     flexDirection: "row",
     position: "absolute",
     right: 10,
-    top: 150
+    bottom: 20
   },
   actionButton: {
     backgroundColor: "#FFF",
@@ -119,13 +116,13 @@ export default StyleSheet.create({
     borderWidth: 1,
     justifyContent: "center",
     alignItems: "center",
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: sizeWidth(10),
+    height: sizeWidth(10),
+    borderRadius: sizeWidth(5),
     marginLeft: 5
   },
   iconActionButton: {
-    width: 20,
-    height: 20
+    width: sizeWidth(5),
+    height: sizeWidth(5)
   }
 });

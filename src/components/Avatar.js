@@ -6,13 +6,15 @@ import FastImage from "react-native-fast-image";
 import _ from "lodash";
 import { getShortcutName } from "../helpers/function.helper";
 import { COLORS } from "../helpers/common-styles";
+import { sizeFont, sizeWidth } from "../helpers/size.helper";
+import { fontMaker } from "../helpers/font.helper";
 
 const Avatar = props => {
-  const { containerStyles, size, user } = props;
+  const { containerStyles, textStyle, size, user } = props;
   const avatarStyle = [props.avatarStyle, {
-    width: size || 40,
-    height: size || 40,
-    borderRadius: size ? (size / 2) : 20
+    width: size || sizeWidth(12),
+    height: size || sizeWidth(12),
+    borderRadius: size ? (size / 2) : sizeWidth(6)
   }];
   return (
     <View style={containerStyles}>
@@ -25,12 +27,12 @@ const Avatar = props => {
               resizeMode={FastImage.resizeMode.cover}
             />
           ) : (
-            <Text style={{ color: "#FFF", fontSize: 15 }}>
+            <Text style={textStyle}>
               {getShortcutName(user.firstName, user.lastName, user.displayName)}
             </Text>
           )
         ) : (
-          <Text style={{ color: "#FFF", fontSize: 15 }}>{"N/A"}</Text>
+          <Text style={textStyle}>{"N/A"}</Text>
         )}
       </View>
     </View>
@@ -55,6 +57,11 @@ Avatar.defaultProps = {
     },
     shadowRadius: 9,
     shadowOpacity: 0.3
+  },
+  textStyle: { 
+    color: "#FFF", 
+    fontSize: sizeFont(4.2),
+    ...fontMaker({ weight: "600" })
   }
 };
 

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import Text from "./Text.component";
 import PropTypes from "prop-types";
-import { sizeWidth } from "../helpers/size.helper";
+import { sizeWidth, sizeHeight, sizeFont } from "../helpers/size.helper";
 import NavigationService from "../helpers/navigation-service";
 import { connect } from "react-redux";
 import { SELECT_MENU } from "../actions/quick-access-menu.action";
@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 20,
     width: sizeWidth(90),
-    height: 50,
+    height: sizeHeight(10),
     justifyContent: "center",
     alignItems: "center"
   },
@@ -21,11 +21,11 @@ const styles = StyleSheet.create({
     left: 0
   },
   backIcon: {
-    width: 20,
-    height: 20
+    width: sizeWidth(6),
+    height: sizeWidth(6)
   },
   title: {
-    fontSize: 17,
+    fontSize: sizeFont(5),
     color: "#FFF",
     ...fontMaker({ weight: "400" })
   },

@@ -10,7 +10,7 @@ import { CommonStyles, COLORS } from "../../helpers/common-styles";
 import { spotlightList } from "../../helpers/mock-data.helper";
 import DetailHeader from "../../components/DetailHeader";
 import Carousel from "react-native-snap-carousel";
-import { sizeWidth, sizeHeight } from "../../helpers/size.helper";
+import { sizeWidth, sizeHeight, sizeFont } from "../../helpers/size.helper";
 import {SpotlightItem} from "../../components/SpotlightCard";
 import QuickAccessButton from "../../components/QuickAccessButton";
 import SpotlightAPI from "../../api/spotlight";
@@ -165,14 +165,14 @@ class Spotlight extends Component {
             height: sizeHeight(25)
           }}
           titleStyle={{
-            fontSize: 20,
+            fontSize: sizeFont(5.8),
             color: COLORS.GREEN_PET_ICT,
             marginTop: 15,
             paddingHorizontal: 25,
             ...fontMaker({ weight: "500" })
           }}
           roleStyle={{
-            fontSize: 14,
+            fontSize: sizeFont(4),
             color: COLORS.GRAYISH_BLUE,
             paddingHorizontal: 25
           }}

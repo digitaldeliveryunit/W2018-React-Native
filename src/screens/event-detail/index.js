@@ -15,6 +15,7 @@ import { SELECT_MENU } from "../../actions/quick-access-menu.action";
 import AppWebView from "../../components/AppWebView";
 import { USER_STATUS } from "../../config";
 import TabBarBottom from "../../components/tab-bar/TabBarBottom";
+import { sizeWidth, sizeHeight } from "../../helpers/size.helper";
 
 class EventDetail extends Component {
   constructor(props) {
@@ -94,79 +95,84 @@ class EventDetail extends Component {
       <View style={styles.whiteOverlay}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.container}>
-            <TouchableOpacity
-              style={styles.backButton}
-              onPress={() => this.props.navigation.goBack()}
-            >
-              <Image
-                source={require("../../../assets/images/left_black.png")}
-                style={styles.backIcon}
-                resizeMode="contain"
-              />
-            </TouchableOpacity>
-            <Image source={{ uri: cover }} style={styles.imageCover} />
-            <View style={styles.containerActionButton}>
-              {event.userStatus === USER_STATUS.NEW && (
-                <TouchableOpacity
-                  style={styles.actionButton}
-                  onPress={this.onJoin}
-                >
-                  <Image
-                    source={require("../../../assets/images/plus_filled.png")}
-                    style={styles.iconActionButton}
-                  />
-                </TouchableOpacity>
-              )}
-              {event.userStatus === USER_STATUS.JOINED && (
-                <TouchableOpacity
-                  style={styles.actionButton}
-                  onPress={this.onUnJoin}
-                >
-                  <Image
-                    source={require("../../../assets/images/close.png")}
-                    style={styles.iconActionButton}
-                  />
-                </TouchableOpacity>
-              )}
-              {event.isBookmark ? (
-                <TouchableOpacity
-                  style={styles.actionButton}
-                  onPress={this.onUnBookmark}
-                >
-                  <Image
-                    source={require("../../../assets/images/bookmarked.png")}
-                    style={[styles.iconActionButton, { width: 15 }]}
-                  />
-                </TouchableOpacity>
-              ) : (
-                <TouchableOpacity
-                  style={styles.actionButton}
-                  onPress={this.onBookmark}
-                >
-                  <Image
-                    source={require("../../../assets/images/bookmark.png")}
-                    style={[styles.iconActionButton, { width: 15 }]}
-                  />
-                </TouchableOpacity>
-              )}
-              {event.userStatus === USER_STATUS.CHECKIN ? (
-                <TouchableOpacity style={styles.actionButton} disabled={true}>
-                  <Image
-                    source={require("../../../assets/images/qrcode_selected.png")}
-                    style={styles.iconActionButton}
-                  />
-                </TouchableOpacity>
-              ) : (
-                <TouchableOpacity
-                  style={styles.actionButton}
-                  onPress={() => this.props.openPopupQRCode()}
-                >
-                  <Image
-                    source={require("../../../assets/images/qrcode.png")}
-                    style={styles.iconActionButton}
-                  />
-                </TouchableOpacity>
-              )}
+            <View style={{
+              width: sizeWidth(100),
+              height: sizeHeight(36)
+            }}>
+              <Image source={{ uri: cover }} style={styles.imageCover} resizeMode={"cover"} />
+              <TouchableOpacity
+                style={styles.backButton}
+                onPress={() => this.props.navigation.goBack()}
+              >
+                <Image
+                  source={require("../../../assets/images/left_black.png")}
+                  style={styles.backIcon}
+                  resizeMode="contain"
+                />
+              </TouchableOpacity>
+              <View style={styles.containerActionButton}>
+                {event.userStatus === USER_STATUS.NEW && (
+                  <TouchableOpacity
+                    style={styles.actionButton}
+                    onPress={this.onJoin}
+                  >
+                    <Image
+                      source={require("../../../assets/images/plus_filled.png")}
+                      style={styles.iconActionButton}
+                    />
+                  </TouchableOpacity>
+                )}
+                {event.userStatus === USER_STATUS.JOINED && (
+                  <TouchableOpacity
+                    style={styles.actionButton}
+                    onPress={this.onUnJoin}
+                  >
+                    <Image
+                      source={require("../../../assets/images/close.png")}
+                      style={styles.iconActionButton}
+                    />
+                  </TouchableOpacity>
+                )}
+                {event.isBookmark ? (
+                  <TouchableOpacity
+                    style={styles.actionButton}
+                    onPress={this.onUnBookmark}
+                  >
+                    <Image
+                      source={require("../../../assets/images/bookmarked.png")}
+                      style={[styles.iconActionButton, { width: 15 }]}
+                    />
+                  </TouchableOpacity>
+                ) : (
+                  <TouchableOpacity
+                    style={styles.actionButton}
+                    onPress={this.onBookmark}
+                  >
+                    <Image
+                      source={require("../../../assets/images/bookmark.png")}
+                      style={[styles.iconActionButton, { width: 15 }]}
+                    />
+                  </TouchableOpacity>
+                )}
+                {event.userStatus === USER_STATUS.CHECKIN ? (
+                  <TouchableOpacity style={styles.actionButton} disabled={true}>
+                    <Image
+                      source={require("../../../assets/images/qrcode_selected.png")}
+                      style={styles.iconActionButton}
+                    />
+                  </TouchableOpacity>
+                ) : (
+                  <TouchableOpacity
+                    style={styles.actionButton}
+                    onPress={() => this.props.openPopupQRCode()}
+                  >
+                    <Image
+                      source={require("../../../assets/images/qrcode.png")}
+                      style={styles.iconActionButton}
+                    />
+                  </TouchableOpacity>
+                )}
+              </View>
             </View>
             <View style={styles.titleContainer}>
               <Text style={styles.lblEventName} numberOfLines={2}>
@@ -189,7 +195,7 @@ class EventDetail extends Component {
                   </TouchableOpacity>
                 </View>
               </View>
-              <View style={styles.rowInfo}>
+              <View style={[styles.rowInfo, { alignItems: "center" }]}>
                 <Image
                   style={{ ...styles.infoIcon, width: 22 }}
                   source={require("../../../assets/images/clock.png")}
@@ -217,7 +223,7 @@ class EventDetail extends Component {
                       {_.get(event, "eventLocation.locationName")}
                     </Text>
                     <Text style={styles.lblInfoMeta}>
-                      {_.get(event, "eventLocation.locationName")}
+                      {`Unknown`}
                     </Text>
                   </View>
                 </View>

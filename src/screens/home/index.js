@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { View, Image, TouchableOpacity, FlatList } from "react-native";
+import { View, Image, TouchableOpacity, FlatList, Animated } from "react-native";
 import Text from "../../components/Text.component";
 import styles from "./styles";
 import { CommonStyles, COLORS } from "../../helpers/common-styles";
@@ -17,7 +17,7 @@ import { sizeHeight } from "../../helpers/size.helper";
 import { user } from "../../helpers/mock-data.helper";
 import { isCloseToBottom } from "../../helpers/function.helper";
 
-const heightOfForegroundDefault = sizeHeight(65);
+const heightOfForegroundDefault = sizeHeight(70);
 
 class Home extends Component {
   constructor () {
@@ -45,11 +45,11 @@ class Home extends Component {
             this.parallaxScrollView = ref;
           }}
           backgroundColor={"transparent"}
-          backgroundScrollSpeed={2}
-          fadeOutForeground={true}
+          backgroundScrollSpeed={10}
+          fadeOutForeground={false}
           parallaxHeaderHeight={this.state.heightOfForeground}
           renderForeground={this._renderForeground}
-          stickyHeaderHeight={100}
+          stickyHeaderHeight={sizeHeight(10)}
           renderStickyHeader={this._renderStickyHeader}
           contentBackgroundColor={"transparent"}
           showsVerticalScrollIndicator={false}
@@ -130,7 +130,7 @@ class Home extends Component {
         var {height} = event.nativeEvent.layout;
         if (height > heightOfForegroundDefault) {
           this.setState({
-            heightOfForeground: height + 20
+            heightOfForeground: height
           });
         }
       }}>

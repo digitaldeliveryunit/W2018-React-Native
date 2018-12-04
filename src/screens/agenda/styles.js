@@ -28,7 +28,7 @@ export default StyleSheet.create({
   },
   imageCover: {
     width,
-    height: sizeHeight(33)
+    height: "100%"
   },
   datesContainer: {
     padding: 4,
@@ -42,7 +42,7 @@ export default StyleSheet.create({
     marginBottom: 5
   },
   loadingOrEmptyContainer: {
-    height: 200,
+    height: sizeHeight(38),
     justifyContent: "center",
     alignSelf: "center"
   }

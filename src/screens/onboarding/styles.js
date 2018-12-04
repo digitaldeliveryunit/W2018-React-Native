@@ -37,7 +37,6 @@ export default StyleSheet.create({
   title: {
     color: "#FFF",
     fontSize: sizeFont(6),
-    marginBottom: 10,
     ...fontMaker({ weight: "600" })
   },
   content: {
@@ -60,6 +59,6 @@ export default StyleSheet.create({
   },
   bottomText: {
     color: "#FFF",
-    fontSize: 16
+    fontSize: sizeFont(4.5)
   }
 });
