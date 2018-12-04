@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { CommonStyles, COLORS } from "../../helpers/common-styles";
+import { COLORS } from "../../helpers/common-styles";
 
 export default StyleSheet.create({
   viewIcon: {
@@ -8,12 +8,13 @@ export default StyleSheet.create({
   },
   carouselContainer: {
     flex: 1,
-    alignItems: "center"
+    alignItems: "center",
+    marginTop: 15
   },
   slide: { 
-    paddingRight: 5, 
-    paddingLeft: 5,
-    paddingBottom: 10
+    paddingRight: 10,
+    paddingLeft: 10,
+    paddingBottom: 5
   },
   currentSlide: {
     height: 40,
@@ -21,6 +22,7 @@ export default StyleSheet.create({
   },
   currentSlideText: {
     fontSize: 16,
-    color: COLORS.GREEN_PET_ICT
+    color: COLORS.GRAYISH_BLUE,
+    opacity: 0.55
   }
 });

@@ -136,7 +136,7 @@ class Spotlight extends Component {
           data={spotlights}
           renderItem={this._renderSpotlightFullCard}
           sliderWidth={sizeWidth(100)}
-          itemWidth={sizeWidth(90)}
+          itemWidth={sizeWidth(85)}
           loop={false}
           onSnapToItem={(index) => this.setState({ activeSlide: index }) }
           inactiveSlideOpacity={1}
@@ -169,7 +169,7 @@ class Spotlight extends Component {
             color: COLORS.GREEN_PET_ICT,
             marginTop: 15,
             paddingHorizontal: 25,
-            ...fontMaker({ weight: "600" })
+            ...fontMaker({ weight: "500" })
           }}
           roleStyle={{
             fontSize: 14,
