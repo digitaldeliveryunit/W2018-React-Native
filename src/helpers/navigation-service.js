@@ -15,8 +15,12 @@ function navigate(routeName, params) {
   );
 }
 
-function goBack() {
-  _navigator.dispatch(NavigationActions.back({}));
+function goBack(routeName) {
+  const {routes} = _navigator.state.nav;
+  const route = routes.find(item => item.routeName === routeName);
+  _navigator.dispatch(NavigationActions.back({
+    key: route && route.name
+  }));
 }
 
 function resetPage(route) {

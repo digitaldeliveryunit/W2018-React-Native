@@ -9,12 +9,19 @@ import { COLORS } from "../helpers/common-styles";
 import { fontMaker } from "../helpers/font.helper";
 import { sizeWidth, sizeHeight, sizeFont } from "../helpers/size.helper";
 
-const styles = StyleSheet.create({
+export const navStyle = StyleSheet.create({
   iconStyle: {
     width: sizeWidth(8),
     height: sizeWidth(8),
     marginBottom: -5,
     resizeMode: "contain"
+  },
+  tabStyle: {
+    height: sizeHeight(10.2)
+  },
+  labelStyle: {
+    fontSize: sizeFont(3),
+    ...fontMaker({})
   }
 });
 
@@ -28,12 +35,12 @@ const MainNavigator = createBottomTabNavigator(
           return focused ? (
             <Image
               source={require("../../assets/images/home_active.png")}
-              style={styles.iconStyle}
+              style={navStyle.iconStyle}
             />
           ) : (
             <Image
               source={require("../../assets/images/home.png")}
-              style={styles.iconStyle}
+              style={navStyle.iconStyle}
             />
           );
         }
@@ -47,12 +54,12 @@ const MainNavigator = createBottomTabNavigator(
           return focused ? (
             <Image
               source={require("../../assets/images/events_active.png")}
-              style={styles.iconStyle}
+              style={navStyle.iconStyle}
             />
           ) : (
             <Image
               source={require("../../assets/images/events.png")}
-              style={styles.iconStyle}
+              style={navStyle.iconStyle}
             />
           );
         }
@@ -66,12 +73,12 @@ const MainNavigator = createBottomTabNavigator(
           return focused ? (
             <Image
               source={require("../../assets/images/search_active.png")}
-              style={styles.iconStyle}
+              style={navStyle.iconStyle}
             />
           ) : (
             <Image
               source={require("../../assets/images/search.png")}
-              style={styles.iconStyle}
+              style={navStyle.iconStyle}
             />
           );
         }
@@ -85,12 +92,12 @@ const MainNavigator = createBottomTabNavigator(
           return focused ? (
             <Image
               source={require("../../assets/images/profile_active.png")}
-              style={styles.iconStyle}
+              style={navStyle.iconStyle}
             />
           ) : (
             <Image
               source={require("../../assets/images/profile.png")}
-              style={styles.iconStyle}
+              style={navStyle.iconStyle}
             />
           );
         }
@@ -100,13 +107,8 @@ const MainNavigator = createBottomTabNavigator(
   {
     initialRouteName: "Home",
     tabBarOptions: {
-      style: {
-        height: sizeHeight(10.2)
-      },
-      labelStyle: {
-        fontSize: sizeFont(3),
-        ...fontMaker({})
-      },
+      style: navStyle.tabStyle,
+      labelStyle: navStyle.labelStyle,
       activeTintColor: COLORS.GREEN_PET_ICT,
       inactiveTintColor: COLORS.GRAYISH_BLUE
     }
