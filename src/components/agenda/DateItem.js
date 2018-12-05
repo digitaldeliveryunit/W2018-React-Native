@@ -5,7 +5,7 @@ import { COLORS } from "../../helpers/common-styles";
 import PropTypes from "prop-types";
 import moment from "moment";
 import { fontMaker } from "../../helpers/font.helper";
-import { sizeFont } from "../../helpers/size.helper";
+import { sizeFont, sizeHeight, sizeWidth } from "../../helpers/size.helper";
 
 const styles = StyleSheet.create({
   wrapperItem: {
@@ -13,14 +13,12 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     alignItems: "center",
     justifyContent: "center",
-    alignContent: "center",
-    alignItems: "center",
     backgroundColor: "#FFF",
     borderColor: COLORS.GRAY
   },
   dayMonthContainer: {
-    width: 52,
-    height: 52,
+    width: sizeWidth(14.2),
+    height: sizeWidth(14.2),
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",

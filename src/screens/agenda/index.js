@@ -7,13 +7,15 @@ import moment from "moment";
 import DateItem from "../../components/agenda/DateItem";
 import AgendaItem from "../../components/agenda/AgendaItem";
 import AppEmpty from "../../components/AppEmpty";
-import AppActivityIndicator from "../../components/AppActivityIndicator";
 import AgendaAPI from "../../api/agenda";
 import QuickAccessButton from "../../components/QuickAccessButton";
 import NavigationService from "../../helpers/navigation-service";
 import { SELECT_MENU } from "../../actions/quick-access-menu.action";
 import TabBarBottom from "../../components/tab-bar/TabBarBottom";
 import { sizeWidth, sizeHeight } from "../../helpers/size.helper";
+import ImagePlaceholder from "../../components/ImagePlaceholder";
+import Placeholder from "rn-placeholder";
+import { COLORS } from "../../helpers/common-styles";
 
 class Agenda extends Component {
   constructor(props) {
@@ -80,39 +82,59 @@ class Agenda extends Component {
               width: sizeWidth(100),
               height: sizeHeight(36)
             }}>
-              <TouchableOpacity
-                style={styles.backButton}
-                onPress={() => this.onBack()}
-              >
-                <Image
-                  source={require("../../../assets/images/left_black.png")}
-                  style={styles.backIcon}
-                  resizeMode="contain"
-                />
-              </TouchableOpacity>
-              <Image
-                source={{ uri: currentEvent.imageUrl }}
-                style={styles.imageCover}
-                resizeMode={"cover"}
-              />
+              <ImagePlaceholder onReady={!loadingAgendas} animate="fade">
+                <View>
+                  <TouchableOpacity
+                    style={styles.backButton}
+                    onPress={() => this.onBack()}
+                  >
+                    <Image
+                      source={require("../../../assets/images/left_black.png")}
+                      style={styles.backIcon}
+                      resizeMode="contain"
+                    />
+                  </TouchableOpacity>
+                  <Image
+                    source={{ uri: currentEvent.imageUrl }}
+                    style={styles.imageCover}
+                    resizeMode={"cover"}
+                  />
+                </View>
+              </ImagePlaceholder>
             </View>
-            <ScrollView
-              contentContainerStyle={styles.datesContainer}
-              horizontal
-              showsHorizontalScrollIndicator={false}
-            >
-              {this._renderDatesOfEvent(
-                _.get(currentEvent, "dateFrom"),
-                _.get(currentEvent, "dateTo")
-              )}
-            </ScrollView>
-            <View style={styles.containerAgendas}>
-              {loadingAgendas ? (
-                <AppActivityIndicator
-                  color="#000"
-                  containerStyles={styles.loadingOrEmptyContainer}
-                />
-              ) : this._renderAgenda(agendaOfActiveDay)}
+            <View style={{
+              padding: 10
+            }}>
+              <Placeholder.Paragraph
+                lineNumber={4}
+                textSize={14}
+                lineSpacing={5}
+                color={COLORS.CARD_PLACEHOLDER}
+                lastLineWidth="70%"
+                firstLineWidth="50%"
+                onReady={!loadingAgendas}
+                animate="fade"
+              >
+                <View>
+                  <ScrollView
+                    contentContainerStyle={styles.datesContainer}
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                  >
+                    {
+                      this._renderDatesOfEvent(
+                        _.get(currentEvent, "dateFrom"),
+                        _.get(currentEvent, "dateTo")
+                      )
+                    }
+                  </ScrollView>
+                  <View style={styles.containerAgendas}>
+                  {
+                    this._renderAgenda(agendaOfActiveDay)
+                  }
+                  </View>
+                </View>
+              </Placeholder.Paragraph>
             </View>
           </View>
         </ScrollView>

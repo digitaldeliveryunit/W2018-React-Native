@@ -31,14 +31,13 @@ export default StyleSheet.create({
     height: "100%"
   },
   datesContainer: {
-    padding: 4,
-    marginVertical: 8
+    height: sizeHeight(10)
   },
   dateItem: {
-    margin: 6
+    marginRight: 6
   },
   containerAgendas: {
-    paddingHorizontal: 10,
+    paddingHorizontal: 0,
     marginBottom: 5
   },
   loadingOrEmptyContainer: {

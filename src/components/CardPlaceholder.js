@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { Text, StyleSheet, View } from "react-native";
 import Placeholder from "rn-placeholder";
 import { COLORS, CommonStyles } from "../helpers/common-styles";
@@ -23,38 +23,46 @@ const styles = StyleSheet.create({
 });
 
 class CardPlaceholder extends Component {
-  render () {
+  render() {
     const { containerStyles, width, onReady } = this.props;
     return (
       <View style={[containerStyles, { width: width }]}>
-      <View style={styles.image}>
-        <ImagePlaceholder onReady={onReady} animate="fade" />
-      </View>
-      <View style={{ padding: 10 }}>
-        <View style={styles.content}>
-          <View style={{ marginLeft: 10, width: sizeWidth(60), height: sizeHeight(15) }}>
-          <Placeholder.Paragraph
-            lineNumber={3}
-            textSize={16}
-            lineSpacing={5}
-            color="#CCCCCC"
-            width="100%"
-            lastLineWidth="70%"
-            firstLineWidth="50%"
-            onReady={onReady}
-            animate="fade" />
-          </View>
+        <View style={styles.image}>
+          <ImagePlaceholder onReady={onReady} animate="fade" />
         </View>
+        <View style={{ padding: 10 }}>
+          <View style={styles.content}>
+            <View
+              style={{
+                marginLeft: 10,
+                width: sizeWidth(60),
+                height: sizeHeight(15)
+              }}
+            >
+              <Placeholder.Paragraph
+                lineNumber={3}
+                textSize={16}
+                lineSpacing={5}
+                color={COLORS.CARD_PLACEHOLDER}
+                width="100%"
+                lastLineWidth="70%"
+                firstLineWidth="50%"
+                onReady={onReady}
+                animate="fade"
+              />
+            </View>
+          </View>
           <View style={styles.bottom}>
             <Placeholder.Line
-              color="#CCCCCC"
+              color={COLORS.CARD_PLACEHOLDER}
               width="80%"
               textSize={14}
               onReady={onReady}
-              animate="fade" />
+              animate="fade"
+            />
           </View>
+        </View>
       </View>
-    </View>
     );
   }
 }

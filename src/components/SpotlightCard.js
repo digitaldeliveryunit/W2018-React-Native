@@ -11,10 +11,12 @@ import { COLORS, CommonStyles } from "../helpers/common-styles";
 import Text from "./Text.component";
 import _ from "lodash";
 import { fontMaker } from "../helpers/font.helper";
-import { sizeWidth, sizeFont } from "../helpers/size.helper";
+import { sizeFont, sizeHeight } from "../helpers/size.helper";
+import SmallCardPlaceholder from "../components/SmallCardPlaceholder";
 
 const { width } = Dimensions.get("window");
-const WIDTH_SPOTLIGHT_ITEM = width / 2 - 44;
+const WIDTH_SPOTLIGHT_ITEM = width / 2 - 20;
+const IMAGE_HEIGHT = sizeHeight(17);
 
 const styles = StyleSheet.create({
   container: {
@@ -38,17 +40,17 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: "#F3F3F3",
     width: "90%",
-    marginTop: 10,
-    paddingTop: 10,
-    paddingBottom: 10
+    marginTop: 5,
+    paddingTop: 5,
+    paddingBottom: 5
   },
   descriptionText: {
-    fontSize: sizeFont(4),
+    fontSize: sizeFont(3),
     color: COLORS.GRAYISH_BLUE,
     textAlign: "justify",
     overflow: "hidden",
     opacity: 0.8,
-    lineHeight: 24
+    lineHeight: 15
   }
 });
 
@@ -90,20 +92,25 @@ export const SpotlightItem = (props) => {
 };
 
 const SpotlightCard = props => {
-  const { spotlight, onPressSpotlightItem } = props;
+  const { spotlight, onPressSpotlightItem, loading } = props;
   return (
     <View style={styles.container}>
     {
       !_.isEmpty(spotlight) && spotlight.map((item, index) => (
-        <SpotlightItem
-          key={index}
-          item={item}
-          onPressSpotlightItem={spotlightId => onPressSpotlightItem(spotlightId)}
-          containerStyle={{
-            width: WIDTH_SPOTLIGHT_ITEM,
-            margin: 10
-          }}
-        />
+        <View style={{ margin: 5 }} key={index}>
+          <SmallCardPlaceholder
+            onReady={!loading} 
+            width={WIDTH_SPOTLIGHT_ITEM}
+            imageHeight={IMAGE_HEIGHT}>
+            <SpotlightItem
+              item={item}
+              onPressSpotlightItem={spotlightId => onPressSpotlightItem(spotlightId)}
+              containerStyle={{
+                width: WIDTH_SPOTLIGHT_ITEM
+              }}
+            />
+          </SmallCardPlaceholder>
+        </View>
       ))
     }
     </View>
@@ -116,7 +123,7 @@ SpotlightCard.propTypes = {
 };
 
 SpotlightItem.propTypes = {
-  item: PropTypes.object.isRequired,
+  item: PropTypes.any.isRequired,
   onPressSpotlightItem: PropTypes.func,
   containerStyle: PropTypes.any,
   imageStyle: PropTypes.any,
@@ -133,7 +140,7 @@ SpotlightItem.defaultProps = {
   },
   imageStyle: {
     width: WIDTH_SPOTLIGHT_ITEM,
-    height: 92
+    height: IMAGE_HEIGHT
   },
   titleStyle: {
     marginTop: 10,

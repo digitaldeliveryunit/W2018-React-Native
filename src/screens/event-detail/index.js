@@ -19,6 +19,7 @@ import { sizeWidth, sizeHeight } from "../../helpers/size.helper";
 import Placeholder from "rn-placeholder";
 import ImagePlaceholder from "../../components/ImagePlaceholder";
 import ImageContentPlaceholder from "../../components/ImageContentPlaceholder";
+import { COLORS } from "../../helpers/common-styles";
 
 class EventDetail extends Component {
   constructor(props) {
@@ -209,7 +210,7 @@ class EventDetail extends Component {
                 lineNumber={2}
                 textSize={14}
                 lineSpacing={5}
-                color="#CCCCCC"
+                color={COLORS.CARD_PLACEHOLDER}
                 lastLineWidth="70%"
                 firstLineWidth="50%"
                 onReady={!loadingEvent}
@@ -298,7 +299,7 @@ class EventDetail extends Component {
                 lineNumber={5}
                 textSize={12}
                 lineSpacing={5}
-                color="#CCCCCC"
+                color={COLORS.CARD_PLACEHOLDER}
                 lastLineWidth="50%"
                 onReady={!loadingEvent}
                 animate="fade"
@@ -310,7 +311,9 @@ class EventDetail extends Component {
             </View>
           </View>
         </ScrollView>
-        <QuickAccessButton currentEvent={event} />
+        {
+          loadingEvent || <QuickAccessButton currentEvent={event} />
+        }
         <TabBarBottom navigation={this.props.navigation} />
       </View>
     );
