@@ -16,6 +16,7 @@ import {sizeHeight} from "../../helpers/size.helper";
 import _ from "lodash";
 import AppActivityIndicator from "../../components/AppActivityIndicator";
 import { fontMaker } from "../../helpers/font.helper";
+import SmallCardPlaceholder from "../../components/SmallCardPlaceholder";
 
 const styles = StyleSheet.create({
   shelfContainer: {
@@ -56,6 +57,11 @@ const styles = StyleSheet.create({
     height: sizeHeight(20),
     justifyContent: "center",
     alignItems: "center"
+  },
+  itemWrapper: {
+    paddingRight: 5,
+    paddingLeft: 5,
+    marginBottom: 5
   }
 });
 
@@ -75,36 +81,34 @@ class GalleryShelf extends React.Component {
           </TouchableOpacity>
         </View>
         {
-          loading ? (
-            <AppActivityIndicator 
+          _.isEmpty(items) ? (
+            <AppEmpty 
               containerStyles={styles.emptyContainer} 
-              color={reversedColor ? "#000" : "#FFF"} />
-          ) : (
-            _.isEmpty(items) ? (
-              <AppEmpty 
-                containerStyles={styles.emptyContainer} 
-                textColor={reversedColor ? "#000" : "#FFF"} />
-            ) : this._renderGalleries(items)
-          )
+              textColor={reversedColor ? "#000" : "#FFF"} />
+          ) : this._renderGalleries(items)
         }
       </View>
     );
   }
   _keyExtractor = (item, index) => `${index}`;
   _renderGalleries = galleries => {
+    const { loading } = this.props;
     return (
         <FlatList
             data={galleries}
             keyExtractor={this._keyExtractor}
             renderItem={({ item, index }) => {
             return (
-              <TouchableOpacity 
-                key={index}
-                style={{ paddingRight: 5, paddingLeft: 5, marginBottom: 5, ...CommonStyles.boxShadow }} 
-                onPress={() => this.openMediaUrl(item.url)}
-              >
-                <GalleryCard item={item} width={sizeWidth(50)} />
-              </TouchableOpacity>
+              <View style={styles.itemWrapper}>
+                <SmallCardPlaceholder onReady={!loading} width={sizeWidth(50)}>
+                  <TouchableOpacity 
+                    key={index} 
+                    onPress={() => this.openMediaUrl(item.url)}
+                  >
+                    <GalleryCard item={item} width={sizeWidth(50)} />
+                  </TouchableOpacity>
+                </SmallCardPlaceholder>
+              </View>
             );
             }}
             horizontal

@@ -78,7 +78,8 @@ class Gallery extends Component {
     this.setState({
       document: Object.assign({}, document, {
         loading: true,
-        loaded: false
+        loaded: false,
+        items: [1, 2, 3]
       })
     });
     try {
@@ -106,7 +107,8 @@ class Gallery extends Component {
     this.setState({
       video: Object.assign({}, video, {
         loading: true,
-        loaded: false
+        loaded: false,
+        items: [1, 2, 3]
       })
     });
     try {
@@ -134,7 +136,8 @@ class Gallery extends Component {
     this.setState({
       image: Object.assign({}, image, {
         loading: true,
-        loaded: false
+        loaded: false,
+        items: [1, 2, 3]
       })
     });
     try {

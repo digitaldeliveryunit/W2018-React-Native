@@ -29,15 +29,15 @@ export default StyleSheet.create({
     height: "100%"
   },
   titleContainer: {
-    backgroundColor: "rgba(6, 6, 6, .05)"
+    backgroundColor: "rgba(6, 6, 6, .05)",
+    paddingVertical: 12,
+    paddingHorizontal: 20
   },
   lblEventName: {
     width,
     fontSize: sizeFont(5.8),
     lineHeight: 24,
     color: COLORS.GREEN_PET_ICT,
-    paddingVertical: 12,
-    paddingHorizontal: 20,
     ...fontMaker({ weight: "600" })
   },
   infoContainer: {

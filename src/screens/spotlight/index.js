@@ -65,18 +65,20 @@ class Spotlight extends Component {
   };
 
   _renderItem = (item, index) => {
+    const { loading, refreshing } = this.state;
     return (
-      <SpotlightCard
-        spotlight={item}
-        onPressSpotlightItem={this._onPressSpotlightItem}
-      />
+        <SpotlightCard
+          spotlight={item}
+          onPressSpotlightItem={this._onPressSpotlightItem}
+          loading={loading || refreshing}
+        />
     );
   };
 
   _keyExtractor = (item, index) => index.toString();
 
   render() {
-    const { spotlights, loading, loadingMore, viewMode } = this.state;
+    const { spotlights, loadingMore, viewMode } = this.state;
     const spotlightCouples = _.chunk(spotlights, 2);
     return (
       <WrapperComponent>
@@ -107,7 +109,7 @@ class Spotlight extends Component {
                   }} />
                 )
               }}
-              ListEmptyComponent={() => loading ? <AppActivityIndicator /> : <AppEmpty textColor={"#FFF"} />}
+              ListEmptyComponent={<AppEmpty textColor={"#FFF"} />}
             />
           ) : (
             this._renderCarousel()
@@ -165,16 +167,15 @@ class Spotlight extends Component {
             height: sizeHeight(25)
           }}
           titleStyle={{
-            fontSize: sizeFont(5.8),
+            fontSize: sizeFont(5),
             color: COLORS.GREEN_PET_ICT,
-            marginTop: 15,
-            paddingHorizontal: 25,
+            paddingHorizontal: 15,
             ...fontMaker({ weight: "500" })
           }}
           roleStyle={{
-            fontSize: sizeFont(4),
+            fontSize: sizeFont(3.5),
             color: COLORS.GRAYISH_BLUE,
-            paddingHorizontal: 25
+            paddingHorizontal: 15
           }}
         />
       </TouchableOpacity>
@@ -185,7 +186,8 @@ class Spotlight extends Component {
     const { take } = this.state;
     this.setState({
       loading: true,
-      loaded: false
+      loaded: false,
+      spotlights: [1, 2, 3, 4, 5 , 6, 7, 8, 9, 10]
     });
     try {
       const spotlights = await SpotlightAPI.getSpotlights(eventId, {
@@ -215,9 +217,11 @@ class Spotlight extends Component {
         loadingMore,
         skip,
         take,
-        spotlights
+        spotlights,
+        loading,
+        refreshing
       } = this.state;
-      if (!hasNextItems || loadingMore) {
+      if (!hasNextItems || loadingMore || loading || refreshing) {
         return;
       }
       this.setState({

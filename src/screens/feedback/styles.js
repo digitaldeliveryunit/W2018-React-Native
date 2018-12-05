@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import { sizeWidth } from "../../helpers/size.helper";
+import { CommonStyles } from "../../helpers/common-styles";
 
 export default StyleSheet.create({
   wrapper: {
@@ -8,14 +9,13 @@ export default StyleSheet.create({
   },
   containerWebview: {
     flex: 1,
-    marginTop: 30,
-    marginBottom: 100,
-    width: sizeWidth(80),
-    borderRadius: 20,
-    overflow: 'hidden'
+    marginVertical: 10,
+    width: sizeWidth(90),
+    borderRadius: 15,
+    overflow: "hidden",
+    ...CommonStyles.boxShadow
   },
   webView: {
-    flex: 1,
-    backgroundColor: "#EEE"
+    flex: 1
   }
 });

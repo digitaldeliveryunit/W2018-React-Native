@@ -1,8 +1,12 @@
 import { StyleSheet } from "react-native";
-import { CommonStyles } from "../../helpers/common-styles";
 
 export default StyleSheet.create({
-    listContainer: {
-        flex: 1
-    }
+  listContainer: {
+    flex: 1
+  },
+  itemWrapper: {
+    marginBottom: 20,
+    paddingLeft: 15,
+    paddingRight: 15
+  }
 });

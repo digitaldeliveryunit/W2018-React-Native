@@ -12,7 +12,8 @@ export const COLORS = {
   GREEN_PET_ICT: "#00A19C",
   SOFT_PURPLE: "#58478D",
   PALE_NAVY: "#C4C9DF",
-  LIGHT_BORDER: "#F3F3F3"
+  LIGHT_BORDER: "#F3F3F3",
+  CARD_PLACEHOLDER: "#F3F3F3"
 };
 
 export const CommonStyles = StyleSheet.create({
