@@ -11,13 +11,13 @@ import { sizeWidth, sizeHeight, sizeFont } from "../helpers/size.helper";
 
 export const navStyle = StyleSheet.create({
   iconStyle: {
-    width: sizeWidth(8),
-    height: sizeWidth(8),
+    width: sizeWidth(6),
+    height: sizeWidth(6),
     marginBottom: -5,
     resizeMode: "contain"
   },
   tabStyle: {
-    height: sizeHeight(10.2)
+    height: sizeWidth(15)
   },
   labelStyle: {
     fontSize: sizeFont(3),

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { View, Image, TouchableOpacity, FlatList, Animated } from "react-native";
+import { View, Image, TouchableOpacity, TouchableNativeFeedback, FlatList, Animated } from "react-native";
 import Text from "../../components/Text.component";
 import styles from "./styles";
 import { CommonStyles, COLORS } from "../../helpers/common-styles";
@@ -19,10 +19,10 @@ import { isCloseToBottom } from "../../helpers/function.helper";
 import CardPlaceholder from "../../components/CardPlaceholder";
 import { sizeWidth } from "../../helpers/size.helper";
 
-const heightOfForegroundDefault = sizeHeight(70);
+const heightOfForegroundDefault = sizeHeight(50);
 
 class Home extends Component {
-  constructor () {
+  constructor() {
     super();
     this.state = {
       loadingFeatured: false,
@@ -51,22 +51,20 @@ class Home extends Component {
           fadeOutForeground={false}
           parallaxHeaderHeight={this.state.heightOfForeground}
           renderForeground={this._renderForeground}
-          stickyHeaderHeight={sizeHeight(10)}
+          stickyHeaderHeight={sizeWidth(6)}
           renderStickyHeader={this._renderStickyHeader}
           contentBackgroundColor={"transparent"}
           showsVerticalScrollIndicator={false}
           onMomentumScrollEnd={this.onScroll}
           scrollEventThrottle={500}
         >
-        { 
-          this._renderUpcomingEvents()
-        }
+          {this._renderUpcomingEvents()}
         </ParallaxScrollView>
       </WrapperComponent>
     );
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.loadFeaturedEvents();
     this.loadUpcomingEvents();
   }
@@ -82,29 +80,36 @@ class Home extends Component {
 
   _keyExtractor = (item, index) => `${index}`;
   _renderUpcomingEvents = () => {
-    const {upcomingEvents, loadingNextUpcoming} = this.state;
+    const { upcomingEvents, loadingNextUpcoming } = this.state;
     return (
-      <View style={{ 
-        backgroundColor: "#F1F3F5", 
-        paddingTop: 20,
-        paddingBottom: 20,
-        minHeight: sizeHeight(80)
-      }}>
+      <View
+        style={{
+          backgroundColor: "#F1F3F5",
+          paddingTop: sizeWidth(3),
+          paddingBottom: 20,
+          minHeight: sizeHeight(80)
+        }}
+      >
         <Text style={[CommonStyles.title, { color: COLORS.GRAYISH_BLUE }]}>Upcoming Events</Text>
         <FlatList
           style={{
-            paddingHorizontal: 15,
-            paddingTop: 25
+            paddingHorizontal: sizeWidth(1.5),
+            paddingTop: sizeWidth(3)
           }}
           data={upcomingEvents}
           keyExtractor={this._keyExtractor}
           renderItem={this._renderItem}
           showsVerticalScrollIndicator={false}
           ListFooterComponent={() => {
-            return loadingNextUpcoming && (
-              <AppActivityIndicator color="#000" containerStyles={{
-                paddingBottom: 20
-              }} />
+            return (
+              loadingNextUpcoming && (
+                <AppActivityIndicator
+                  color="#000"
+                  containerStyles={{
+                    paddingBottom: 20
+                  }}
+                />
+              )
             );
           }}
           ListEmptyComponent={<AppEmpty containerStyles={styles.emptyUpcomingContainer} />}
@@ -113,12 +118,13 @@ class Home extends Component {
     );
   };
 
-  _renderItem = ({item}) => (
-    <View style={{ marginBottom: 20, padding: 5 }}>
+  _renderItem = ({ item }) => (
+    <View style={{ marginBottom: sizeWidth(1.5) }}>
       <CardPlaceholder onReady={!this.state.loadingUpcoming}>
-        <TouchableOpacity 
-          onPress={() => this.onGoDetail(_.get(item, "eventId"))}>
-          <EventCard event={item} />
+        <TouchableOpacity onPress={() => this.onGoDetail(_.get(item, "eventId"))} activeOpacity={0.8}>
+          <View>
+            <EventCard event={item} />
+          </View>
         </TouchableOpacity>
       </CardPlaceholder>
     </View>
@@ -126,28 +132,27 @@ class Home extends Component {
   _renderForeground = () => {
     const { loadingFeatured, featuredEvents } = this.state;
     return (
-      <View style={styles.foregroundSection} onLayout={(event) => {
-        var {height} = event.nativeEvent.layout;
-        if (height > heightOfForegroundDefault) {
-          this.setState({
-            heightOfForeground: height
-          });
-        }
-      }}>
-      { this._renderHeader() }
-      {
-        loadingFeatured ? (
+      <View
+        style={styles.foregroundSection}
+        onLayout={event => {
+          var { height } = event.nativeEvent.layout;
+          if (height > heightOfForegroundDefault) {
+            this.setState({
+              heightOfForeground: height
+            });
+          }
+        }}
+      >
+        {this._renderHeader()}
+        {loadingFeatured ? (
           <View style={{ width: sizeWidth(85) }}>
             <CardPlaceholder onReady={!loadingFeatured} />
           </View>
+        ) : _.isEmpty(featuredEvents) ? (
+          <AppEmpty textColor={"#FFF"} containerStyles={styles.emptyContainer} />
         ) : (
-          _.isEmpty(featuredEvents) ? (
-            <AppEmpty textColor={"#FFF"} containerStyles={styles.emptyContainer} />
-          ) : (
-            <EventsCarousel events={featuredEvents} navigation={this.props.navigation} />
-          )
-        )
-      }
+          <EventsCarousel events={featuredEvents} navigation={this.props.navigation} />
+        )}
       </View>
     );
   };
@@ -155,8 +160,8 @@ class Home extends Component {
   _renderStickyHeader = () => (
     <View style={styles.stickyHeader}>
       <View style={styles.stickyContainer}>
-        <TouchableOpacity 
-          style={styles.closeButton} 
+        <TouchableOpacity
+          style={styles.closeButton}
           onPress={() => this.parallaxScrollView.scrollTo({ x: 0, y: 0, animated: true })}
         >
           <Image source={require("../../../assets/images/close_white.png")} style={styles.closeIcon} resizeMode="contain" />
@@ -166,11 +171,11 @@ class Home extends Component {
     </View>
   );
 
-  onGoDetail (eventId) {
+  onGoDetail(eventId) {
     this.props.navigation.navigate("About", { eventId });
   }
 
-  async loadFeaturedEvents () {
+  async loadFeaturedEvents() {
     this.setState({
       loadingFeatured: true,
       loadedFeatured: false
@@ -192,9 +197,9 @@ class Home extends Component {
         loadedFeatured: true,
         featuredEvents: []
       });
-    };
+    }
   }
-  async loadUpcomingEvents () {
+  async loadUpcomingEvents() {
     const { takeUpcoming } = this.state;
     this.setState({
       loadingUpcoming: true,
@@ -205,11 +210,7 @@ class Home extends Component {
       const data = await EventAPI.getUpcomingAllEvents({
         take: takeUpcoming
       });
-      const {
-        events,
-        hasNextPage,
-        continuationKey
-      } = data;
+      const { events, hasNextPage, continuationKey } = data;
       this.setState({
         loadingUpcoming: false,
         loadedUpcoming: true,
@@ -225,13 +226,13 @@ class Home extends Component {
         hasNextUpcomingItems: false,
         upcomingContinuationKey: null
       });
-    };
+    }
   }
 
-  async onLoadMoreUpcoming () {
+  async onLoadMoreUpcoming() {
     const {
-      hasNextUpcomingItems, 
-      loadingNextUpcoming, 
+      hasNextUpcomingItems,
+      loadingNextUpcoming,
       takeUpcoming,
       upcomingEvents,
       loadingUpcoming,
@@ -247,11 +248,7 @@ class Home extends Component {
       continuationKey: upcomingContinuationKey,
       take: takeUpcoming
     });
-    const {
-      events,
-      continuationKey,
-      hasNextPage
-    } = data;
+    const { events, continuationKey, hasNextPage } = data;
     this.setState({
       loadingNextUpcoming: false,
       upcomingEvents: upcomingEvents.concat(events),
@@ -260,7 +257,7 @@ class Home extends Component {
     });
   }
 
-  onScroll ({nativeEvent}) {
+  onScroll({ nativeEvent }) {
     if (isCloseToBottom(nativeEvent)) {
       this.onLoadMoreUpcoming();
     }

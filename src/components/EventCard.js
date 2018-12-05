@@ -7,10 +7,7 @@ import { sizeWidth, sizeHeight, sizeFont } from "../helpers/size.helper";
 import { COLORS, CommonStyles } from "../helpers/common-styles";
 import { OPEN_QRCODE_POPUP } from "../actions/qrcode.action";
 import FastImage from "react-native-fast-image";
-import {
-  toDateString,
-  getDayDuration
-} from "../helpers/date-time.helper";
+import { toDateString, getDayDuration } from "../helpers/date-time.helper";
 import EventAPI from "../api/event";
 import Toast from "@remobile/react-native-toast";
 import { USER_STATUS } from "../config";
@@ -19,12 +16,12 @@ import { fontMaker } from "../helpers/font.helper";
 const styles = StyleSheet.create({
   image: {
     width: "100%",
-    height: sizeHeight(25)
+    height: sizeWidth(40)
   },
   content: {
     width: "100%",
     flexDirection: "row",
-    paddingBottom: 5
+    marginBottom: sizeWidth(3)
   },
   dateCountDown: {
     borderColor: COLORS.GRAYISH_BLUE,
@@ -36,24 +33,22 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingTop: 8,
+    paddingTop: sizeWidth(1.5),
     borderTopColor: "#F3F3F3",
     borderTopWidth: 1
   },
   actionButton: {
     justifyContent: "center",
     alignItems: "center",
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    marginLeft: 5,
-    borderColor: "#F6F6F6",
-    borderWidth: 1
+    width: sizeWidth(8),
+    height: sizeWidth(8),
+    borderRadius: sizeWidth(4),
+    marginLeft: 5
   }
 });
 
 class EventCard extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       isBookmark: props.event.isBookmark,
@@ -68,29 +63,24 @@ class EventCard extends React.Component {
     const { containerStyles, event, width, withoutBottom } = this.props;
     return (
       <View style={[containerStyles, { width: width }]}>
-        <FastImage 
-          source={{uri: event.imageUrl}}
-          style={styles.image}
-          resizeMode={FastImage.resizeMode.cover} />
-        <View style={{ padding: 10 }}>
+        <FastImage source={{ uri: event.imageUrl }} style={styles.image} resizeMode={FastImage.resizeMode.cover} />
+        <View style={{ padding: sizeWidth(1.5) }}>
           <View style={styles.content}>
             <View>
               <DateCountDown dateFrom={event.dateFrom} dateTo={event.dateTo} />
             </View>
-            <View style={{ marginLeft: 10, width: sizeWidth(60), height: sizeHeight(15) }}>
+            <View style={{ marginLeft: sizeWidth(3), width: sizeWidth(65) }}>
               <Text style={{ color: COLORS.GREEN_PET_ICT, fontSize: sizeFont(4) }} numberOfLines={2}>
                 {event.eventName}
               </Text>
               <Text style={{ color: COLORS.GRAYISH_BLUE, fontSize: sizeFont(3.5) }} numberOfLines={1}>
                 {event.eventLocation && event.eventLocation.locationName}
               </Text>
-              {
-                (event.dateFrom && getDayDuration(event.dateFrom, event.dateTo) > 0) && (
-                  <Text style={{ color: COLORS.GRAYISH_BLUE, fontSize: sizeFont(3.5) }} numberOfLines={1}>
-                    {`${toDateString(event.dateFrom)} - ${toDateString(event.dateTo)}`}
-                  </Text>
-                )
-              }
+              {event.dateFrom && getDayDuration(event.dateFrom, event.dateTo) > 0 && (
+                <Text style={{ color: COLORS.GRAYISH_BLUE, fontSize: sizeFont(3.5) }} numberOfLines={1}>
+                  {`${toDateString(event.dateFrom)} - ${toDateString(event.dateTo)}`}
+                </Text>
+              )}
             </View>
           </View>
           {!withoutBottom && (
@@ -100,60 +90,58 @@ class EventCard extends React.Component {
                 {`${event.eventType} Event`}
               </Text>
               <View style={{ flexDirection: "row" }}>
-              {
-                this.state.userStatus === USER_STATUS.NEW && (
+                {this.state.userStatus === USER_STATUS.NEW && (
                   <TouchableOpacity style={styles.actionButton} onPress={this.onJoin}>
                     <Image
+                      resizeMode="cover"
                       source={require("../../assets/images/plus_filled.png")}
-                      style={{ width: 20, height: 20 }}
+                      style={{ width: sizeWidth(6), height: sizeWidth(6) }}
                     />
                   </TouchableOpacity>
-                )
-              }
-              {
-                this.state.userStatus === USER_STATUS.JOINED && (
+                )}
+                {this.state.userStatus === USER_STATUS.JOINED && (
                   <TouchableOpacity style={styles.actionButton} onPress={this.onUnJoin}>
                     <Image
+                      resizeMode="cover"
                       source={require("../../assets/images/close.png")}
-                      style={{ width: 20, height: 20 }}
+                      style={{ width: sizeWidth(6), height: sizeWidth(6) }}
                     />
                   </TouchableOpacity>
-                )
-              }
-              {
-                this.state.isBookmark ? (
+                )}
+                {this.state.isBookmark ? (
                   <TouchableOpacity style={styles.actionButton} onPress={this.onUnBookmark}>
                     <Image
+                      resizeMode="cover"
                       source={require("../../assets/images/bookmarked.png")}
-                      style={{ width: 15, height: 20 }}
+                      style={{ width: sizeWidth(4.5), height: sizeWidth(6) }}
                     />
                   </TouchableOpacity>
                 ) : (
                   <TouchableOpacity style={styles.actionButton} onPress={this.onBookmark}>
                     <Image
+                      resizeMode="cover"
                       source={require("../../assets/images/bookmark.png")}
-                      style={{ width: 15, height: 20 }}
+                      style={{ width: sizeWidth(4.5), height: sizeWidth(6) }}
                     />
                   </TouchableOpacity>
-                )
-              }
-              {
-                this.state.userStatus === USER_STATUS.CHECKIN ? (
+                )}
+                {this.state.userStatus === USER_STATUS.CHECKIN ? (
                   <TouchableOpacity style={styles.actionButton}>
                     <Image
+                      resizeMode="cover"
                       source={require("../../assets/images/qrcode_selected.png")}
-                      style={{ width: 20, height: 20 }}
+                      style={{ width: sizeWidth(6), height: sizeWidth(6) }}
                     />
                   </TouchableOpacity>
                 ) : (
                   <TouchableOpacity style={styles.actionButton} onPress={() => this.props.openPopup(event.eventId)}>
                     <Image
+                      resizeMode="cover"
                       source={require("../../assets/images/qrcode.png")}
-                      style={{ width: 20, height: 20 }}
+                      style={{ width: sizeWidth(6), height: sizeWidth(6) }}
                     />
                   </TouchableOpacity>
-                )
-              }
+                )}
               </View>
             </View>
           )}
@@ -162,7 +150,7 @@ class EventCard extends React.Component {
     );
   }
 
-  async onBookmark () {
+  async onBookmark() {
     const { event } = this.props;
     const result = await EventAPI.bookmark(event.eventId);
     if (result) {
@@ -172,7 +160,7 @@ class EventCard extends React.Component {
       Toast.showLongBottom("Event is bookmarked failed.");
     }
   }
-  async onUnBookmark () {
+  async onUnBookmark() {
     const { event } = this.props;
     const result = await EventAPI.unBookmark(event.eventId);
     if (result) {
@@ -182,7 +170,7 @@ class EventCard extends React.Component {
       Toast.showLongBottom("Event is unbookmarked failed.");
     }
   }
-  async onJoin () {
+  async onJoin() {
     const { event } = this.props;
     const result = await EventAPI.join(event.eventId);
     if (result) {
@@ -192,7 +180,7 @@ class EventCard extends React.Component {
       Toast.showLongBottom("Event is joined failed.");
     }
   }
-  async onUnJoin () {
+  async onUnJoin() {
     const { event } = this.props;
     const result = await EventAPI.unJoin(event.eventId);
     if (result) {
@@ -204,7 +192,7 @@ class EventCard extends React.Component {
   }
 }
 
-const DateCountDown = ({dateFrom, dateTo}) => {
+const DateCountDown = ({ dateFrom, dateTo }) => {
   const dayDuration = getDayDuration(dateFrom, dateTo);
   const day = toDateString(dateFrom, "DD");
   const month = toDateString(dateFrom, "MMM");
@@ -220,14 +208,14 @@ const DateCountDown = ({dateFrom, dateTo}) => {
         }}
       >
         <Text style={{ fontSize: sizeFont(7.5), color: "#FFF", lineHeight: 35 }}>{day}</Text>
-        <Text style={{ fontSize: sizeFont(4), color: "#FFF", lineHeight: 20, ...fontMaker({ weight: "500" }) }}>{month && month.toUpperCase()}</Text>
+        <Text style={{ fontSize: sizeFont(4), color: "#FFF", lineHeight: 20, ...fontMaker({ weight: "500" }) }}>
+          {month && month.toUpperCase()}
+        </Text>
       </View>
-      {
-        dayDuration > 0 && <Text style={{ fontSize: sizeFont(2.5), padding: 2 }}>{dayDuration + 1} days</Text>
-      }
+      {dayDuration > 0 && <Text style={{ fontSize: sizeFont(2.5), padding: 2 }}>{dayDuration + 1} days</Text>}
     </View>
   );
-}
+};
 
 EventCard.propTypes = {
   event: PropTypes.any,
@@ -248,7 +236,7 @@ EventCard.defaultProps = {
 
 const mapDispatchToProps = dispatch => {
   return {
-    openPopup: (eventId) => dispatch({ type: OPEN_QRCODE_POPUP, eventId })
+    openPopup: eventId => dispatch({ type: OPEN_QRCODE_POPUP, eventId })
   };
 };
 

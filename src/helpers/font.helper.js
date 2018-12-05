@@ -3,7 +3,7 @@ import { Platform } from "react-native";
 // we define available font weight and styles for each font here
 const font = {
   "Helvetica Neue": {
-    "weights": {
+    weights: {
       "800": "Heavy",
       "700": "Bold",
       "600": "Medium",
@@ -11,12 +11,12 @@ const font = {
       "400": "Light",
       "300": "Thin"
     },
-    "styles": {
-      "italic": "Italic"
+    styles: {
+      italic: "Italic"
     }
   },
   "SF Pro Text": {
-    "weights": {
+    weights: {
       "800": "Heavy",
       "700": "Bold",
       "600": "Semibold",
@@ -24,12 +24,12 @@ const font = {
       "400": "Regular",
       "300": "Light"
     },
-    "styles": {
-      "italic": "Italic"
+    styles: {
+      italic: "Italic"
     }
   },
-  "Montserrat": {
-    "weights": {
+  Montserrat: {
+    weights: {
       "800": "ExtraBold",
       "700": "Bold",
       "600": "SemiBold",
@@ -37,8 +37,8 @@ const font = {
       "400": "Regular",
       "300": "Light"
     },
-    "styles": {
-      "italic": "Italic"
+    styles: {
+      italic: "Italic"
     }
   }
 };
@@ -58,17 +58,17 @@ export const fontMaker = (options = {}) => {
   if (Platform.OS === "android") {
     weight = weights[weight] ? weights[weight] : "Regular";
     style = styles[style] ? styles[style] : "";
-    const suffix = (weight === "Regular" && style) ? style : (weight + style);
+    const suffix = weight === "Regular" && style ? style : weight + style;
 
     return {
-      fontFamily: family + (suffix.length ? `-${suffix}` : ""),
+      // fontFamily: family + (suffix.length ? `-${suffix}` : ""),
       fontWeight: "normal"
     };
   } else {
     style = styles[style] ? style : "normal";
 
     return {
-      fontFamily: family,
+      // fontFamily: family,
       fontWeight: weight || "400",
       fontStyle: style
     };
