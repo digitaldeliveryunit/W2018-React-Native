@@ -26,13 +26,13 @@ class Search extends Component {
     super();
     this.state = {
       searchKey: "",
-      skip: 0,
       take: 10,
       events: [],
       loading: false,
       loaded: false,
       loadingMore: false,
-      hasNextItems: false,
+      hasNextPage: false,
+      continuationKey: null,
       firstInit: true
     };
     this.searchMyEventsDelayed = _.debounce(this.searchMyEvents, 1000);
@@ -164,7 +164,7 @@ class Search extends Component {
         loading: false,
         loaded: false,
         events: [],
-        hasNextItems: false
+        hasNextPage: false
       });
       this.searchMyEventsDelayed.cancel();
       return;
@@ -183,53 +183,53 @@ class Search extends Component {
       searchKey
     } = this.state;
     try {
-      const events = await EventAPI.searchEvents({
-        skip: 0,
+      const data = await EventAPI.searchEvents({
         take,
         searchKey
       });
+      const { events, hasNextPage, continuationKey } = data;
       this.setState({
-        skip: 0,
         loading: false,
         loaded: true,
         events,
-        hasNextItems: events.length === take
+        hasNextPage,
+        continuationKey
       });
     } catch (e) {
       this.setState({
         loading: false,
         loaded: false,
         events: [],
-        hasNextItems: false
+        hasNextPage: false,
+        continuationKey: null
       });
     };
   }
 
   async onLoadMore () {
     const {
-      hasNextItems,
       loadingMore,
-      skip,
       take,
       searchKey,
-      events
+      events,
+      hasNextPage,
+      continuationKey
     } = this.state;
-    if (!hasNextItems || loadingMore) {
+    if (!hasNextPage || loadingMore) {
       return;
     }
     this.setState({
       loadingMore: true
     });
-    const nextSkip = skip + take;
-    const nextEvents = await EventAPI.searchEvents({
+    const data = await EventAPI.searchEvents({
       searchKey,
-      skip: nextSkip,
-      take
+      take,
+      continuationKey
     });
     this.setState({
-      events: events.concat(nextEvents),
-      skip: nextSkip,
-      hasNextItems: nextEvents.length === take,
+      events: events.concat(data.events),
+      hasNextPage: data.hasNextPage,
+      continuationKey: data.continuationKey,
       loadingMore: false
     });
   }

@@ -4,25 +4,25 @@ import AppConfig from "../config";
 
 export default class EventAPI {
   static async getFeaturedEvents (params) {
-    const data = await RequestHelper.get(`${AppConfig.apiUrl}Event/Featured`, params);
+    const data = await RequestHelper.get(`${AppConfig.apiUrl}Events/Featured`, params);
     return data;
   }
 
   // for home screen
   static async getUpcomingAllEvents (params) {
-    const data = await RequestHelper.get(`${AppConfig.apiUrl}Event/UpcomingAll`, params);
+    const data = await RequestHelper.get(`${AppConfig.apiUrl}Events/UpComingAll`, params);
     return data;
   }
 
   // for myEvents screen
   static async getUpcomingEvents (params) {
-    const data = await RequestHelper.get(`${AppConfig.apiUrl}Event/Upcoming`, params);
+    const data = await RequestHelper.get(`${AppConfig.apiUrl}Events/UpComing`, params);
     return data;
   }
 
   // for Profile screen
   static async getPastEvents (params) {
-    const data = await RequestHelper.get(`${AppConfig.apiUrl}Event/Past`, params);
+    const data = await RequestHelper.get(`${AppConfig.apiUrl}Events/Past`, params);
     return data;
   }
 
@@ -33,7 +33,7 @@ export default class EventAPI {
   }
 
   static async searchEvents (params) {
-    const data = await RequestHelper.get(`${AppConfig.apiUrl}Event/Search`, params);
+    const data = await RequestHelper.get(`${AppConfig.apiUrl}Events/Search`, params);
     return data;
   }
 
