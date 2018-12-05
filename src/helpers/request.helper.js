@@ -33,8 +33,9 @@ const handleError = error => {
 export default class RequestHelper {
   static async getHeader() {
     return {
-      Accept: "application/json",
-      "Content-Type": "application/json"
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      "Ocp-Apim-Subscription-Key": "ef68321d65c24a09b7b0319c8b8152d2"
     };
   }
   static async get(apiUrl, params) {

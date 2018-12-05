@@ -20,6 +20,7 @@ import Placeholder from "rn-placeholder";
 import ImagePlaceholder from "../../components/ImagePlaceholder";
 import ImageContentPlaceholder from "../../components/ImageContentPlaceholder";
 import { COLORS } from "../../helpers/common-styles";
+import BackButton from "../../components/BackButton";
 
 class EventDetail extends Component {
   constructor(props) {
@@ -126,16 +127,6 @@ class EventDetail extends Component {
                     style={styles.imageCover}
                     resizeMode={"cover"}
                   />
-                  <TouchableOpacity
-                    style={styles.backButton}
-                    onPress={() => this.props.navigation.goBack()}
-                  >
-                    <Image
-                      source={require("../../../assets/images/left_black.png")}
-                      style={styles.backIcon}
-                      resizeMode="contain"
-                    />
-                  </TouchableOpacity>
                   <View style={styles.containerActionButton}>
                     {event.userStatus === USER_STATUS.NEW && (
                       <TouchableOpacity
@@ -273,7 +264,7 @@ class EventDetail extends Component {
                         >
                           {_.get(event, "eventLocation.locationName")}
                         </Text>
-                        <Text style={styles.lblInfoMeta}>{`Unknown`}</Text>
+                        <Text style={styles.lblInfoMeta}>{event.venue}</Text>
                       </View>
                     </View>
                     <TouchableOpacity
@@ -315,6 +306,7 @@ class EventDetail extends Component {
           loadingEvent || <QuickAccessButton currentEvent={event} />
         }
         <TabBarBottom navigation={this.props.navigation} />
+        <BackButton navigation={this.props.navigation} />
       </View>
     );
   }

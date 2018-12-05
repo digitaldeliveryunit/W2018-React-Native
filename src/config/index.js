@@ -1,5 +1,5 @@
 const environments = {
-  dev: "https://myevent.azurewebsites.net/api/",
+  dev: "https://dd-api-gateway.azure-api.net/w2018-azure-functions/",
   production: "",
   staging: "",
   qa: ""

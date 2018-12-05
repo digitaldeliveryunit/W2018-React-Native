@@ -10,7 +10,7 @@ import { sizeFont, sizeHeight, sizeWidth } from "../../helpers/size.helper";
 const styles = StyleSheet.create({
   wrapperItem: {
     flexDirection: "row",
-    borderRadius: 4,
+    borderRadius: 8,
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#FFF",
@@ -23,7 +23,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: COLORS.GRAYISH_BLUE,
-    borderRadius: 4,
+    borderTopLeftRadius: 4,
+    borderBottomLeftRadius: 4,
     zIndex: 2
   },
   day: {
@@ -43,8 +44,6 @@ const styles = StyleSheet.create({
     marginLeft: -4,
     height: "100%",
     justifyContent: "center",
-    borderTopRightRadius: 4,
-    borderBottomRightRadius: 4,
     paddingLeft: 14,
     paddingRight: 11
   },
@@ -65,10 +64,15 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     left: 0,
-    zIndex: 2,
+    // zIndex: 2,
     width: "100%",
     height: "100%",
-    opacity: 0.8
+    opacity: 0.8,
+    borderWidth: 1,
+    borderLeftWidth: 0,
+    borderColor: "#F3F3F3",
+    borderTopRightRadius: 4,
+    borderBottomRightRadius: 4
   }
 });
 

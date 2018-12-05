@@ -10,7 +10,7 @@ export default StyleSheet.create({
   carouselContainer: {
     flex: 1,
     alignItems: "center",
-    marginTop: 15
+    marginTop: 5
   },
   slide: { 
     paddingRight: 10,

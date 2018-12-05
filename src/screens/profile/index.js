@@ -29,9 +29,9 @@ class ProfileComponent extends Component {
       loadedPastEvents: false,
       pastEvents: [],
       refreshing: false,
-      skip: 0,
       take: 10,
-      hasNextItems: true
+      hasNextPage: false,
+      continuationKey: null
     };
     this.onFreshPastEvents = this.onFreshPastEvents.bind(this);
     this.onLoadMore = this.onLoadMore.bind(this);
@@ -148,22 +148,24 @@ class ProfileComponent extends Component {
       pastEvents: [1, 2, 3, 4]
     });
     try {
-      const pastEvents = await EventAPI.getPastEvents({
-        skip: 0,
+      const data = await EventAPI.getPastEvents({
         take
       });
+      const { events, hasNextPage, continuationKey } = data;
       this.setState({
         loadingPastEvents: false,
         loadedPastEvents: true,
-        pastEvents,
-        hasNextItems: pastEvents.length === take
+        pastEvents: events,
+        hasNextPage,
+        continuationKey
       });
     } catch (e) {
       this.setState({
         loadingPastEvents: false,
         loadedPastEvents: false,
-        myEvents: [],
-        hasNextItems: false
+        pastEvents: [],
+        hasNextPage: false,
+        continuationKey: null
       });
     }
   }
@@ -171,45 +173,45 @@ class ProfileComponent extends Component {
   async onFreshPastEvents() {
     const { take } = this.state;
     this.setState({
-      refreshing: true,
-      skip: 0
+      refreshing: true
     });
-    const pastEvents = await EventAPI.getPastEvents({
-      skip: 0,
+    const data = await EventAPI.getPastEvents({
       take
     });
+    const { events, hasNextPage, continuationKey } = data;
     this.setState({
-      pastEvents,
+      pastEvents: events,
       refreshing: false,
-      hasNextItems: pastEvents.length === take
+      hasNextPage,
+      continuationKey
     });
   }
 
   async onLoadMore() {
     const {
-      hasNextItems,
+      hasNextPage,
       loadingMore,
       skip,
       take,
       pastEvents,
       loadingPastEvents,
-      refreshing
+      refreshing,
+      continuationKey
     } = this.state;
-    if (!hasNextItems || loadingMore || loadingPastEvents || refreshing) {
+    if (!hasNextPage || loadingMore || loadingPastEvents || refreshing) {
       return;
     }
     this.setState({
       loadingMore: true
     });
-    const nextSkip = skip + take;
-    const nextEvents = await EventAPI.getPastEvents({
-      skip: nextSkip,
+    const data = await EventAPI.getPastEvents({
+      continuationKey,
       take
     });
     this.setState({
-      pastEvents: pastEvents.concat(nextEvents),
-      skip: nextSkip,
-      hasNextItems: nextEvents.length === ttake,
+      pastEvents: pastEvents.concat(data.events),
+      hasNextPage: data.hasNextPage,
+      continuationKey: data.continuationKey,
       loadingMore: false
     });
   }

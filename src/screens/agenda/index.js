@@ -16,6 +16,7 @@ import { sizeWidth, sizeHeight } from "../../helpers/size.helper";
 import ImagePlaceholder from "../../components/ImagePlaceholder";
 import Placeholder from "rn-placeholder";
 import { COLORS } from "../../helpers/common-styles";
+import BackButton from "../../components/BackButton";
 
 class Agenda extends Component {
   constructor(props) {
@@ -84,16 +85,6 @@ class Agenda extends Component {
             }}>
               <ImagePlaceholder onReady={!loadingAgendas} animate="fade">
                 <View>
-                  <TouchableOpacity
-                    style={styles.backButton}
-                    onPress={() => this.onBack()}
-                  >
-                    <Image
-                      source={require("../../../assets/images/left_black.png")}
-                      style={styles.backIcon}
-                      resizeMode="contain"
-                    />
-                  </TouchableOpacity>
                   <Image
                     source={{ uri: currentEvent.imageUrl }}
                     style={styles.imageCover}
@@ -103,7 +94,7 @@ class Agenda extends Component {
               </ImagePlaceholder>
             </View>
             <View style={{
-              padding: 10
+              paddingVertical: 10
             }}>
               <Placeholder.Paragraph
                 lineNumber={4}
@@ -139,7 +130,8 @@ class Agenda extends Component {
           </View>
         </ScrollView>
         <QuickAccessButton currentEvent={currentEvent} />
-        <TabBarBottom navigation={this.props.navigation}/>
+        <TabBarBottom navigation={this.props.navigation} />
+        <BackButton navigation={this.props.navigation} />
       </View>
     );
   }

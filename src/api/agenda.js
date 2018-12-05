@@ -5,7 +5,7 @@ import AppConfig from "../config";
 export default class AgendaAPI {
   // for Agenda of Event
   static async getAgendasOfEvent (eventId) {
-    const data = await RequestHelper.get(`${AppConfig.apiUrl}Event/${eventId}/Agenda`);
+    const data = await RequestHelper.get(`${AppConfig.apiUrl}Event/${eventId}/Agendas`);
     return data;
   }
 }

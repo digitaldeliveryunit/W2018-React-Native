@@ -32,9 +32,9 @@ class Home extends Component {
       loadingNextUpcoming: false,
       loadedUpcoming: false,
       upcomingEvents: [],
-      skipUpcoming: 0,
+      upcomingContinuationKey: null,
       takeUpcoming: 10,
-      hasNextUpcomingItems: true,
+      hasNextUpcomingItems: false,
       heightOfForeground: heightOfForegroundDefault
     };
     this.onScroll = this.onScroll.bind(this);
@@ -82,17 +82,18 @@ class Home extends Component {
 
   _keyExtractor = (item, index) => `${index}`;
   _renderUpcomingEvents = () => {
-    const {loadingUpcoming, upcomingEvents, loadingNextUpcoming} = this.state;
+    const {upcomingEvents, loadingNextUpcoming} = this.state;
     return (
       <View style={{ 
         backgroundColor: "#F1F3F5", 
         paddingTop: 20,
-        paddingBottom: 20 }}>
+        paddingBottom: 20,
+        minHeight: sizeHeight(80)
+      }}>
         <Text style={[CommonStyles.title, { color: COLORS.GRAYISH_BLUE }]}>Upcoming Events</Text>
         <FlatList
           style={{
-            paddingLeft: 15,
-            paddingRight: 15,
+            paddingHorizontal: 15,
             paddingTop: 25
           }}
           data={upcomingEvents}
@@ -176,10 +177,10 @@ class Home extends Component {
     });
     try {
       // There are not many featured events, so 100 items are enough for that slide to show.
-      const featuredEvents = await EventAPI.getFeaturedEvents({
-        skip: 0,
+      const data = await EventAPI.getFeaturedEvents({
         take: 100
       });
+      const { events: featuredEvents } = data;
       this.setState({
         loadingFeatured: false,
         loadedFeatured: true,
@@ -201,22 +202,28 @@ class Home extends Component {
       upcomingEvents: [1, 2]
     });
     try {
-      const upcomingEvents = await EventAPI.getUpcomingAllEvents({
-        skip: 0,
+      const data = await EventAPI.getUpcomingAllEvents({
         take: takeUpcoming
       });
+      const {
+        events,
+        hasNextPage,
+        continuationKey
+      } = data;
       this.setState({
         loadingUpcoming: false,
         loadedUpcoming: true,
-        upcomingEvents,
-        hasNextUpcomingItems: upcomingEvents.length === takeUpcoming
+        upcomingEvents: events,
+        hasNextUpcomingItems: hasNextPage,
+        upcomingContinuationKey: continuationKey
       });
     } catch (e) {
       this.setState({
         loadingUpcoming: false,
         loadedUpcoming: false,
         upcomingEvents: [],
-        hasNextUpcomingItems: false
+        hasNextUpcomingItems: false,
+        upcomingContinuationKey: null
       });
     };
   }
@@ -225,10 +232,10 @@ class Home extends Component {
     const {
       hasNextUpcomingItems, 
       loadingNextUpcoming, 
-      skipUpcoming, 
       takeUpcoming,
       upcomingEvents,
-      loadingUpcoming
+      loadingUpcoming,
+      upcomingContinuationKey
     } = this.state;
     if (!hasNextUpcomingItems || loadingNextUpcoming || loadingUpcoming) {
       return;
@@ -236,16 +243,20 @@ class Home extends Component {
     this.setState({
       loadingNextUpcoming: true
     });
-    const nextSkip = skipUpcoming + takeUpcoming;
-    const nextUpcomingEvents = await EventAPI.getUpcomingAllEvents({
-      skip: nextSkip,
+    const data = await EventAPI.getUpcomingAllEvents({
+      continuationKey: upcomingContinuationKey,
       take: takeUpcoming
     });
+    const {
+      events,
+      continuationKey,
+      hasNextPage
+    } = data;
     this.setState({
-      upcomingEvents: upcomingEvents.concat(nextUpcomingEvents),
-      skipUpcoming: nextSkip,
-      hasNextUpcomingItems: nextUpcomingEvents.length === takeUpcoming,
-      loadingNextUpcoming: false
+      loadingNextUpcoming: false,
+      upcomingEvents: upcomingEvents.concat(events),
+      hasNextUpcomingItems: hasNextPage,
+      upcomingContinuationKey: continuationKey
     });
   }
 
