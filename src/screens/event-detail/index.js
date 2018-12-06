@@ -239,7 +239,7 @@ class EventDetail extends Component {
                   </View>
                   <View style={[styles.rowInfo, { alignItems: "center" }]}>
                     <Image
-                      style={{ ...styles.infoIcon, width: 22 }}
+                      style={styles.infoIcon }
                       source={require("../../../assets/images/clock.png")}
                     />
                     <View style={styles.infoLabelWrapper}>
@@ -252,7 +252,7 @@ class EventDetail extends Component {
                   <View style={styles.rowLocation}>
                     <View style={styles.rowInfo}>
                       <Image
-                        style={{ ...styles.infoIcon, height: 25 }}
+                        style={styles.infoIcon}
                         source={require("../../../assets/images/marker.png")}
                       />
                       <View style={styles.infoLabelWrapper}>

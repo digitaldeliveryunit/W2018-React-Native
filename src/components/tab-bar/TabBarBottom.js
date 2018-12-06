@@ -11,9 +11,9 @@ import {
 import { SafeAreaView } from "react-navigation";
 import CrossFadeIcon from "./CrossFadeIcon";
 import { COLORS } from "../../helpers/common-styles";
-import { sizeFont } from "../../helpers/size.helper";
 import navigationService from "../../helpers/navigation-service";
 import {navStyle} from "../../navigator/main.navigator";
+import { fontSize } from "../../helpers/font.helper";
 
 const majorVersion = parseInt(Platform.Version, 10);
 const isIos = Platform.OS === "ios";
@@ -323,11 +323,11 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent"
   },
   labelBeneath: {
-    fontSize: sizeFont(3),
+    fontSize: fontSize.f12,
     marginBottom: 1.5
   },
   labelBeside: {
-    fontSize: sizeFont(3.5),
+    fontSize: fontSize.f12,
     marginLeft: 15
   },
   iconStyle: navStyle.iconStyle

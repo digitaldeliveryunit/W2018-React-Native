@@ -1,11 +1,9 @@
 import { StyleSheet } from "react-native";
-import { CommonStyles } from "../../helpers/common-styles";
-import { sizeHeight } from "../../helpers/size.helper";
+import { sizeWidth, sizeHeight } from "../../helpers/size.helper";
 
 export default StyleSheet.create({
     listContainer: {
-        paddingLeft: 15,
-        paddingRight: 15
+        paddingHorizontal: sizeWidth(3)
     },
     emptyContainer: {
         height: sizeHeight(25),

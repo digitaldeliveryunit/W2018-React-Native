@@ -12,7 +12,3 @@ export const sizeWidth = size => {
 export const sizeHeight = size => {
   return size * vh;
 };
-
-export const sizeFont = size => {
-  return size * vw;
-};

@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { StyleSheet, Image, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
 import { TOGGLE_MENU } from "../actions/quick-access-menu.action";
-import {COLORS, CommonStyles} from "../helpers/common-styles";
-import { sizeWidth } from "../helpers/size.helper";
+import { CommonStyles} from "../helpers/common-styles";
+import { sizeWidth, sizeHeight } from "../helpers/size.helper";
 
 const styles = StyleSheet.create({
   menu: {
     position: "absolute",
-    bottom: 85,
-    right: 25
+    bottom: sizeHeight(10),
+    right: sizeWidth(5)
   },
   item: {
     width: sizeWidth(14),

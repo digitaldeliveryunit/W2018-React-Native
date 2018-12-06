@@ -1,7 +1,7 @@
 import { StyleSheet, Dimensions } from "react-native";
 import { CommonStyles, COLORS } from "../../helpers/common-styles";
-import { sizeWidth, sizeFont, sizeHeight } from "../../helpers/size.helper";
-import { fontMaker } from "../../helpers/font.helper";
+import { sizeWidth } from "../../helpers/size.helper";
+import { fontMaker, fontSize } from "../../helpers/font.helper";
 const { width } = Dimensions.get("window");
 
 export default StyleSheet.create({
@@ -11,43 +11,29 @@ export default StyleSheet.create({
     position: "relative"
   },
   container: CommonStyles.container,
-  backButton: {
-    position: "absolute",
-    top: 30,
-    left: 5,
-    zIndex: 2,
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    backgroundColor: "transparent"
-  },
-  backIcon: {
-    width: 13,
-    height: 28
-  },
   imageCover: {
     width,
-    height: "100%"
+    height: "100%",
+    opacity: 0.8
   },
   titleContainer: {
     backgroundColor: "rgba(6, 6, 6, .05)",
-    paddingVertical: 12,
-    paddingHorizontal: 20
+    paddingHorizontal: sizeWidth(3),
+    paddingVertical: sizeWidth(1.5)
   },
   lblEventName: {
-    width,
-    fontSize: sizeFont(5.8),
-    lineHeight: 24,
+    fontSize: fontSize.f18,
     color: COLORS.GREEN_PET_ICT,
     ...fontMaker({ weight: "600" })
   },
   infoContainer: {
     width,
-    paddingHorizontal: 20,
-    marginBottom: 15
+    paddingHorizontal: sizeWidth(3),
+    marginBottom: sizeWidth(3)
   },
   rowInfo: {
     flexDirection: "row",
-    paddingTop: 22
+    paddingTop: sizeWidth(3)
   },
   rowLocation: {
     flexDirection: "row",
@@ -55,28 +41,27 @@ export default StyleSheet.create({
     alignItems: "center"
   },
   infoIcon: {
-    width: 20,
-    height: 22
+    width: sizeWidth(6),
+    height: sizeWidth(6),
+    resizeMode: "contain"
   },
   infoLabelWrapper: {
-    marginLeft: 10,
+    marginLeft: sizeWidth(3),
     flexDirection: "column",
     width: sizeWidth(60),
     overflow: "hidden"
   },
   colorHighLight: {
-    color: COLORS.SOFT_PURPLE
+    color: COLORS.SOFT_PURPLE,
+    fontSize: fontSize.f14
   },
   lblInfoName: {
-    fontSize: sizeFont(4),
-    lineHeight: 18,
+    fontSize: fontSize.f16,
     color: COLORS.GRAYISH_BLUE
   },
   lblInfoMeta: {
-    fontSize: sizeFont(4),
-    lineHeight: 16,
-    color: COLORS.GRAYISH_BLUE,
-    marginTop: 3
+    fontSize: fontSize.f14,
+    color: COLORS.GRAYISH_BLUE
   },
   mapsImage: {
     width: sizeWidth(17),
@@ -85,23 +70,20 @@ export default StyleSheet.create({
   horizontalDivider: {
     ...CommonStyles.horizontalDivider,
     alignSelf: "center",
-    width: width - 40
+    width: sizeWidth(94)
   },
   aboutContainer: {
-    paddingVertical: 10,
-    paddingHorizontal: 20,
+    paddingHorizontal: sizeWidth(3),
+    paddingVertical: sizeWidth(1.5),
     flex: 1
   },
   lblAbout: {
-    fontSize: sizeFont(4),
-    lineHeight: 18,
+    fontSize: fontSize.f16,
     color: COLORS.GRAYISH_BLUE,
-    paddingVertical: 10,
     ...fontMaker({ weight: "600" })
   },
   contentAbout: {
-    marginLeft: -10,
-    marginRight: -10
+    marginHorizontal: -sizeWidth(2)
   },
   // begin styles for action button
   containerActionButton: {
@@ -112,17 +94,18 @@ export default StyleSheet.create({
   },
   actionButton: {
     backgroundColor: "#FFF",
-    borderColor: "#F6F6F6",
+    borderColor: COLORS.LIGHT_BORDER,
     borderWidth: 1,
     justifyContent: "center",
     alignItems: "center",
-    width: sizeWidth(10),
-    height: sizeWidth(10),
+    width: sizeWidth(8),
+    height: sizeWidth(8),
     borderRadius: sizeWidth(5),
     marginLeft: 5
   },
   iconActionButton: {
-    width: sizeWidth(5),
-    height: sizeWidth(5)
+    width: sizeWidth(4),
+    height: sizeWidth(4),
+    resizeMode: "contain"
   }
 });

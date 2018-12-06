@@ -95,9 +95,9 @@ class ProfileComponent extends Component {
           backgroundColor={"transparent"}
           backgroundScrollSpeed={2}
           fadeOutForeground={true}
-          parallaxHeaderHeight={sizeHeight(33)}
+          parallaxHeaderHeight={sizeHeight(31)}
           renderForeground={this._renderForeground}
-          stickyHeaderHeight={sizeHeight(14)}
+          stickyHeaderHeight={sizeHeight(12)}
           renderStickyHeader={this._renderStickyHeader}
           contentBackgroundColor={"transparent"}
           showsVerticalScrollIndicator={false}

@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
-import { sizeWidth, sizeFont } from "../helpers/size.helper";
-import { fontMaker } from "../helpers/font.helper";
+import { sizeWidth } from "../helpers/size.helper";
+import { fontMaker, fontSize } from "../helpers/font.helper";
 
 export const COLORS = {
   GRAY: "#979797",
@@ -23,17 +23,14 @@ export const CommonStyles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "flex-end",
+    marginTop: 30,
     width: sizeWidth(100),
-    height: 70,
-    paddingRight: 20,
-    paddingTop: 30,
-    marginBottom: 20
+    paddingHorizontal: sizeWidth(3),
+    marginBottom: sizeWidth(3)
   },
   title: {
     color: "#FFF",
-    fontSize: sizeFont(6),
-    marginBottom: -5,
-    paddingLeft: sizeWidth(5),
+    fontSize: fontSize.f20,
     ...fontMaker({ weight: "600" })
   },
   horizontalDivider: {

@@ -5,7 +5,8 @@ import { COLORS, CommonStyles } from "../helpers/common-styles";
 import NavigationService from "../helpers/navigation-service";
 import { connect } from "react-redux";
 import { TOGGLE_MENU, SELECT_MENU } from "../actions/quick-access-menu.action";
-import { sizeFont, sizeWidth } from "../helpers/size.helper";
+import { sizeWidth, sizeHeight } from "../helpers/size.helper";
+import { fontSize } from "../helpers/font.helper";
 
 const styles = StyleSheet.create({
   container: {
@@ -21,19 +22,19 @@ const styles = StyleSheet.create({
   },
   quickLists: {
     position: "absolute",
-    bottom: 85,
-    right: 25
+    bottom: sizeHeight(10),
+    right: sizeWidth(5)
   },
   quickItem: {
     flexDirection: "row",
     alignItems: "center",
-    marginTop: 10,
+    marginTop: sizeWidth(3),
     justifyContent: "flex-end"
   },
   quickText: {
     color: COLORS.GRAYISH_BLUE,
-    fontSize: sizeFont(4),
-    marginRight: 20
+    fontSize: fontSize.f14,
+    marginRight: sizeWidth(3)
   },
   item: {
     width: sizeWidth(14),

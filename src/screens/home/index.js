@@ -85,15 +85,19 @@ class Home extends Component {
       <View
         style={{
           backgroundColor: "#F1F3F5",
-          paddingTop: sizeWidth(3),
-          paddingBottom: 20,
           minHeight: sizeHeight(80)
         }}
       >
-        <Text style={[CommonStyles.title, { color: COLORS.GRAYISH_BLUE }]}>Upcoming Events</Text>
+        <Text style={[
+          CommonStyles.title, 
+          { 
+            color: COLORS.GRAYISH_BLUE, 
+            paddingLeft: sizeWidth(3),
+            paddingTop: sizeWidth(3)
+          }
+        ]}>Upcoming Events</Text>
         <FlatList
           style={{
-            paddingHorizontal: sizeWidth(1.5),
             paddingTop: sizeWidth(3)
           }}
           data={upcomingEvents}
@@ -119,12 +123,10 @@ class Home extends Component {
   };
 
   _renderItem = ({ item }) => (
-    <View style={{ marginBottom: sizeWidth(1.5) }}>
+    <View style={{ marginBottom: sizeWidth(3), paddingHorizontal: sizeWidth(3) }}>
       <CardPlaceholder onReady={!this.state.loadingUpcoming}>
         <TouchableOpacity onPress={() => this.onGoDetail(_.get(item, "eventId"))} activeOpacity={0.8}>
-          <View>
-            <EventCard event={item} />
-          </View>
+          <EventCard event={item} />
         </TouchableOpacity>
       </CardPlaceholder>
     </View>
@@ -144,15 +146,17 @@ class Home extends Component {
         }}
       >
         {this._renderHeader()}
-        {loadingFeatured ? (
-          <View style={{ width: sizeWidth(85) }}>
-            <CardPlaceholder onReady={!loadingFeatured} />
-          </View>
-        ) : _.isEmpty(featuredEvents) ? (
-          <AppEmpty textColor={"#FFF"} containerStyles={styles.emptyContainer} />
-        ) : (
-          <EventsCarousel events={featuredEvents} navigation={this.props.navigation} />
-        )}
+        <View style={{ width: sizeWidth(100), alignItems: "center" }}>
+          <CardPlaceholder onReady={!loadingFeatured} width={sizeWidth(94)}>
+          {
+            _.isEmpty(featuredEvents) ? (
+              <AppEmpty textColor={"#FFF"} containerStyles={styles.emptyContainer} />
+            ) : (
+              <EventsCarousel events={featuredEvents} navigation={this.props.navigation} />
+            )
+          }
+          </CardPlaceholder>
+        </View>
       </View>
     );
   };

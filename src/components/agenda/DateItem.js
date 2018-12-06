@@ -4,20 +4,20 @@ import Text from "../Text.component";
 import { COLORS } from "../../helpers/common-styles";
 import PropTypes from "prop-types";
 import moment from "moment";
-import { fontMaker } from "../../helpers/font.helper";
-import { sizeFont, sizeHeight, sizeWidth } from "../../helpers/size.helper";
+import { fontMaker, fontSize } from "../../helpers/font.helper";
+import { sizeWidth } from "../../helpers/size.helper";
 
 const styles = StyleSheet.create({
   wrapperItem: {
     flexDirection: "row",
-    borderRadius: 8,
+    borderRadius: 4,
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#FFF",
     borderColor: COLORS.GRAY
   },
   dayMonthContainer: {
-    width: sizeWidth(14.2),
+    paddingHorizontal: sizeWidth(1.5),
     height: sizeWidth(14.2),
     flexDirection: "column",
     alignItems: "center",
@@ -28,15 +28,15 @@ const styles = StyleSheet.create({
     zIndex: 2
   },
   day: {
-    paddingTop: 7,
-    lineHeight: 27,
-    fontSize: sizeFont(7.5),
+    paddingTop: sizeWidth(1.5),
+    lineHeight: fontSize.f24,
+    fontSize: fontSize.f24,
     color: "#FFF"
   },
   month: {
-    paddingBottom: 3,
-    fontSize: sizeFont(4),
-    lineHeight: 15,
+    paddingBottom: sizeWidth(1.5),
+    fontSize: fontSize.f16,
+    lineHeight: fontSize.f16,
     color: "#FFF",
     ...fontMaker({ weight: "500" })
   },
@@ -55,8 +55,8 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 4
   },
   dayInOrder: {
-    fontSize: sizeFont(5),
-    lineHeight: 20,
+    fontSize: fontSize.f16,
+    lineHeight: fontSize.f16,
     color: COLORS.GRAYISH_BLUE
   },
   inactiveItem: {
@@ -64,13 +64,12 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     left: 0,
-    // zIndex: 2,
     width: "100%",
     height: "100%",
     opacity: 0.8,
     borderWidth: 1,
     borderLeftWidth: 0,
-    borderColor: "#F3F3F3",
+    borderColor: COLORS.LIGHT_BORDER,
     borderTopRightRadius: 4,
     borderBottomRightRadius: 4
   }

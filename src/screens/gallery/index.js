@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { View, ScrollView } from "react-native";
 import Text from "../../components/Text.component";
-import styles from "./styles";
 import { CommonStyles } from "../../helpers/common-styles";
 import WrapperComponent from "../../components/Wrapper.component";
 import DetailHeader from "../../components/DetailHeader";

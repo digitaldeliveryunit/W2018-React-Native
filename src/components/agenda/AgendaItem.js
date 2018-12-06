@@ -12,8 +12,8 @@ import _ from "lodash";
 import PropTypes from "prop-types";
 import { OPEN_QRCODE_POPUP } from "../../actions/qrcode.action";
 import { COLORS } from "../../helpers/common-styles";
-import { fontMaker } from "../../helpers/font.helper";
-import { sizeFont, sizeWidth } from "../../helpers/size.helper";
+import { fontMaker, fontSize } from "../../helpers/font.helper";
+import { sizeWidth } from "../../helpers/size.helper";
 
 const { width } = Dimensions.get("window");
 const WIDTH_CONTAINER_ICON = 40;
@@ -28,38 +28,32 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     backgroundColor: COLORS.GREEN_PET_ICT,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-between",
     borderRadius: 4,
     borderWidth: 1,
     borderColor: COLORS.GRAY,
-    paddingHorizontal: 20,
-    paddingVertical: 12
-  },
-  containerIconToggle: {
-    width: WIDTH_CONTAINER_ICON,
-    height: WIDTH_CONTAINER_ICON,
-    alignItems: "center",
-    justifyContent: "center"
+    padding: sizeWidth(3)
   },
   iconToggle: {
-    width: 24,
-    height: 12
+    width: sizeWidth(6),
+    height: sizeWidth(6),
+    resizeMode: "contain"
   },
   containerAgenda: {
     width: WIDTH_CONTAINER_AGENDA,
     flexDirection: "column",
-    paddingHorizontal: 20
+    paddingHorizontal: sizeWidth(3)
   },
   agendaName: {
-    fontSize: sizeFont(5.5),
-    lineHeight: 22,
+    fontSize: fontSize.f16,
+    lineHeight: fontSize.f16,
     color: "#FFF",
     ...fontMaker({ weight: "600" })
   },
   venueName: {
-    marginTop: 2,
-    fontSize: sizeFont(4),
-    lineHeight: 16,
+    marginTop: sizeWidth(1.5),
+    fontSize: fontSize.f14,
+    lineHeight: fontSize.f14,
     color: "#FFF"
   },
   containerIconQRCode: {
@@ -77,14 +71,15 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     shadowOpacity: 0.6,
     borderWidth: 1,
-    borderColor: COLORS.LIGHT_GRAY
+    borderColor: COLORS.LIGHT_BORDER
   },
   iconQRCode: {
     width: sizeWidth(6),
-    height: sizeWidth(6)
+    height: sizeWidth(6),
+    resizeMode: "contain"
   },
   containerSubAgendaList: {
-    paddingVertical: 10
+    paddingVertical: sizeWidth(3)
   },
   // begin styles for SubAgenda Item
   wrapperSubAgenda: {
@@ -99,37 +94,38 @@ const styles = StyleSheet.create({
       height: 1
     },
     shadowRadius: 4,
-    shadowOpacity: 0.15
+    shadowOpacity: 0.15,
+    alignItems: "center",
+    padding: sizeWidth(1.5)
   },
   containerTime: {
-    width: 70,
-    height: 70,
     justifyContent: "center",
-    flexDirection: "column",
     alignItems: "center",
     backgroundColor: COLORS.GRAYISH_BLUE,
-    borderRadius: 4
+    borderRadius: 4,
+    height: sizeWidth(15),
+    marginLeft: sizeWidth(1.5),
+    paddingHorizontal: sizeWidth(1.5)
   },
   time: {
-    fontSize: sizeFont(4.5),
-    lineHeight: 19,
+    fontSize: fontSize.f16,
+    lineHeight: fontSize.f18,
     color: "#FFF",
     ...fontMaker({ weight: "500" })
   },
   containerSubAgenda: {
-    paddingHorizontal: 20,
-    paddingVertical: 15,
+    paddingHorizontal: sizeWidth(1.5),
+    paddingVertical: sizeWidth(1.5),
     flexDirection: "column"
   },
   subAgendaName: {
-    fontSize: sizeFont(4.5),
-    lineHeight: 17,
+    fontSize: fontSize.f16,
+    lineHeight: fontSize.f18,
     color: COLORS.GRAYISH_BLUE
   },
   subVenueName: {
-    marginTop: 2,
-    fontSize: sizeFont(3.5),
-    lineHeight: 14,
+    fontSize: fontSize.f12,
+    lineHeight: fontSize.f12,
     color: "rgba(36, 37, 61, .5)"
   }
 });
@@ -176,19 +172,21 @@ class AgendaItem extends Component {
     return (
       <View style={styles.wrapperItem}>
         <View style={styles.containerAgendaItem}>
-          <TouchableOpacity
-            style={styles.containerIconToggle}
-            onPress={() => this._onPressToggleIcon()}
-          >
-            <Image style={styles.iconToggle} source={iconToggle} />
-          </TouchableOpacity>
-          <View style={styles.containerAgenda}>
-            <Text style={styles.agendaName}>
-              {_.get(agenda, "agendaName")}
-            </Text>
-            <Text style={styles.venueName}>
-              {_.get(agenda, "venue")}
-            </Text>
+          <View style={{
+            flexDirection: "row",
+            alignItems: "center"
+          }}>
+            <TouchableOpacity onPress={() => this._onPressToggleIcon()}>
+              <Image style={styles.iconToggle} source={iconToggle} />
+            </TouchableOpacity>
+            <View style={styles.containerAgenda}>
+              <Text style={styles.agendaName}>
+                {_.get(agenda, "agendaName")}
+              </Text>
+              <Text style={styles.venueName}>
+                {_.get(agenda, "venue")}
+              </Text>
+            </View>
           </View>
           <TouchableOpacity
             elevation={5}

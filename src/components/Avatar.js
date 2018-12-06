@@ -6,8 +6,8 @@ import FastImage from "react-native-fast-image";
 import _ from "lodash";
 import { getShortcutName } from "../helpers/function.helper";
 import { COLORS } from "../helpers/common-styles";
-import { sizeFont, sizeWidth } from "../helpers/size.helper";
-import { fontMaker } from "../helpers/font.helper";
+import { sizeWidth } from "../helpers/size.helper";
+import { fontMaker, fontSize } from "../helpers/font.helper";
 
 const Avatar = props => {
   const { containerStyles, textStyle, size, user } = props;
@@ -60,7 +60,7 @@ Avatar.defaultProps = {
   },
   textStyle: { 
     color: "#FFF", 
-    fontSize: sizeFont(4.2),
+    fontSize: fontSize.f16,
     ...fontMaker({ weight: "600" })
   }
 };

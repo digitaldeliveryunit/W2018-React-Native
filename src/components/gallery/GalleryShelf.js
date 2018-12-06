@@ -8,14 +8,13 @@ import {
 } from "react-native";
 import Text from "../Text.component";
 import PropTypes from "prop-types";
-import { sizeWidth, sizeFont } from "../../helpers/size.helper";
+import { sizeWidth } from "../../helpers/size.helper";
 import GalleryCard from "../../components/GalleryCard";
-import { COLORS, CommonStyles } from "../../helpers/common-styles";
+import { COLORS } from "../../helpers/common-styles";
 import AppEmpty from "../../components/AppEmpty";
 import {sizeHeight} from "../../helpers/size.helper";
 import _ from "lodash";
-import AppActivityIndicator from "../../components/AppActivityIndicator";
-import { fontMaker } from "../../helpers/font.helper";
+import { fontMaker, fontSize } from "../../helpers/font.helper";
 import SmallCardPlaceholder from "../../components/SmallCardPlaceholder";
 
 const styles = StyleSheet.create({
@@ -25,33 +24,32 @@ const styles = StyleSheet.create({
     marginBottom: 20
   },
   shelfHeader: {
-    width: sizeWidth(90),
+    width: sizeWidth(94),
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "flex-end"
   },
   title: {
     color: "#FFF",
-    fontSize: sizeFont(5),
+    fontSize: fontSize.f20,
     ...fontMaker({ weight: "600" })
   },
   reversedTitle: {
     color: COLORS.GRAYISH_BLUE,
-    fontSize: sizeFont(5),
+    fontSize: fontSize.f20,
     ...fontMaker({ weight: "600" })
   },
   seeAll: {
     color: "#FFF",
-    fontSize: sizeFont(4)
+    fontSize: fontSize.f16
   },
   reversedSeeAll: {
     color: COLORS.GREEN_PET_ICT,
-    fontSize: sizeFont(4)
+    fontSize: fontSize.f16
   },
   shelf: {
-    marginTop: 10,
-    paddingLeft: 20,
-    paddingRight: 10
+    marginTop: sizeWidth(3),
+    paddingHorizontal: sizeWidth(1.5)
   },
   emptyContainer: {
     height: sizeHeight(20),
@@ -59,9 +57,8 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   itemWrapper: {
-    paddingRight: 5,
-    paddingLeft: 5,
-    marginBottom: 5
+    paddingHorizontal: sizeWidth(1.5),
+    paddingBottom: sizeWidth(1.5)
   }
 });
 

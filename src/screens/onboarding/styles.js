@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
-import { sizeWidth, sizeHeight, sizeFont } from "../../helpers/size.helper";
-import { fontMaker } from "../../helpers/font.helper";
+import { sizeWidth, sizeHeight } from "../../helpers/size.helper";
+import { fontMaker, fontSize } from "../../helpers/font.helper";
  
 export default StyleSheet.create({
   swiper: {
@@ -36,12 +36,12 @@ export default StyleSheet.create({
   },
   title: {
     color: "#FFF",
-    fontSize: sizeFont(6),
+    fontSize: fontSize.f24,
     ...fontMaker({ weight: "600" })
   },
   content: {
     color: "#FFF",
-    fontSize: sizeFont(4),
+    fontSize: fontSize.f16,
     textAlign: "center",
     paddingLeft: sizeWidth(8),
     paddingRight: sizeWidth(8)
@@ -59,6 +59,6 @@ export default StyleSheet.create({
   },
   bottomText: {
     color: "#FFF",
-    fontSize: sizeFont(4.5)
+    fontSize: fontSize.f16
   }
 });
