@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Text, StyleSheet, View } from "react-native";
 import Placeholder from "rn-placeholder";
 import { COLORS, CommonStyles } from "../helpers/common-styles";
-import { sizeWidth, sizeHeight, sizeFont } from "../helpers/size.helper";
+import { sizeWidth, sizeHeight } from "../helpers/size.helper";
 import ImagePlaceholder from "./ImagePlaceholder";
 
 const styles = StyleSheet.create({
@@ -36,7 +36,7 @@ class CardPlaceholder extends Component {
               style={{
                 marginLeft: 10,
                 width: sizeWidth(60),
-                height: sizeHeight(15)
+                height: sizeHeight(12)
               }}
             >
               <Placeholder.Paragraph
@@ -69,10 +69,11 @@ class CardPlaceholder extends Component {
 
 CardPlaceholder.defaultProps = {
   containerStyles: {
-    borderRadius: 10,
+    borderRadius: 4,
     overflow: "hidden",
     backgroundColor: "#FFF",
-    ...CommonStyles.boxShadow
+    ...CommonStyles.boxShadow,
+    marginBottom: sizeWidth(3)
   },
   width: "100%"
 };

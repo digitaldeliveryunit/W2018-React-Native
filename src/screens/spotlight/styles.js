@@ -1,28 +1,29 @@
 import { StyleSheet } from "react-native";
-import { CommonStyles, COLORS } from "../../helpers/common-styles";
-import { sizeWidth, sizeFont, sizeHeight } from "../../helpers/size.helper";
+import { COLORS } from "../../helpers/common-styles";
+import { sizeWidth, sizeHeight } from "../../helpers/size.helper";
+import { fontSize } from "../../helpers/font.helper";
 
 export default StyleSheet.create({
   viewIcon: {
-    width: sizeWidth(6),
-    height: sizeWidth(6)
+    width: sizeWidth(5),
+    height: sizeWidth(5),
+    resizeMode: "contain"
   },
   carouselContainer: {
     flex: 1,
     alignItems: "center",
-    marginTop: 5
+    marginTop: sizeWidth(5)
   },
   slide: { 
-    paddingRight: 10,
-    paddingLeft: 10,
-    paddingBottom: 5
+    paddingHorizontal: sizeWidth(1.5),
+    paddingBottom: sizeWidth(1.5)
   },
   currentSlide: {
-    height: sizeHeight(8),
+    height: sizeHeight(6),
     justifyContent: "center"
   },
   currentSlideText: {
-    fontSize: sizeFont(4.5),
+    fontSize: fontSize.f16,
     color: COLORS.GRAYISH_BLUE,
     opacity: 0.55
   }

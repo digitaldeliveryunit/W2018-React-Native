@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
-import { sizeHeight, sizeWidth, sizeFont } from "../../helpers/size.helper";
-import { fontMaker } from "../../helpers/font.helper";
+import { sizeHeight, sizeWidth } from "../../helpers/size.helper";
+import { fontMaker, fontSize } from "../../helpers/font.helper";
 import { CommonStyles } from "../../helpers/common-styles";
 
 export default StyleSheet.create({
@@ -20,7 +20,8 @@ export default StyleSheet.create({
     paddingTop: 10
   },
   foregroundSection: {
-    alignItems: "center"
+    alignItems: "center",
+    paddingHorizontal: sizeWidth(1.5)
   },
   stickyHeader: {
     alignItems: "center",
@@ -38,7 +39,7 @@ export default StyleSheet.create({
     width: sizeWidth(90)
   },
   title: {
-    fontSize: sizeFont(5.5),
+    fontSize: fontSize.f20,
     color: "#FFF",
     ...fontMaker({ weight: "500" })
   },

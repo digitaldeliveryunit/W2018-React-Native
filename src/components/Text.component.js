@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { Text, StyleSheet } from "react-native";
-import {fontMaker} from "../helpers/font.helper";
+import { fontMaker } from "../helpers/font.helper";
 
 const EMPTY = "";
 const styles = StyleSheet.create({

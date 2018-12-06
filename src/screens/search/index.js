@@ -19,7 +19,7 @@ import _ from "lodash";
 import AppEmpty from "../../components/AppEmpty";
 import AppActivityIndicator from "../../components/AppActivityIndicator";
 import { isCloseToBottom } from "../../helpers/function.helper";
-import { sizeHeight } from "../../helpers/size.helper";
+import { sizeHeight, sizeWidth } from "../../helpers/size.helper";
 
 class Search extends Component {
   constructor () {
@@ -54,7 +54,7 @@ class Search extends Component {
           fadeOutForeground={true}
           parallaxHeaderHeight={sizeHeight(30)}
           renderForeground={this._renderForeground}
-          stickyHeaderHeight={sizeHeight(15)}
+          stickyHeaderHeight={sizeHeight(13)}
           renderStickyHeader={this._renderStickyHeader}
           contentBackgroundColor={"transparent"}
           showsVerticalScrollIndicator={false}
@@ -135,7 +135,11 @@ class Search extends Component {
 
   _renderItem = ({item}) => (
     <TouchableOpacity
-      style={{ marginBottom: 20, paddingLeft: 15, paddingRight: 15, ...CommonStyles.boxShadow }}
+      style={{
+        marginBottom: sizeWidth(3), 
+        paddingHorizontal: sizeWidth(3), 
+        ...CommonStyles.boxShadow 
+      }}
       onPress={() => this.onGoDetail(_.get(item, "eventId"))}
     >
       <EventCard event={item} />

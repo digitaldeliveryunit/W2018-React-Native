@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import Text from "../components/Text.component";
 import PropTypes from "prop-types";
-import { sizeWidth, sizeHeight, sizeFont } from "../helpers/size.helper";
+import { sizeWidth } from "../helpers/size.helper";
 import { COLORS, CommonStyles } from "../helpers/common-styles";
 import { OPEN_QRCODE_POPUP } from "../actions/qrcode.action";
 import FastImage from "react-native-fast-image";
@@ -11,7 +11,7 @@ import { toDateString, getDayDuration } from "../helpers/date-time.helper";
 import EventAPI from "../api/event";
 import Toast from "@remobile/react-native-toast";
 import { USER_STATUS } from "../config";
-import { fontMaker } from "../helpers/font.helper";
+import { fontMaker, fontSize } from "../helpers/font.helper";
 
 const styles = StyleSheet.create({
   image: {
@@ -19,13 +19,12 @@ const styles = StyleSheet.create({
     height: sizeWidth(40)
   },
   content: {
-    width: "100%",
     flexDirection: "row",
-    marginBottom: sizeWidth(3)
+    marginBottom: sizeWidth(1.5)
   },
   dateCountDown: {
     borderColor: COLORS.GRAYISH_BLUE,
-    borderRadius: 5,
+    borderRadius: 4,
     borderWidth: 1,
     alignItems: "center"
   },
@@ -43,7 +42,14 @@ const styles = StyleSheet.create({
     width: sizeWidth(8),
     height: sizeWidth(8),
     borderRadius: sizeWidth(4),
+    borderWidth: 1,
+    borderColor: COLORS.LIGHT_BORDER,
     marginLeft: 5
+  },
+  icon: {
+    width: sizeWidth(4),
+    height: sizeWidth(4),
+    resizeMode: "contain"
   }
 });
 
@@ -69,23 +75,25 @@ class EventCard extends React.Component {
             <View>
               <DateCountDown dateFrom={event.dateFrom} dateTo={event.dateTo} />
             </View>
-            <View style={{ marginLeft: sizeWidth(3), width: sizeWidth(65) }}>
-              <Text style={{ color: COLORS.GREEN_PET_ICT, fontSize: sizeFont(4) }} numberOfLines={2}>
+            <View style={{ paddingLeft: sizeWidth(1.5), flex: 1 }}>
+              <Text style={{ color: COLORS.GREEN_PET_ICT, fontSize: fontSize.f16 }} numberOfLines={2}>
                 {event.eventName}
               </Text>
-              <Text style={{ color: COLORS.GRAYISH_BLUE, fontSize: sizeFont(3.5) }} numberOfLines={1}>
+              <Text style={{ color: COLORS.GRAYISH_BLUE, fontSize: fontSize.f12 }} numberOfLines={1}>
                 {event.eventLocation && event.eventLocation.locationName}
               </Text>
-              {event.dateFrom && getDayDuration(event.dateFrom, event.dateTo) > 0 && (
-                <Text style={{ color: COLORS.GRAYISH_BLUE, fontSize: sizeFont(3.5) }} numberOfLines={1}>
-                  {`${toDateString(event.dateFrom)} - ${toDateString(event.dateTo)}`}
-                </Text>
-              )}
+              {
+                event.dateFrom && getDayDuration(event.dateFrom, event.dateTo) > 0 && (
+                  <Text style={{ color: COLORS.GRAYISH_BLUE, fontSize: fontSize.f12 }} numberOfLines={1}>
+                    {`${toDateString(event.dateFrom)} - ${toDateString(event.dateTo)}`}
+                  </Text>
+                )
+              }
             </View>
           </View>
           {!withoutBottom && (
             <View style={styles.bottom}>
-              <Text style={{ fontSize: sizeFont(3.5), color: COLORS.GRAYISH_BLUE }}>
+              <Text style={{ fontSize: fontSize.f12, color: COLORS.GRAYISH_BLUE }}>
                 <Text style={{ color: "#CBD34C" }}>• </Text>
                 {`${event.eventType} Event`}
               </Text>
@@ -95,7 +103,7 @@ class EventCard extends React.Component {
                     <Image
                       resizeMode="cover"
                       source={require("../../assets/images/plus_filled.png")}
-                      style={{ width: sizeWidth(6), height: sizeWidth(6) }}
+                      style={styles.icon}
                     />
                   </TouchableOpacity>
                 )}
@@ -104,7 +112,7 @@ class EventCard extends React.Component {
                     <Image
                       resizeMode="cover"
                       source={require("../../assets/images/close.png")}
-                      style={{ width: sizeWidth(6), height: sizeWidth(6) }}
+                      style={styles.icon}
                     />
                   </TouchableOpacity>
                 )}
@@ -113,7 +121,7 @@ class EventCard extends React.Component {
                     <Image
                       resizeMode="cover"
                       source={require("../../assets/images/bookmarked.png")}
-                      style={{ width: sizeWidth(4.5), height: sizeWidth(6) }}
+                      style={styles.icon}
                     />
                   </TouchableOpacity>
                 ) : (
@@ -121,7 +129,7 @@ class EventCard extends React.Component {
                     <Image
                       resizeMode="cover"
                       source={require("../../assets/images/bookmark.png")}
-                      style={{ width: sizeWidth(4.5), height: sizeWidth(6) }}
+                      style={styles.icon}
                     />
                   </TouchableOpacity>
                 )}
@@ -130,7 +138,7 @@ class EventCard extends React.Component {
                     <Image
                       resizeMode="cover"
                       source={require("../../assets/images/qrcode_selected.png")}
-                      style={{ width: sizeWidth(6), height: sizeWidth(6) }}
+                      style={styles.icon}
                     />
                   </TouchableOpacity>
                 ) : (
@@ -138,7 +146,7 @@ class EventCard extends React.Component {
                     <Image
                       resizeMode="cover"
                       source={require("../../assets/images/qrcode.png")}
-                      style={{ width: sizeWidth(6), height: sizeWidth(6) }}
+                      style={styles.icon}
                     />
                   </TouchableOpacity>
                 )}
@@ -200,19 +208,18 @@ const DateCountDown = ({ dateFrom, dateTo }) => {
     <View style={styles.dateCountDown}>
       <View
         style={{
-          width: "100%",
           alignItems: "center",
           backgroundColor: COLORS.GRAYISH_BLUE,
-          paddingHorizontal: 8,
-          paddingBottom: 2
+          paddingHorizontal: sizeWidth(1.5),
+          paddingVertical: sizeWidth(1.5)
         }}
       >
-        <Text style={{ fontSize: sizeFont(7.5), color: "#FFF", lineHeight: 35 }}>{day}</Text>
-        <Text style={{ fontSize: sizeFont(4), color: "#FFF", lineHeight: 20, ...fontMaker({ weight: "500" }) }}>
+        <Text style={{ fontSize: fontSize.f30, color: "#FFF", lineHeight: fontSize.f30, ...fontMaker({ weight: "500" }) }}>{day}</Text>
+        <Text style={{ fontSize: fontSize.f18, color: "#FFF", lineHeight: fontSize.f18, ...fontMaker({ weight: "500" }) }}>
           {month && month.toUpperCase()}
         </Text>
       </View>
-      {dayDuration > 0 && <Text style={{ fontSize: sizeFont(2.5), padding: 2 }}>{dayDuration + 1} days</Text>}
+      {dayDuration > 0 && <Text style={{ fontSize: fontSize.f10 }}>{dayDuration + 1} days</Text>}
     </View>
   );
 };
@@ -226,7 +233,7 @@ EventCard.propTypes = {
 
 EventCard.defaultProps = {
   containerStyles: {
-    borderRadius: 10,
+    borderRadius: 4,
     overflow: "hidden",
     backgroundColor: "#FFF",
     ...CommonStyles.boxShadow

@@ -2,16 +2,16 @@ import React, { Component } from "react";
 import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import Text from "./Text.component";
 import PropTypes from "prop-types";
-import { sizeWidth, sizeHeight, sizeFont } from "../helpers/size.helper";
+import { sizeWidth, sizeHeight } from "../helpers/size.helper";
 import NavigationService from "../helpers/navigation-service";
 import { connect } from "react-redux";
 import { SELECT_MENU } from "../actions/quick-access-menu.action";
-import { fontMaker } from "../helpers/font.helper";
+import { fontMaker, fontSize } from "../helpers/font.helper";
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
-    width: sizeWidth(90),
+    marginTop: sizeHeight(3),
+    width: sizeWidth(94),
     height: sizeHeight(10),
     justifyContent: "center",
     alignItems: "center"
@@ -21,13 +21,13 @@ const styles = StyleSheet.create({
     left: 0
   },
   backIcon: {
-    width: sizeWidth(6),
-    height: sizeWidth(6)
+    width: sizeWidth(5),
+    height: sizeWidth(5)
   },
   title: {
-    fontSize: sizeFont(5),
-    color: "#FFF",
-    ...fontMaker({ weight: "400" })
+    fontSize: fontSize.f20,
+    ...fontMaker({ weight: "600" }),
+    color: "#FFF"
   },
   rightComponent: {
     position: "absolute",

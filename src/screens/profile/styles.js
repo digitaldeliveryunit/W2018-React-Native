@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import { CommonStyles } from "../../helpers/common-styles";
-import { fontMaker } from "../../helpers/font.helper";
-import { sizeFont, sizeHeight } from "../../helpers/size.helper";
+import { fontMaker, fontSize } from "../../helpers/font.helper";
+import { sizeWidth, sizeHeight } from "../../helpers/size.helper";
 
 export default StyleSheet.create({
   foregroundSection: {
@@ -9,7 +9,7 @@ export default StyleSheet.create({
   },
   containerHeader: {
     flexDirection: "row",
-    paddingHorizontal: 22
+    paddingHorizontal: sizeWidth(3)
   },
   stickyHeader: {
     backgroundColor: "rgba(64, 54, 129, .95)",
@@ -19,52 +19,50 @@ export default StyleSheet.create({
       width: 0,
       height: 6
     },
-    height: sizeHeight(14),
+    height: sizeHeight(12),
     alignItems: "center",
-    paddingTop: 15
+    paddingTop: sizeWidth(3)
   },
   containerInfo: {
     flexDirection: "column",
-    paddingLeft: 20
+    paddingHorizontal: sizeWidth(3)
   },
   displayName: {
-    fontSize: sizeFont(6),
+    fontSize: fontSize.f24,
     color: "#FFF",
     ...fontMaker({ weight: "600" })
   },
   displayPosition: {
-    fontSize: sizeFont(4),
+    fontSize: fontSize.f16,
     color: "#FFF"
   },
   company: {
-    fontSize: sizeFont(4),
+    fontSize: fontSize.f16,
     color: "#FFF"
   },
   title: {
-    fontSize: sizeFont(6),
-    lineHeight: 26,
+    fontSize: fontSize.f20,
+    lineHeight: fontSize.f20,
     color: "#FFF",
-    paddingHorizontal: 22,
-    marginTop: 25,
-    marginBottom: 20,
+    paddingHorizontal: sizeWidth(3),
+    paddingTop:sizeWidth(10),
     ...fontMaker({ weight: "600" })
   },
   containerEvents: {
-    paddingLeft: 15,
-    paddingRight: 15,
+    paddingHorizontal: sizeWidth(3),
     marginTop: 5
   },
   containerEventItem: {
-    marginBottom: 20,
+    marginBottom: sizeWidth(3),
     ...CommonStyles.boxShadow
   },
   smallDisplayName: {
-    fontSize: sizeFont(4.5),
+    fontSize: fontSize.f18,
     color: "#FFF",
     ...fontMaker({ weight: "600" })
   },
   smallDisplayPosition: {
-    fontSize: sizeFont(3.5),
+    fontSize: fontSize.f12,
     color: "#FFF"
   },
 });

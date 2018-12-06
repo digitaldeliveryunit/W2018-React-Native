@@ -9,13 +9,13 @@ import SpotlightCard from "../../components/SpotlightCard";
 import { COLORS } from "../../helpers/common-styles";
 import DetailHeader from "../../components/DetailHeader";
 import Carousel from "react-native-snap-carousel";
-import { sizeWidth, sizeHeight, sizeFont } from "../../helpers/size.helper";
+import { sizeWidth, sizeHeight } from "../../helpers/size.helper";
 import {SpotlightItem} from "../../components/SpotlightCard";
 import QuickAccessButton from "../../components/QuickAccessButton";
 import SpotlightAPI from "../../api/spotlight";
 import AppActivityIndicator from "../../components/AppActivityIndicator";
 import AppEmpty from "../../components/AppEmpty";
-import { fontMaker } from "../../helpers/font.helper";
+import { fontMaker, fontSize } from "../../helpers/font.helper";
 import TabBarBottom from "../../components/tab-bar/TabBarBottom";
 
 const ViewMode = {
@@ -49,7 +49,6 @@ class Spotlight extends Component {
       <Image
         source={require("../../../assets/images/group.png")}
         style={styles.viewIcon}
-        resizeMode={"contain"}
       />
     </TouchableOpacity>
   );
@@ -162,15 +161,15 @@ class Spotlight extends Component {
           height: sizeHeight(25)
         }}
         titleStyle={{
-          fontSize: sizeFont(5),
+          fontSize: fontSize.f20,
           color: COLORS.GREEN_PET_ICT,
-          paddingHorizontal: 15,
+          paddingHorizontal: sizeWidth(1.5),
           ...fontMaker({ weight: "500" })
         }}
         roleStyle={{
-          fontSize: sizeFont(3.5),
+          fontSize: fontSize.f14,
           color: COLORS.GRAYISH_BLUE,
-          paddingHorizontal: 15
+          paddingHorizontal: sizeWidth(3)
         }}
       />
     );

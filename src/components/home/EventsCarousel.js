@@ -11,6 +11,9 @@ const styles = StyleSheet.create({});
 export default class EventsCarousel extends Component {
   constructor() {
     super();
+    this.state = {
+      activedSlide: 0
+    };
     this._renderItem = this._renderItem.bind(this);
   }
   render() {
@@ -23,16 +26,16 @@ export default class EventsCarousel extends Component {
         data={events}
         renderItem={this._renderItem}
         sliderWidth={sizeWidth(100)}
-        itemWidth={sizeWidth(92)}
+        itemWidth={sizeWidth(90)}
         loop={false}
         inactiveSlideOpacity={1}
         inactiveSlideScale={1}
+        onBeforeSnapToItem={(activedSlide) => this.setState({ activedSlide })}
+        activeSlideAlignment={this.state.activedSlide === (events.length - 1) ? "end" : "start"}
         slideStyle={{
-          paddingRight: 5,
-          paddingLeft: 5,
+          paddingHorizontal: sizeWidth(3),
           marginBottom: sizeWidth(3)
         }}
-        activeSlideAlignment={"center"}
       />
     );
   }

@@ -1,11 +1,11 @@
 import { StyleSheet } from "react-native";
 import { CommonStyles, COLORS } from "../../helpers/common-styles";
-import { sizeWidth, sizeHeight, sizeFont } from "../../helpers/size.helper";
-import { fontMaker } from "../../helpers/font.helper";
+import { sizeWidth, sizeHeight } from "../../helpers/size.helper";
+import { fontMaker, fontSize } from "../../helpers/font.helper";
 
 export default StyleSheet.create({
   listContainer: {
-    minHeight: sizeHeight(75),
+    minHeight: sizeHeight(80),
     paddingTop: 10
   },
   searchBox: {
@@ -13,36 +13,35 @@ export default StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "transparent",
-    width: sizeWidth(90),
+    width: sizeWidth(94),
     paddingBottom: 0,
     borderBottomWidth: 1,
     borderBottomColor: COLORS.PALE_NAVY
   },
   searchIcon: {
-    width: 20,
-    height: 20
+    width: sizeWidth(6),
+    height: sizeWidth(6)
   },
   searchInput: {
     borderWidth: 0,
     width: "100%",
     color: "#FFF",
-    paddingLeft: 5,
-    paddingRight: 12,
-    fontSize: sizeFont(5),
+    paddingLeft: sizeWidth(1.5),
+    paddingRight: sizeWidth(6.5),
+    fontSize: fontSize.f18,
     ...fontMaker({})
   },
   founds: {
-    marginTop: 15,
-    paddingLeft: 10,
+    marginTop: sizeHeight(5),
     color: "#FFF",
-    fontSize: sizeFont(4.5)
+    fontSize: fontSize.f16
   },
   foregroundSection: {
     alignItems: "center"
   },
   stickyHeader: {
     alignItems: "center",
-    height: sizeHeight(15),
+    height: sizeHeight(13),
     justifyContent: "center",
     backgroundColor: "rgb(64, 54, 129)",
     opacity: 0.95,
@@ -58,7 +57,7 @@ export default StyleSheet.create({
     alignItems: "center"
   },
   emptyText: {
-      fontSize: sizeFont(6),
+      fontSize: fontSize.f24,
       color: COLORS.GRAYISH_BLUE,
       paddingLeft: sizeWidth(10),
       paddingRight: sizeWidth(10),
@@ -67,16 +66,14 @@ export default StyleSheet.create({
   },
   emptyButton: {
     backgroundColor: "rgb(55, 163, 184)",
-    paddingLeft: 25,
-    paddingRight: 25,
-    paddingTop: 10,
-    paddingBottom: 10,
-    borderRadius: 25,
-    marginTop: 20,
+    paddingHorizontal: sizeWidth(10),
+    paddingVertical: sizeWidth(2),
+    borderRadius: sizeWidth(10),
+    marginTop: sizeHeight(3),
     ...CommonStyles.boxShadow
   },
   emptyButtonText: { 
-    color: "#FFF", 
-    fontSize: sizeFont(4.5)
+    color: "#FFF",
+    fontSize: fontSize.f18
   }
 });

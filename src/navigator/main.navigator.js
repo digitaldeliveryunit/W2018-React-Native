@@ -6,21 +6,21 @@ import MyEventScreen from "../screens/my-events";
 import SearchScreen from "../screens/search";
 import ProfileScreen from "../screens/profile";
 import { COLORS } from "../helpers/common-styles";
-import { fontMaker } from "../helpers/font.helper";
-import { sizeWidth, sizeHeight, sizeFont } from "../helpers/size.helper";
+import { fontMaker, fontSize } from "../helpers/font.helper";
+import { sizeWidth } from "../helpers/size.helper";
 
 export const navStyle = StyleSheet.create({
   iconStyle: {
-    width: sizeWidth(6),
-    height: sizeWidth(6),
-    marginBottom: -5,
+    width: sizeWidth(5),
+    height: sizeWidth(5),
+    marginBottom: -sizeWidth(1.5),
     resizeMode: "contain"
   },
   tabStyle: {
-    height: sizeWidth(15)
+    height: sizeWidth(12)
   },
   labelStyle: {
-    fontSize: sizeFont(3),
+    fontSize: fontSize.f11,
     ...fontMaker({})
   }
 });
