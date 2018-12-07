@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { Text, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import Placeholder from "rn-placeholder";
 import { COLORS, CommonStyles } from "../helpers/common-styles";
 import { sizeWidth, sizeHeight } from "../helpers/size.helper";
 import ImagePlaceholder from "./ImagePlaceholder";
+import { fontSize } from "../helpers/font.helper";
 
 const styles = StyleSheet.create({
   image: {
@@ -41,7 +42,7 @@ class CardPlaceholder extends Component {
             >
               <Placeholder.Paragraph
                 lineNumber={3}
-                textSize={16}
+                textSize={fontSize.f14}
                 lineSpacing={5}
                 color={COLORS.CARD_PLACEHOLDER}
                 width="100%"
@@ -56,7 +57,7 @@ class CardPlaceholder extends Component {
             <Placeholder.Line
               color={COLORS.CARD_PLACEHOLDER}
               width="80%"
-              textSize={14}
+              textSize={fontSize.f14}
               onReady={onReady}
               animate="fade"
             />

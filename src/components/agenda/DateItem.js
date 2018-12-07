@@ -17,8 +17,8 @@ const styles = StyleSheet.create({
     borderColor: COLORS.GRAY
   },
   dayMonthContainer: {
-    paddingHorizontal: sizeWidth(1.5),
-    height: sizeWidth(14.2),
+    padding: sizeWidth(1),
+    height: sizeWidth(12),
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
@@ -28,24 +28,22 @@ const styles = StyleSheet.create({
     zIndex: 2
   },
   day: {
-    paddingTop: sizeWidth(1.5),
     lineHeight: fontSize.f24,
     fontSize: fontSize.f24,
-    color: "#FFF"
+    color: "#FFF",
+    ...fontMaker({ weight: "500" })
   },
   month: {
-    paddingBottom: sizeWidth(1.5),
-    fontSize: fontSize.f16,
-    lineHeight: fontSize.f16,
+    fontSize: fontSize.f14,
+    lineHeight: fontSize.f14,
     color: "#FFF",
     ...fontMaker({ weight: "500" })
   },
   containerDayInOrder: {
-    marginLeft: -4,
     height: "100%",
     justifyContent: "center",
-    paddingLeft: 14,
-    paddingRight: 11
+    alignItems: "center",
+    paddingHorizontal: sizeWidth(3)
   },
   activeItem: {
     borderColor: COLORS.GRAY,
@@ -55,9 +53,10 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 4
   },
   dayInOrder: {
-    fontSize: fontSize.f16,
-    lineHeight: fontSize.f16,
-    color: COLORS.GRAYISH_BLUE
+    fontSize: fontSize.f14,
+    lineHeight: fontSize.f18,
+    color: COLORS.GRAYISH_BLUE,
+    ...fontMaker({ weight: "500" })
   },
   inactiveItem: {
     backgroundColor: "#FFF",

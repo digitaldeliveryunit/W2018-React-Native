@@ -13,15 +13,16 @@ export const navStyle = StyleSheet.create({
   iconStyle: {
     width: sizeWidth(5),
     height: sizeWidth(5),
-    marginBottom: -sizeWidth(1.5),
-    resizeMode: "contain"
+    resizeMode: "contain",
+    marginBottom: -sizeWidth(1.5)
   },
   tabStyle: {
     height: sizeWidth(12)
   },
   labelStyle: {
     fontSize: fontSize.f11,
-    ...fontMaker({})
+    ...fontMaker({}),
+    paddingBottom: sizeWidth(0.5)
   }
 });
 

@@ -13,8 +13,7 @@ export default StyleSheet.create({
   container: CommonStyles.container,
   imageCover: {
     width,
-    height: "100%",
-    opacity: 0.8
+    height: "100%"
   },
   titleContainer: {
     backgroundColor: "rgba(6, 6, 6, .05)",
@@ -46,21 +45,23 @@ export default StyleSheet.create({
     resizeMode: "contain"
   },
   infoLabelWrapper: {
-    marginLeft: sizeWidth(3),
+    marginLeft: sizeWidth(2),
     flexDirection: "column",
-    width: sizeWidth(60),
+    width: sizeWidth(65),
     overflow: "hidden"
   },
   colorHighLight: {
     color: COLORS.SOFT_PURPLE,
-    fontSize: fontSize.f14
+    fontSize: fontSize.f13,
+    lineHeight: fontSize.f16
   },
   lblInfoName: {
-    fontSize: fontSize.f16,
+    fontSize: fontSize.f14,
+    lineHeight: fontSize.f16,
     color: COLORS.GRAYISH_BLUE
   },
   lblInfoMeta: {
-    fontSize: fontSize.f14,
+    fontSize: fontSize.f13,
     color: COLORS.GRAYISH_BLUE
   },
   mapsImage: {
@@ -100,12 +101,12 @@ export default StyleSheet.create({
     alignItems: "center",
     width: sizeWidth(8),
     height: sizeWidth(8),
-    borderRadius: sizeWidth(5),
+    borderRadius: sizeWidth(4),
     marginLeft: 5
   },
   iconActionButton: {
-    width: sizeWidth(4),
-    height: sizeWidth(4),
+    width: sizeWidth(3.5),
+    height: sizeWidth(3.5),
     resizeMode: "contain"
   }
 });

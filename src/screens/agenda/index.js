@@ -17,6 +17,8 @@ import ImagePlaceholder from "../../components/ImagePlaceholder";
 import Placeholder from "rn-placeholder";
 import { COLORS } from "../../helpers/common-styles";
 import BackButton from "../../components/BackButton";
+import { fontSize } from "../../helpers/font.helper";
+import FastImage from "react-native-fast-image";
 
 class Agenda extends Component {
   constructor(props) {
@@ -85,10 +87,10 @@ class Agenda extends Component {
             }}>
               <ImagePlaceholder onReady={!loadingAgendas} animate="fade">
                 <View>
-                  <Image
+                  <FastImage
                     source={{ uri: currentEvent.imageUrl }}
                     style={styles.imageCover}
-                    resizeMode={"cover"}
+                    resizeMode={FastImage.resizeMode.cover}
                   />
                 </View>
               </ImagePlaceholder>
@@ -98,7 +100,7 @@ class Agenda extends Component {
             }}>
               <Placeholder.Paragraph
                 lineNumber={4}
-                textSize={14}
+                textSize={fontSize.f14}
                 lineSpacing={5}
                 color={COLORS.CARD_PLACEHOLDER}
                 lastLineWidth="70%"

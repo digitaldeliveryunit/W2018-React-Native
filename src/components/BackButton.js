@@ -11,16 +11,16 @@ const styles = StyleSheet.create({
     zIndex: 2,
     width: sizeWidth(8),
     height: sizeWidth(8),
-    backgroundColor: "rgb(55, 163, 184)",
+    // backgroundColor: "rgb(55, 163, 184)",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: sizeWidth(4),
-    opacity: 0.8,
+    // borderRadius: sizeWidth(4),
+    // opacity: 0.8,
     ...CommonStyles.boxShadow
   },
   backIcon: {
-    width: sizeWidth(4),
-    height: sizeWidth(4),
+    width: sizeWidth(6),
+    height: sizeWidth(6),
     resizeMode: "contain"
   }
 });

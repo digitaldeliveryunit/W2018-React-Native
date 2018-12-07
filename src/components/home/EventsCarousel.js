@@ -26,15 +26,18 @@ export default class EventsCarousel extends Component {
         data={events}
         renderItem={this._renderItem}
         sliderWidth={sizeWidth(100)}
-        itemWidth={sizeWidth(90)}
+        itemWidth={sizeWidth(80)}
         loop={false}
         inactiveSlideOpacity={1}
         inactiveSlideScale={1}
         onBeforeSnapToItem={(activedSlide) => this.setState({ activedSlide })}
         activeSlideAlignment={this.state.activedSlide === (events.length - 1) ? "end" : "start"}
         slideStyle={{
-          paddingHorizontal: sizeWidth(3),
+          paddingHorizontal: sizeWidth(1.5),
           marginBottom: sizeWidth(3)
+        }}
+        contentContainerCustomStyle={{
+          paddingHorizontal: sizeWidth(1.5)
         }}
       />
     );

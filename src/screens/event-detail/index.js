@@ -21,6 +21,8 @@ import ImagePlaceholder from "../../components/ImagePlaceholder";
 import ImageContentPlaceholder from "../../components/ImageContentPlaceholder";
 import { COLORS } from "../../helpers/common-styles";
 import BackButton from "../../components/BackButton";
+import { fontSize } from "../../helpers/font.helper";
+import FastImage from "react-native-fast-image";
 
 class EventDetail extends Component {
   constructor(props) {
@@ -122,10 +124,10 @@ class EventDetail extends Component {
             >
               <ImagePlaceholder onReady={!loadingEvent} animate="fade">
                 <View>
-                  <Image
+                  <FastImage
                     source={{ uri: cover }}
                     style={styles.imageCover}
-                    resizeMode={"cover"}
+                    resizeMode={FastImage.resizeMode.cover}
                   />
                   <View style={styles.containerActionButton}>
                     {event.userStatus === USER_STATUS.NEW && (
@@ -157,7 +159,7 @@ class EventDetail extends Component {
                       >
                         <Image
                           source={require("../../../assets/images/bookmarked.png")}
-                          style={[styles.iconActionButton, { width: 15 }]}
+                          style={styles.iconActionButton}
                         />
                       </TouchableOpacity>
                     ) : (
@@ -167,7 +169,7 @@ class EventDetail extends Component {
                       >
                         <Image
                           source={require("../../../assets/images/bookmark.png")}
-                          style={[styles.iconActionButton, { width: 15 }]}
+                          style={styles.iconActionButton}
                         />
                       </TouchableOpacity>
                     )}
@@ -199,7 +201,7 @@ class EventDetail extends Component {
             <View style={styles.titleContainer}>
               <Placeholder.Paragraph
                 lineNumber={2}
-                textSize={14}
+                textSize={fontSize.f14}
                 lineSpacing={5}
                 color={COLORS.CARD_PLACEHOLDER}
                 lastLineWidth="70%"
@@ -220,7 +222,7 @@ class EventDetail extends Component {
                       style={styles.infoIcon}
                       source={require("../../../assets/images/calendar.png")}
                     />
-                    <View style={styles.infoLabelWrapper}>
+                    <View style={[styles.infoLabelWrapper]}>
                       <Text style={styles.lblInfoName}>
                         {moment(_.get(event, "dateFrom")).format(
                           "MMM DD, YYYY"
@@ -255,25 +257,14 @@ class EventDetail extends Component {
                         style={styles.infoIcon}
                         source={require("../../../assets/images/marker.png")}
                       />
-                      <View style={styles.infoLabelWrapper}>
-                        <Text
-                          style={{
-                            ...styles.lblInfoName,
-                            ...styles.colorHighLight
-                          }}
-                        >
+                      <View style={[styles.infoLabelWrapper]}>
+                        <Text style={styles.lblInfoName} numberOfLines={1}>
                           {_.get(event, "eventLocation.locationName")}
                         </Text>
-                        <Text style={styles.lblInfoMeta}>{event.venue}</Text>
+                        <Text style={styles.colorHighLight}>{event.venue}</Text>
                       </View>
                     </View>
-                    <TouchableOpacity
-                      onPress={() =>
-                        this._onPressOpenGoogleMap(
-                          _.get(event, "eventLocation")
-                        )
-                      }
-                    >
+                    <TouchableOpacity onPress={() => this._onPressOpenGoogleMap(_.get(event, "eventLocation"))}>
                       <Image
                         style={styles.mapsImage}
                         source={require("../../../assets/images/googlemap.png")}
@@ -288,7 +279,7 @@ class EventDetail extends Component {
               <Text style={styles.lblAbout}>About</Text>
               <Placeholder.Paragraph
                 lineNumber={5}
-                textSize={12}
+                textSize={fontSize.f12}
                 lineSpacing={5}
                 color={COLORS.CARD_PLACEHOLDER}
                 lastLineWidth="50%"

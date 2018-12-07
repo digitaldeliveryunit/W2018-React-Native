@@ -59,13 +59,13 @@ class ProfileComponent extends Component {
   _renderForeground = () => (
     <View style={styles.foregroundSection}>
       <View style={styles.containerHeader}>
-        <Avatar user={user} size={84} />
+        <Avatar user={user} size={sizeWidth(22)} />
         <View style={styles.containerInfo}>
           <Text style={styles.displayName}>{_.get(user, "displayName")}</Text>
           <Text style={styles.displayPosition}>
             {_.get(user, "displayPosition")}
           </Text>
-          <Text style={styles.company}>{_.get(user, "company")}</Text>
+          <Text style={[styles.displayPosition, { marginTop: sizeWidth(3) }]}>{_.get(user, "company")}</Text>
         </View>
       </View>
       <Text style={styles.title}>Past Events</Text>
@@ -74,7 +74,7 @@ class ProfileComponent extends Component {
 
   _renderStickyHeader = () => (
     <View style={[styles.containerHeader, styles.stickyHeader]}>
-      <Avatar user={user} size={sizeWidth(13)} />
+      <Avatar user={user} size={sizeWidth(10)} />
       <View style={styles.containerInfo}>
         <Text style={styles.smallDisplayName}>{_.get(user, "displayName")}</Text>
         <Text style={styles.smallDisplayPosition}>
@@ -95,7 +95,7 @@ class ProfileComponent extends Component {
           backgroundColor={"transparent"}
           backgroundScrollSpeed={2}
           fadeOutForeground={true}
-          parallaxHeaderHeight={sizeHeight(31)}
+          parallaxHeaderHeight={sizeHeight(28)}
           renderForeground={this._renderForeground}
           stickyHeaderHeight={sizeHeight(12)}
           renderStickyHeader={this._renderStickyHeader}
