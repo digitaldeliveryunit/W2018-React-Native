@@ -47,9 +47,21 @@ const styles = StyleSheet.create({
     marginLeft: 5
   },
   icon: {
-    width: sizeWidth(4),
-    height: sizeWidth(4),
+    width: sizeWidth(3.5),
+    height: sizeWidth(3.5),
     resizeMode: "contain"
+  },
+  eventTitle: {
+    color: COLORS.GREEN_PET_ICT, 
+    fontSize: fontSize.f14,
+    lineHeight: fontSize.f16,
+    ...fontMaker({ weight: "500" }),
+    marginBottom: sizeWidth(0.7)
+  },
+  eventDescription: {
+    color: COLORS.GRAYISH_BLUE,
+    fontSize: fontSize.f11,
+    lineHeight: fontSize.f12
   }
 });
 
@@ -76,15 +88,15 @@ class EventCard extends React.Component {
               <DateCountDown dateFrom={event.dateFrom} dateTo={event.dateTo} />
             </View>
             <View style={{ paddingLeft: sizeWidth(1.5), flex: 1 }}>
-              <Text style={{ color: COLORS.GREEN_PET_ICT, fontSize: fontSize.f16 }} numberOfLines={2}>
+              <Text style={styles.eventTitle} numberOfLines={2}>
                 {event.eventName}
               </Text>
-              <Text style={{ color: COLORS.GRAYISH_BLUE, fontSize: fontSize.f12 }} numberOfLines={1}>
+              <Text style={styles.eventDescription} numberOfLines={1}>
                 {event.eventLocation && event.eventLocation.locationName}
               </Text>
               {
                 event.dateFrom && getDayDuration(event.dateFrom, event.dateTo) > 0 && (
-                  <Text style={{ color: COLORS.GRAYISH_BLUE, fontSize: fontSize.f12 }} numberOfLines={1}>
+                  <Text style={styles.eventDescription} numberOfLines={1}>
                     {`${toDateString(event.dateFrom)} - ${toDateString(event.dateTo)}`}
                   </Text>
                 )
@@ -93,7 +105,7 @@ class EventCard extends React.Component {
           </View>
           {!withoutBottom && (
             <View style={styles.bottom}>
-              <Text style={{ fontSize: fontSize.f12, color: COLORS.GRAYISH_BLUE }}>
+              <Text style={styles.eventDescription}>
                 <Text style={{ color: "#CBD34C" }}>• </Text>
                 {`${event.eventType} Event`}
               </Text>
@@ -101,7 +113,6 @@ class EventCard extends React.Component {
                 {this.state.userStatus === USER_STATUS.NEW && (
                   <TouchableOpacity style={styles.actionButton} onPress={this.onJoin}>
                     <Image
-                      resizeMode="cover"
                       source={require("../../assets/images/plus_filled.png")}
                       style={styles.icon}
                     />
@@ -110,7 +121,6 @@ class EventCard extends React.Component {
                 {this.state.userStatus === USER_STATUS.JOINED && (
                   <TouchableOpacity style={styles.actionButton} onPress={this.onUnJoin}>
                     <Image
-                      resizeMode="cover"
                       source={require("../../assets/images/close.png")}
                       style={styles.icon}
                     />
@@ -119,7 +129,6 @@ class EventCard extends React.Component {
                 {this.state.isBookmark ? (
                   <TouchableOpacity style={styles.actionButton} onPress={this.onUnBookmark}>
                     <Image
-                      resizeMode="cover"
                       source={require("../../assets/images/bookmarked.png")}
                       style={styles.icon}
                     />
@@ -127,7 +136,6 @@ class EventCard extends React.Component {
                 ) : (
                   <TouchableOpacity style={styles.actionButton} onPress={this.onBookmark}>
                     <Image
-                      resizeMode="cover"
                       source={require("../../assets/images/bookmark.png")}
                       style={styles.icon}
                     />
@@ -136,7 +144,6 @@ class EventCard extends React.Component {
                 {this.state.userStatus === USER_STATUS.CHECKIN ? (
                   <TouchableOpacity style={styles.actionButton}>
                     <Image
-                      resizeMode="cover"
                       source={require("../../assets/images/qrcode_selected.png")}
                       style={styles.icon}
                     />
@@ -144,7 +151,6 @@ class EventCard extends React.Component {
                 ) : (
                   <TouchableOpacity style={styles.actionButton} onPress={() => this.props.openPopup(event.eventId)}>
                     <Image
-                      resizeMode="cover"
                       source={require("../../assets/images/qrcode.png")}
                       style={styles.icon}
                     />
@@ -210,16 +216,15 @@ const DateCountDown = ({ dateFrom, dateTo }) => {
         style={{
           alignItems: "center",
           backgroundColor: COLORS.GRAYISH_BLUE,
-          paddingHorizontal: sizeWidth(1.5),
-          paddingVertical: sizeWidth(1.5)
+          padding: sizeWidth(1)
         }}
       >
-        <Text style={{ fontSize: fontSize.f30, color: "#FFF", lineHeight: fontSize.f30, ...fontMaker({ weight: "500" }) }}>{day}</Text>
-        <Text style={{ fontSize: fontSize.f18, color: "#FFF", lineHeight: fontSize.f18, ...fontMaker({ weight: "500" }) }}>
+        <Text style={{ fontSize: fontSize.f24, color: "#FFF", lineHeight: fontSize.f24, ...fontMaker({ weight: "500" }) }}>{day}</Text>
+        <Text style={{ fontSize: fontSize.f14, color: "#FFF", lineHeight: fontSize.f14, ...fontMaker({ weight: "500" }) }}>
           {month && month.toUpperCase()}
         </Text>
       </View>
-      {dayDuration > 0 && <Text style={{ fontSize: fontSize.f10 }}>{dayDuration + 1} days</Text>}
+      {dayDuration > 0 && <Text style={{ fontSize: fontSize.f9, lineHeight: fontSize.f12 }}>{dayDuration + 1} days</Text>}
     </View>
   );
 };

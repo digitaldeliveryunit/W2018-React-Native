@@ -31,21 +31,21 @@ const styles = StyleSheet.create({
   },
   title: {
     color: "#FFF",
-    fontSize: fontSize.f20,
+    fontSize: fontSize.f18,
     ...fontMaker({ weight: "600" })
   },
   reversedTitle: {
     color: COLORS.GRAYISH_BLUE,
-    fontSize: fontSize.f20,
+    fontSize: fontSize.f18,
     ...fontMaker({ weight: "600" })
   },
   seeAll: {
     color: "#FFF",
-    fontSize: fontSize.f16
+    fontSize: fontSize.f14
   },
   reversedSeeAll: {
     color: COLORS.GREEN_PET_ICT,
-    fontSize: fontSize.f16
+    fontSize: fontSize.f14
   },
   shelf: {
     marginTop: sizeWidth(3),

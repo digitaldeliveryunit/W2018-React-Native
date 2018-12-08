@@ -16,7 +16,7 @@ import { fontMaker, fontSize } from "../../helpers/font.helper";
 import { sizeWidth } from "../../helpers/size.helper";
 
 const { width } = Dimensions.get("window");
-const WIDTH_CONTAINER_ICON = 40;
+const WIDTH_CONTAINER_ICON = sizeWidth(10);
 const WIDTH_CONTAINER_AGENDA =
   width - WIDTH_CONTAINER_ICON * 2 - 20 * 2 - 11 * 2;
 
@@ -34,6 +34,10 @@ const styles = StyleSheet.create({
     borderColor: COLORS.GRAY,
     padding: sizeWidth(3)
   },
+  leftRowWrapper: {
+    width: sizeWidth(11.5),
+    alignItems: "center"
+  },
   iconToggle: {
     width: sizeWidth(6),
     height: sizeWidth(6),
@@ -46,14 +50,13 @@ const styles = StyleSheet.create({
   },
   agendaName: {
     fontSize: fontSize.f16,
-    lineHeight: fontSize.f16,
+    lineHeight: fontSize.f18,
     color: "#FFF",
     ...fontMaker({ weight: "600" })
   },
   venueName: {
-    marginTop: sizeWidth(1.5),
     fontSize: fontSize.f14,
-    lineHeight: fontSize.f14,
+    lineHeight: fontSize.f16,
     color: "#FFF"
   },
   containerIconQRCode: {
@@ -62,7 +65,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF",
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 20,
+    borderRadius: WIDTH_CONTAINER_ICON / 2,
     shadowColor: COLORS.GRAYISH_BLUE,
     shadowOffset: {
       width: 0,
@@ -74,12 +77,12 @@ const styles = StyleSheet.create({
     borderColor: COLORS.LIGHT_BORDER
   },
   iconQRCode: {
-    width: sizeWidth(6),
-    height: sizeWidth(6),
+    width: sizeWidth(5),
+    height: sizeWidth(5),
     resizeMode: "contain"
   },
   containerSubAgendaList: {
-    paddingVertical: sizeWidth(3)
+    paddingVertical: sizeWidth(1.5)
   },
   // begin styles for SubAgenda Item
   wrapperSubAgenda: {
@@ -103,13 +106,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: COLORS.GRAYISH_BLUE,
     borderRadius: 4,
-    height: sizeWidth(15),
     marginLeft: sizeWidth(1.5),
-    paddingHorizontal: sizeWidth(1.5)
+    padding: sizeWidth(1.5),
+    width: sizeWidth(15)
   },
   time: {
-    fontSize: fontSize.f16,
-    lineHeight: fontSize.f18,
+    fontSize: fontSize.f14,
+    lineHeight: fontSize.f16,
     color: "#FFF",
     ...fontMaker({ weight: "500" })
   },
@@ -119,13 +122,13 @@ const styles = StyleSheet.create({
     flexDirection: "column"
   },
   subAgendaName: {
-    fontSize: fontSize.f16,
-    lineHeight: fontSize.f18,
+    fontSize: fontSize.f14,
+    lineHeight: fontSize.f16,
     color: COLORS.GRAYISH_BLUE
   },
   subVenueName: {
     fontSize: fontSize.f12,
-    lineHeight: fontSize.f12,
+    lineHeight: fontSize.f14,
     color: "rgba(36, 37, 61, .5)"
   }
 });
@@ -176,7 +179,9 @@ class AgendaItem extends Component {
             flexDirection: "row",
             alignItems: "center"
           }}>
-            <TouchableOpacity onPress={() => this._onPressToggleIcon()}>
+            <TouchableOpacity 
+            style={styles.leftRowWrapper}
+            onPress={() => this._onPressToggleIcon()}>
               <Image style={styles.iconToggle} source={iconToggle} />
             </TouchableOpacity>
             <View style={styles.containerAgenda}>

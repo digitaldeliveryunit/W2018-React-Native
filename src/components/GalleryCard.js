@@ -42,14 +42,14 @@ const GalleryCard = props => {
       />
       <View style={{ padding: sizeWidth(1.5) }}>
         <View style={styles.content}>
-            <Text style={{ color: COLORS.GRAYISH_BLUE, fontSize: fontSize.f16 }}>{item.fileName}</Text>
+            <Text style={{ color: COLORS.GRAYISH_BLUE, fontSize: fontSize.f14 }}>{item.fileName}</Text>
             <View style={{
                 flexDirection: "row",
                 justifyContent: "space-between",
                 alignItems: "center"
             }}>
                 <FileType type={item.mediaType} extension={extension} />
-                <Text style={{ fontSize: fontSize.f12, color: "#CCC" }}>{toDateString(item.createDate)}</Text>
+                <Text style={{ fontSize: fontSize.f11, color: "#CCC" }}>{toDateString(item.createDate)}</Text>
             </View>
         </View>
       </View>
@@ -83,7 +83,7 @@ const FileType = ({type, extension}) => (
               />
             )
         }
-        <Text style={{ fontSize: fontSize.f12, color: "#273D52", marginLeft: 5 }}>{extension}</Text>
+        <Text style={{ fontSize: fontSize.f11, color: "#273D52", marginLeft: 5 }}>{extension}</Text>
     </View>
 );
 

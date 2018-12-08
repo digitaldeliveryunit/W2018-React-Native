@@ -11,7 +11,7 @@ export default StyleSheet.create({
     flex: 1,
     marginVertical: 10,
     width: sizeWidth(90),
-    borderRadius: 15,
+    borderRadius: 4,
     overflow: "hidden",
     ...CommonStyles.boxShadow
   },

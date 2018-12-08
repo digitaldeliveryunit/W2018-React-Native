@@ -11,17 +11,18 @@ import { sizeWidth } from "../helpers/size.helper";
 
 export const navStyle = StyleSheet.create({
   iconStyle: {
-    width: sizeWidth(5),
-    height: sizeWidth(5),
-    marginBottom: -sizeWidth(1.5),
-    resizeMode: "contain"
+    width: sizeWidth(6),
+    height: sizeWidth(6),
+    resizeMode: "contain",
+    marginBottom: -sizeWidth(1.5)
   },
   tabStyle: {
     height: sizeWidth(12)
   },
   labelStyle: {
-    fontSize: fontSize.f11,
-    ...fontMaker({})
+    fontSize: fontSize.f10,
+    ...fontMaker({}),
+    paddingBottom: sizeWidth(0.5)
   }
 });
 

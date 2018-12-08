@@ -57,7 +57,8 @@ export default StyleSheet.create({
     alignItems: "center"
   },
   emptyText: {
-      fontSize: fontSize.f24,
+      fontSize: fontSize.f20,
+      lineHeight: fontSize.f24,
       color: COLORS.GRAYISH_BLUE,
       paddingLeft: sizeWidth(10),
       paddingRight: sizeWidth(10),
@@ -66,14 +67,14 @@ export default StyleSheet.create({
   },
   emptyButton: {
     backgroundColor: "rgb(55, 163, 184)",
-    paddingHorizontal: sizeWidth(10),
+    paddingHorizontal: sizeWidth(8),
     paddingVertical: sizeWidth(2),
-    borderRadius: sizeWidth(10),
-    marginTop: sizeHeight(3),
+    borderRadius: sizeWidth(8),
+    marginTop: sizeHeight(1.5),
     ...CommonStyles.boxShadow
   },
   emptyButtonText: { 
     color: "#FFF",
-    fontSize: fontSize.f18
+    fontSize: fontSize.f16
   }
 });

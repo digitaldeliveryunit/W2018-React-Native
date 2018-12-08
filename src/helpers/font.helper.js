@@ -71,7 +71,7 @@ const fontMaker = (options = {}) => {
     style = styles[style] ? style : "normal";
 
     return {
-      // fontFamily: family,
+      fontFamily: `SF Pro Display`,
       fontWeight: weight || "400",
       fontStyle: style
     };
@@ -94,6 +94,7 @@ const fontSize = {
   f18: normalize(18),
   f20: normalize(20),
   f24: normalize(24),
+  f26: normalize(26),
   f30: normalize(30),
   f40: normalize(40),
   f50: normalize(50)

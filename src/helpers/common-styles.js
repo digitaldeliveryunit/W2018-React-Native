@@ -31,6 +31,7 @@ export const CommonStyles = StyleSheet.create({
   title: {
     color: "#FFF",
     fontSize: fontSize.f20,
+    lineHeight: fontSize.f20,
     ...fontMaker({ weight: "600" })
   },
   horizontalDivider: {

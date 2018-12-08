@@ -27,7 +27,7 @@ AppEmpty.defaultProps = {
     alignItems: "center"
   },
   textStyles: {
-    fontSize: fontSize.f16,
+    fontSize: fontSize.f14,
     ...fontMaker({ style: "italic" })
   },
   message: "There is nothing to show here",

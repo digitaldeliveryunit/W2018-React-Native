@@ -9,7 +9,8 @@ export default StyleSheet.create({
   },
   containerHeader: {
     flexDirection: "row",
-    paddingHorizontal: sizeWidth(3)
+    paddingHorizontal: sizeWidth(3),
+    alignItems: "center"
   },
   stickyHeader: {
     backgroundColor: "rgba(64, 54, 129, .95)",
@@ -21,23 +22,22 @@ export default StyleSheet.create({
     },
     height: sizeHeight(12),
     alignItems: "center",
-    paddingTop: sizeWidth(3)
+    paddingTop: sizeWidth(4)
   },
   containerInfo: {
     flexDirection: "column",
-    paddingHorizontal: sizeWidth(3)
+    paddingHorizontal: sizeWidth(1.5)
   },
   displayName: {
-    fontSize: fontSize.f24,
+    fontSize: fontSize.f20,
+    lineHeight: fontSize.f20,
+    marginBottom: sizeWidth(1),
     color: "#FFF",
     ...fontMaker({ weight: "600" })
   },
   displayPosition: {
-    fontSize: fontSize.f16,
-    color: "#FFF"
-  },
-  company: {
-    fontSize: fontSize.f16,
+    fontSize: fontSize.f14,
+    lineHeight: fontSize.f14,
     color: "#FFF"
   },
   title: {
@@ -45,24 +45,26 @@ export default StyleSheet.create({
     lineHeight: fontSize.f20,
     color: "#FFF",
     paddingHorizontal: sizeWidth(3),
-    paddingTop:sizeWidth(10),
+    paddingTop: sizeWidth(8),
     ...fontMaker({ weight: "600" })
   },
   containerEvents: {
     paddingHorizontal: sizeWidth(3),
-    marginTop: 5
+    marginTop: sizeWidth(3)
   },
   containerEventItem: {
     marginBottom: sizeWidth(3),
     ...CommonStyles.boxShadow
   },
   smallDisplayName: {
-    fontSize: fontSize.f18,
+    fontSize: fontSize.f16,
+    lineHeight: fontSize.f16,
     color: "#FFF",
     ...fontMaker({ weight: "600" })
   },
   smallDisplayPosition: {
     fontSize: fontSize.f12,
+    lineHeight: fontSize.f14,
     color: "#FFF"
   },
 });

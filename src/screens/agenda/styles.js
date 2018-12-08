@@ -13,19 +13,6 @@ export default StyleSheet.create({
     ...CommonStyles.container,
     backgroundColor: COLORS.LIGHT_GRAY_WHITE
   },
-  backButton: {
-    position: "absolute",
-    top: 30,
-    left: 5,
-    zIndex: 2,
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    backgroundColor: "transparent"
-  },
-  backIcon: {
-    width: 13,
-    height: 28
-  },
   imageCover: {
     width,
     height: "100%"
