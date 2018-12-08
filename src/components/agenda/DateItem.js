@@ -17,8 +17,7 @@ const styles = StyleSheet.create({
     borderColor: COLORS.GRAY
   },
   dayMonthContainer: {
-    padding: sizeWidth(1),
-    height: sizeWidth(12),
+    padding: sizeWidth(1.5),
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",

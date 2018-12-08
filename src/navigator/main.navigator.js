@@ -11,8 +11,8 @@ import { sizeWidth } from "../helpers/size.helper";
 
 export const navStyle = StyleSheet.create({
   iconStyle: {
-    width: sizeWidth(5),
-    height: sizeWidth(5),
+    width: sizeWidth(6),
+    height: sizeWidth(6),
     resizeMode: "contain",
     marginBottom: -sizeWidth(1.5)
   },
@@ -20,7 +20,7 @@ export const navStyle = StyleSheet.create({
     height: sizeWidth(12)
   },
   labelStyle: {
-    fontSize: fontSize.f11,
+    fontSize: fontSize.f10,
     ...fontMaker({}),
     paddingBottom: sizeWidth(0.5)
   }

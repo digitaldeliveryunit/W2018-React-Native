@@ -29,14 +29,15 @@ export default StyleSheet.create({
     paddingHorizontal: sizeWidth(1.5)
   },
   displayName: {
-    fontSize: fontSize.f24,
-    lineHeight: fontSize.f24,
+    fontSize: fontSize.f20,
+    lineHeight: fontSize.f20,
+    marginBottom: sizeWidth(1),
     color: "#FFF",
     ...fontMaker({ weight: "600" })
   },
   displayPosition: {
-    fontSize: fontSize.f16,
-    lineHeight: fontSize.f16,
+    fontSize: fontSize.f14,
+    lineHeight: fontSize.f14,
     color: "#FFF"
   },
   title: {

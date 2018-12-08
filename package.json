@@ -15,7 +15,6 @@
     "qs": "^6.5.2",
     "react": "16.6.0-alpha.8af6728",
     "react-native": "0.57.4",
-    "react-native-autoheight-webview": "^0.10.6",
     "react-native-calendar-events": "^1.6.3",
     "react-native-fast-image": "^5.1.0",
     "react-native-parallax-scroll-view": "^0.21.3",

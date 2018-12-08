@@ -20,7 +20,6 @@ const AppWebView = props => {
   return (
     <MyWebView
       autoHeight={true}
-      width={"100%"}
       source={{html}}
       startInLoadingState={true}
       scalesPageToFit={Platform.OS === "android"}
@@ -41,7 +40,7 @@ AppWebView.defaultProps = {
     }
     body {
       color: rgb(60,80,99);
-      font-family: SF-Pro-Display-Regular;
+      font-family: ${Platform.OS === "android" ? "SF-Pro-Display-Regular" : "SF Pro Display"};
       font-size: ${fontSize.f14}px;
     }
     img {

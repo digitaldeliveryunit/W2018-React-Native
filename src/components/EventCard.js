@@ -224,7 +224,7 @@ const DateCountDown = ({ dateFrom, dateTo }) => {
           {month && month.toUpperCase()}
         </Text>
       </View>
-      {dayDuration > 0 && <Text style={{ fontSize: fontSize.f10, lineHeight: fontSize.f12 }}>{dayDuration + 1} days</Text>}
+      {dayDuration > 0 && <Text style={{ fontSize: fontSize.f9, lineHeight: fontSize.f12 }}>{dayDuration + 1} days</Text>}
     </View>
   );
 };
