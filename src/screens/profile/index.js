@@ -14,11 +14,12 @@ import Avatar from "../../components/Avatar";
 import EventCard from "../../components/EventCard";
 import AppActivityIndicator from "../../components/AppActivityIndicator";
 import EventAPI from "../../api/event";
-import { user } from "../../helpers/mock-data.helper";
 import Text from "../../components/Text.component";
 import { sizeWidth, sizeHeight } from "../../helpers/size.helper";
 import AppEmpty from "../../components/AppEmpty";
 import CardPlaceholder from "../../components/CardPlaceholder";
+import Placeholder from "rn-placeholder";
+import { fontSize } from "../../helpers/font.helper";
 
 class ProfileComponent extends Component {
   constructor(props) {
@@ -56,33 +57,53 @@ class ProfileComponent extends Component {
     );
   };
 
-  _renderForeground = () => (
-    <View style={styles.foregroundSection}>
-      <View style={styles.containerHeader}>
-        <Avatar user={user} size={sizeWidth(22)} />
+  _renderForeground = () => {
+    const { currentUser, loading } = this.props;
+    return (
+      <View style={styles.foregroundSection}>
+        <Placeholder.ImageContent
+          position="left"
+          hasRadius
+          lineNumber={3}
+          textSize={fontSize.f14}
+          lineSpacing={5}
+          color="#CCC"
+          width="100%"
+          lastLineWidth="30%"
+          firstLineWidth="80%"
+          onReady={!loading}
+          animate="fade"
+        >
+          <View style={styles.containerHeader}>
+            <Avatar user={currentUser} size={sizeWidth(22)} />
+            <View style={styles.containerInfo}>
+              <Text style={styles.displayName}>{_.get(currentUser, "displayName")}</Text>
+              <Text style={styles.displayPosition}>
+                {_.get(currentUser, "department")}
+              </Text>
+              <Text style={[styles.displayPosition, { marginTop: sizeWidth(3) }]}>{_.get(currentUser, "company")}</Text>
+            </View>
+          </View>
+        </Placeholder.ImageContent>
+        <Text style={styles.title}>Past Events</Text>
+      </View>
+    );
+  };
+
+  _renderStickyHeader = () => {
+    const { currentUser, loading } = this.props;
+    return (
+      <View style={[styles.containerHeader, styles.stickyHeader]}>
+        <Avatar user={currentUser} size={sizeWidth(10)} loading={loading} />
         <View style={styles.containerInfo}>
-          <Text style={styles.displayName}>{_.get(user, "displayName")}</Text>
-          <Text style={styles.displayPosition}>
-            {_.get(user, "displayPosition")}
+          <Text style={styles.smallDisplayName}>{_.get(currentUser, "displayName")}</Text>
+          <Text style={styles.smallDisplayPosition}>
+            {_.get(currentUser, "department")}
           </Text>
-          <Text style={[styles.displayPosition, { marginTop: sizeWidth(3) }]}>{_.get(user, "company")}</Text>
         </View>
       </View>
-      <Text style={styles.title}>Past Events</Text>
-    </View>
-  );
-
-  _renderStickyHeader = () => (
-    <View style={[styles.containerHeader, styles.stickyHeader]}>
-      <Avatar user={user} size={sizeWidth(10)} />
-      <View style={styles.containerInfo}>
-        <Text style={styles.smallDisplayName}>{_.get(user, "displayName")}</Text>
-        <Text style={styles.smallDisplayPosition}>
-          {_.get(user, "displayPosition")}
-        </Text>
-      </View>
-    </View>
-  );
+    );
+  };
 
   render() {
     const { pastEvents, refreshing } = this.state;
@@ -215,10 +236,13 @@ class ProfileComponent extends Component {
       loadingMore: false
     });
   }
-
 }
 
+const mapStateToProps = state => {
+  return state.user;
+};
+
 export default connect(
-  null,
+  mapStateToProps,
   null
 )(ProfileComponent);

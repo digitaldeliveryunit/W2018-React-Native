@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import {
   View,
   TouchableOpacity,
@@ -9,8 +10,9 @@ import Text from "../../components/Text.component";
 import styles from "./styles";
 import { CommonStyles } from "../../helpers/common-styles";
 import Swiper from "react-native-swiper";
+import { LOAD_CURRENT_USER } from  "../../actions/user.action";
 
-export default class OnBoarding extends Component {
+class OnBoarding extends Component {
   render() {
     return (
       <ImageBackground 
@@ -65,6 +67,11 @@ export default class OnBoarding extends Component {
     );
   }
 
+  componentDidMount () {
+    // Call saga function to load current user & update into user reducer
+    this.props.loadCurrentUser();
+  }
+
   goToHome () {
     this.props.navigation.navigate("MainScreen");
   }
@@ -77,3 +84,14 @@ export default class OnBoarding extends Component {
     this.swiper.scrollBy(1);
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    loadCurrentUser: () => dispatch({ type: LOAD_CURRENT_USER }),
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(OnBoarding);

@@ -14,7 +14,6 @@ import _ from "lodash";
 import AppEmpty from "../../components/AppEmpty";
 import ParallaxScrollView from "react-native-parallax-scroll-view";
 import { sizeHeight } from "../../helpers/size.helper";
-import { user } from "../../helpers/mock-data.helper";
 import { isCloseToBottom } from "../../helpers/function.helper";
 import CardPlaceholder from "../../components/CardPlaceholder";
 import { sizeWidth } from "../../helpers/size.helper";
@@ -69,14 +68,17 @@ class Home extends Component {
     this.loadUpcomingEvents();
   }
 
-  _renderHeader = () => (
-    <View style={CommonStyles.header}>
-      <Text style={CommonStyles.title}>Featured Events</Text>
-      <TouchableOpacity>
-        <Avatar user={user} />
-      </TouchableOpacity>
-    </View>
-  );
+  _renderHeader = () => {
+    const { currentUser, loading } = this.props;
+    return (
+      <View style={CommonStyles.header}>
+        <Text style={CommonStyles.title}>Featured Events</Text>
+        <TouchableOpacity>
+          <Avatar user={currentUser} loading={loading} />
+        </TouchableOpacity>
+      </View>
+    );
+  }
 
   _keyExtractor = (item, index) => `${index}`;
   _renderUpcomingEvents = () => {
@@ -268,7 +270,11 @@ class Home extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return state.user;
+};
+
 export default connect(
-  null,
+  mapStateToProps,
   null
 )(Home);

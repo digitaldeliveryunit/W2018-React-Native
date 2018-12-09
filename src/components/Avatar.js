@@ -8,9 +8,10 @@ import { getShortcutName } from "../helpers/function.helper";
 import { COLORS } from "../helpers/common-styles";
 import { sizeWidth } from "../helpers/size.helper";
 import { fontMaker, fontSize } from "../helpers/font.helper";
+import Placeholder from "rn-placeholder";
 
 const Avatar = props => {
-  const { containerStyles, textStyle, size, user } = props;
+  const { containerStyles, textStyle, size, user, loading } = props;
   const avatarStyle = [props.avatarStyle, {
     width: size || sizeWidth(12),
     height: size || sizeWidth(12),
@@ -18,23 +19,33 @@ const Avatar = props => {
   }];
   return (
     <View style={containerStyles}>
-      <View style={avatarStyle}>
-        {user ? (
-          user.photo ? (
-            <FastImage
-              style={avatarStyle}
-              source={{ uri: user.photo }}
-              resizeMode={FastImage.resizeMode.cover}
-            />
-          ) : (
-            <Text style={textStyle}>
-              {getShortcutName(user.firstName, user.lastName, user.displayName)}
-            </Text>
-          )
-        ) : (
-          <Text style={textStyle}>{"N/A"}</Text>
-        )}
-      </View>
+      <Placeholder.Media
+        color="#CCC"
+        size={size}
+        hasRadius
+        onReady={!loading}
+        animate="fade"
+      >
+        <View style={avatarStyle}>
+          {
+            user ? (
+              user.thumbnailPhoto ? (
+                <FastImage
+                  style={avatarStyle}
+                  source={{ uri: user.thumbnailPhoto }}
+                  resizeMode={FastImage.resizeMode.cover}
+                />
+              ) : (
+                <Text style={textStyle}>
+                  {getShortcutName(user.firstName, user.lastName, user.displayName)}
+                </Text>
+              )
+            ) : (
+              <Text style={textStyle}>{"N/A"}</Text>
+            )
+          }
+        </View>
+      </Placeholder.Media>
     </View>
   );
 };
