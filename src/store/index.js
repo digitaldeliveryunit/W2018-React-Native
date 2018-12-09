@@ -17,7 +17,7 @@ const reactNavigationReduxMiddleware = createReactNavigationReduxMiddleware(
 const createStoreWithMiddleware = compose(
   applyMiddleware(
     sagaMiddleware,
-    // loggerMiddleware,
+    loggerMiddleware,
     reactNavigationReduxMiddleware
   )
 )(createStore);

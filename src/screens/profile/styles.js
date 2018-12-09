@@ -5,11 +5,11 @@ import { sizeWidth, sizeHeight } from "../../helpers/size.helper";
 
 export default StyleSheet.create({
   foregroundSection: {
-    paddingTop: 40
+    paddingTop: 40,
+    paddingHorizontal: sizeWidth(3)
   },
   containerHeader: {
     flexDirection: "row",
-    paddingHorizontal: sizeWidth(3),
     alignItems: "center"
   },
   stickyHeader: {
@@ -22,7 +22,8 @@ export default StyleSheet.create({
     },
     height: sizeHeight(12),
     alignItems: "center",
-    paddingTop: sizeWidth(4)
+    paddingTop: sizeWidth(4),
+    paddingLeft: sizeWidth(3)
   },
   containerInfo: {
     flexDirection: "column",

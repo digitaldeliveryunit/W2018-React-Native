@@ -73,12 +73,15 @@ class MyEvents extends Component {
     this.loadMyEvents();
   }
 
-  _renderHeader = () => (
-    <View style={CommonStyles.header}>
-      <Text style={CommonStyles.title}>myEvents</Text>
-      <Avatar user={user} />
-    </View>
-  );
+  _renderHeader = () => {
+    const { currentUser, loading } = this.props;
+    return (
+      <View style={CommonStyles.header}>
+        <Text style={CommonStyles.title}>myEvents</Text>
+        <Avatar user={currentUser} loading={loading} />
+      </View>
+    );
+  };
 
   _keyExtractor = (item, index) => `${index}`;
 
@@ -174,7 +177,11 @@ class MyEvents extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return state.user;
+};
+
 export default connect(
-  null,
+  mapStateToProps,
   null
 )(MyEvents);
