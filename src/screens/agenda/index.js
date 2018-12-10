@@ -93,6 +93,7 @@ class Agenda extends Component {
                     style={styles.imageCover}
                     resizeMode={FastImage.resizeMode.cover}
                   />
+                  <View style={styles.coverImageOpacity} />
                 </View>
               </ImagePlaceholder>
             </View>

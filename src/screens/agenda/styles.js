@@ -17,6 +17,16 @@ export default StyleSheet.create({
     width,
     height: "100%"
   },
+  coverImageOpacity: {
+    backgroundColor: "rgba(0, 0, 0, .6)",
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    opacity: 0.3,
+    zIndex: 99
+  },
   datesContainer: {
     height: sizeHeight(10),
     paddingHorizontal: 10
