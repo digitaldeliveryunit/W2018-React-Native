@@ -41,7 +41,7 @@ AppWebView.defaultProps = {
     body {
       color: rgb(60,80,99);
       font-family: ${Platform.OS === "android" ? "SF-Pro-Display-Regular" : "SF Pro Display"};
-      font-size: ${fontSize.f14}px;
+      font-size: ${fontSize.f12}px;
     }
     img {
       height: auto !important;

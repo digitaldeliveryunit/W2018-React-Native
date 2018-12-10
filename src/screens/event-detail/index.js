@@ -129,6 +129,7 @@ class EventDetail extends Component {
                     style={styles.imageCover}
                     resizeMode={FastImage.resizeMode.cover}
                   />
+                  <View style={styles.coverImageOpacity} />
                   <View style={styles.containerActionButton}>
                     {event.userStatus === USER_STATUS.NEW && (
                       <TouchableOpacity
