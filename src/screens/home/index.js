@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { View, Image, TouchableOpacity, TouchableNativeFeedback, FlatList, Animated } from "react-native";
+import { View, Image, TouchableOpacity, ScrollView, FlatList, Animated } from "react-native";
 import Text from "../../components/Text.component";
 import styles from "./styles";
 import { CommonStyles, COLORS } from "../../helpers/common-styles";
@@ -42,24 +42,10 @@ class Home extends Component {
   render() {
     return (
       <WrapperComponent>
-        <ParallaxScrollView
-          ref={ref => {
-            this.parallaxScrollView = ref;
-          }}
-          backgroundColor={"transparent"}
-          backgroundScrollSpeed={10}
-          fadeOutForeground={false}
-          parallaxHeaderHeight={this.state.heightOfForeground}
-          renderForeground={this._renderForeground}
-          stickyHeaderHeight={sizeWidth(6)}
-          renderStickyHeader={this._renderStickyHeader}
-          contentBackgroundColor={"transparent"}
-          showsVerticalScrollIndicator={false}
-          onMomentumScrollEnd={this.onScroll}
-          scrollEventThrottle={500}
-        >
-          {this._renderUpcomingEvents()}
-        </ParallaxScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
+        { this._renderFeaturedEvents() }
+        { this._renderUpcomingEvents() }
+        </ScrollView>
       </WrapperComponent>
     );
   }
@@ -135,20 +121,10 @@ class Home extends Component {
       </CardPlaceholder>
     </View>
   );
-  _renderForeground = () => {
+  _renderFeaturedEvents = () => {
     const { loadingFeatured, featuredEvents } = this.state;
     return (
-      <View
-        style={styles.foregroundSection}
-        onLayout={event => {
-          var { height } = event.nativeEvent.layout;
-          if (height > heightOfForegroundDefault) {
-            this.setState({
-              heightOfForeground: height
-            });
-          }
-        }}
-      >
+      <View style={styles.foregroundSection}>
         {this._renderHeader()}
         <View style={{ width: sizeWidth(100), alignItems: "center" }}>
           <CardPlaceholder onReady={!loadingFeatured} width={sizeWidth(94)}>
