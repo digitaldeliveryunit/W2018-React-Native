@@ -12,6 +12,7 @@ import EventAPI from "../api/event";
 import Toast from "@remobile/react-native-toast";
 import { USER_STATUS } from "../config";
 import { fontMaker, fontSize } from "../helpers/font.helper";
+import AppInsightHelper from "../helpers/app-insight.helper";
 
 const styles = StyleSheet.create({
   image: {
@@ -165,6 +166,7 @@ class EventCard extends React.Component {
   }
 
   async onBookmark() {
+    AppInsightHelper.trackEvent("Bookmark an event");
     const { event } = this.props;
     const result = await EventAPI.bookmark(event.eventId);
     if (result) {
@@ -175,6 +177,7 @@ class EventCard extends React.Component {
     }
   }
   async onUnBookmark() {
+    AppInsightHelper.trackEvent("Unbookmark an event");
     const { event } = this.props;
     const result = await EventAPI.unBookmark(event.eventId);
     if (result) {
@@ -185,6 +188,7 @@ class EventCard extends React.Component {
     }
   }
   async onJoin() {
+    AppInsightHelper.trackEvent("Join an event");
     const { event } = this.props;
     const result = await EventAPI.join(event.eventId);
     if (result) {
@@ -195,6 +199,7 @@ class EventCard extends React.Component {
     }
   }
   async onUnJoin() {
+    AppInsightHelper.trackEvent("Unjoin an event");
     const { event } = this.props;
     const result = await EventAPI.unJoin(event.eventId);
     if (result) {

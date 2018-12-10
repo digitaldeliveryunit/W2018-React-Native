@@ -17,6 +17,7 @@ import { sizeHeight } from "../../helpers/size.helper";
 import { isCloseToBottom } from "../../helpers/function.helper";
 import CardPlaceholder from "../../components/CardPlaceholder";
 import { sizeWidth } from "../../helpers/size.helper";
+import AppInsightHelper from "../../helpers/app-insight.helper";
 
 const heightOfForegroundDefault = sizeHeight(50);
 
@@ -64,6 +65,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
+    AppInsightHelper.trackEvent("Load featured events & upcoming events");
     this.loadFeaturedEvents();
     this.loadUpcomingEvents();
   }

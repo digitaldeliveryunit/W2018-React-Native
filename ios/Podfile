@@ -1,0 +1,34 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'myevents' do
+  pod 'AppCenter/Crashes', '~> 1.11.0'
+  pod 'AppCenter/Analytics', '~> 1.11.0'
+  pod 'AppCenterReactNativeShared', '~> 1.10.0'
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for myevents
+
+  
+
+  platform :ios, '9.0'
+  target 'myeventsTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
+
+target 'myevents-tvOS' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for myevents-tvOS
+
+  target 'myevents-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
