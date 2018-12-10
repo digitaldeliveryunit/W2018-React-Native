@@ -11,6 +11,9 @@ import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.remobile.toast.RCTToastPackage;
 import com.calendarevents.CalendarEventsPackage;
+import com.microsoft.appcenter.reactnative.crashes.AppCenterReactNativeCrashesPackage;
+import com.microsoft.appcenter.reactnative.analytics.AppCenterReactNativeAnalyticsPackage;
+import com.microsoft.appcenter.reactnative.appcenter.AppCenterReactNativePackage;
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,10 +29,13 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new CalendarEventsPackage(),
-            new VectorIconsPackage(),
-            new FastImageViewPackage(),
-            new RCTToastPackage()
+          new AppCenterReactNativeCrashesPackage(MainApplication.this, getResources().getString(R.string.appCenterCrashes_whenToSendCrashes)),
+          new AppCenterReactNativeAnalyticsPackage(MainApplication.this, getResources().getString(R.string.appCenterAnalytics_whenToEnableAnalytics)),
+          new AppCenterReactNativePackage(MainApplication.this),
+          new CalendarEventsPackage(),
+          new VectorIconsPackage(),
+          new FastImageViewPackage(),
+          new RCTToastPackage()
       );
     }
 

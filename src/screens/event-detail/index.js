@@ -23,6 +23,7 @@ import { COLORS } from "../../helpers/common-styles";
 import BackButton from "../../components/BackButton";
 import { fontSize } from "../../helpers/font.helper";
 import FastImage from "react-native-fast-image";
+import AppInsightHelper from "../../helpers/app-insight.helper";
 
 class EventDetail extends Component {
   constructor(props) {
@@ -56,6 +57,7 @@ class EventDetail extends Component {
   };
 
   _addEventToCalendar = (title, location, startDate, endDate) => {
+    AppInsightHelper.trackEvent("Add event to calendar");
     RNCalendarEvents.saveEvent(title, { location, startDate, endDate }).then(
       () => {
         Toast.showLongBottom("Event is added to calendar successfully.");
@@ -312,6 +314,7 @@ class EventDetail extends Component {
   }
 
   async loadEventDetail(eventId) {
+    AppInsightHelper.trackEvent("Load event detail");
     this.setState({
       loadingEvent: true,
       loadedEvent: false

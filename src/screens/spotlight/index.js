@@ -17,6 +17,7 @@ import AppActivityIndicator from "../../components/AppActivityIndicator";
 import AppEmpty from "../../components/AppEmpty";
 import { fontMaker, fontSize } from "../../helpers/font.helper";
 import TabBarBottom from "../../components/tab-bar/TabBarBottom";
+import AppInsightHelper from "../../helpers/app-insight.helper";
 
 const ViewMode = {
   LIST: 0,
@@ -176,6 +177,7 @@ class Spotlight extends Component {
   }
   
   async loadSpotlights () {
+    AppInsightHelper.trackEvent("Load spotlights");
     const { take, currentEvent } = this.state;
     this.setState({
       loading: true,

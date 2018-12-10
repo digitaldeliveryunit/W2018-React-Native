@@ -7,6 +7,7 @@ import {
   LOAD_CURRENT_USER_REJECTED
  } from "../actions/user.action";
 import UserAPI from "../api/user";
+import Session from "../helpers/session";
 
 function* loadCurrentUser() {
   try {
@@ -14,6 +15,9 @@ function* loadCurrentUser() {
     yield call(delay, 3000);
     const currentUser = yield call(UserAPI.getCurrentUser);
     yield put({ type: LOAD_CURRENT_USER_FULFILLED, currentUser });
+
+    // store current user into local storage
+    yield Session.setUser(currentUser);
   } catch (e) {
     console.log(e);
     yield put({ type: LOAD_CURRENT_USER_REJECTED });

@@ -9,6 +9,7 @@ import GalleryShelf from "../../components/gallery/GalleryShelf";
 import QuickAccessButton from "../../components/QuickAccessButton";
 import GalleryAPI from "../../api/gallery";
 import TabBarBottom from "../../components/tab-bar/TabBarBottom";
+import AppInsightHelper from "../../helpers/app-insight.helper";
 
 const MEDIA_TYPES = {
   DOCUMENT: "Document",
@@ -61,6 +62,7 @@ class Gallery extends Component {
   }
 
   async componentDidMount () {
+    AppInsightHelper.trackEvent("Load gallery: document, image, video");
     this.loadDocuments();
     this.loadImages();
     this.loadVideos();

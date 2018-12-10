@@ -19,6 +19,7 @@ import { COLORS } from "../../helpers/common-styles";
 import BackButton from "../../components/BackButton";
 import { fontSize } from "../../helpers/font.helper";
 import FastImage from "react-native-fast-image";
+import AppInsightHelper from "../../helpers/app-insight.helper";
 
 class Agenda extends Component {
   constructor(props) {
@@ -144,6 +145,7 @@ class Agenda extends Component {
   }
 
   async loadAgendaOfEvent(eventId) {
+    AppInsightHelper.trackEvent("Load agenda info");
     this.setState({
       loadingAgendas: true,
       loadedAgendas: false

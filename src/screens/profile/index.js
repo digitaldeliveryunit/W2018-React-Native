@@ -20,6 +20,7 @@ import AppEmpty from "../../components/AppEmpty";
 import CardPlaceholder from "../../components/CardPlaceholder";
 import Placeholder from "rn-placeholder";
 import { fontSize } from "../../helpers/font.helper";
+import AppInsightHelper from "../../helpers/app-insight.helper";
 
 class ProfileComponent extends Component {
   constructor(props) {
@@ -162,6 +163,7 @@ class ProfileComponent extends Component {
   }
 
   async loadPastEvents() {
+    AppInsightHelper.trackEvent("Load past events");
     const { take } = this.state;
     this.setState({
       loadingPastEvents: true,

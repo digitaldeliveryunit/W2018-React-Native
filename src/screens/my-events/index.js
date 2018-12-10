@@ -11,8 +11,8 @@ import EventCard from "../..//components/EventCard";
 import EventAPI from "../../api/event";
 import AppActivityIndicator from "../../components/AppActivityIndicator";
 import AppEmpty from "../../components/AppEmpty";
-import { user } from "../../helpers/mock-data.helper";
 import CardPlaceholder from "../../components/CardPlaceholder";
+import AppInsightHelper from "../../helpers/app-insight.helper";
 
 class MyEvents extends Component {
   constructor() {
@@ -105,6 +105,7 @@ class MyEvents extends Component {
   }
 
   async loadMyEvents() {
+    AppInsightHelper.trackEvent("Load my events");
     const { take } = this.state;
     this.setState({
       loadingMyEvents: true,

@@ -6,6 +6,7 @@ import NavigationService from "./src/helpers/navigation-service";
 import AppWithNavigationState from "./src/navigator";
 import QRCodePopup from "./src/components/QRCodePopup";
 import QuickAccessMenu from "./src/components/QuickAccessMenu";
+import Analytics from "appcenter-analytics";
 
 export default class App extends Component {
   render() {
@@ -24,6 +25,11 @@ export default class App extends Component {
         </View>
       </Provider>
     );
+  }
+  async componentDidMount () {
+    
+    // enable custom event for Analytics
+    await Analytics.setEnabled(true);
   }
 }
 
