@@ -15,6 +15,16 @@ export default StyleSheet.create({
     width,
     height: "100%"
   },
+  coverImageOpacity: {
+    backgroundColor: "rgba(0, 0, 0, .6)",
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    opacity: 0.3,
+    zIndex: 99
+  },
   titleContainer: {
     backgroundColor: "rgba(6, 6, 6, .05)",
     paddingHorizontal: sizeWidth(3),
@@ -52,21 +62,21 @@ export default StyleSheet.create({
   },
   colorHighLight: {
     color: COLORS.SOFT_PURPLE,
-    fontSize: fontSize.f13,
-    lineHeight: fontSize.f16
+    fontSize: fontSize.f12,
+    lineHeight: fontSize.f14
   },
   lblInfoName: {
-    fontSize: fontSize.f14,
-    lineHeight: fontSize.f16,
+    fontSize: fontSize.f12,
+    lineHeight: fontSize.f14,
     color: COLORS.GRAYISH_BLUE
   },
   lblInfoMeta: {
-    fontSize: fontSize.f13,
+    fontSize: fontSize.f11,
     color: COLORS.GRAYISH_BLUE
   },
   mapsImage: {
-    width: sizeWidth(17),
-    height: sizeWidth(17)
+    width: sizeWidth(15),
+    height: sizeWidth(15)
   },
   horizontalDivider: {
     ...CommonStyles.horizontalDivider,
@@ -102,7 +112,8 @@ export default StyleSheet.create({
     width: sizeWidth(8),
     height: sizeWidth(8),
     borderRadius: sizeWidth(4),
-    marginLeft: 5
+    marginLeft: 5,
+    zIndex: 999
   },
   iconActionButton: {
     width: sizeWidth(3.5),
