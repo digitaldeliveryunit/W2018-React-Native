@@ -21,12 +21,7 @@ export default function userReducer(state = initState, action) {
         loadFailed: false
       });
     case LOAD_CURRENT_USER_FULFILLED:
-      return Object.assign({}, state, {
-        currentUser: action.currentUser,
-        loading: false,
-        loaded: true,
-        loadFailed: false
-      });
+      // TODO 03
     case LOAD_CURRENT_USER_REJECTED:
       return Object.assign({}, state, {
         currentUser: {},

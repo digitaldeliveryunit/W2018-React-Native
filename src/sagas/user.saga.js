@@ -13,8 +13,8 @@ function* loadCurrentUser() {
   try {
     yield put({ type: LOADING_CURRENT_USER });
     yield call(delay, 3000);
-    const currentUser = yield call(UserAPI.getCurrentUser);
-    yield put({ type: LOAD_CURRENT_USER_FULFILLED, currentUser });
+
+    // TODO 02
 
     // store current user into local storage
     yield Session.setUser(currentUser);

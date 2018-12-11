@@ -241,7 +241,8 @@ class ProfileComponent extends Component {
 }
 
 const mapStateToProps = state => {
-  return state.user;
+  // TODO 04
+  return {}
 };
 
 export default connect(
