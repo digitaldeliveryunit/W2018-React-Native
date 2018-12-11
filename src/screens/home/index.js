@@ -156,7 +156,7 @@ class Home extends Component {
   );
 
   onGoDetail(eventId) {
-    // TODO 02
+    // TODO 04
   }
 
   async loadFeaturedEvents() {

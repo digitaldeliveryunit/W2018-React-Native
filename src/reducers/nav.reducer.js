@@ -4,7 +4,9 @@ import { AppNavigator } from "../navigator";
 const initialNavState = AppNavigator.router.getStateForAction(
   StackActions.reset({
     index: 0,
-    actions: [NavigationActions.navigate({ routeName: "MainScreen" })]
+    // TODO 02
+    actions: [NavigationActions.navigate({ routeName: "Home" })]
+    // END OF TODO 02
   })
 );
 

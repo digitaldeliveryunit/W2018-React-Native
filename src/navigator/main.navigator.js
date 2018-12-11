@@ -66,7 +66,7 @@ const MainNavigator = createBottomTabNavigator(
         }
       }
     },
-    // TODO 01
+    // TODO 03
     Profile: {
       screen: ProfileScreen,
       navigationOptions: {
