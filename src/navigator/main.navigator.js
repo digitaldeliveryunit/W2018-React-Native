@@ -66,25 +66,7 @@ const MainNavigator = createBottomTabNavigator(
         }
       }
     },
-    Search: {
-      screen: SearchScreen,
-      navigationOptions: {
-        title: "Search",
-        tabBarIcon: ({ focused }) => {
-          return focused ? (
-            <Image
-              source={require("../../assets/images/search_active.png")}
-              style={navStyle.iconStyle}
-            />
-          ) : (
-            <Image
-              source={require("../../assets/images/search.png")}
-              style={navStyle.iconStyle}
-            />
-          );
-        }
-      }
-    },
+    // TODO 01
     Profile: {
       screen: ProfileScreen,
       navigationOptions: {
