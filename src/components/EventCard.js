@@ -82,23 +82,36 @@ class EventCard extends React.Component {
     const { containerStyles, event, width, withoutBottom } = this.props;
     return (
       <View style={[containerStyles, { width: width, minHeight: sizeWidth(50) }]}>
-        {/* TODO 02 */}
+        <FastImage
+          source={{ uri: event.imageUrl }} style={styles.image}
+          resizeMode={FastImage.resizeMode.cover} />
         <View style={{ padding: sizeWidth(1.5) }}>
           <View style={styles.content}>
             <View>
-              {/* TODO 09 */}
+              <DateCountDown dateFrom={event.dateFrom} dateTo={event.dateTo} />
             </View>
             <View style={{ paddingLeft: sizeWidth(1.5), flex: 1 }}>
-              {/* TODO 03 */}
-              {/* TODO 04 */}
+              <Text style={styles.eventTitle} numberOfLines={2}>
+                {event.eventName}
+              </Text>
+              <Text style={styles.eventDescription} numberOfLines={1}>
+                {event.eventLocation && event.eventLocation.locationName}
+              </Text>
               {
-                // TODO 05
+                event.dateFrom && getDayDuration(event.dateFrom, event.dateTo) > 0 && (                
+                  <Text style={styles.eventDescription} numberOfLines={1}>
+                    {`${toDateString(event.dateFrom)} - ${toDateString(event.dateTo)}`}
+                  </Text>
+                )
               }
             </View>
           </View>
           {!withoutBottom && (
             <View style={styles.bottom}>
-              {/* TODO 06 */}
+              <Text style={styles.eventDescription}>
+                <Text style={{ color: "#CBD34C" }}>• </Text>
+                {`${event.eventType} Event`}
+              </Text>
               <View style={{ flexDirection: "row" }}>
                 {this.state.userStatus === USER_STATUS.NEW && (
                   <TouchableOpacity style={styles.actionButton} onPress={this.onJoin}>
@@ -124,9 +137,12 @@ class EventCard extends React.Component {
                     />
                   </TouchableOpacity>
                 ) : (
-                  // TODO 07
-                  null
-                  // END TODO 07
+                  <TouchableOpacity style={styles.actionButton} onPress={this.onBookmark}>
+                    <Image
+                      source={require("../../assets/images/bookmark.png")}
+                      style={styles.icon}
+                    />
+                  </TouchableOpacity>
                 )}
                 {this.state.userStatus === USER_STATUS.CHECKIN ? (
                   <TouchableOpacity style={styles.actionButton}>
@@ -137,7 +153,10 @@ class EventCard extends React.Component {
                   </TouchableOpacity>
                 ) : (
                   <TouchableOpacity style={styles.actionButton} onPress={() => this.props.openPopup(event.eventId)}>
-                    {/* TODO 08 */}
+                    <Image
+                      source={require("../../assets/images/qrcode.png")}
+                      style={styles.icon}
+                    />
                   </TouchableOpacity>
                 )}
               </View>

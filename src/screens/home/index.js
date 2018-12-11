@@ -59,7 +59,13 @@ class Home extends Component {
     return (
       <WrapperComponent>
         <ScrollView showsVerticalScrollIndicator={false}>
-          {/* TODO 01 */}
+          <View style={styles.singleCard}>
+            <CardPlaceholder onReady={true}>
+              <TouchableOpacity>
+                <EventCard event={event} />
+              </TouchableOpacity>
+            </CardPlaceholder>
+          </View>
         </ScrollView>
       </WrapperComponent>
     );
