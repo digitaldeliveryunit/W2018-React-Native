@@ -93,7 +93,7 @@ class MyEvents extends Component {
           <TouchableOpacity
             onPress={() => this.onGoDetail(_.get(item, "eventId"))}
           >
-            <EventCard event={item} />
+            {/* TODO 01 */}
           </TouchableOpacity>
         </CardPlaceholder>
       </View>
@@ -120,7 +120,7 @@ class MyEvents extends Component {
       this.setState({
         loadingMyEvents: false,
         loadedMyEvents: true,
-        myEvents: events,
+        // TODO 02
         hasNextPage,
         continuationKey
       });
