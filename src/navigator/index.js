@@ -9,10 +9,12 @@ import GalleryScreen from "../screens/gallery";
 import SpotlightScreen from "../screens/spotlight";
 import AgendaScreen from "../screens/agenda";
 import FeedbackScreen from "../screens/feedback";
+import HomeScreen from "../screens/home";
 
 export const AppNavigator = StackNavigator(
   {
-    OnBoarding: { screen: OnBoardingScreen },
+    // OnBoarding: { screen: OnBoardingScreen },
+    Home: { screen: HomeScreen },
     MainScreen: { screen: MainNavigator },
     About: { screen: EventDetailScreen },
     Gallery: { screen: GalleryScreen },

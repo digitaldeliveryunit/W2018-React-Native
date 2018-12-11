@@ -40,11 +40,26 @@ class Home extends Component {
     this.onScroll = this.onScroll.bind(this);
   }
   render() {
+    const event = {
+      eventId: "86b56676-231f-4302-b372-c03ef837c706",
+      imageUrl:
+        "https://fileservice.petronas.com/api/v1/view/image/2d34c3d2-d509-46cf-a7ea-e1cfdb237271-jom-hangatkan-cub-prix-2017-di-pahang-2017030.png",
+      eventName: "Jom Hangatkan Cub Prix 2017 di Pahang!",
+      eventDescription:
+        "Jumpa anda di PETRONAS AAM Malaysian Cub&nbsp;Prix 2017. Jumpa anda di PETRONAS AAM Malaysian Cub&nbsp;Prix 2017. Jumpa anda di PETRONAS AAM Malaysian Cub&nbsp;Prix 2017. Jumpa anda di PETRONAS AAM Malaysian Cub&nbsp;Prix 2017. Jumpa anda di PETRONAS AAM Malaysian Cub&nbsp;Prix 2017. Jumpa anda di PETRONAS AAM Malaysian Cub&nbsp;Prix 2017",
+      dateFrom: "2017-03-04T02:00:00",
+      dateTo: "2017-03-08T10:00:00",
+      gmt: "+08:00",
+      eventType: "Public",
+      eventLocation: {
+        locationId: "69a2cc08-65d4-45b0-af8d-ebb59569de17",
+        locationName: "A'famosa Resort"
+      }
+    }
     return (
       <WrapperComponent>
         <ScrollView showsVerticalScrollIndicator={false}>
-        { this._renderFeaturedEvents() }
-        { this._renderUpcomingEvents() }
+          {/* TODO 01 */}
         </ScrollView>
       </WrapperComponent>
     );

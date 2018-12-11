@@ -50,5 +50,10 @@ export default StyleSheet.create({
   closeButton: {
     position: "absolute",
     left: 0
+  },
+  singleCard: {
+    marginTop: sizeWidth(50),
+    marginBottom: sizeWidth(3),
+    paddingHorizontal: sizeWidth(3) 
   }
 });

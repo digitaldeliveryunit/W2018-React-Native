@@ -19,32 +19,32 @@ const styles = StyleSheet.create({
     width: "100%",
     height: sizeWidth(40)
   },
-  content: {
-    flexDirection: "row",
-    marginBottom: sizeWidth(1.5)
-  },
-  dateCountDown: {
-    borderColor: COLORS.GRAYISH_BLUE,
-    borderRadius: 4,
-    borderWidth: 1,
-    alignItems: "center"
-  },
-  bottom: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingTop: sizeWidth(1.5),
-    borderTopColor: "#F3F3F3",
-    borderTopWidth: 1
-  },
+  // content: {
+  //   flexDirection: "row",
+  //   marginBottom: sizeWidth(1.5)
+  // },
+  // dateCountDown: {
+  //   borderColor: COLORS.GRAYISH_BLUE,
+  //   borderRadius: 4,
+  //   borderWidth: 1,
+  //   alignItems: "center"
+  // },
+  // bottom: {
+  //   flexDirection: "row",
+  //   justifyContent: "space-between",
+  //   alignItems: "center",
+  //   paddingTop: sizeWidth(1.5),
+  //   borderTopColor: "#F3F3F3",
+  //   borderTopWidth: 1
+  // },
   actionButton: {
     justifyContent: "center",
     alignItems: "center",
     width: sizeWidth(8),
     height: sizeWidth(8),
-    borderRadius: sizeWidth(4),
-    borderWidth: 1,
-    borderColor: COLORS.LIGHT_BORDER,
+    // borderRadius: sizeWidth(4),
+    // borderWidth: 1,
+    // borderColor: COLORS.LIGHT_BORDER,
     marginLeft: 5
   },
   icon: {
@@ -52,18 +52,18 @@ const styles = StyleSheet.create({
     height: sizeWidth(3.5),
     resizeMode: "contain"
   },
-  eventTitle: {
-    color: COLORS.GREEN_PET_ICT, 
-    fontSize: fontSize.f14,
-    lineHeight: fontSize.f16,
-    ...fontMaker({ weight: "500" }),
-    marginBottom: sizeWidth(0.7)
-  },
-  eventDescription: {
-    color: COLORS.GRAYISH_BLUE,
-    fontSize: fontSize.f11,
-    lineHeight: fontSize.f12
-  }
+  // eventTitle: {
+  //   color: COLORS.GREEN_PET_ICT, 
+  //   fontSize: fontSize.f14,
+  //   lineHeight: fontSize.f16,
+  //   ...fontMaker({ weight: "500" }),
+  //   marginBottom: sizeWidth(0.7)
+  // },
+  // eventDescription: {
+  //   color: COLORS.GRAYISH_BLUE,
+  //   fontSize: fontSize.f11,
+  //   lineHeight: fontSize.f12
+  // }
 });
 
 class EventCard extends React.Component {
@@ -81,35 +81,24 @@ class EventCard extends React.Component {
   render() {
     const { containerStyles, event, width, withoutBottom } = this.props;
     return (
-      <View style={[containerStyles, { width: width }]}>
-        <FastImage source={{ uri: event.imageUrl }} style={styles.image} resizeMode={FastImage.resizeMode.cover} />
+      <View style={[containerStyles, { width: width, minHeight: sizeWidth(50) }]}>
+        {/* TODO 02 */}
         <View style={{ padding: sizeWidth(1.5) }}>
           <View style={styles.content}>
             <View>
-              <DateCountDown dateFrom={event.dateFrom} dateTo={event.dateTo} />
+              {/* TODO 09 */}
             </View>
             <View style={{ paddingLeft: sizeWidth(1.5), flex: 1 }}>
-              <Text style={styles.eventTitle} numberOfLines={2}>
-                {event.eventName}
-              </Text>
-              <Text style={styles.eventDescription} numberOfLines={1}>
-                {event.eventLocation && event.eventLocation.locationName}
-              </Text>
+              {/* TODO 03 */}
+              {/* TODO 04 */}
               {
-                event.dateFrom && getDayDuration(event.dateFrom, event.dateTo) > 0 && (
-                  <Text style={styles.eventDescription} numberOfLines={1}>
-                    {`${toDateString(event.dateFrom)} - ${toDateString(event.dateTo)}`}
-                  </Text>
-                )
+                // TODO 05
               }
             </View>
           </View>
           {!withoutBottom && (
             <View style={styles.bottom}>
-              <Text style={styles.eventDescription}>
-                <Text style={{ color: "#CBD34C" }}>• </Text>
-                {`${event.eventType} Event`}
-              </Text>
+              {/* TODO 06 */}
               <View style={{ flexDirection: "row" }}>
                 {this.state.userStatus === USER_STATUS.NEW && (
                   <TouchableOpacity style={styles.actionButton} onPress={this.onJoin}>
@@ -135,12 +124,9 @@ class EventCard extends React.Component {
                     />
                   </TouchableOpacity>
                 ) : (
-                  <TouchableOpacity style={styles.actionButton} onPress={this.onBookmark}>
-                    <Image
-                      source={require("../../assets/images/bookmark.png")}
-                      style={styles.icon}
-                    />
-                  </TouchableOpacity>
+                  // TODO 07
+                  null
+                  // END TODO 07
                 )}
                 {this.state.userStatus === USER_STATUS.CHECKIN ? (
                   <TouchableOpacity style={styles.actionButton}>
@@ -151,10 +137,7 @@ class EventCard extends React.Component {
                   </TouchableOpacity>
                 ) : (
                   <TouchableOpacity style={styles.actionButton} onPress={() => this.props.openPopup(event.eventId)}>
-                    <Image
-                      source={require("../../assets/images/qrcode.png")}
-                      style={styles.icon}
-                    />
+                    {/* TODO 08 */}
                   </TouchableOpacity>
                 )}
               </View>
