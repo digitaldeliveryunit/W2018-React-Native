@@ -116,7 +116,9 @@ class Home extends Component {
     <View style={{ marginBottom: sizeWidth(3), paddingHorizontal: sizeWidth(3) }}>
       <CardPlaceholder onReady={!this.state.loadingUpcoming}>
         <TouchableOpacity onPress={() => this.onGoDetail(_.get(item, "eventId"))} activeOpacity={0.8}>
-          <EventCard event={item} />
+          {/* TODO 03 */}
+          <EventCard event={{}} />
+          {/* END OF TODO 03 */}
         </TouchableOpacity>
       </CardPlaceholder>
     </View>
@@ -173,7 +175,7 @@ class Home extends Component {
       this.setState({
         loadingFeatured: false,
         loadedFeatured: true,
-        featuredEvents
+        // TODO 01
       });
     } catch (e) {
       this.setState({
@@ -188,7 +190,7 @@ class Home extends Component {
     this.setState({
       loadingUpcoming: true,
       loadedUpcoming: false,
-      upcomingEvents: [1, 2]
+      upcomingEvents: []
     });
     try {
       const data = await EventAPI.getUpcomingAllEvents({
@@ -198,7 +200,7 @@ class Home extends Component {
       this.setState({
         loadingUpcoming: false,
         loadedUpcoming: true,
-        upcomingEvents: events,
+        // TODO 02
         hasNextUpcomingItems: hasNextPage,
         upcomingContinuationKey: continuationKey
       });
