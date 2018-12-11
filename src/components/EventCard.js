@@ -19,32 +19,15 @@ const styles = StyleSheet.create({
     width: "100%",
     height: sizeWidth(40)
   },
-  // content: {
-  //   flexDirection: "row",
-  //   marginBottom: sizeWidth(1.5)
-  // },
-  // dateCountDown: {
-  //   borderColor: COLORS.GRAYISH_BLUE,
-  //   borderRadius: 4,
-  //   borderWidth: 1,
-  //   alignItems: "center"
-  // },
-  // bottom: {
-  //   flexDirection: "row",
-  //   justifyContent: "space-between",
-  //   alignItems: "center",
-  //   paddingTop: sizeWidth(1.5),
-  //   borderTopColor: "#F3F3F3",
-  //   borderTopWidth: 1
-  // },
+  // TODO 01
+  // TODO 02
+  // TODO 03
   actionButton: {
     justifyContent: "center",
     alignItems: "center",
     width: sizeWidth(8),
     height: sizeWidth(8),
-    // borderRadius: sizeWidth(4),
-    // borderWidth: 1,
-    // borderColor: COLORS.LIGHT_BORDER,
+    // TODO 06
     marginLeft: 5
   },
   icon: {
@@ -52,18 +35,8 @@ const styles = StyleSheet.create({
     height: sizeWidth(3.5),
     resizeMode: "contain"
   },
-  // eventTitle: {
-  //   color: COLORS.GREEN_PET_ICT, 
-  //   fontSize: fontSize.f14,
-  //   lineHeight: fontSize.f16,
-  //   ...fontMaker({ weight: "500" }),
-  //   marginBottom: sizeWidth(0.7)
-  // },
-  // eventDescription: {
-  //   color: COLORS.GRAYISH_BLUE,
-  //   fontSize: fontSize.f11,
-  //   lineHeight: fontSize.f12
-  // }
+  // TODO 04
+  // TODO 05
 });
 
 class EventCard extends React.Component {

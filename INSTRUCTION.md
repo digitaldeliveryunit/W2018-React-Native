@@ -1,82 +1,64 @@
-Section 3: Components and APIs
+Section 4: Styling & Layout
 
-Task 1. View component
-Locate the file "src/screens/home/index.js"
+Task 1. flexDirection as row
+Locate the file "src/components/EventCard.js"
 Find and replace the Keyword: TODO 01 with below code
 
-<View style={styles.singleCard}>
-  <CardPlaceholder onReady={true}>
-    <TouchableOpacity>
-      <EventCard event={event} />
-    </TouchableOpacity>
-  </CardPlaceholder>
-</View>
+content: {
+  flexDirection: "row",
+  marginBottom: sizeWidth(1.5)
+},
 
-Task 2. FastImage component
+Task 2. borderColor, borderRadius, borderWidth
 Locate the file "src/components/EventCard.js"
 Find and replace the Keyword: TODO 02 with below code
 
-<FastImage
-  source={{ uri: event.imageUrl }} style={styles.image}
-  resizeMode={FastImage.resizeMode.cover} />
+dateCountDown: {
+  borderColor: COLORS.GRAYISH_BLUE,
+  borderRadius: 4,
+  borderWidth: 1,
+  alignItems: "center"
+},
 
-Task 3. Text component
+Task 3. justifyContent, paddingTop, borderTopColor
 Locate the file "src/components/EventCard.js"
 Find and replace the Keyword: TODO 03 with below code
 
-<Text style={styles.eventTitle} numberOfLines={2}>
-  {event.eventName}
-</Text>
+bottom: {
+  flexDirection: "row",
+  justifyContent: "space-between",
+  alignItems: "center",
+  paddingTop: sizeWidth(1.5),
+  borderTopColor: "#F3F3F3",
+  borderTopWidth: 1
+},
 
-Task 4. Text component
+Task 4. color, fontSize, marginBottom
 Locate the file "src/components/EventCard.js"
 Find and replace the Keyword: TODO 04 with below code
 
-<Text style={styles.eventDescription} numberOfLines={1}>
-  {event.eventLocation && event.eventLocation.locationName}
-</Text>
+eventTitle: {
+  color: COLORS.GREEN_PET_ICT, 
+  fontSize: fontSize.f14,
+  lineHeight: fontSize.f16,
+  ...fontMaker({ weight: "500" }),
+  marginBottom: sizeWidth(0.7)
+},
 
-Task 5. Text component
+Task 5. color, fontSize, lineHeight
 Locate the file "src/components/EventCard.js"
 Find and replace the Keyword: TODO 05 with below code
 
-event.dateFrom && getDayDuration(event.dateFrom, event.dateTo) > 0 && (                
-  <Text style={styles.eventDescription} numberOfLines={1}>
-    {`${toDateString(event.dateFrom)} - ${toDateString(event.dateTo)}`}
-  </Text>
-)
+eventDescription: {
+  color: COLORS.GRAYISH_BLUE,
+  fontSize: fontSize.f11,
+  lineHeight: fontSize.f12
+}
 
-Task 6. Text component
+Task 6. color, fontSize, lineHeight
 Locate the file "src/components/EventCard.js"
 Find and replace the Keyword: TODO 06 with below code
 
-<Text style={styles.eventDescription}>
-  <Text style={{ color: "#CBD34C" }}>• </Text>
-  {`${event.eventType} Event`}
-</Text>
-
-Task 7. TouchableOpacity component
-Locate the file "src/components/EventCard.js"
-Find and replace the Keyword: TODO 07 with below code
-
-<TouchableOpacity style={styles.actionButton} onPress={this.onBookmark}>
-  <Image
-    source={require("../../assets/images/bookmark.png")}
-    style={styles.icon}
-  />
-</TouchableOpacity>
-
-Task 8. Image component
-Locate the file "src/components/EventCard.js"
-Find and replace the Keyword: TODO 08 with below code
-
-<Image
-  source={require("../../assets/images/qrcode.png")}
-  style={styles.icon}
-/>
-
-Task 9. DateCountDown component
-Locate the file "src/components/EventCard.js"
-Find and replace the Keyword: TODO 09 with below code
-
-<DateCountDown dateFrom={event.dateFrom} dateTo={event.dateTo} />
+borderRadius: sizeWidth(4),
+borderWidth: 1,
+borderColor: COLORS.LIGHT_BORDER,
