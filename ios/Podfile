@@ -13,6 +13,8 @@ target 'myevents' do
   
 
   platform :ios, '9.0'
+  pod 'react-native-calendar-events', :path => '../node_modules/react-native-calendar-events'
+
   target 'myeventsTests' do
     inherit! :search_paths
     # Pods for testing
