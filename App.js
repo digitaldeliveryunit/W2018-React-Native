@@ -29,7 +29,7 @@ export default class App extends Component {
   async componentDidMount () {
     
     // enable custom event for Analytics
-    await Analytics.setEnabled(true);
+    // TODO 01
   }
 }
 

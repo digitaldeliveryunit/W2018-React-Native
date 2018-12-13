@@ -166,7 +166,7 @@ class EventCard extends React.Component {
   }
 
   async onBookmark() {
-    AppInsightHelper.trackEvent("Bookmark an event");
+    // TODO 03
     const { event } = this.props;
     const result = await EventAPI.bookmark(event.eventId);
     if (result) {

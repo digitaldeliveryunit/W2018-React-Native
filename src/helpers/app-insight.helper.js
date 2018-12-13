@@ -6,7 +6,8 @@ export default class AppInsightHelper {
     static async trackEvent (_event) {
         const user = await Session.getUser();
         if (user) {
-            Analytics.trackEvent(`[${Platform.OS}][${user.email}] - ${_event}`);
+
+            // TODO 02
         }
     }
 }

@@ -12,7 +12,7 @@ import FeedbackScreen from "../screens/feedback";
 
 export const AppNavigator = StackNavigator(
   {
-    OnBoarding: { screen: OnBoardingScreen },
+    // OnBoarding: { screen: OnBoardingScreen },
     MainScreen: { screen: MainNavigator },
     About: { screen: EventDetailScreen },
     Gallery: { screen: GalleryScreen },
