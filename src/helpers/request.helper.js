@@ -37,32 +37,13 @@ const handleError = error => {
 export default class RequestHelper {
   static async getHeader() {
     return {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      "Ocp-Apim-Subscription-Key": "ef68321d65c24a09b7b0319c8b8152d2"
+      // TODO 03
     };
   }
+  // TODO 02 START
   static async get(apiUrl, params) {
-    const header = await this.getHeader();
-    return instance
-      .get(apiUrl, {
-        headers: header,
-        params: params,
-        paramsSerializer: params => {
-          return qs.stringify(params, { arrayFormat: "repeat" });
-        }
-      })
-      .then(data => {
-        if (data.status === 204) {
-          Toast.showLongBottom("Data not found!");
-        }
-        return data.data;
-      })
-      .catch(e => {
-        handleError(e);
-        throw e;
-      });
   }
+  // TODO 02 END
   static async post(apiUrl, data) {
     return instance({
       method: "post",

@@ -14,7 +14,7 @@ function* loadCurrentUser() {
     yield put({ type: LOADING_CURRENT_USER });
     yield call(delay, 3000);
 
-    // TODO 02
+    // TODO 05
 
     // store current user into local storage
     yield Session.setUser(currentUser);

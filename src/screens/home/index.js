@@ -52,8 +52,7 @@ class Home extends Component {
 
   componentDidMount() {
     AppInsightHelper.trackEvent("Load featured events & upcoming events");
-    this.loadFeaturedEvents();
-    this.loadUpcomingEvents();
+    // TODO 01
   }
 
   _renderHeader = () => {

@@ -69,7 +69,7 @@ class OnBoarding extends Component {
 
   componentDidMount () {
     // Call saga function to load current user & update into user reducer
-    // TODO 01
+    // TODO 04
   }
 
   goToHome () {
