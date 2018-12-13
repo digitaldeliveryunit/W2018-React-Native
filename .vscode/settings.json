@@ -1,0 +1,6 @@
+{
+    "favorites.resources": [
+        "android/gradle.properties",
+        "android/app/build.gradle"
+    ]
+}
